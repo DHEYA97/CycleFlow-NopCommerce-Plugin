@@ -1,0 +1,929 @@
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\Nop.Web.deps.json
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\Nop.Web.runtimeconfig.json
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\Nop.Web.staticwebassets.runtime.json
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\Nop.Web.exe
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\Views\Configure.cshtml
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\Views\NewPaymentInfo.cshtml
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\Views\_ViewImports.cshtml
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\plugin.json
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\Nop.Plugin.Misc.NewPayment.deps.json
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\Nop.Plugin.Misc.NewPayment.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\Nop.Plugin.Misc.NewPayment.pdb
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Antiforgery.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Authentication.Abstractions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Authentication.Cookies.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Authentication.Core.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Authentication.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Authentication.OAuth.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Authorization.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Authorization.Policy.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Components.Authorization.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Components.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Components.Forms.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Components.Server.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Components.Web.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Connections.Abstractions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.CookiePolicy.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Cors.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Cryptography.Internal.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.DataProtection.Abstractions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.DataProtection.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.DataProtection.Extensions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Diagnostics.Abstractions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Diagnostics.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Diagnostics.HealthChecks.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.HostFiltering.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Hosting.Abstractions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Hosting.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Html.Abstractions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Http.Abstractions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Http.Connections.Common.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Http.Connections.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Http.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Http.Extensions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Http.Features.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Http.Results.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.HttpLogging.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.HttpOverrides.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.HttpsPolicy.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Identity.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Localization.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Localization.Routing.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Metadata.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.Abstractions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.ApiExplorer.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.Core.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.Cors.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.DataAnnotations.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.Formatters.Json.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.Formatters.Xml.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.Localization.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.Razor.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.RazorPages.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.TagHelpers.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.ViewFeatures.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Razor.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Razor.Runtime.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.ResponseCaching.Abstractions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.ResponseCaching.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.ResponseCompression.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Rewrite.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Routing.Abstractions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Routing.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Server.HttpSys.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Server.IIS.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Server.IISIntegration.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Server.Kestrel.Core.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Server.Kestrel.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Server.Kestrel.Transport.Quic.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Session.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.SignalR.Common.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.SignalR.Core.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.SignalR.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.SignalR.Protocols.Json.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.StaticFiles.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.WebSockets.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.WebUtilities.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.CSharp.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Caching.Abstractions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Caching.Memory.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.Abstractions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.Binder.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.CommandLine.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.EnvironmentVariables.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.FileExtensions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.Ini.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.Json.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.KeyPerFile.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.UserSecrets.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.Xml.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.DependencyInjection.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Diagnostics.HealthChecks.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Features.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.FileProviders.Abstractions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.FileProviders.Composite.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.FileProviders.Embedded.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.FileProviders.Physical.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.FileSystemGlobbing.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Hosting.Abstractions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Hosting.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Http.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Identity.Core.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Identity.Stores.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Localization.Abstractions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Localization.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Logging.Abstractions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Logging.Configuration.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Logging.Console.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Logging.Debug.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Logging.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Logging.EventLog.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Logging.EventSource.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Logging.TraceSource.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.ObjectPool.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Options.DataAnnotations.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Options.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Primitives.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.WebEncoders.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.JSInterop.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Net.Http.Headers.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.VisualBasic.Core.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.VisualBasic.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Win32.Primitives.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Win32.Registry.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\mscorlib.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\netstandard.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.AppContext.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Buffers.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Collections.Concurrent.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Collections.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Collections.Immutable.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Collections.NonGeneric.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Collections.Specialized.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ComponentModel.Annotations.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ComponentModel.DataAnnotations.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ComponentModel.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ComponentModel.EventBasedAsync.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ComponentModel.Primitives.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ComponentModel.TypeConverter.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Configuration.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Console.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Core.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Data.Common.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Data.DataSetExtensions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Data.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.Contracts.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.Debug.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.DiagnosticSource.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.EventLog.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.FileVersionInfo.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.Process.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.StackTrace.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.TextWriterTraceListener.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.Tools.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.TraceSource.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.Tracing.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Drawing.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Drawing.Primitives.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Dynamic.Runtime.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Formats.Asn1.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Globalization.Calendars.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Globalization.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Globalization.Extensions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.Compression.Brotli.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.Compression.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.Compression.FileSystem.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.Compression.ZipFile.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.FileSystem.AccessControl.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.FileSystem.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.FileSystem.DriveInfo.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.FileSystem.Primitives.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.FileSystem.Watcher.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.IsolatedStorage.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.MemoryMappedFiles.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.Pipelines.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.Pipes.AccessControl.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.Pipes.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.UnmanagedMemoryStream.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Linq.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Linq.Expressions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Linq.Parallel.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Linq.Queryable.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Memory.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.Http.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.Http.Json.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.HttpListener.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.Mail.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.NameResolution.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.NetworkInformation.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.Ping.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.Primitives.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.Requests.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.Security.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.ServicePoint.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.Sockets.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.WebClient.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.WebHeaderCollection.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.WebProxy.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.WebSockets.Client.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.WebSockets.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Numerics.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Numerics.Vectors.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ObjectModel.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Reflection.DispatchProxy.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Reflection.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Reflection.Emit.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Reflection.Emit.ILGeneration.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Reflection.Emit.Lightweight.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Reflection.Extensions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Reflection.Metadata.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Reflection.Primitives.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Reflection.TypeExtensions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Resources.Reader.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Resources.ResourceManager.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Resources.Writer.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.CompilerServices.Unsafe.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.CompilerServices.VisualC.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Extensions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Handles.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.InteropServices.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.InteropServices.RuntimeInformation.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Intrinsics.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Loader.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Numerics.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Serialization.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Serialization.Formatters.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Serialization.Json.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Serialization.Primitives.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Serialization.Xml.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.AccessControl.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Claims.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Cryptography.Algorithms.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Cryptography.Cng.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Cryptography.Csp.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Cryptography.Encoding.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Cryptography.OpenSsl.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Cryptography.Primitives.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Cryptography.X509Certificates.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Cryptography.Xml.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Principal.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Principal.Windows.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.SecureString.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ServiceModel.Web.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ServiceProcess.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Text.Encoding.CodePages.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Text.Encoding.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Text.Encoding.Extensions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Text.Encodings.Web.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Text.Json.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Text.RegularExpressions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.Channels.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.Overlapped.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.Tasks.Dataflow.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.Tasks.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.Tasks.Extensions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.Tasks.Parallel.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.Thread.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.ThreadPool.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.Timer.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Transactions.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Transactions.Local.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ValueTuple.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Web.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Web.HttpUtility.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Windows.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Xml.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Xml.Linq.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Xml.ReaderWriter.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Xml.Serialization.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Xml.XDocument.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Xml.XmlDocument.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Xml.XmlSerializer.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Xml.XPath.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Xml.XPath.XDocument.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\WindowsBase.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\Nop.Plugin.Misc.NewPayment.csproj.AssemblyReference.cache
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\Nop.Plugin.Misc.NewPayment.GeneratedMSBuildEditorConfig.editorconfig
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\Nop.Plugin.Misc.NewPayment.AssemblyInfoInputs.cache
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\Nop.Plugin.Misc.NewPayment.AssemblyInfo.cs
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\Nop.Plugin.Misc.NewPayment.csproj.CoreCompileInputs.cache
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\Nop.Plugin.Misc.NewPayment.csproj.CopyComplete
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\Nop.Plugin.Misc.NewPayment.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\refint\Nop.Plugin.Misc.NewPayment.dll
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\Nop.Plugin.Misc.NewPayment.pdb
+F:\nopCommerce\Test\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\ref\Nop.Plugin.Misc.NewPayment.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\Views\Configure.cshtml
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\Views\NewPaymentInfo.cshtml
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\Views\_ViewImports.cshtml
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\Nop.Web.deps.json
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\Nop.Web.runtimeconfig.json
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\Nop.Web.staticwebassets.runtime.json
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\Nop.Web.exe
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\plugin.json
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\Nop.Plugin.Misc.NewPayment.deps.json
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\Nop.Plugin.Misc.NewPayment.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\Nop.Plugin.Misc.NewPayment.pdb
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Antiforgery.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Authentication.Abstractions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Authentication.Cookies.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Authentication.Core.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Authentication.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Authentication.OAuth.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Authorization.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Authorization.Policy.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Components.Authorization.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Components.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Components.Forms.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Components.Server.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Components.Web.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Connections.Abstractions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.CookiePolicy.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Cors.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Cryptography.Internal.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.DataProtection.Abstractions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.DataProtection.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.DataProtection.Extensions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Diagnostics.Abstractions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Diagnostics.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Diagnostics.HealthChecks.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.HostFiltering.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Hosting.Abstractions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Hosting.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Html.Abstractions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Http.Abstractions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Http.Connections.Common.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Http.Connections.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Http.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Http.Extensions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Http.Features.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Http.Results.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.HttpLogging.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.HttpOverrides.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.HttpsPolicy.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Identity.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Localization.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Localization.Routing.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Metadata.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.Abstractions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.ApiExplorer.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.Core.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.Cors.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.DataAnnotations.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.Formatters.Json.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.Formatters.Xml.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.Localization.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.Razor.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.RazorPages.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.TagHelpers.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.ViewFeatures.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Razor.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Razor.Runtime.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.ResponseCaching.Abstractions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.ResponseCaching.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.ResponseCompression.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Rewrite.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Routing.Abstractions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Routing.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Server.HttpSys.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Server.IIS.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Server.IISIntegration.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Server.Kestrel.Core.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Server.Kestrel.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Server.Kestrel.Transport.Quic.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Session.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.SignalR.Common.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.SignalR.Core.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.SignalR.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.SignalR.Protocols.Json.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.StaticFiles.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.WebSockets.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.WebUtilities.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.CSharp.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Caching.Abstractions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Caching.Memory.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.Abstractions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.Binder.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.CommandLine.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.EnvironmentVariables.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.FileExtensions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.Ini.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.Json.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.KeyPerFile.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.UserSecrets.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.Xml.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.DependencyInjection.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Diagnostics.HealthChecks.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Features.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.FileProviders.Abstractions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.FileProviders.Composite.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.FileProviders.Embedded.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.FileProviders.Physical.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.FileSystemGlobbing.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Hosting.Abstractions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Hosting.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Http.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Identity.Core.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Identity.Stores.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Localization.Abstractions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Localization.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Logging.Abstractions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Logging.Configuration.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Logging.Console.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Logging.Debug.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Logging.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Logging.EventLog.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Logging.EventSource.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Logging.TraceSource.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.ObjectPool.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Options.DataAnnotations.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Options.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Primitives.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.WebEncoders.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.JSInterop.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Net.Http.Headers.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.VisualBasic.Core.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.VisualBasic.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Win32.Primitives.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Win32.Registry.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\mscorlib.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\netstandard.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.AppContext.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Buffers.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Collections.Concurrent.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Collections.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Collections.Immutable.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Collections.NonGeneric.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Collections.Specialized.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ComponentModel.Annotations.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ComponentModel.DataAnnotations.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ComponentModel.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ComponentModel.EventBasedAsync.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ComponentModel.Primitives.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ComponentModel.TypeConverter.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Configuration.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Console.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Core.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Data.Common.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Data.DataSetExtensions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Data.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.Contracts.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.Debug.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.DiagnosticSource.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.EventLog.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.FileVersionInfo.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.Process.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.StackTrace.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.TextWriterTraceListener.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.Tools.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.TraceSource.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.Tracing.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Drawing.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Drawing.Primitives.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Dynamic.Runtime.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Formats.Asn1.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Globalization.Calendars.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Globalization.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Globalization.Extensions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.Compression.Brotli.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.Compression.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.Compression.FileSystem.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.Compression.ZipFile.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.FileSystem.AccessControl.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.FileSystem.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.FileSystem.DriveInfo.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.FileSystem.Primitives.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.FileSystem.Watcher.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.IsolatedStorage.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.MemoryMappedFiles.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.Pipelines.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.Pipes.AccessControl.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.Pipes.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.UnmanagedMemoryStream.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Linq.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Linq.Expressions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Linq.Parallel.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Linq.Queryable.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Memory.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.Http.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.Http.Json.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.HttpListener.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.Mail.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.NameResolution.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.NetworkInformation.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.Ping.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.Primitives.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.Requests.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.Security.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.ServicePoint.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.Sockets.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.WebClient.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.WebHeaderCollection.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.WebProxy.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.WebSockets.Client.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.WebSockets.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Numerics.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Numerics.Vectors.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ObjectModel.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Reflection.DispatchProxy.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Reflection.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Reflection.Emit.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Reflection.Emit.ILGeneration.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Reflection.Emit.Lightweight.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Reflection.Extensions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Reflection.Metadata.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Reflection.Primitives.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Reflection.TypeExtensions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Resources.Reader.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Resources.ResourceManager.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Resources.Writer.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.CompilerServices.Unsafe.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.CompilerServices.VisualC.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Extensions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Handles.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.InteropServices.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.InteropServices.RuntimeInformation.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Intrinsics.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Loader.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Numerics.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Serialization.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Serialization.Formatters.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Serialization.Json.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Serialization.Primitives.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Serialization.Xml.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.AccessControl.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Claims.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Cryptography.Algorithms.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Cryptography.Cng.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Cryptography.Csp.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Cryptography.Encoding.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Cryptography.OpenSsl.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Cryptography.Primitives.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Cryptography.X509Certificates.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Cryptography.Xml.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Principal.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Principal.Windows.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.SecureString.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ServiceModel.Web.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ServiceProcess.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Text.Encoding.CodePages.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Text.Encoding.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Text.Encoding.Extensions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Text.Encodings.Web.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Text.Json.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Text.RegularExpressions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.Channels.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.Overlapped.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.Tasks.Dataflow.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.Tasks.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.Tasks.Extensions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.Tasks.Parallel.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.Thread.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.ThreadPool.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.Timer.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Transactions.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Transactions.Local.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ValueTuple.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Web.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Web.HttpUtility.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Windows.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Xml.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Xml.Linq.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Xml.ReaderWriter.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Xml.Serialization.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Xml.XDocument.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Xml.XmlDocument.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Xml.XmlSerializer.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Xml.XPath.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Xml.XPath.XDocument.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\WindowsBase.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\Nop.Plugin.Misc.NewPayment.csproj.AssemblyReference.cache
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\Nop.Plugin.Misc.NewPayment.GeneratedMSBuildEditorConfig.editorconfig
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\Nop.Plugin.Misc.NewPayment.AssemblyInfoInputs.cache
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\Nop.Plugin.Misc.NewPayment.AssemblyInfo.cs
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\Nop.Plugin.Misc.NewPayment.csproj.CoreCompileInputs.cache
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\Nop.Plugin.Misc.NewPayment.csproj.CopyComplete
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\Nop.Plugin.Misc.NewPayment.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\refint\Nop.Plugin.Misc.NewPayment.dll
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\Nop.Plugin.Misc.NewPayment.pdb
+F:\nopCommerce\project\Test Publish\fayyad_pos_450-develop - new\fayyad_pos_450-develop - new\fayyad_pos_450-develop\src\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\ref\Nop.Plugin.Misc.NewPayment.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\Nop.Web.deps.json
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\Nop.Web.runtimeconfig.json
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\Nop.Web.staticwebassets.runtime.json
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\Nop.Web.exe
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\plugin.json
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\Nop.Plugin.Misc.NewPayment.deps.json
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\Nop.Plugin.Misc.NewPayment.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\Nop.Plugin.Misc.NewPayment.pdb
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Antiforgery.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Authentication.Abstractions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Authentication.Cookies.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Authentication.Core.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Authentication.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Authentication.OAuth.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Authorization.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Authorization.Policy.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Components.Authorization.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Components.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Components.Forms.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Components.Server.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Components.Web.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Connections.Abstractions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.CookiePolicy.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Cors.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.DataProtection.Abstractions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.DataProtection.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.DataProtection.Extensions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Diagnostics.Abstractions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Diagnostics.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Diagnostics.HealthChecks.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.HostFiltering.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Hosting.Abstractions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Hosting.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Html.Abstractions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Http.Connections.Common.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Http.Connections.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Http.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Http.Extensions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Http.Results.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.HttpLogging.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.HttpOverrides.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.HttpsPolicy.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Identity.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Localization.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Localization.Routing.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Metadata.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.Abstractions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.ApiExplorer.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.Core.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.Cors.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.DataAnnotations.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.Formatters.Json.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.Formatters.Xml.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.Localization.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.Razor.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.RazorPages.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.TagHelpers.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Mvc.ViewFeatures.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Razor.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Razor.Runtime.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.ResponseCaching.Abstractions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.ResponseCaching.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.ResponseCompression.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Rewrite.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Routing.Abstractions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Routing.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Server.HttpSys.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Server.IIS.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Server.IISIntegration.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Server.Kestrel.Core.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Server.Kestrel.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Server.Kestrel.Transport.Quic.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.Session.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.SignalR.Common.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.SignalR.Core.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.SignalR.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.SignalR.Protocols.Json.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.StaticFiles.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.WebSockets.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.AspNetCore.WebUtilities.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.CSharp.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.CommandLine.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.EnvironmentVariables.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.Ini.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.KeyPerFile.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.UserSecrets.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Configuration.Xml.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Diagnostics.HealthChecks.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Features.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.FileProviders.Composite.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.FileProviders.Embedded.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Hosting.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Http.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Identity.Core.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Localization.Abstractions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Localization.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Logging.Configuration.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Logging.Console.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Logging.Debug.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Logging.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Logging.EventLog.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Logging.EventSource.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Logging.TraceSource.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.ObjectPool.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Options.DataAnnotations.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Options.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.Primitives.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Extensions.WebEncoders.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.JSInterop.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Net.Http.Headers.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.VisualBasic.Core.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.VisualBasic.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Win32.Primitives.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\Microsoft.Win32.Registry.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\mscorlib.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\netstandard.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.AppContext.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Buffers.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Collections.Concurrent.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Collections.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Collections.Immutable.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Collections.NonGeneric.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Collections.Specialized.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ComponentModel.Annotations.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ComponentModel.DataAnnotations.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ComponentModel.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ComponentModel.EventBasedAsync.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ComponentModel.Primitives.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ComponentModel.TypeConverter.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Configuration.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Console.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Core.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Data.Common.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Data.DataSetExtensions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Data.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.Contracts.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.Debug.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.DiagnosticSource.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.EventLog.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.FileVersionInfo.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.Process.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.StackTrace.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.TextWriterTraceListener.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.Tools.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.TraceSource.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Diagnostics.Tracing.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Drawing.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Drawing.Primitives.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Dynamic.Runtime.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Formats.Asn1.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Globalization.Calendars.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Globalization.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Globalization.Extensions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.Compression.Brotli.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.Compression.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.Compression.FileSystem.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.Compression.ZipFile.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.FileSystem.AccessControl.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.FileSystem.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.FileSystem.DriveInfo.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.FileSystem.Primitives.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.FileSystem.Watcher.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.IsolatedStorage.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.MemoryMappedFiles.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.Pipelines.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.Pipes.AccessControl.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.Pipes.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.IO.UnmanagedMemoryStream.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Linq.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Linq.Expressions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Linq.Parallel.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Linq.Queryable.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Memory.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.Http.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.Http.Json.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.HttpListener.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.Mail.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.NameResolution.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.NetworkInformation.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.Ping.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.Primitives.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.Requests.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.Security.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.ServicePoint.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.Sockets.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.WebClient.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.WebHeaderCollection.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.WebProxy.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.WebSockets.Client.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Net.WebSockets.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Numerics.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Numerics.Vectors.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ObjectModel.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Reflection.DispatchProxy.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Reflection.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Reflection.Emit.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Reflection.Emit.ILGeneration.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Reflection.Emit.Lightweight.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Reflection.Extensions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Reflection.Metadata.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Reflection.Primitives.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Reflection.TypeExtensions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Resources.Reader.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Resources.ResourceManager.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Resources.Writer.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.CompilerServices.VisualC.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Extensions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Handles.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.InteropServices.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Intrinsics.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Loader.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Numerics.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Serialization.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Serialization.Formatters.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Serialization.Json.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Serialization.Primitives.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Runtime.Serialization.Xml.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.AccessControl.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Claims.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Cryptography.Algorithms.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Cryptography.Cng.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Cryptography.Csp.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Cryptography.Encoding.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Cryptography.OpenSsl.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Cryptography.Primitives.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Cryptography.X509Certificates.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Cryptography.Xml.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Principal.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.Principal.Windows.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Security.SecureString.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ServiceModel.Web.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ServiceProcess.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Text.Encoding.CodePages.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Text.Encoding.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Text.Encoding.Extensions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Text.Encodings.Web.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Text.Json.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Text.RegularExpressions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.Channels.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.Overlapped.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.Tasks.Dataflow.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.Tasks.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.Tasks.Extensions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.Tasks.Parallel.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.Thread.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.ThreadPool.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Threading.Timer.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Transactions.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Transactions.Local.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.ValueTuple.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Web.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Web.HttpUtility.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Windows.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Xml.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Xml.Linq.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Xml.ReaderWriter.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Xml.Serialization.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Xml.XDocument.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Xml.XmlDocument.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Xml.XmlSerializer.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Xml.XPath.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\System.Xml.XPath.XDocument.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\refs\WindowsBase.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\Nop.Plugin.Misc.NewPayment.csproj.AssemblyReference.cache
+C:\Users\user\source\repos\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\Nop.Plugin.Misc.NewPayment.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\source\repos\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\Nop.Plugin.Misc.NewPayment.AssemblyInfoInputs.cache
+C:\Users\user\source\repos\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\Nop.Plugin.Misc.NewPayment.AssemblyInfo.cs
+C:\Users\user\source\repos\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\Nop.Plugin.Misc.NewPayment.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\Nop.Plugin.Misc.NewPayment.sourcelink.json
+C:\Users\user\source\repos\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\Nop.Plugin.Misc.NewPayment.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\refint\Nop.Plugin.Misc.NewPayment.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\Nop.Plugin.Misc.NewPayment.pdb
+C:\Users\user\source\repos\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\ref\Nop.Plugin.Misc.NewPayment.dll
+C:\Users\user\source\repos\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.NewPayment\obj\Debug\net6.0\Nop.Plug.2BF62042.Up2Date
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\Views\_ViewImports.cshtml
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\Views\PromoSliderImage\List.cshtml
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\Views\PromoSlider\List.cshtml
+C:\Users\user\source\repos\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.newPayment\Views\Sheared\Configure.cshtml

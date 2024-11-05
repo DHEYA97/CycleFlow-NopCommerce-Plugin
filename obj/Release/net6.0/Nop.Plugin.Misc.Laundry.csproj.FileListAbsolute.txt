@@ -1,0 +1,6 @@
+F:\nopCommerce\NopWithZatca2024\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.NewPayment\obj\Release\net6.0\Nop.Plugin.Misc.Laundry.csproj.AssemblyReference.cache
+F:\nopCommerce\NopWithZatca2024\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.NewPayment\obj\Release\net6.0\Nop.Plugin.Misc.Laundry.GeneratedMSBuildEditorConfig.editorconfig
+F:\nopCommerce\NopWithZatca2024\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.NewPayment\obj\Release\net6.0\Nop.Plugin.Misc.Laundry.AssemblyInfoInputs.cache
+F:\nopCommerce\NopWithZatca2024\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.NewPayment\obj\Release\net6.0\Nop.Plugin.Misc.Laundry.AssemblyInfo.cs
+F:\nopCommerce\NopWithZatca2024\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.NewPayment\obj\Release\net6.0\Nop.Plugin.Misc.Laundry.csproj.CoreCompileInputs.cache
+F:\nopCommerce\NopWithZatca2024\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.NewPayment\obj\Release\net6.0\Nop.Plugin.Misc.Laundry.sourcelink.json
