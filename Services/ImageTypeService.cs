@@ -20,16 +20,17 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
         #region Methods
         public async Task<IPagedList<ImageType>> GetAllImageTypesAsync(string name = "", int pageIndex = 0, int pageSize = int.MaxValue, bool showHidden = false)
         {
-            var unit = await _imageTypeRepository.GetAllPagedAsync(query =>
+            var image = await _imageTypeRepository.GetAllPagedAsync(query =>
             {
+                query = query.Where(e => !e.Deleted);
+                
                 if (!string.IsNullOrWhiteSpace(name))
                     query = query.Where(v => v.Name.Contains(name));
 
-                query = query.Where(e => !e.Deleted); // Assuming we filter out soft-deleted entities
                 return query;
 
             }, pageIndex, pageSize);
-            return unit;
+            return image;
         }
 
         public async Task InsertImageTypeAsync(ImageType imageType)

@@ -1,4 +1,5 @@
 ﻿using DocumentFormat.OpenXml.EMMA;
+using DocumentFormat.OpenXml.Spreadsheet;
 using Nop.Core;
 using Nop.Data;
 using Nop.Plugin.Misc.CycleFlow.Domain;
@@ -51,6 +52,16 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                 return false;
             Name = Name.Trim();
             return await _orderStatusRepository.Table.AnyAsync(t => t.Name == Name && t.Id != Id);
+        }
+        public async Task<IQueryable<OrderStatus>> SearchOrderStatesByNameAsync(string orderStatusName)
+        {
+            var query = _orderStatusRepository.Table;
+            query = query.Where(c => !c.Deleted && c.IsActive);
+
+            if (!string.IsNullOrEmpty(orderStatusName))
+                query = query.Where(o => o.Name.Contains(orderStatusName));
+
+            return query;
         }
         #endregion
         #region Utilite

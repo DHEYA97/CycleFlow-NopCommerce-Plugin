@@ -34,6 +34,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Infrastructure
 
             services.AddScoped<IImageTypeService, ImageTypeService>();
             services.AddScoped<IImageTypeModelFactory, ImageTypeModelFactory>();
+
+            services.AddScoped<ICycleFlowSettingService, CycleFlowSettingService>();
+            services.AddScoped<ICycleFlowSettingModelFactory, CycleFlowSettingModelFactory>();
+
         }
     }
 }

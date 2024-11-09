@@ -111,6 +111,15 @@ namespace Nop.Plugin.Misc.CycleFlow
                         ActionName = "List",
                         IconClass = "far fa-dot-circle",
                         Visible = true,  
+                    },
+                    new SiteMapNode()
+                    {
+                        SystemName = "CycleFlowSetting",
+                        Title = _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.CycleFlowSetting").Result,
+                        ControllerName = "CycleFlowSetting",
+                        ActionName = "List",
+                        IconClass = "far fa-dot-circle",
+                        Visible = true,
                     }
 
                 }
@@ -219,7 +228,18 @@ namespace Nop.Plugin.Misc.CycleFlow
                 ["Admin.Plugin.Misc.CycleFlow.ImageType.Notification.Added"] = "Image Type Added",
                 ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Manage"] = "Manage Cycle Flow",
                 ["Nop.Plugin.Misc.CycleFlow.ImageType"] = "Image Type",
-
+                ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Title"] = "Cycle Flow Setting",
+                ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.CurrentOrderStatusName"] = "Current Order Status Name",
+                ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.StoreName"] = "Store Name",
+                ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.PosUserName"] = "Pos User Name",
+                ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.NextOrderStatusName"] = "Next Order Status Name",
+                ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.CurrentOrderStatusId"] = "Current Order Status Id",
+                ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.StoreId"] = "Search Name",
+                ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.NopWarehouseId"] = "Store Id",
+                ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.PosUserId"] = "Pos User Id",
+                ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.NextOrderStatusId"] = "Next Order Status Id",
+                ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.NopWarehouseName"] = "Warehouse Name",
+                ["Nop.Plugin.Misc.CycleFlow.CycleFlowSetting"] = "cycle flow setting"
                 #endregion
             };
         }
@@ -256,7 +276,20 @@ namespace Nop.Plugin.Misc.CycleFlow
                 ["Admin.Plugin.Misc.CycleFlow.ImageType.Notification.Updated"] = "تم تحديث نوع الصورة",
                 ["Admin.Plugin.Misc.CycleFlow.ImageType.Notification.Added"] = "تم إضافة نوع الصورة",
                 ["Nop.Plugin.Misc.CycleFlow.ImageType"] = "نوع الصورة",
-
+                ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Manage"] = "إدارة تدفق الدورة",
+                ["Nop.Plugin.Misc.CycleFlow.ImageType"] = "نوع الصورة",
+                ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Title"] = "إعدادات تدفق الدورة",
+                ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.CurrentOrderStatusName"] = "حالة الطلب الحالية",
+                ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.StoreName"] = "المتجر",
+                ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.PosUserName"] = "مستخدم نقطة البيع",
+                ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.NextOrderStatusName"] = " حالة الطلب التالية",
+                ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.CurrentOrderStatusId"] = "معرف حالة الطلب الحالية",
+                ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.StoreId"] = "المتجر",
+                ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.NopWarehouseId"] = "معرف المتجر",
+                ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.PosUserId"] = "معرف مستخدم نقطة البيع",
+                ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.NextOrderStatusId"] = "معرف حالة الطلب التالية",
+                ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.NopWarehouseName"] = "المخزن",
+                ["Nop.Plugin.Misc.CycleFlow.CycleFlowSetting"] = "اعدادات الدوره المستندية"
                 #endregion
             };
         }

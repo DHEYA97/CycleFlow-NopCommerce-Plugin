@@ -1,0 +1,82 @@
+﻿@model Nop.Plugin.Misc.CycleFlow.Models.CycleFlowSetting.CycleFlowSettingModel
+
+<div class="card-body">
+    <!-- Current Order Status -->
+    <div class="form-group row">
+        <div class="col-md-3">
+            <nop-label asp-for="CurrentOrderStatusId" />
+        </div>
+        <div class="col-md-9">
+            <nop-select asp-for="CurrentOrderStatusId" asp-items="Model.AvailableOrderStatus" />
+            <span asp-validation-for="CurrentOrderStatusId"></span>
+        </div>
+    </div>
+
+    <!-- Store -->
+    <div class="form-group row">
+        <div class="col-md-3">
+            <nop-label asp-for="StoreId" />
+        </div>
+        <div class="col-md-9">
+            <nop-select asp-for="StoreId" asp-items="Model.AvailableStores" />
+            <span asp-validation-for="StoreId"></span>
+        </div>
+    </div>
+
+    <!-- Warehouse -->
+    <div class="form-group row">
+        <div class="col-md-3">
+            <nop-label asp-for="NopWarehouseId" />
+        </div>
+        <div class="col-md-9">
+            <nop-select asp-for="NopWarehouseId" asp-items="Model.AvailableWarehouses" />
+            <span asp-validation-for="NopWarehouseId"></span>
+        </div>
+    </div>
+
+    <!-- POS User -->
+    <div class="form-group row">
+        <div class="col-md-3">
+            <nop-label asp-for="PosUserId" />
+        </div>
+        <div class="col-md-9">
+            <nop-select asp-for="PosUserId" asp-items="Model.AvailablePosUsers" />
+            <span asp-validation-for="PosUserId"></span>
+        </div>
+    </div>
+
+    <!-- Next Order Status -->
+    <div class="form-group row">
+        <div class="col-md-3">
+            <nop-label asp-for="NextOrderStatusId" />
+        </div>
+        <div class="col-md-9">
+            <nop-select asp-for="NextOrderStatusId" asp-items="Model.AvailableOrderStatus" />
+            <span asp-validation-for="NextOrderStatusId"></span>
+        </div>
+    </div>
+
+    <!-- Image Types -->
+    <div class="form-group row">
+        <div class="col-md-3">
+            <nop-label asp-for="SelectedImageTypeIds" />
+        </div>
+        <div class="col-md-9">
+            <nop-select asp-for="SelectedImageTypeIds" asp-items="Model.AvailableImageTypes" asp-multiple="true" />
+            <span asp-validation-for="SelectedImageTypeIds"></span>
+        </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="form-group row">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+            <button type="submit" class="btn btn-primary">
+                @T("Admin.Save")
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Validation Alert -->
+<nop-alert asp-alert-id="validationAlert" asp-alert-message="@T("Admin.Common.Alert.ValidationError")" />

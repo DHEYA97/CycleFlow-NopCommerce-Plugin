@@ -1,0 +1,158 @@
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Nop.Core;
+using Nop.Core.Domain.Customers;
+using Nop.Core.Domain.Media;
+using Nop.Plugin.Misc.CycleFlow.Domain;
+using Nop.Plugin.Misc.CycleFlow.Models.CycleFlowSetting;
+using Nop.Plugin.Misc.CycleFlow.Models.ImageType;
+using Nop.Plugin.Misc.CycleFlow.Services;
+using Nop.Plugin.Misc.POSSystem.Areas.Admin.Models.Purchase;
+using Nop.Plugin.Misc.POSSystem.Areas.Pos.Models.PosCustomer;
+using Nop.Plugin.Misc.POSSystem.Domains;
+using Nop.Plugin.Misc.POSSystem.Services;
+using Nop.Services.Customers;
+using Nop.Services.Localization;
+using Nop.Services.Shipping;
+using Nop.Services.Stores;
+using Nop.Web.Areas.Admin.Factories;
+using Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
+using Nop.Web.Framework.Models.Extensions;
+
+namespace Nop.Plugin.Misc.CycleFlow.Factories
+{
+    public class CycleFlowSettingModelFactory : ICycleFlowSettingModelFactory
+    {
+        #region Felid
+        private readonly ILocalizationService _localizationService;
+        private readonly ICycleFlowSettingService _cycleFlowSettingService;
+        private readonly IStoreContext _storeContext;
+        private readonly IStoreService _storeService;
+        private readonly IShippingService _shippingService;
+        private readonly IOrderStatusService _orderStatusService;
+        private readonly IBaseAdminModelFactory _baseAdminModelFactory;
+        private readonly IPosStoreService _posStoreService;
+        private readonly IPosUserService _posUserService;
+        private readonly ICustomerService _customerService;
+        private readonly IImageTypeService _imageTypeService;
+        #endregion
+        #region Ctor
+        public CycleFlowSettingModelFactory(ILocalizationService localizationService,
+            ICycleFlowSettingService cycleFlowSettingService,
+            IStoreContext storeContext,
+            IStoreService storeService,
+            IShippingService shippingService,
+            IOrderStatusService orderStatusService,
+            IBaseAdminModelFactory baseAdminModelFactory,
+            IPosStoreService posStoreService,
+            IPosUserService posUserService,
+            ICustomerService customerService,
+            IImageTypeService imageTypeService
+            )
+        {
+            _localizationService = localizationService;
+            _cycleFlowSettingService = cycleFlowSettingService;
+            _storeContext = storeContext;
+            _storeService = storeService;
+            _shippingService = shippingService;
+            _orderStatusService = orderStatusService;
+            _baseAdminModelFactory = baseAdminModelFactory;
+            _posStoreService = posStoreService;
+            _posUserService = posUserService;
+            _customerService = customerService;
+            _imageTypeService = imageTypeService;
+        }
+        #endregion
+        #region Methods
+        public Task<CycleFlowSettingSearchModel> PrepareCycleFlowSettingSearchModelAsync(CycleFlowSettingSearchModel searchModel)
+        {
+            searchModel ??= new CycleFlowSettingSearchModel();
+            searchModel.SetGridPageSize();
+            return Task.FromResult(searchModel);
+        }
+        public async Task<CycleFlowSettingListModel> PrepareCycleFlowSettingListModelAsync(CycleFlowSettingSearchModel searchModel)
+        {
+            var cycleFlowSetting = await _cycleFlowSettingService.SearchCycleFlowSettingAsync(
+                orderStatusName: searchModel.SearchName,
+            storeId: _storeContext.GetCurrentStoreAsync().Result.Id
+            );
+
+            return await new CycleFlowSettingListModel().PrepareToGridAsync(searchModel, cycleFlowSetting, () =>
+            {
+                return cycleFlowSetting.SelectAwait(async cycleFlowSetting =>
+                {
+                    return await PrepareCycleFlowSettingModelAsync(null, cycleFlowSetting, true);
+                });
+            });
+        }
+        public async Task<CycleFlowSettingModel> PrepareCycleFlowSettingModelAsync(CycleFlowSettingModel model, OrderStatusSorting orderStatusSorting, bool excludeProperties = false)
+        {
+            if (orderStatusSorting != null)
+            {
+                model ??= orderStatusSorting.ToModel<CycleFlowSettingModel>();
+
+                var store = await _storeService.GetStoreByIdAsync(orderStatusSorting.NopStoreId);
+                var nopWarehouse = await _shippingService.GetWarehouseByIdAsync(orderStatusSorting.WareHouseId);
+                var orderStatus = await _orderStatusService.GetOrderStatusByIdAsync(orderStatusSorting.OrderStatusId);
+                var nextOrderStatus = await _orderStatusService.GetOrderStatusByIdAsync(orderStatusSorting.NextStep);
+
+                model.StoreName = store?.Name ?? string.Empty;
+                model.NopWarehouseName = nopWarehouse?.Name ?? string.Empty;
+                model.CurrentOrderStatusName = orderStatus?.Name ?? string.Empty;
+                model.NextOrderStatusName = nextOrderStatus?.Name ?? string.Empty;
+
+            }
+
+            if (!excludeProperties)
+            {
+                await PreparePosStoresAsync(model.AvailableStores);
+                await _baseAdminModelFactory.PrepareWarehousesAsync(model.AvailableWarehouses, defaultItemText: await _localizationService.GetResourceAsync("Admin.Catalog.Products.Fields.Warehouse.None"));
+                await PreparePosUsersListAsync(model.AvailablePosUsers);
+                await PrepareOrderStatusListAsync(model.AvailableOrderStatus);
+                await PrepareImageTypeListAsync(model.AvailableImageTypes);
+            }
+
+            return model;
+        }
+        #endregion
+
+        #region Utilite
+        public async Task PreparePosStoresAsync(IList<SelectListItem> items)
+        {
+            var availableStores = await (await _posStoreService.GetAllPosStoresAsync()).Where(ps => ps.StoreType != StoreTypes.Online).ToListAsync();
+            foreach (var store in availableStores)
+            {
+                var nopStore = await _storeService.GetStoreByIdAsync(store.NopStoreId);
+                items.Add(new SelectListItem { Value = store.Id.ToString(), Text = nopStore.Name });
+            }
+            items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Common.Select"), Value = "0" });
+        }
+        public async Task PreparePosUsersListAsync(IList<SelectListItem> items)
+        {
+            var availablePosUsers = await (await _posUserService.GetPosUserListAsync()).Where(ps => ps.Active).ToListAsync();
+            foreach (var user in availablePosUsers)
+            {
+                items.Add(new SelectListItem { Value = user.Id.ToString(), Text = _customerService.GetCustomerFullNameAsync(user).Result.ToString() });
+            }
+            items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Common.Select"), Value = "0" });
+        }
+        public async Task PrepareOrderStatusListAsync(IList<SelectListItem> items)
+        {
+            var availableOrderStatus = await (await _orderStatusService.GetAllOrderStatusAsync()).Where(os => os.IsActive && !os.Deleted).ToListAsync();
+            foreach (var order in availableOrderStatus)
+            {
+                items.Add(new SelectListItem { Value = order.Id.ToString(), Text = order.Name.ToString() });
+            }
+            items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Common.Select"), Value = "0" });
+        }
+        public async Task PrepareImageTypeListAsync(IList<SelectListItem> items)
+        {
+            var availableimageType = await (await _imageTypeService.GetAllImageTypesAsync()).Where(os => !os.Deleted).ToListAsync();
+            foreach (var imageType in availableimageType)
+            {
+                items.Add(new SelectListItem { Value = imageType.Id.ToString(), Text = imageType.Name.ToString() });
+            }
+            items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Common.Select"), Value = "0" });
+        }
+        #endregion
+    }
+}
