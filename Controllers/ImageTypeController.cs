@@ -7,7 +7,7 @@ using Nop.Web.Framework;
 using Nop.Web.Framework.Controllers;
 using Nop.Web.Framework.Mvc.Filters;
 using Nop.Plugin.Misc.CycleFlow.Domain;
-using Nop.Plugin.Misc.CycleFlow.Models.ImageType; // تعديل النموذج ليكون متعلقًا بـ ImageType
+using Nop.Plugin.Misc.CycleFlow.Models.ImageType;
 using Nop.Plugin.Misc.CycleFlow.Permission;
 using Nop.Plugin.Misc.CycleFlow.Factories;
 using Nop.Plugin.Misc.CycleFlow.Services;
@@ -27,7 +27,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         private readonly ILocalizationService _localizationService;
         private readonly ILocalizedEntityService _localizedEntityService;
         private readonly IImageTypeModelFactory _imageTypeModelFactory;
-        private readonly IImageTypeService _imageTypeService; // تغيير الخدمة إلى ImageType
+        private readonly IImageTypeService _imageTypeService; 
         #endregion
 
         #region Ctor
@@ -37,7 +37,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             ILocalizationService localizationService,
             ILocalizedEntityService localizedEntityService,
             IImageTypeModelFactory imageTypeModelFactory,
-            IImageTypeService imageTypeService // تعديل المعاملات
+            IImageTypeService imageTypeService 
             )
         {
             _permissionService = permissionService;

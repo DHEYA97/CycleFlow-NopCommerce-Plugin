@@ -8,6 +8,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Domain
         public int WareHouseId { get; set; }
         public int OrderStatusId { get; set; }
         public int NextStep { get; set; }
-
+        public bool IsFirstStep { get; set; }
+        public bool IsLastStep { get; set; }
     }
 }

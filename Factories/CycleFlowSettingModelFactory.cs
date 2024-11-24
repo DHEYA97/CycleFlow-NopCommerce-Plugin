@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using DocumentFormat.OpenXml.Spreadsheet;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Nop.Core;
 using Nop.Core.Domain.Customers;
 using Nop.Core.Domain.Media;
@@ -84,7 +85,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                 });
             });
         }
-        public async Task<CycleFlowSettingModel> PrepareCycleFlowSettingModelAsync(CycleFlowSettingModel model, OrderStatusSorting orderStatusSorting, bool excludeProperties = false)
+        public async Task<CycleFlowSettingModel> PrepareCycleFlowSettingModelAsync(CycleFlowSettingModel model, OrderStatusSorting orderStatusSorting, bool excludeProperties = false,int currentId = 0)
         {
             if (orderStatusSorting != null)
             {
@@ -94,11 +95,14 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                 var nopWarehouse = await _shippingService.GetWarehouseByIdAsync(orderStatusSorting.WareHouseId);
                 var orderStatus = await _orderStatusService.GetOrderStatusByIdAsync(orderStatusSorting.OrderStatusId);
                 var nextOrderStatus = await _orderStatusService.GetOrderStatusByIdAsync(orderStatusSorting.NextStep);
+                var posUser = await _cycleFlowSettingService.GetPosUser(orderStatusSorting.OrderStatusId);
 
                 model.StoreName = store?.Name ?? string.Empty;
                 model.NopWarehouseName = nopWarehouse?.Name ?? string.Empty;
                 model.CurrentOrderStatusName = orderStatus?.Name ?? string.Empty;
                 model.NextOrderStatusName = nextOrderStatus?.Name ?? string.Empty;
+                model.PosUserName = await _customerService.GetCustomerFullNameAsync(await _posUserService.GetUserByIdAsync(posUser.Id)) ?? string.Empty;
+                model.PosUserId = _cycleFlowSettingService.GetPosUser(model.CurrentOrderStatusId).Result.Id;
 
             }
 
@@ -107,8 +111,12 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                 await PreparePosStoresAsync(model.AvailableStores);
                 await _baseAdminModelFactory.PrepareWarehousesAsync(model.AvailableWarehouses, defaultItemText: await _localizationService.GetResourceAsync("Admin.Catalog.Products.Fields.Warehouse.None"));
                 await PreparePosUsersListAsync(model.AvailablePosUsers);
-                await PrepareOrderStatusListAsync(model.AvailableOrderStatus);
+                await PrepareCurrentOrderStatusListAsync(model.AvailableCurrentOrderStatus, currentId);
+                //await PrepareNextOrderStatusListAsync(model.AvailableNextOrderStatus, currentId);
                 await PrepareImageTypeListAsync(model.AvailableImageTypes);
+                await PrepareCurrentSelectedImageTypeAsync(model.SelectedImageTypeIds,model.Id);
+                model.EnableIsFirstStep = await _cycleFlowSettingService.EnableIsFirstStepAsync();
+                model.EnableIsLastStep = await _cycleFlowSettingService.EnableIsLastStepAsync();
             }
 
             return model;
@@ -122,9 +130,17 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
             foreach (var store in availableStores)
             {
                 var nopStore = await _storeService.GetStoreByIdAsync(store.NopStoreId);
-                items.Add(new SelectListItem { Value = store.Id.ToString(), Text = nopStore.Name });
+                items.Add(new SelectListItem { Value = store.Id.ToString(), Text = nopStore.Name});
             }
             items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Common.Select"), Value = "0" });
+        }
+        public async Task PrepareCurrentSelectedImageTypeAsync(IList<int> items,int orderStatusId)
+        {
+            var currentImageType = await _cycleFlowSettingService.GetAllOrderCurrentSelectedImageTypeAsync(orderStatusId);
+            foreach (var imgId in currentImageType)
+            {
+                items.Add(imgId);
+            }
         }
         public async Task PreparePosUsersListAsync(IList<SelectListItem> items)
         {
@@ -135,11 +151,25 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
             }
             items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Common.Select"), Value = "0" });
         }
-        public async Task PrepareOrderStatusListAsync(IList<SelectListItem> items)
+        public async Task PrepareCurrentOrderStatusListAsync(IList<SelectListItem> items,int currentId = 0)
         {
-            var availableOrderStatus = await (await _orderStatusService.GetAllOrderStatusAsync()).Where(os => os.IsActive && !os.Deleted).ToListAsync();
+            IList<(string Id, string Name)> availableOrderStatus = await _cycleFlowSettingService.GetAllOrderStatusAsync(true,currentId);
             foreach (var order in availableOrderStatus)
             {
+                items.Add(new SelectListItem { Value = order.Id.ToString(), Text = order.Name.ToString() });
+            }
+            items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Common.Select"), Value = "0" });
+        }
+        public async Task PrepareNextOrderStatusListAsync(IList<SelectListItem> items, int currentId = 0)
+        {
+            IList<(string Id, string Name)> availableOrderStatus = await _cycleFlowSettingService.GetNextOrderStatusAsync(true, currentId);
+            var next = await _cycleFlowSettingService.GetNextStepByFirstStep(currentId);
+                    
+            foreach (var order in availableOrderStatus)
+            {
+               if(int.Parse(order.Id) == next)
+                items.Add(new SelectListItem { Value = order.Id.ToString(), Text = order.Name.ToString(), Selected = true});
+               else
                 items.Add(new SelectListItem { Value = order.Id.ToString(), Text = order.Name.ToString() });
             }
             items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Common.Select"), Value = "0" });

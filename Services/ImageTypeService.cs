@@ -64,7 +64,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
         #endregion
 
         #region Utility
-        // Add any additional utility methods here, if needed
         #endregion
     }
 }

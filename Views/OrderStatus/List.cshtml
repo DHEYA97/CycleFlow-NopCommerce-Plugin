@@ -91,30 +91,30 @@
                                 Width = "100"
                                 }
                                 ,
+                                // new ColumnProperty(nameof(OrderStatusModel.Id))
+                                // {
+                                // Title = T("Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Manage").Text,
+                                // Width = "200",
+                                // ClassName = NopColumnClassDefaults.CenterAll,
+                                // Render=new RenderCustom("renderCycleFlowSetting")
+                                // },
                                 new ColumnProperty(nameof(OrderStatusModel.Id))
                                 {
-                                Title = T("Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Manage").Text,
-                                Width = "200",
-                                ClassName = NopColumnClassDefaults.CenterAll,
-                                Render=new RenderCustom("renderCycleFlowSetting")
-                            },
-                            new ColumnProperty(nameof(OrderStatusModel.Id))
-                            {
-                            Title = T("Admin.Common.Edit").Text,
-                            Width = "100",
-                            ClassName =  NopColumnClassDefaults.Button,
-                            Render = new RenderButtonEdit(new DataUrl("Edit"))
-                            }
+                                Title = T("Admin.Common.Edit").Text,
+                                Width = "100",
+                                ClassName =  NopColumnClassDefaults.Button,
+                                Render = new RenderButtonEdit(new DataUrl("Edit"))
+                                }
                             }
                         })
-                        <script asp-location="Footer">
+                        @* <script asp-location="Footer">
                             function renderCycleFlowSetting(data, type, row, meta) {
                                 let content = $("<p></p>").text();
                                 let returnBtn = $("<a></a>").addClass("btn btn-success mx-3").text("@T("Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Manage")").attr("href", `@Url.Action("CreateCycleFlow", "CycleFlowSetting")/${row.Id}`);
                                 $(content).append(returnBtn);
                                 return $(content).prop("outerHTML");
                             }
-                        </script>
+                        </script> *@
                     </div>
                 </div>
             </div>

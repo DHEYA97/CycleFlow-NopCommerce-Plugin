@@ -19,7 +19,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
         #region Method
         public async Task<IPagedList<OrderStatus>> GetAllOrderStatusAsync(string name = "", int pageIndex = 0, int pageSize = int.MaxValue, bool showHidden = false)
         {
-            var unit = await _orderStatusRepository.GetAllPagedAsync(query =>
+            var order = await _orderStatusRepository.GetAllPagedAsync(query =>
             {
                 if (!string.IsNullOrWhiteSpace(name))
                     query = query.Where(v => v.Name.Contains(name));
@@ -28,7 +28,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                 return query;
 
             }, pageIndex, pageSize);
-            return unit;
+            return order;
         }
         public async Task InsertOrderStatusAsync(OrderStatus orderStatus)
         {
