@@ -14,7 +14,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.CycleFlowSetting
         public CycleFlowSettingModel()
         {
             SelectedImageTypeIds = new List<int>();
-            AvailableWarehouses = new List<SelectListItem>();
+            AvailableCustomers = new List<SelectListItem>();
             AvailablePosUsers = new List<SelectListItem>();
             AvailableCurrentOrderStatus = new List<SelectListItem>();
             AvailableNextOrderStatus = new List<SelectListItem>();
@@ -32,10 +32,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.CycleFlowSetting
         public string? StoreName { get; set; }
         public IList<SelectListItem> AvailableStores { get; set; }
 
-        [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.NopWarehouseId")]
-        public int NopWarehouseId { get; set; }
-        public string? NopWarehouseName { get; set; }
-        public IList<SelectListItem> AvailableWarehouses { get; set; }
+        [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.CustomerId")]
+        public int CustomerId { get; set; }
+        public string? CustomerName { get; set; }
+        public IList<SelectListItem> AvailableCustomers { get; set; }
 
         [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.PosUserId")]
         public int PosUserId { get; set; }

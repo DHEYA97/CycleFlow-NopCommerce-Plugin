@@ -4,6 +4,7 @@ using Nop.Core.Domain.Stores;
 using Nop.Data.Extensions;
 using Nop.Data.Mapping.Builders;
 using Nop.Plugin.Misc.CycleFlow.Domain;
+using Nop.Plugin.Misc.POSSystem.Domains;
 
 namespace Nop.Plugin.Misc.CycleFlow.Mapping.Builders
 {
@@ -14,7 +15,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Mapping.Builders
             table
                 .WithColumn(nameof(OrderStatusImageTypeMapping.NopStoreId)).AsInt32().ForeignKey<Store>()
                 .WithColumn(nameof(OrderStatusImageTypeMapping.OrderStatusId)).AsInt32().ForeignKey<OrderStatus>()
-                .WithColumn(nameof(OrderStatusImageTypeMapping.WareHouseId)).AsInt32().ForeignKey<Warehouse>()
+                .WithColumn(nameof(OrderStatusImageTypeMapping.PosUserId)).AsInt32().ForeignKey<PosUser>()
                 .WithColumn(nameof(OrderStatusImageTypeMapping.ImageTypeId)).AsInt32().ForeignKey<ImageType>();
         }
     }

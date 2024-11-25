@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Routing;
 using Nop.Core;
+using Nop.Core.Domain.Customers;
 using Nop.Core.Domain.Security;
+using Nop.Plugin.Misc.CycleFlow.Constant;
 using Nop.Plugin.Misc.CycleFlow.Permission;
+using Nop.Plugin.Misc.POSSystem;
 using Nop.Services.Cms;
 using Nop.Services.Customers;
 using Nop.Services.Localization;
@@ -182,6 +185,20 @@ namespace Nop.Plugin.Misc.CycleFlow
             {
                 await _localizationService.AddOrUpdateLocaleResourceAsync(PluginResources(lang.UniqueSeoCode), languageId: lang.Id);
             }
+
+            var cycleFlowRole = await _customerService.GetCustomerRoleBySystemNameAsync(SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
+            if (cycleFlowRole == null)
+            {
+                cycleFlowRole = new CustomerRole()
+                {
+                    IsSystemRole = true,
+                    SystemName = SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME,
+                    Name = SystemDefaults.CYCLE_FLOW_ROLE_NAME,
+                    Active = true,
+                };
+                await _customerService.InsertCustomerRoleAsync(cycleFlowRole);
+            }
+            
         }
         protected IDictionary<string, string> PluginResources(string LangCode)
         {

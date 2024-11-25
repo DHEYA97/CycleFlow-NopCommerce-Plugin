@@ -26,9 +26,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Infrastructure
 
             CreateMap<CycleFlowSettingModel, OrderStatusSorting>()
                 .ForMember(m => m.OrderStatusId, opt => opt.MapFrom(o => o.CurrentOrderStatusId))
-                .ForMember(m => m.WareHouseId, opt => opt.MapFrom(o => o.NopWarehouseId))
                 .ForMember(m => m.NopStoreId, opt => opt.MapFrom(o => o.StoreId))
                 .ForMember(m => m.NextStep, opt => opt.MapFrom(o => o.NextOrderStatusId))
+                .ForMember(m => m.IsFirstStep, opt => opt.MapFrom(o => o.IsFirstStep))
+                .ForMember(m => m.NextStep, opt => opt.MapFrom(o => o.IsLastStep))
                 .ReverseMap();
         }
         #endregion
