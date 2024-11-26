@@ -382,21 +382,19 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             return result;
         }
 
-        public virtual async Task<IList<(string, string)>> GetNextOrderStatusAsync(int posUserId ,int currentId = 0 , bool exclude = false)
+        public virtual async Task<IList<(string, string,int)>> GetNextOrderStatusAsync(int posUserId ,int currentId = 0 , bool exclude = false)
         {
             var query = _orderStatusRepository.Table
                 .Where(z => z.IsActive && !z.Deleted);
-
+            
+            var next = await GetNextStepByFirstStep(currentId,posUserId);
+            
             if (exclude)
             {
                 var currentOrderStatusSorting = await _orderStatusSortingTypeRepository.Table
                     .Where(o=>o.PosUserId == posUserId)
                     .Select(o => o.NextStep)
                     .ToListAsync();
-
-
-                var next = await GetNextStepByFirstStep(currentId);
-
 
                 query = query.Where(o =>
                         (o.Id != currentId) &&
@@ -407,16 +405,17 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                 .Select(x => new
                 {
                     Id = x.Id.ToString(),
-                    Name = x.Name.ToString()
+                    Name = x.Name.ToString(),
+                    Next = next
                 })
                 .ToListAsync();
-            var result = list.Select(x => (x.Id, x.Name)).ToList();
+            var result = list.Select(x => (x.Id, x.Name,next)).ToList();
             return result;
         }
-        public virtual async Task<int> GetNextStepByFirstStep(int firstStep)
+        public virtual async Task<int> GetNextStepByFirstStep(int firstStep,int posUserId)
         {
             return await _orderStatusSortingTypeRepository.Table
-                    .Where(x => x.OrderStatusId == firstStep)
+                    .Where(x => x.OrderStatusId == firstStep && x.PosUserId == posUserId)
                     .Select(o => o.NextStep)
                     .FirstOrDefaultAsync();
         }

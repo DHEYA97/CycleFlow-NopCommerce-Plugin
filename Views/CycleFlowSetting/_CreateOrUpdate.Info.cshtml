@@ -2,7 +2,7 @@
 <script>
     $(document).ready(function () {
         var modelId = @Model.Id;
-        
+
         if (modelId > 0) {
             loadNextOrderStatusData();
         }
@@ -62,7 +62,12 @@
                 success: function (data, textStatus, jqXHR) {
                     ddlStates.html('');  // مسح الخيارات القديمة
                     $.each(data, function (id, option) {
-                        ddlStates.append($('<option></option>').val(option.id).html(option.name));
+                        if (option.next == option.id) {
+                            ddlStates.append($('<option></option>').val(option.id).html(option.name).attr('selected', 'selected'));
+                        }
+                        else {
+                            ddlStates.append($('<option></option>').val(option.id).html(option.name));
+                        }
                     });
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
