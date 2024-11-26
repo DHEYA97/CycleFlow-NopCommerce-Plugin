@@ -14,19 +14,22 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
     public interface ICycleFlowSettingService
     {
         Task<IPagedList<OrderStatusSorting>> SearchCycleFlowSettingAsync(
-            string orderStatusName = null,
-            int storeId = 0,
-            int pageIndex = 0, int pageSize = int.MaxValue, bool getOnlyTotalCount = false);
+             string orderStatusName = null,
+              IList<int> posUserIds = null,
+             IList<int> storeIds = null,
+             int pageIndex = 0, int pageSize = int.MaxValue, bool getOnlyTotalCount = false);
         Task InsertCycleFlowSettingAsync(CycleFlowSettingModel model);
         Task<OrderStatusSorting> GetOrderStatusSortingByIdAsync(int orderStatusSortingId);
         Task UpdateCycleFlowSettingAsync(CycleFlowSettingModel model);
         Task DeleteCycleFlowSettingAsync(OrderStatusSorting model);
-        Task<IList<(string, string)>> GetAllOrderStatusAsync(bool exclude = false, int currentId = 0);
-        Task<IList<(string, string)>> GetNextOrderStatusAsync(bool exclude = false, int currentId = 0);
-        Task<IList<int>> GetAllOrderCurrentSelectedImageTypeAsync(int orderStatusId);
-        Task<PosUser> GetPosUser(int orderStatusId);
-        Task<bool> EnableIsFirstStepAsync();
-        Task<bool> EnableIsLastStepAsync();
+        Task<IList<(string, string)>> GetFirstOrderStatusAsync(int posUserId, int currentId = 0, bool exclude = false);
+        Task<IList<(string, string)>> GetNextOrderStatusAsync(int posUserId, int currentId = 0, bool exclude = false);
+        Task<IList<int>> GetAllOrderCurrentSelectedImageTypeAsync(int posUserId, int orderStatusId);
+        Task<Customer> GetCustomerAsync(int posUserId, int orderStatusId);
+        Task<bool> EnableIsFirstStepAsync(int posUserId, int currentId = 0);
+        Task<bool> EnableIsLastStepAsync(int posUserId, int currentId = 0);
         Task<int> GetNextStepByFirstStep(int firstStep);
+        Task<bool> IsCurrentOrderStatesExsistInSortingAsync(int orderStateId, int posUserId, int currentId = 0);
+        Task<bool> IsNextOrderStatesExsistInSortingAsync(int orderStateId, int posUserId, int currentId = 0);
     }
 }

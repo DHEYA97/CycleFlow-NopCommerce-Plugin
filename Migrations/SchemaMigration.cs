@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Nop.Plugin.Misc.CycleFlow.Migrations
 {
-    [NopMigration("2024-11-01 00:00:00", "CycleFlowPlugin base schema", MigrationProcessType.Installation)]
+    [NopMigration("2024-11-02 00:00:00", "CycleFlowPlugin base schema", MigrationProcessType.Installation)]
     public class SchemaMigration : AutoReversingMigration
     {
         public override void Up()

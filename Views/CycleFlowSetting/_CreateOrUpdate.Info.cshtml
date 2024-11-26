@@ -7,16 +7,49 @@
             loadNextOrderStatusData();
         }
 
+        $("#@Html.IdFor(model => model.PosUserId)").change(function () {
+            loadOrderStatusData();
+        });
+
         $("#@Html.IdFor(model => model.CurrentOrderStatusId)").change(function () {
             loadNextOrderStatusData();
         });
 
+        function loadOrderStatusData() {
+            var posUserId = $("#@Html.IdFor(model => model.PosUserId)").val();
+            var ddlStates = $("#@Html.IdFor(model => model.CurrentOrderStatusId)");
+
+            var postData = {
+                posUserId: posUserId,
+                addSelectStateItem: "true",
+                exclude: "true"
+            };
+
+            $.ajax({
+                cache: false,
+                type: "GET",
+                url: "@(Url.Action("GetFirstStepByCurrentStep", "CycleFlowSetting"))",
+                data: postData,
+                success: function (data, textStatus, jqXHR) {
+                    ddlStates.html('');  // مسح الخيارات القديمة
+                    $.each(data, function (id, option) {
+                        ddlStates.append($('<option></option>').val(option.id).html(option.name));
+                    });
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $("#validationAlert").click();
+                }
+            });
+        }
+
         function loadNextOrderStatusData() {
-            var selectedItem = $("#@Html.IdFor(model => model.CurrentOrderStatusId)").val();
+            var currentStepId = $("#@Html.IdFor(model => model.CurrentOrderStatusId)").val();
+            var posUserId = $("#@Html.IdFor(model => model.PosUserId)").val();
             var ddlStates = $("#@Html.IdFor(model => model.NextOrderStatusId)");
 
             var postData = {
-                currentStepId: selectedItem,
+                posUserId: posUserId,
+                currentStepId: currentStepId,
                 addSelectStateItem: "true",
                 exclude: "true"
             };
@@ -53,16 +86,33 @@
         </div>
     </div>
 
-    <!-- Warehouse -->
-    <div class="form-group row">
-        <div class="col-md-3">
-            <nop-label asp-for="NopWarehouseId" />
+    <!-- POS User -->
+    @if (Model.Id > 0)
+    {
+        <div class="form-group row">
+            <div class="col-md-3">
+                <nop-label asp-for="PosUserName" />
+            </div>
+            <div class="col-md-9">
+                <div class="form-text-row">@Model.PosUserName</div>
+            </div>
         </div>
-        <div class="col-md-9">
-            <nop-select asp-for="NopWarehouseId" asp-items="Model.AvailableWarehouses" />
-            <span asp-validation-for="NopWarehouseId"></span>
+        <input asp-for="PosUserId" type="hidden" />
+    }
+    else
+    {
+        <!-- Current Order Status -->
+        <div class="form-group row">
+            <div class="col-md-3">
+                <nop-label asp-for="PosUserId" />
+            </div>
+            <div class="col-md-9">
+                <nop-select asp-for="PosUserId" asp-items="Model.AvailablePosUsers" />
+                <span asp-validation-for="PosUserId"></span>
+            </div>
         </div>
-    </div>
+
+    }
 
     @if(Model.Id > 0)
     {
@@ -103,18 +153,6 @@
     </div>
 
     
-    <!-- POS User -->
-    <div class="form-group row">
-        <div class="col-md-3">
-            <nop-label asp-for="PosUserId" />
-        </div>
-        <div class="col-md-9">
-            <nop-select asp-for="PosUserId" asp-items="Model.AvailablePosUsers" />
-            <span asp-validation-for="PosUserId"></span>
-        </div>
-    </div>
-
-    
     <!-- Image Types -->
     <div class="form-group row">
         <div class="col-md-3">
@@ -125,7 +163,20 @@
             <span asp-validation-for="SelectedImageTypeIds"></span>
         </div>
     </div>
-    @if(Model.EnableIsFirstStep)
+    
+    <!-- Warehouse -->
+    <div class="form-group row">
+        <div class="col-md-3">
+            <nop-label asp-for="CustomerId" />
+        </div>
+        <div class="col-md-9">
+            <nop-select asp-for="CustomerId" asp-items="Model.AvailableCustomers" />
+            <span asp-validation-for="CustomerId"></span>
+        </div>
+    </div>
+
+
+    @if(!Model.EnableIsFirstStep)
     {
         <div class="form-group row">
             <div class="col-md-3">
@@ -137,7 +188,7 @@
             </div>
         </div>
     }
-    @if (Model.EnableIsLastStep)
+    @if (!Model.EnableIsLastStep)
     {
         <div class="form-group row">
             <div class="col-md-3">

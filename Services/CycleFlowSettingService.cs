@@ -1,19 +1,15 @@
-﻿using DocumentFormat.OpenXml.Spreadsheet;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Nop.Core;
-using Nop.Core.Domain.Orders;
-using Nop.Core.Domain.Shipping;
-using Nop.Core.Domain.Stores;
+﻿using Nop.Core;
+using Nop.Core.Domain.Customers;
 using Nop.Data;
 using Nop.Plugin.Misc.CycleFlow.Domain;
 using Nop.Plugin.Misc.CycleFlow.Models.CycleFlowSetting;
 using Nop.Plugin.Misc.POSSystem.Domains;
 using Nop.Plugin.Misc.POSSystem.Services;
+using Nop.Services.Customers;
 using Nop.Services.Messages;
 using Nop.Services.Shipping;
 using Nop.Services.Stores;
 using Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
-using System.Linq;
 using System.Transactions;
 namespace Nop.Plugin.Misc.CycleFlow.Services
 {
@@ -30,6 +26,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
         private readonly IShippingService _shippingService;
         private readonly IOrderStatusService _orderStatusService;
         private readonly IPosUserService _posUserService;
+        private readonly ICustomerService _customerService;
         #endregion
 
         #region Ctor
@@ -43,7 +40,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             IStoreService storeService,
             IShippingService shippingService,
             IOrderStatusService orderStatusService,
-            IPosUserService posUserService
+            IPosUserService posUserService,
+            ICustomerService customerService
             )
         {
             _orderStatusRepository = orderStatusRepository;
@@ -56,19 +54,26 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             _shippingService = shippingService ;
             _orderStatusService = orderStatusService;
             _posUserService = posUserService;
+            _customerService = customerService;
+
         }
         #endregion
 
         #region Methods
         public virtual async Task<IPagedList<OrderStatusSorting>> SearchCycleFlowSettingAsync(
             string orderStatusName = null,
-            int storeId = 0,
+             IList<int> posUserIds = null,
+            IList<int> storeIds = null,
             int pageIndex = 0, int pageSize = int.MaxValue, bool getOnlyTotalCount = false)
         {
             var query = await _orderStatusSortingTypeRepository.GetAllPagedAsync(query =>
             {
-                if (storeId > 0)
-                    query = query.Where(os => os.NopStoreId == storeId);
+                
+                if (storeIds?.Any(x => x != 0) ?? false)
+                    query = query.Where(p => storeIds.Contains(p.NopStoreId));
+                
+                if (posUserIds?.Any(x => x != 0) ?? false)
+                    query = query.Where(p => posUserIds.Contains(p.PosUserId));
 
                 if (!string.IsNullOrWhiteSpace(orderStatusName))
                 {
@@ -87,9 +92,9 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
         {
             if (model == null)
                 throw new ArgumentNullException(nameof(CycleFlowSettingModel));
-            if (IsCurrentOrderStatesExsistInSortingAsync(model.CurrentOrderStatusId).Result)
+            if (IsCurrentOrderStatesExsistInSortingAsync(model.CurrentOrderStatusId,model.PosUserId).Result)
                 throw new ArgumentNullException(nameof(CycleFlowSettingModel), "CurrentOrderStatusId already exist");
-            if (IsNextOrderStatesExsistInSortingAsync(model.NextOrderStatusId).Result)
+            if (IsNextOrderStatesExsistInSortingAsync(model.NextOrderStatusId, model.PosUserId).Result)
                 throw new ArgumentNullException(nameof(CycleFlowSettingModel), "NextOrderStatusId already exist");
 
             using (var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
@@ -97,16 +102,21 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                 try
                 {
                     var store = await _storeService.GetStoreByIdAsync(model.StoreId);
-                    var nopWarehouse = await _shippingService.GetWarehouseByIdAsync(model.NopWarehouseId);
+                    var posUser = await _posUserService.GetPosUserByIdAsync(model.PosUserId);
+                    var customer = await _customerService.GetCustomerByIdAsync(model.CustomerId);
                     var orderStatus = await _orderStatusService.GetOrderStatusByIdAsync(model.CurrentOrderStatusId);
                     var nextOrderStatus = await _orderStatusService.GetOrderStatusByIdAsync(model.NextOrderStatusId);
                     if(store == null)
                     {
                         throw new Exception($"store not fount with id value {model.StoreId}");
                     }
-                    if (nopWarehouse == null)
+                    if (posUser == null)
                     {
-                        throw new Exception($"Warehouse not fount with id value {model.NopWarehouseId}");
+                        throw new Exception($"posUser not fount with id value {model.PosUserId}");
+                    }
+                    if (customer == null)
+                    {
+                        throw new Exception($"customer not fount with id value {model.CustomerId}");
                     }
                     if (orderStatus == null)
                     {
@@ -120,18 +130,19 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                     {
                         OrderStatusId = model.CurrentOrderStatusId,
                         NopStoreId = model.StoreId,
-                        WareHouseId = model.NopWarehouseId,
+                        PosUserId = model.PosUserId,
                         NextStep = model.NextOrderStatusId,
                         IsFirstStep = model.IsFirstStep,
                         IsLastStep  = model.IsLastStep,
+
                     };
                     await _orderStatusSortingTypeRepository.InsertAsync(orderStatusSorting);
                     OrderStatusPermissionMapping orderStatusPermissionMapping = new OrderStatusPermissionMapping
                     {
                         OrderStatusId = model.CurrentOrderStatusId,
                         NopStoreId = model.StoreId,
-                        WareHouseId = model.NopWarehouseId,
                         PosUserId = model.PosUserId,
+                        CustomerId = model.CustomerId,
                     };
                     await _orderStatusPermissionMappingRepository.InsertAsync(orderStatusPermissionMapping);
                     
@@ -147,7 +158,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                             ImageTypeId = imgtype.Id,
                             NopStoreId = model.StoreId,
                             OrderStatusId = model.CurrentOrderStatusId,
-                            WareHouseId = model.NopWarehouseId
+                            PosUserId = model.PosUserId,
+
                         };
                         await _orderStatusImageTypeMappingRepository.InsertAsync(orderStatusImageTypeMapping);
                     }
@@ -172,7 +184,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
         {
             if (model == null)
                 throw new ArgumentNullException(nameof(model));
-            if (await IsNextOrderStatesExsistInSortingAsync(model.NextOrderStatusId, model.Id))
+            if (await IsNextOrderStatesExsistInSortingAsync(model.NextOrderStatusId,model.PosUserId, model.Id))
                 throw new ArgumentException($"NextOrderStatusId {model.NextOrderStatusId} already exists in sorting.");
 
             using (var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
@@ -181,22 +193,25 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                 {
                     // جلب الكائنات المطلوبة
                     var store = await _storeService.GetStoreByIdAsync(model.StoreId);
-                    var nopWarehouse = await _shippingService.GetWarehouseByIdAsync(model.NopWarehouseId);
+                    var posUser = await _posUserService.GetPosUserByIdAsync(model.PosUserId);
+                    var customer = await _customerService.GetCustomerByIdAsync(model.CustomerId);
                     var orderStatus = await _orderStatusService.GetOrderStatusByIdAsync(model.CurrentOrderStatusId);
                     var nextOrderStatus = await _orderStatusService.GetOrderStatusByIdAsync(model.NextOrderStatusId);
 
                     // التحقق من وجود الكائنات
                     if (store == null)
                         throw new Exception($"Store not found with id value {model.StoreId}");
-                    if (nopWarehouse == null)
-                        throw new Exception($"Warehouse not found with id value {model.NopWarehouseId}");
+                    if (posUser == null)
+                        throw new Exception($"Warehouse not found with id value {model.PosUserId}");
+                    if (customer == null)
+                        throw new Exception($"customer not found with id value {model.CustomerId}");
                     if (orderStatus == null)
                         throw new Exception($"OrderStatus not found with id value {model.CurrentOrderStatusId}");
                     if (nextOrderStatus == null)
                         throw new Exception($"NextOrderStatus not found with id value {model.NextOrderStatusId}");
 
                     var existingOrderStatusSorting = await _orderStatusSortingTypeRepository.Table
-                        .FirstOrDefaultAsync(x => x.OrderStatusId == model.CurrentOrderStatusId);
+                        .FirstOrDefaultAsync(x => x.PosUserId == model.PosUserId && x.OrderStatusId == model.CurrentOrderStatusId);
 
                     if (existingOrderStatusSorting != null)
                     {
@@ -211,12 +226,12 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                     }
 
                     var existingOrderStatusPermissionMapping = await _orderStatusPermissionMappingRepository.Table
-                        .FirstOrDefaultAsync(x => x.OrderStatusId == model.CurrentOrderStatusId);
+                        .FirstOrDefaultAsync(x => x.PosUserId == model.PosUserId && x.OrderStatusId == model.CurrentOrderStatusId);
 
                     if (existingOrderStatusPermissionMapping != null)
                     {
                         existingOrderStatusPermissionMapping.PosUserId = model.PosUserId;
-                        existingOrderStatusPermissionMapping.WareHouseId = model.NopWarehouseId;
+                        existingOrderStatusPermissionMapping.CustomerId = model.CustomerId;
                         existingOrderStatusPermissionMapping.NopStoreId = model.StoreId;
                         await _orderStatusPermissionMappingRepository.UpdateAsync(existingOrderStatusPermissionMapping);
                     }
@@ -226,14 +241,14 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                         {
                             OrderStatusId = model.CurrentOrderStatusId,
                             NopStoreId = model.StoreId,
-                            WareHouseId = model.NopWarehouseId,
                             PosUserId = model.PosUserId,
+                            CustomerId = model.CustomerId,
                         };
                         await _orderStatusPermissionMappingRepository.InsertAsync(orderStatusPermissionMapping);
                     }
 
                     var existingOrderStatusImageMapping = await _orderStatusImageTypeMappingRepository.Table
-                                                                    .Where(x => x.OrderStatusId == model.CurrentOrderStatusId)
+                                                                    .Where(x => x.PosUserId == model.PosUserId && x.OrderStatusId == model.CurrentOrderStatusId)
                                                                     .Select(x=>x.ImageTypeId)
                                                                     .ToListAsync();
                     
@@ -250,8 +265,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                         if (existingOrderStatusImageMapping.Contains(imageId))
                         {
                             var img = await _orderStatusImageTypeMappingRepository.Table
-                                                                    .FirstOrDefaultAsync(x => x.OrderStatusId == model.CurrentOrderStatusId && x.ImageTypeId == imageId);
-                            img.WareHouseId = model.NopWarehouseId;
+                                                                    .FirstOrDefaultAsync(x => x.PosUserId == model.PosUserId && x.OrderStatusId == model.CurrentOrderStatusId && x.ImageTypeId == imageId);
                             img.NopStoreId = model.StoreId;
                             await _orderStatusImageTypeMappingRepository.UpdateAsync(img);
                         }
@@ -262,7 +276,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                                 ImageTypeId = imgType.Id,
                                 NopStoreId = model.StoreId,
                                 OrderStatusId = model.CurrentOrderStatusId,
-                                WareHouseId = model.NopWarehouseId,
+                                PosUserId = model.PosUserId,
+                                
                             };
                             await _orderStatusImageTypeMappingRepository.InsertAsync(orderStatusImageTypeMapping);
                         }
@@ -275,14 +290,13 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                             throw new Exception($"Image not found with id value {imageId}");
                         }
                             var img = await _orderStatusImageTypeMappingRepository.Table
-                                                                    .FirstOrDefaultAsync(x => x.OrderStatusId == model.CurrentOrderStatusId && x.ImageTypeId == imageId);
+                                                                    .FirstOrDefaultAsync(x => x.PosUserId == model.PosUserId && x.OrderStatusId == model.CurrentOrderStatusId && x.ImageTypeId == imageId);
                             await _orderStatusImageTypeMappingRepository.DeleteAsync(img);
                     }
                     transaction.Complete();
                 }
                 catch (Exception exp)
                 {
-                    // عرض رسالة الخطأ للمستخدم
                     _notificationService.ErrorNotification(exp.Message, encode: false);
                     transaction.Dispose();
                 }
@@ -299,13 +313,13 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                 {
                     // تحقق إذا كان السجل موجوداً في قاعدة البيانات
                     var existingRecord = await _orderStatusSortingTypeRepository.Table
-                        .Where(os => os.OrderStatusId == model.OrderStatusId && os.NopStoreId == model.NopStoreId && os.WareHouseId == model.WareHouseId)
+                        .Where(os => os.OrderStatusId == model.OrderStatusId && os.NopStoreId == model.NopStoreId && os.PosUserId == model.PosUserId)
                         .FirstOrDefaultAsync();
 
                     // إذا كان السجل غير موجود، إرجاع خطأ
                     if (existingRecord == null)
                     {
-                        throw new Exception($"No record found to delete for OrderStatusId: {model.OrderStatusId}, StoreId: {model.NopStoreId}, WarehouseId: {model.WareHouseId}");
+                        throw new Exception($"No record found to delete for OrderStatusId: {model.OrderStatusId}, StoreId: {model.NopStoreId}, PosUserId: {model.PosUserId}");
                     }
 
                     // حذف السجل
@@ -313,7 +327,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
 
                     // إذا كنت ترغب في حذف mappings أو سجلات مرتبطة، يمكنك إضافة الحذف هنا
                     var permissionMapping = await _orderStatusPermissionMappingRepository.Table
-                        .Where(os => os.OrderStatusId == model.OrderStatusId && os.NopStoreId == model.NopStoreId && os.WareHouseId == model.WareHouseId)
+                        .Where(os => os.OrderStatusId == model.OrderStatusId && os.NopStoreId == model.NopStoreId && os.PosUserId == model.PosUserId)
                         .FirstOrDefaultAsync();
 
                     if (permissionMapping != null)
@@ -322,7 +336,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                     }
 
                     var imageTypeMapping = await _orderStatusImageTypeMappingRepository.Table
-                        .Where(os => os.OrderStatusId == model.OrderStatusId && os.NopStoreId == model.NopStoreId && os.WareHouseId == model.WareHouseId)
+                        .Where(os => os.OrderStatusId == model.OrderStatusId && os.NopStoreId == model.NopStoreId && os.PosUserId == model.PosUserId)
                         .FirstOrDefaultAsync();
 
                     if (imageTypeMapping != null)
@@ -340,7 +354,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                 }
             }
         }
-        public virtual async Task<IList<(string, string)>> GetAllOrderStatusAsync(bool exclude = false, int currentId = 0)
+        public virtual async Task<IList<(string, string)>> GetFirstOrderStatusAsync(int posUserId ,int currentId = 0, bool exclude = false)
         {
             var query = _orderStatusRepository.Table
                 .Where(z => z.IsActive && !z.Deleted);
@@ -348,6 +362,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             if (exclude)
             {
                 var currentOrderStatusSorting = await _orderStatusSortingTypeRepository.Table
+                    .Where(x=>x.PosUserId == posUserId)
                     .Select(o => o.OrderStatusId)
                     .ToListAsync();
 
@@ -367,7 +382,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             return result;
         }
 
-        public virtual async Task<IList<(string, string)>> GetNextOrderStatusAsync(bool exclude = false, int currentId = 0)
+        public virtual async Task<IList<(string, string)>> GetNextOrderStatusAsync(int posUserId ,int currentId = 0 , bool exclude = false)
         {
             var query = _orderStatusRepository.Table
                 .Where(z => z.IsActive && !z.Deleted);
@@ -375,6 +390,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             if (exclude)
             {
                 var currentOrderStatusSorting = await _orderStatusSortingTypeRepository.Table
+                    .Where(o=>o.PosUserId == posUserId)
                     .Select(o => o.NextStep)
                     .ToListAsync();
 
@@ -404,44 +420,31 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                     .Select(o => o.NextStep)
                     .FirstOrDefaultAsync();
         }
-        public virtual async Task<IList<int>> GetAllOrderCurrentSelectedImageTypeAsync(int orderStatusId)
+        public virtual async Task<IList<int>> GetAllOrderCurrentSelectedImageTypeAsync(int posUserId,int orderStatusId)
         {
-            return await _orderStatusImageTypeMappingRepository.Table.Where(i=>i.OrderStatusId == orderStatusId).Select(i=>i.ImageTypeId).ToListAsync();
+            return await _orderStatusImageTypeMappingRepository.Table.Where(i=> i.PosUserId == posUserId && i.OrderStatusId == orderStatusId).Select(i=>i.ImageTypeId).ToListAsync();
         }
-        public async Task<PosUser> GetPosUser(int orderStatusId)
+        public async Task<Customer> GetCustomerAsync(int posUserId, int orderStatusId)
         {
-            var posUserId = await _orderStatusPermissionMappingRepository.Table.Where(p => p.OrderStatusId == orderStatusId).Select(x=>x.PosUserId).FirstAsync();
-            var posUser = await _posUserService.GetPosUserByIdAsync(posUserId);
-            return posUser;             
+            var customerId = await _orderStatusPermissionMappingRepository.Table
+                                        .Where(p=> p.PosUserId == posUserId && p.OrderStatusId == orderStatusId)
+                                        .Select(x=>x.CustomerId).FirstAsync();
+            var customer = await _customerService.GetCustomerByIdAsync(customerId);
+            return customer;             
         }
-        public virtual async Task<bool> EnableIsFirstStepAsync()
+        public virtual async Task<bool> EnableIsFirstStepAsync(int posUserId,int currentId = 0)
         {
-            return await _orderStatusSortingTypeRepository.Table.AnyAsync(x=>x.IsFirstStep);
+            return await _orderStatusSortingTypeRepository.Table.AnyAsync(x=>x.IsFirstStep && x.PosUserId == posUserId && x.Id != currentId);
         }
-        public virtual async Task<bool> EnableIsLastStepAsync()
+        public virtual async Task<bool> EnableIsLastStepAsync(int posUserId,int currentId = 0)
         {
-            return await _orderStatusSortingTypeRepository.Table.AnyAsync(x => x.IsLastStep);
+            return await _orderStatusSortingTypeRepository.Table.AnyAsync(x => x.IsLastStep && x.PosUserId == posUserId && x.Id != currentId);
         }
-        #endregion
-        #region Utilite
-        protected virtual async Task<bool> IsCurrentOrderStatesExsistInSortingAsync(int orderStateId, int currentId = 0)
+        public virtual async Task<bool> IsCurrentOrderStatesExsistInSortingAsync(int orderStateId, int posUserId, int currentId = 0)
         {
-            if (orderStateId > 0)
+            if (orderStateId > 0 && posUserId > 0)
             {
-                var query = _orderStatusSortingTypeRepository.Table.Where(os => os.OrderStatusId == orderStateId);
-
-                if (currentId > 0)
-                    query = query.Where(os => os.Id != currentId);  
-
-                return await query.AnyAsync();             
-            }
-            return true;
-        }
-        protected virtual async Task<bool> IsNextOrderStatesExsistInSortingAsync(int orderStateId, int currentId = 0)
-        {
-            if (orderStateId > 0)
-            {
-                var query = _orderStatusSortingTypeRepository.Table.Where(os => os.NextStep == orderStateId);
+                var query = _orderStatusSortingTypeRepository.Table.Where(os => os.OrderStatusId == orderStateId && os.PosUserId == posUserId);
 
                 if (currentId > 0)
                     query = query.Where(os => os.Id != currentId);
@@ -450,6 +453,22 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             }
             return true;
         }
+        public virtual async Task<bool> IsNextOrderStatesExsistInSortingAsync(int orderStateId, int posUserId, int currentId = 0)
+        {
+            if (orderStateId > 0 && posUserId > 0)
+            {
+                var query = _orderStatusSortingTypeRepository.Table.Where(os => os.NextStep == orderStateId && os.PosUserId == posUserId);
+
+                if (currentId > 0)
+                    query = query.Where(os => os.Id != currentId);
+
+                return await query.AnyAsync();
+            }
+            return true;
+        }
+        #endregion
+        #region Utilite
+
 
         #endregion
     }

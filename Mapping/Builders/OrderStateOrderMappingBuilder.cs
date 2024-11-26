@@ -1,4 +1,5 @@
 ﻿using FluentMigrator.Builders.Create.Table;
+using Nop.Core.Domain.Customers;
 using Nop.Core.Domain.Orders;
 using Nop.Core.Domain.Shipping;
 using Nop.Core.Domain.Stores;
@@ -14,7 +15,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Mapping.Builders
         {
             table
                  .WithColumn(nameof(OrderStateOrderMapping.NopStoreId)).AsInt32().ForeignKey<Store>()
-                 .WithColumn(nameof(OrderStateOrderMapping.WareHouseId)).AsInt32().ForeignKey<Warehouse>()
+                 .WithColumn(nameof(OrderStateOrderMapping.CustomerId)).AsInt32().ForeignKey<Customer>()
                  .WithColumn(nameof(OrderStateOrderMapping.OrderStatusId)).AsInt32().ForeignKey<Domain.OrderStatus>()
                  .WithColumn(nameof(OrderStateOrderMapping.PosUserId)).AsInt32()
                  .WithColumn(nameof(OrderStateOrderMapping.OrderId)).AsInt32().ForeignKey<Order>();
