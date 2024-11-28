@@ -31,5 +31,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
         Task<int> GetNextStepByFirstStep(int firstStep,int posUserId);
         Task<bool> IsCurrentOrderStatesExsistInSortingAsync(int orderStateId, int posUserId, int currentId = 0);
         Task<bool> IsNextOrderStatesExsistInSortingAsync(int orderStateId, int posUserId, int currentId = 0);
+        Task<string> CheckOrderStatusSequence(int posUserId);
     }
 }

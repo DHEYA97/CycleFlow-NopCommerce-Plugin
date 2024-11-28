@@ -1675,3 +1675,5 @@ F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugi
 F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\refs\WindowsBase.dll
 F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.CycleFlow\obj\Debug\net6.0\Nop.Plug.335D3448.Up2Date
 F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.CycleFlow\obj\Debug\net6.0\ref\Nop.Plugin.Misc.CycleFlow.dll
+F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\CheckPosOrderStatus\List.cshtml
+F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\CheckPosOrderStatus\View.cshtml
