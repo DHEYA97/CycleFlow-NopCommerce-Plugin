@@ -31,6 +31,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Infrastructure
                 .ForMember(m => m.IsFirstStep, opt => opt.MapFrom(o => o.IsFirstStep))
                 .ForMember(m => m.NextStep, opt => opt.MapFrom(o => o.IsLastStep))
                 .ReverseMap();
+
         }
         #endregion
     }

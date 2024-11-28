@@ -1,4 +1,5 @@
-﻿using DocumentFormat.OpenXml.Spreadsheet;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using DocumentFormat.OpenXml.Spreadsheet;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Nop.Core;
 using Nop.Core.Domain.Customers;
@@ -8,6 +9,7 @@ using Nop.Plugin.Misc.CycleFlow.Domain;
 using Nop.Plugin.Misc.CycleFlow.Models.CycleFlowSetting;
 using Nop.Plugin.Misc.CycleFlow.Models.ImageType;
 using Nop.Plugin.Misc.CycleFlow.Services;
+using Nop.Plugin.Misc.POSSystem.Areas.Admin.Models.PosUser;
 using Nop.Plugin.Misc.POSSystem.Areas.Admin.Models.Purchase;
 using Nop.Plugin.Misc.POSSystem.Areas.Pos.Models.PosCustomer;
 using Nop.Plugin.Misc.POSSystem.Domains;
@@ -132,6 +134,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
 
             return model;
         }
+
+
         #endregion
 
         #region Utilite
@@ -205,6 +209,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
             }
             items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Common.Select"), Value = "0" });
         }
+        
         #endregion
     }
 }

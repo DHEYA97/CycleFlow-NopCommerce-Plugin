@@ -123,6 +123,15 @@ namespace Nop.Plugin.Misc.CycleFlow
                         ActionName = "List",
                         IconClass = "far fa-dot-circle",
                         Visible = true,
+                    },
+                     new SiteMapNode()
+                    {
+                        SystemName = "CheckPosOrderStatus",
+                        Title = _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.CheckPosOrderStatus").Result,
+                        ControllerName = "CheckPosOrderStatus",
+                        ActionName = "List",
+                        IconClass = "far fa-dot-circle",
+                        Visible = true,
                     }
 
                 }

@@ -69,6 +69,31 @@ namespace Nop.Plugin.Misc.CycleFlow.Validators
                 return true;
             }).WithMessageAwait(localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.CycleFlowSetting.CurrentOrderStatusId.Found"));
 
+            RuleFor(x => x.IsFirstStep).MustAwait(async (model, cans) =>
+            {
+                if (model != null)
+                {
+                    if (model.PosUserId > 0 && model.IsFirstStep)
+                    {
+                        var exsist = await cycleFlowSettingService.EnableIsFirstStepAsync(model.PosUserId, model.Id > 0 ? model.Id : 0);
+                        return !exsist;
+                    }
+                }
+                return true;
+            }).WithMessageAwait(localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.CycleFlowSetting.IsFirstStep.Found"));
+            
+            RuleFor(x => x.IsLastStep).MustAwait(async (model, cans) =>
+            {
+                if (model != null)
+                {
+                    if (model.PosUserId > 0 && model.IsLastStep)
+                    {
+                        var exsist = await cycleFlowSettingService.EnableIsLastStepAsync(model.PosUserId, model.Id > 0 ? model.Id : 0);
+                        return !exsist;
+                    }
+                }
+                return true;
+            }).WithMessageAwait(localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.CycleFlowSetting.IsLastStep.Found"));
 
         }
     }

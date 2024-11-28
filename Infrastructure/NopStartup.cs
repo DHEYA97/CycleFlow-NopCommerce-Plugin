@@ -38,6 +38,9 @@ namespace Nop.Plugin.Misc.CycleFlow.Infrastructure
             services.AddScoped<ICycleFlowSettingService, CycleFlowSettingService>();
             services.AddScoped<ICycleFlowSettingModelFactory, CycleFlowSettingModelFactory>();
 
+            services.AddScoped<ICheckPosOrderStatusModelFactory, CheckPosOrderStatusModelFactory>();
+            
+
         }
     }
 }

@@ -15,5 +15,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
         Task<CycleFlowSettingSearchModel> PrepareCycleFlowSettingSearchModelAsync(CycleFlowSettingSearchModel searchModel);
         Task<CycleFlowSettingListModel> PrepareCycleFlowSettingListModelAsync(CycleFlowSettingSearchModel searchModel);
         Task<CycleFlowSettingModel> PrepareCycleFlowSettingModelAsync(CycleFlowSettingModel model, OrderStatusSorting orderStatusSorting, bool excludeProperties = false, int currentId = 0);
+
     }
 }

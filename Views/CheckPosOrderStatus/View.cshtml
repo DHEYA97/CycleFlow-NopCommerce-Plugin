@@ -1,0 +1,71 @@
+﻿@model string
+@{
+    ViewBag.PageTitle = T("Admin.Plugin.Misc.CycleFlow.CheckOrderStatusSequence.Title").Text;
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    NopHtml.SetActiveMenuItemSystemName("CheckOrderStatusSequence");
+}
+@{
+    const string hideSearchBlockAttributeName = "CycleFlowSettingPage.HideSearchBlock";
+    var hideSearchBlock = await genericAttributeService.GetAttributeAsync<bool>(await workContext.GetCurrentCustomerAsync(), hideSearchBlockAttributeName);
+}
+
+<style>
+    .sequence-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .sequence-box {
+        width: 150px;
+        height: 70px;
+        background-color: #007bff;
+        color: white;
+        text-align: center;
+        line-height: 70px;
+        border-radius: 5px;
+        margin: 10px;
+        font-size: 16px;
+        flex-grow: 1;
+    }
+
+    .arrow {
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 20px solid #007bff;
+        margin: 10px;
+        flex-grow: 1;
+        margin-inline: auto;
+    }
+
+    .alert {
+        width: 100%;
+        text-align: center;
+        margin-top: 20px;
+        font-size: 18px;
+    }
+    .alert-info {
+        display: flex;
+        justify-content: center;
+    }
+    .alert-success {
+        background-color: #28a745;
+        color: white;
+    }
+
+    .alert-danger {
+        background-color: #dc3545;
+        color: white;
+    }
+</style>
+
+
+<div class="alert alert-info">
+    <div>
+        <strong>نتيجة الفحص: </strong>@Html.Raw(Model)
+    </div>
+</div>
