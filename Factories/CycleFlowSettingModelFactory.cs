@@ -1,19 +1,12 @@
-﻿using DocumentFormat.OpenXml.Office2010.Excel;
-using DocumentFormat.OpenXml.Spreadsheet;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using Nop.Core;
-using Nop.Core.Domain.Customers;
-using Nop.Core.Domain.Media;
 using Nop.Plugin.Misc.CycleFlow.Constant;
 using Nop.Plugin.Misc.CycleFlow.Domain;
 using Nop.Plugin.Misc.CycleFlow.Models.CycleFlowSetting;
-using Nop.Plugin.Misc.CycleFlow.Models.ImageType;
 using Nop.Plugin.Misc.CycleFlow.Services;
-using Nop.Plugin.Misc.POSSystem.Areas.Admin.Models.PosUser;
-using Nop.Plugin.Misc.POSSystem.Areas.Admin.Models.Purchase;
-using Nop.Plugin.Misc.POSSystem.Areas.Pos.Models.PosCustomer;
 using Nop.Plugin.Misc.POSSystem.Domains;
 using Nop.Plugin.Misc.POSSystem.Services;
+using Nop.Plugin.Misc.SmsAuthentication.Services;
 using Nop.Services.Customers;
 using Nop.Services.Localization;
 using Nop.Services.Shipping;
@@ -38,6 +31,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
         private readonly IPosUserService _posUserService;
         private readonly ICustomerService _customerService;
         private readonly IImageTypeService _imageTypeService;
+        protected readonly ISmsTemplateService _smsTemplateService;
         #endregion
         #region Ctor
         public CycleFlowSettingModelFactory(ILocalizationService localizationService,
@@ -50,7 +44,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
             IPosStoreService posStoreService,
             IPosUserService posUserService,
             ICustomerService customerService,
-            IImageTypeService imageTypeService
+            IImageTypeService imageTypeService,
+            ISmsTemplateService smsTemplateService
             )
         {
             _localizationService = localizationService;
@@ -64,6 +59,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
             _posUserService = posUserService;
             _customerService = customerService;
             _imageTypeService = imageTypeService;
+            _smsTemplateService = smsTemplateService;
         }
         #endregion
         #region Methods
@@ -118,6 +114,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                 model.CustomerId = customer.Id;
                 model.IsFirstStep = orderStatusSorting.IsFirstStep;
                 model.IsLastStep = orderStatusSorting.IsLastStep;
+                //model.UserSmsTemplateId = orderStatusSorting.UserSmsTemplateId;
+                //model.ClientSmsTemplateId = orderStatusSorting.ClientSmsTemplateId;
             }
 
             if (!excludeProperties)
@@ -128,10 +126,11 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                 await PreparePosUsersListAsync(model.AvailablePosUsers);
                 await PrepareImageTypeListAsync(model.AvailableImageTypes);
                 await PrepareCurrentSelectedImageTypeAsync(model.SelectedImageTypeIds,model.PosUserId,model.CurrentOrderStatusId);
+                await PrepareSmsTemplatesAsync(model.AvailableClientSmsTemplates);
+                await PrepareSmsTemplatesAsync(model.AvailableUserSmsTemplates);
                 model.EnableIsFirstStep = await _cycleFlowSettingService.EnableIsFirstStepAsync(model.PosUserId,currentId);
                 model.EnableIsLastStep = await _cycleFlowSettingService.EnableIsLastStepAsync(model.PosUserId, currentId);
             }
-
             return model;
         }
 
@@ -139,7 +138,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
         #endregion
 
         #region Utilite
-        public async Task PreparePosStoresAsync(IList<SelectListItem> items)
+        protected async Task PreparePosStoresAsync(IList<SelectListItem> items)
         {
             var availableStores = await (await _posStoreService.GetAllPosStoresAsync()).Where(ps => ps.StoreType != StoreTypes.Online).ToListAsync();
             foreach (var store in availableStores)
@@ -147,9 +146,9 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                 var nopStore = await _storeService.GetStoreByIdAsync(store.NopStoreId);
                 items.Add(new SelectListItem { Value = store.Id.ToString(), Text = nopStore.Name});
             }
-            items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Common.Select"), Value = "0" });
+            items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Plugin.Misc.CycleFlow.Common.Select"), Value = "0" });
         }
-        public async Task PrepareCustomerListAsync(IList<SelectListItem> items)
+        protected async Task PrepareCustomerListAsync(IList<SelectListItem> items)
         {
             var cycleFowRole = await _customerService.GetCustomerRoleBySystemNameAsync(SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
             var availableCustomer = await _customerService.GetAllCustomersAsync(customerRoleIds: new int[] { cycleFowRole.Id }).Result.ToListAsync();
@@ -157,9 +156,9 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
             {
                 items.Add(new SelectListItem { Value = customer.Id.ToString(), Text = await _customerService.GetCustomerFullNameAsync(customer) });
             }
-            items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Common.Select"), Value = "0" });
+            items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Plugin.Misc.CycleFlow.Common.Select"), Value = "0" });
         }
-        public async Task PrepareCurrentSelectedImageTypeAsync(IList<int> items,int posUserId,int orderStatusId)
+        protected async Task PrepareCurrentSelectedImageTypeAsync(IList<int> items,int posUserId,int orderStatusId)
         {
             var currentImageType = await _cycleFlowSettingService.GetAllOrderCurrentSelectedImageTypeAsync(posUserId,orderStatusId);
             foreach (var imgId in currentImageType)
@@ -167,7 +166,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                 items.Add(imgId);
             }
         }
-        public async Task PreparePosUsersListAsync(IList<SelectListItem> items)
+        protected async Task PreparePosUsersListAsync(IList<SelectListItem> items)
         {
             
             var availablePosUsers = await (await _posUserService.GetPosUserListAsync()).Where(ps => ps.Active).ToListAsync();
@@ -175,7 +174,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
             {
                 items.Add(new SelectListItem { Value = _posUserService.GetPosUserByNopCustomerIdAsync(user.Id).Result.Id.ToString(), Text = _customerService.GetCustomerFullNameAsync(user).Result.ToString() });
             }
-            items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Common.Select"), Value = "0" });
+            items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Plugin.Misc.CycleFlow.Common.Select"), Value = "0" });
         }
         //public async Task PrepareCurrentOrderStatusListAsync(IList<SelectListItem> items,int currentId = 0)
         //{
@@ -184,13 +183,13 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
         //    {
         //        items.Add(new SelectListItem { Value = order.Id.ToString(), Text = order.Name.ToString() });
         //    }
-        //    items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Common.Select"), Value = "0" });
+        //    items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Plugin.Misc.CycleFlow.Common.Select"), Value = "0" });
         //}
         //public async Task PrepareNextOrderStatusListAsync(IList<SelectListItem> items, int currentId = 0)
         //{
         //    IList<(string Id, string Name)> availableOrderStatus = await _cycleFlowSettingService.GetNextOrderStatusAsync(true, currentId);
         //    var next = await _cycleFlowSettingService.GetNextStepByFirstStep(currentId);
-                    
+
         //    foreach (var order in availableOrderStatus)
         //    {
         //       if(int.Parse(order.Id) == next)
@@ -198,18 +197,27 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
         //       else
         //        items.Add(new SelectListItem { Value = order.Id.ToString(), Text = order.Name.ToString() });
         //    }
-        //    items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Common.Select"), Value = "0" });
+        //    items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Plugin.Misc.CycleFlow.Common.Select"), Value = "0" });
         //}
-        public async Task PrepareImageTypeListAsync(IList<SelectListItem> items)
+        protected async Task PrepareImageTypeListAsync(IList<SelectListItem> items)
         {
             var availableimageType = await (await _imageTypeService.GetAllImageTypesAsync()).Where(os => !os.Deleted).ToListAsync();
             foreach (var imageType in availableimageType)
             {
                 items.Add(new SelectListItem { Value = imageType.Id.ToString(), Text = imageType.Name.ToString() });
             }
-            items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Common.Select"), Value = "0" });
+            items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Plugin.Misc.CycleFlow.Common.Select"), Value = "0" });
         }
-        
+        protected async Task PrepareSmsTemplatesAsync(IList<SelectListItem> items)
+        {
+            var availableSmsTemplatesType = await (await _smsTemplateService.GetAllSmsTemplatesAsync(0)).Where(os => os.Active).ToListAsync();
+            foreach (var smsTemplate in availableSmsTemplatesType)
+            {
+                items.Add(new SelectListItem { Value = smsTemplate.Id.ToString(), Text = smsTemplate.Name.ToString() });
+            }
+            items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Plugin.Misc.CycleFlow.Common.Select"), Value = "0" });
+        }
+
         #endregion
     }
 }

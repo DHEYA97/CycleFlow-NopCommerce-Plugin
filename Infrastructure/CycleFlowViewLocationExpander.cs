@@ -29,7 +29,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Infrastructure
 
         public IEnumerable<string> ExpandViewLocations(ViewLocationExpanderContext context, IEnumerable<string> viewLocations)
         {
-            if (context.AreaName != "Admin" && context.AreaName != SystemDefaults.POS_AREA_NAME)
+            if (context.AreaName != "Admin")
             {
                 if (context.Values.TryGetValue(THEME_KEY, out string theme))
                 {
@@ -42,18 +42,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Infrastructure
                         .Concat(viewLocations);
                 }
             }
-            else if (context.AreaName == SystemDefaults.POS_AREA_NAME)
-            {
-                viewLocations = new[] {
-                        $"/Plugins/{CycleFlow_System_OutputDir}/Areas/Pos/Views/{{1}}/{{0}}.cshtml",
-                        $"/Plugins/{CycleFlow_System_OutputDir}/Areas/Pos/Views/Shared/{{0}}.cshtml",
-                        $"/Plugins/{CycleFlow_System_OutputDir}/Views/{{1}}/{{0}}.cshtml",
-                        $"/Plugins/{CycleFlow_System_OutputDir}/Views/Shared/{{0}}.cshtml",
-                        $"/Areas/Admin/Views/{{1}}/{{0}}.cshtml",
-                        $"/Areas/Admin/Views/Shared/{{0}}.cshtml",
-                    }
-                    .Concat(viewLocations);
-            }
             else if (context.AreaName == "Admin")
             {
                 viewLocations = new[] {
@@ -64,7 +52,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Infrastructure
                     }
                     .Concat(viewLocations);
             }
-
             return viewLocations;
         }
     }

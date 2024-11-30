@@ -5404,6 +5404,21 @@
           "bin/placeholder/Nop.Plugin.Misc.POSSystem.dll": {}
         }
       },
+      "Nop.Plugin.Misc.SmsAuthentication/4.5.1": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Nop.Services": "4.5.0",
+          "Nop.Web": "4.5.0",
+          "Nop.Web.Framework": "4.5.0"
+        },
+        "compile": {
+          "bin/placeholder/Nop.Plugin.Misc.SmsAuthentication.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Nop.Plugin.Misc.SmsAuthentication.dll": {}
+        }
+      },
       "Nop.Plugin.Tax.CalculateByCategoryPercentage/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -14600,6 +14615,11 @@
       "path": "../Nop.Plugin.Misc.POSSystem/Nop.Plugin.Misc.POSSystem.csproj",
       "msbuildProject": "../Nop.Plugin.Misc.POSSystem/Nop.Plugin.Misc.POSSystem.csproj"
     },
+    "Nop.Plugin.Misc.SmsAuthentication/4.5.1": {
+      "type": "project",
+      "path": "../Nop.Plugin.Misc.SmsAuthentication/Nop.Plugin.Misc.SmsAuthentication.csproj",
+      "msbuildProject": "../Nop.Plugin.Misc.SmsAuthentication/Nop.Plugin.Misc.SmsAuthentication.csproj"
+    },
     "Nop.Plugin.Tax.CalculateByCategoryPercentage/1.0.0": {
       "type": "project",
       "path": "../Nop.Plugin.Tax.CalculateByCategoryPercentage/Nop.Plugin.Tax.CalculateByCategoryPercentage.csproj",
@@ -14626,6 +14646,7 @@
       "Nop.Core >= 4.5.0",
       "Nop.Data >= 4.5.0",
       "Nop.Plugin.Misc.POSSystem >= 4.50.1",
+      "Nop.Plugin.Misc.SmsAuthentication >= 4.5.1",
       "Nop.Services >= 4.5.0",
       "Nop.Web >= 4.5.0",
       "Nop.Web.Framework >= 4.5.0"
@@ -14675,6 +14696,9 @@
             },
             "F:\\nopCommerce\\NopWithOutZatca2024\\NopCommerce-Plugin\\Plugins\\Nop.Plugin.Misc.POSSystem\\Nop.Plugin.Misc.POSSystem.csproj": {
               "projectPath": "F:\\nopCommerce\\NopWithOutZatca2024\\NopCommerce-Plugin\\Plugins\\Nop.Plugin.Misc.POSSystem\\Nop.Plugin.Misc.POSSystem.csproj"
+            },
+            "F:\\nopCommerce\\NopWithOutZatca2024\\NopCommerce-Plugin\\Plugins\\Nop.Plugin.Misc.SmsAuthentication\\Nop.Plugin.Misc.SmsAuthentication.csproj": {
+              "projectPath": "F:\\nopCommerce\\NopWithOutZatca2024\\NopCommerce-Plugin\\Plugins\\Nop.Plugin.Misc.SmsAuthentication\\Nop.Plugin.Misc.SmsAuthentication.csproj"
             },
             "F:\\nopCommerce\\NopWithOutZatca2024\\NopCommerce-Plugin\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj": {
               "projectPath": "F:\\nopCommerce\\NopWithOutZatca2024\\NopCommerce-Plugin\\Presentation\\Nop.Web.Framework\\Nop.Web.Framework.csproj"

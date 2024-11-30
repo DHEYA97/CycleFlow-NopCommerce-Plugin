@@ -1,8 +1,8 @@
 ﻿@model string
 @{
-    ViewBag.PageTitle = T("Admin.Plugin.Misc.CycleFlow.CheckOrderStatusSequence.Title").Text;
+    ViewBag.PageTitle = T("Admin.Plugin.Misc.CycleFlow.CheckPosOrderStatus.Title").Text;
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
-    NopHtml.SetActiveMenuItemSystemName("CheckOrderStatusSequence");
+    NopHtml.SetActiveMenuItemSystemName("CheckPosOrderStatus");
 }
 @{
     const string hideSearchBlockAttributeName = "CycleFlowSettingPage.HideSearchBlock";
@@ -66,6 +66,6 @@
 
 <div class="alert alert-info">
     <div>
-        <strong>نتيجة الفحص: </strong>@Html.Raw(Model)
+        <strong>@T("Admin.Plugin.Misc.CycleFlow.ResultOfCheck"): </strong>@Html.Raw(Model)
     </div>
 </div>

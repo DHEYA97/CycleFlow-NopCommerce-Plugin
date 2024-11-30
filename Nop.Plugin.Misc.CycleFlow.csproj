@@ -43,6 +43,7 @@
     <ProjectReference Include="..\..\Presentation\Nop.Web.Framework\Nop.Web.Framework.csproj" />
     <ProjectReference Include="..\..\Presentation\Nop.Web\Nop.Web.csproj" />
     <ProjectReference Include="..\Nop.Plugin.Misc.POSSystem\Nop.Plugin.Misc.POSSystem.csproj" />
+    <ProjectReference Include="..\Nop.Plugin.Misc.SmsAuthentication\Nop.Plugin.Misc.SmsAuthentication.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Components\" />
@@ -65,6 +66,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Views\CycleFlowSetting\List.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\CycleFlowSetting\_CreateOrUpdate.Send.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Views\CycleFlowSetting\_CreateOrUpdate.cshtml">

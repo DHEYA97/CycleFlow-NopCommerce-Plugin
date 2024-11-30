@@ -5,6 +5,9 @@
     const string hideInfoBlockAttributeName = "CycleFlowSettingPage.HideInfoBlock";
     var customer = await workContext.GetCurrentCustomerAsync();
     var hideInfoBlock = await genericAttributeService.GetAttributeAsync<bool>(customer, hideInfoBlockAttributeName);
+
+    const string hideSendBlockAttributeName = "CycleFlowSettingPage.HideSendBlock";
+    var hideSendBlock = await genericAttributeService.GetAttributeAsync<bool>(customer, hideSendBlockAttributeName);
 }
 
 <div asp-validation-summary="All"></div>
@@ -14,6 +17,7 @@
         <div class="form-horizontal">
             <nop-cards id="vendor-cards">
                 <nop-card asp-name="vendor-info" asp-icon="fas fa-info" asp-title="@T("Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Info")" asp-hide-block-attribute-name="@hideInfoBlockAttributeName" asp-hide="@hideInfoBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.Info", Model)</nop-card>
+                <nop-card asp-name="Send" asp-icon="fas fa-search-plus" asp-title="@T("Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Send")" asp-hide-block-attribute-name="@hideSendBlockAttributeName" asp-hide="@hideSendBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.Send", Model)</nop-card>
             </nop-cards>
         </div>
     </div>

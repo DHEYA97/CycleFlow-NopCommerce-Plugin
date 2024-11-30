@@ -10,5 +10,9 @@ namespace Nop.Plugin.Misc.CycleFlow.Domain
         public int NextStep { get; set; }
         public bool IsFirstStep { get; set; }
         public bool IsLastStep { get; set; }
+        public bool IsEnableSendToClient { get; set; }
+        public int? ClientSmsTemplateId { get; set; }
+        public bool IsEnableSendToUser { get; set; }
+        public int? UserSmsTemplateId { get; set; }
     }
 }

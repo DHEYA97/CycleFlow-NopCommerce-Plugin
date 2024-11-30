@@ -128,16 +128,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                     {
                         throw new Exception($"nextOrderStatus not fount with id value {model.NextOrderStatusId}");
                     }
-                    OrderStatusSorting orderStatusSorting = new OrderStatusSorting
-                    {
-                        OrderStatusId = model.CurrentOrderStatusId,
-                        NopStoreId = model.StoreId,
-                        PosUserId = model.PosUserId,
-                        NextStep = model.NextOrderStatusId,
-                        IsFirstStep = model.IsFirstStep,
-                        IsLastStep = model.IsLastStep,
+                    OrderStatusSorting orderStatusSorting = model.ToEntity<OrderStatusSorting>();
+                    orderStatusSorting.ClientSmsTemplateId = model.ClientSmsTemplateId <= 0 ? null : model.ClientSmsTemplateId;
+                    orderStatusSorting.UserSmsTemplateId = model.UserSmsTemplateId <= 0 ? null : model.UserSmsTemplateId;
 
-                    };
                     await _orderStatusSortingTypeRepository.InsertAsync(orderStatusSorting);
                     OrderStatusPermissionMapping orderStatusPermissionMapping = new OrderStatusPermissionMapping
                     {
@@ -219,6 +213,9 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                     {
                         existingOrderStatusSorting = model.ToEntity(existingOrderStatusSorting);
                         existingOrderStatusSorting.NextStep = model.NextOrderStatusId;
+                        existingOrderStatusSorting.ClientSmsTemplateId = model.ClientSmsTemplateId <= 0 ? null : model.ClientSmsTemplateId;
+                        existingOrderStatusSorting.UserSmsTemplateId = model.UserSmsTemplateId <= 0 ? null : model.UserSmsTemplateId;
+
                         await _orderStatusSortingTypeRepository.UpdateAsync(existingOrderStatusSorting);
                     }
                     else
