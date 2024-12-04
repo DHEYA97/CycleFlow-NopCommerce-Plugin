@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace Nop.Plugin.Misc.CycleFlow.Domain
 {
-    public class OrderStateOrderMapping : BaseEntity
+    public class OrderStateOrderMapping : BaseCycleFlowEntity
     {
         public int NopStoreId { get; set; }
         public int PosUserId { get; set; }
         public int OrderId { get; set; }
         public int OrderStatusId { get; set; }
         public int CustomerId { get; set; }
+        public string? Note { get; set; }
     }
 }

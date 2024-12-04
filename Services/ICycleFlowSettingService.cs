@@ -24,6 +24,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
         Task DeleteCycleFlowSettingAsync(OrderStatusSorting model);
         Task<IList<(string, string)>> GetFirstOrderStatusAsync(int posUserId, int currentId = 0, bool exclude = false);
         Task<IList<(string, string, int)>> GetNextOrderStatusAsync(int posUserId, int currentId = 0, bool exclude = false);
+        Task<IList<(string, string, int)>> GetReturnOrderStatusAsync(int posUserId, int currentId = 0, bool exclude = false);
         Task<IList<int>> GetAllOrderCurrentSelectedImageTypeAsync(int posUserId, int orderStatusId);
         Task<Customer> GetCustomerAsync(int posUserId, int orderStatusId);
         Task<bool> EnableIsFirstStepAsync(int posUserId, int currentId = 0);

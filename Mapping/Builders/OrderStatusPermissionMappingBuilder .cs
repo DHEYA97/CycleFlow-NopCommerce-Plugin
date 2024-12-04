@@ -16,7 +16,12 @@ namespace Nop.Plugin.Misc.CycleFlow.Mapping.Builders
                 .WithColumn(nameof(OrderStatusPermissionMapping.NopStoreId)).AsInt32().ForeignKey<Store>()
                 .WithColumn(nameof(OrderStatusPermissionMapping.OrderStatusId)).AsInt32().ForeignKey<OrderStatus>()
                 .WithColumn(nameof(OrderStatusPermissionMapping.CustomerId)).AsInt32().ForeignKey<Customer>()
-                .WithColumn(nameof(OrderStatusPermissionMapping.PosUserId)).AsInt32();
+                .WithColumn(nameof(OrderStatusPermissionMapping.PosUserId)).AsInt32()
+
+                .WithColumn(nameof(OrderStatusPermissionMapping.InsertedByUser)).AsInt32().Nullable()
+                .WithColumn(nameof(OrderStatusPermissionMapping.InsertionDate)).AsDateTime().Nullable()
+                .WithColumn(nameof(OrderStatusPermissionMapping.UpdatedByUser)).AsInt32().Nullable()
+                .WithColumn(nameof(OrderStatusPermissionMapping.UpdatingDate)).AsDateTime().Nullable();
         }
     }
 }

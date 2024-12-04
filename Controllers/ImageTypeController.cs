@@ -12,6 +12,8 @@ using Nop.Plugin.Misc.CycleFlow.Permission;
 using Nop.Plugin.Misc.CycleFlow.Factories;
 using Nop.Plugin.Misc.CycleFlow.Services;
 using Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
+using Nop.Core;
+using Nop.Plugin.Misc.Accounting.Domain;
 
 namespace Nop.Plugin.Misc.CycleFlow.Controllers
 {
@@ -27,7 +29,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         private readonly ILocalizationService _localizationService;
         private readonly ILocalizedEntityService _localizedEntityService;
         private readonly IImageTypeModelFactory _imageTypeModelFactory;
-        private readonly IImageTypeService _imageTypeService; 
+        private readonly IImageTypeService _imageTypeService;
+        protected readonly IWorkContext _workContext;
         #endregion
 
         #region Ctor
@@ -37,7 +40,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             ILocalizationService localizationService,
             ILocalizedEntityService localizedEntityService,
             IImageTypeModelFactory imageTypeModelFactory,
-            IImageTypeService imageTypeService 
+            IImageTypeService imageTypeService,
+            IWorkContext workContext
             )
         {
             _permissionService = permissionService;
@@ -46,6 +50,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             _localizedEntityService = localizedEntityService;
             _imageTypeModelFactory = imageTypeModelFactory;
             _imageTypeService = imageTypeService;
+            _workContext = workContext;
+        
         }
 
         #endregion
@@ -109,6 +115,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             if (ModelState.IsValid)
             {
                 var imageType = model.ToEntity<ImageType>();
+                await imageType.SetBaseInfoAsync<ImageType>(_workContext);
                 await _imageTypeService.InsertImageTypeAsync(imageType);
                 await UpdateLocalesAsync(imageType, model);
                 _notificationService.SuccessNotification(await _localizationService.GetResourceAsync("Admin.Plugin.Misc.CycleFlow.ImageType.Notification.Added"));
@@ -147,6 +154,13 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             if (ModelState.IsValid)
             {
                 imageType = model.ToEntity(imageType);
+                var check = await imageType.SetBaseInfoAsync<ImageType>(_workContext);
+                if (!check.success)
+                {
+                    _notificationService.ErrorNotification(check.message);
+
+                    return View("Edit", model);
+                }
                 await _imageTypeService.UpdateImageTypeAsync(imageType);
 
                 await UpdateLocalesAsync(imageType, model);
@@ -172,6 +186,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             if (imageType == null)
                 return RedirectToAction("List");
 
+            await imageType.SetBaseInfoAsync<ImageType>(_workContext);
             await _imageTypeService.DeleteImageTypeAsync(imageType);
 
             _notificationService.SuccessNotification(await _localizationService.GetResourceAsync("Admin.Plugin.Misc.CycleFlow.ImageType.Notification.Deleted"));

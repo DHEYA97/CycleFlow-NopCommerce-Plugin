@@ -15,6 +15,7 @@ using Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
 using Nop.Plugin.Misc.CycleFlow.Factories;
 using Nop.Plugin.Misc.CycleFlow.Services;
 using Nop.Plugin.Misc.CycleFlow.Models.CycleFlowSetting;
+using System.Diagnostics.Metrics;
 
 
 namespace Nop.Plugin.Misc.CycleFlow.Controllers
@@ -224,7 +225,49 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
 
             return Json(result);
         }
-       
+        public virtual async Task<IActionResult> GetReturnByCurrentStep(int posUserId, int currentStepId, bool? addSelectStateItem, bool exclude = false)
+        {
+
+            if (posUserId <= 0)
+                throw new ArgumentNullException(nameof(posUserId));
+
+            if (currentStepId <= 0)
+                throw new ArgumentNullException(nameof(currentStepId));
+
+            var orderStateSorting = await _orderStatusService.GetOrderStatusByIdAsync(currentStepId);
+            var returnList = orderStateSorting != null ? (await _cycleFlowSettingService.GetReturnOrderStatusAsync(posUserId, currentStepId, exclude)) : new List<(string, string,int)>();
+            var result = (from s in returnList
+                          select new { id = Convert.ToInt32(s.Item1), name = s.Item2,retern = s.Item3}).ToList();
+
+            if (orderStateSorting == null)
+            {
+                if (addSelectStateItem.HasValue && addSelectStateItem.Value)
+                {
+                    result.Insert(0, new { id = 0, name = await _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.OrderStatusSorting.SelectNextOrderStatus") , retern = 0 });
+                }
+                else
+                {
+                    result.Insert(0, new { id = 0, name = await _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.OrderStatusSorting.Other"), retern = 0 });
+                }
+            }
+            else
+            {
+                if (!result.Any())
+                {
+                    result.Insert(0, new { id = 0, name = await _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.OrderStatusSorting.Other"), retern = 0 });
+                }
+                else
+                {
+                    if (addSelectStateItem.HasValue && addSelectStateItem.Value)
+                    {
+                        result.Insert(0, new { id = 0, name = await _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.OrderStatusSorting.SelectNextOrderStatus"), retern = 0 });
+                    }
+                }
+            }
+
+            return Json(result);
+        }
+
         #endregion
     }
 }

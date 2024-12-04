@@ -22,6 +22,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.CycleFlowSetting
             AvailableStores = new List<SelectListItem>();
             AvailableClientSmsTemplates = new List<SelectListItem>();
             AvailableUserSmsTemplates = new List<SelectListItem>();
+            AvailableReturnOrderStatus = new List<SelectListItem>();
         }
 
         [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.CurrentOrderStatus")]
@@ -73,6 +74,14 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.CycleFlowSetting
         public IList<SelectListItem> AvailableUserSmsTemplates { get; set; }
         [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.IsEnableSendToUser")]
         public bool IsEnableSendToUser { get; set; }
+
+        [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.IsEnableReturn")]
+        public bool IsEnableReturn { get; set; }
+        [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.ReturnStep")]
+        public int? ReturnStepId { get; set; }
+        [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.ReturnOrderStatusName")]
+        public string? ReturnOrderStatusName { get; set; }
+        public IList<SelectListItem> AvailableReturnOrderStatus { get; set; }
 
     }
 }

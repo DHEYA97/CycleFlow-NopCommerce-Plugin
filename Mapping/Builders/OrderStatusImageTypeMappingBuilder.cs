@@ -16,7 +16,12 @@ namespace Nop.Plugin.Misc.CycleFlow.Mapping.Builders
                 .WithColumn(nameof(OrderStatusImageTypeMapping.NopStoreId)).AsInt32().ForeignKey<Store>()
                 .WithColumn(nameof(OrderStatusImageTypeMapping.OrderStatusId)).AsInt32().ForeignKey<OrderStatus>()
                 .WithColumn(nameof(OrderStatusImageTypeMapping.PosUserId)).AsInt32().ForeignKey<PosUser>()
-                .WithColumn(nameof(OrderStatusImageTypeMapping.ImageTypeId)).AsInt32().ForeignKey<ImageType>();
+                .WithColumn(nameof(OrderStatusImageTypeMapping.ImageTypeId)).AsInt32().ForeignKey<ImageType>()
+
+                .WithColumn(nameof(OrderStatusImageTypeMapping.InsertedByUser)).AsInt32().Nullable()
+                .WithColumn(nameof(OrderStatusImageTypeMapping.InsertionDate)).AsDateTime().Nullable()
+                .WithColumn(nameof(OrderStatusImageTypeMapping.UpdatedByUser)).AsInt32().Nullable()
+                .WithColumn(nameof(OrderStatusImageTypeMapping.UpdatingDate)).AsDateTime().Nullable();
         }
     }
 }

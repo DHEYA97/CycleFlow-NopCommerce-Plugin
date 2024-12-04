@@ -105,15 +105,23 @@ namespace Nop.Plugin.Misc.CycleFlow.Validators
                 .WithMessageAwait(localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.CycleFlowSetting.UserSmsTemplateId.MustSelect"))
                 .When(x => x.IsEnableSendToUser);
 
-            RuleFor(x => x.IsEnableSendToUser)
-                .Must((x, isEnableSendToUser) => x.ClientSmsTemplateId <= 0 || isEnableSendToUser == true)
-                .WithMessageAwait(localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.CycleFlowSetting.IsEnableSendToUser.MustTrue"))
-                .When(x => x.UserSmsTemplateId > 0);
 
-            RuleFor(x => x.IsEnableSendToClient)
-                .Must((x, IsEnableSendToClient) => x.ClientSmsTemplateId <= 0 || IsEnableSendToClient == true)
-                .WithMessageAwait(localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.CycleFlowSetting.IsEnableSendToClient.MustTrue"))
-                .When(x => x.ClientSmsTemplateId > 0);
+
+            //RuleFor(x => x.IsEnableSendToUser)
+            //    .Must((x, isEnableSendToUser) => x.ClientSmsTemplateId <= 0 || isEnableSendToUser == true)
+            //    .WithMessageAwait(localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.CycleFlowSetting.IsEnableSendToUser.MustTrue"))
+            //    .When(x => x.UserSmsTemplateId > 0);
+
+            //RuleFor(x => x.IsEnableSendToClient)
+            //    .Must((x, IsEnableSendToClient) => x.ClientSmsTemplateId <= 0 || IsEnableSendToClient == true)
+            //    .WithMessageAwait(localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.CycleFlowSetting.IsEnableSendToClient.MustTrue"))
+            //    .When(x => x.ClientSmsTemplateId > 0);
+
+            //RuleFor(x => x.ReturnStepId)
+            //    .GreaterThan(0)
+            //    .WithMessageAwait(localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.CycleFlowSetting.ReturnStepId.MustSelect"))
+            //    .When(x => x.IsEnableReturn);
+
         }
     }
 }

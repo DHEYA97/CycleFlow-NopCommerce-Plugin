@@ -5,6 +5,7 @@
 
         if (modelId > 0) {
             loadNextOrderStatusData();
+            loadReturnOrderStatusData();
         }
 
         $("#@Html.IdFor(model => model.PosUserId)").change(function () {
@@ -13,6 +14,7 @@
 
         $("#@Html.IdFor(model => model.CurrentOrderStatusId)").change(function () {
             loadNextOrderStatusData();
+            loadReturnOrderStatusData();
         });
 
         function loadOrderStatusData() {
@@ -41,7 +43,6 @@
                 }
             });
         }
-
         function loadNextOrderStatusData() {
             var currentStepId = $("#@Html.IdFor(model => model.CurrentOrderStatusId)").val();
             var posUserId = $("#@Html.IdFor(model => model.PosUserId)").val();
@@ -60,9 +61,42 @@
                 url: "@(Url.Action("GetNextStepByCurrentStep", "CycleFlowSetting"))",
                 data: postData,
                 success: function (data, textStatus, jqXHR) {
-                    ddlStates.html('');  // مسح الخيارات القديمة
+                    ddlStates.html('');
                     $.each(data, function (id, option) {
                         if (option.next == option.id) {
+                            ddlStates.append($('<option></option>').val(option.id).html(option.name).attr('selected', 'selected'));
+                        }
+                        else {
+                            ddlStates.append($('<option></option>').val(option.id).html(option.name));
+                        }
+                    });
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $("#validationAlert").click();
+                }
+            });
+        }
+        function loadReturnOrderStatusData() {
+            var currentStepId = $("#@Html.IdFor(model => model.CurrentOrderStatusId)").val();
+            var posUserId = $("#@Html.IdFor(model => model.PosUserId)").val();
+            var ddlStates = $("#@Html.IdFor(model => model.ReturnStepId)");
+
+            var postData = {
+                posUserId: posUserId,
+                currentStepId: currentStepId,
+                addSelectStateItem: "true",
+                exclude: "true"
+            };
+
+            $.ajax({
+                cache: false,
+                type: "GET",
+                url: "@(Url.Action("GetReturnByCurrentStep", "CycleFlowSetting"))",
+                data: postData,
+                success: function (data, textStatus, jqXHR) {
+                    ddlStates.html('');
+                    $.each(data, function (id, option) {
+                        if (option.retern == option.id) {
                             ddlStates.append($('<option></option>').val(option.id).html(option.name).attr('selected', 'selected'));
                         }
                         else {
@@ -205,5 +239,25 @@
             </div>
         </div>
     }
+
+    <div class="form-group row">
+        <div class="col-md-3">
+            <nop-label asp-for="IsEnableReturn" />
+        </div>
+        <div class="col-md-9">
+            <nop-editor asp-for="IsEnableReturn" />
+            <span asp-validation-for="IsEnableReturn"></span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-3">
+            <nop-label asp-for="ReturnStepId" />
+        </div>
+        <div class="col-md-9">
+            <nop-select asp-for="ReturnStepId" asp-items="Model.AvailableReturnOrderStatus" />
+            <span asp-validation-for="ReturnStepId"></span>
+        </div>
+    </div>
     
 <nop-alert asp-alert-id="validationAlert" asp-alert-message="@T("Admin.Common.Alert.ValidationError")" />

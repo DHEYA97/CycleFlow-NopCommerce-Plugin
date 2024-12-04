@@ -114,8 +114,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                 model.CustomerId = customer.Id;
                 model.IsFirstStep = orderStatusSorting.IsFirstStep;
                 model.IsLastStep = orderStatusSorting.IsLastStep;
-                //model.UserSmsTemplateId = orderStatusSorting.UserSmsTemplateId;
-                //model.ClientSmsTemplateId = orderStatusSorting.ClientSmsTemplateId;
             }
 
             if (!excludeProperties)

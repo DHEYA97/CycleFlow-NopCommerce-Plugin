@@ -12,6 +12,7 @@ using Nop.Plugin.Misc.CycleFlow.Permission;
 using Nop.Plugin.Misc.CycleFlow.Factories;
 using Nop.Plugin.Misc.CycleFlow.Services;
 using Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
+using Nop.Core;
 namespace Nop.Plugin.Misc.CycleFlow.Controllers
 {
     [Area(AreaNames.Admin)]
@@ -27,6 +28,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         private readonly ILocalizedEntityService _localizedEntityService;
         private readonly IOrderStatusModelFactory _orderStatusModelFactory;
         private readonly IOrderStatusService _orderStatusService;
+        protected readonly IWorkContext _workContext;
         #endregion
 
         #region Ctor
@@ -36,7 +38,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             ILocalizationService localizationService,
             ILocalizedEntityService localizedEntityService,
             IOrderStatusModelFactory orderStatusModelFactory,
-            IOrderStatusService orderStatusService
+            IOrderStatusService orderStatusService,
+            IWorkContext workContext
             )
         {
             _permissionService = permissionService;
@@ -45,6 +48,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             _localizedEntityService = localizedEntityService;
             _orderStatusModelFactory = orderStatusModelFactory;
             _orderStatusService = orderStatusService;
+            _workContext = workContext;
         }
 
         #endregion
@@ -112,6 +116,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             if (ModelState.IsValid)
             {
                 var orderStatus = model.ToEntity<OrderStatus>();
+                await orderStatus.SetBaseInfoAsync<OrderStatus>(_workContext);
                 await _orderStatusService.InsertOrderStatusAsync(orderStatus);
                 await UpdateLocalesAsync(orderStatus, model);
                 _notificationService.SuccessNotification(await _localizationService.GetResourceAsync("Admin.Plugin.Misc.CycleFlow.OrderStatus.Notification.Added"));
@@ -151,6 +156,13 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             {
 
                 orderStatus = model.ToEntity(orderStatus);
+                var check = await orderStatus.SetBaseInfoAsync<OrderStatus>(_workContext);
+                if (!check.success)
+                {
+                    _notificationService.ErrorNotification(check.message);
+
+                    return View("Edit", model);
+                }
                 await _orderStatusService.UpdateOrderStatusAsync(orderStatus);
 
                 await UpdateLocalesAsync(orderStatus, model);
@@ -174,7 +186,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             var orderStatus = await _orderStatusService.GetOrderStatusByIdAsync(id);
             if (orderStatus == null)
                 return RedirectToAction("List");
-
+            await orderStatus.SetBaseInfoAsync<OrderStatus>(_workContext);
             await _orderStatusService.DeleteOrderStatusAsync(orderStatus);
 
             _notificationService.SuccessNotification(await _localizationService.GetResourceAsync("Admin.Plugin.Misc.CycleFlow.OrderStatus.Notification.Deleted"));

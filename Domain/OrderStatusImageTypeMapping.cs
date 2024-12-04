@@ -5,7 +5,7 @@ using Nop.Core.Domain.Localization;
 namespace Nop.Plugin.Misc.CycleFlow.Domain
 {
 
-    public class OrderStatusImageTypeMapping : BaseEntity
+    public class OrderStatusImageTypeMapping : BaseCycleFlowEntity
     {
         public int NopStoreId { get; set; }
         public int PosUserId { get; set; }

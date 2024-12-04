@@ -5,7 +5,7 @@ using Nop.Core.Domain.Localization;
 namespace Nop.Plugin.Misc.CycleFlow.Domain
 {
 
-    public class OrderStatus : BaseEntity, ILocalizedEntity, ISoftDeletedEntity
+    public class OrderStatus : BaseCycleFlowEntity, ILocalizedEntity, ISoftDeletedEntity
     {
         public string Name { get; set; }
         public string Description { get; set; }

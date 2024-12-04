@@ -9,7 +9,7 @@ using Nop.Plugin.Misc.SmsAuthentication.Domains;
 
 namespace Nop.Plugin.Misc.CycleFlow.Migrations
 {
-    [NopMigration("2024-11-06 00:00:00", "CycleFlowPlugin Update Table", MigrationProcessType.Update)]
+    [NopMigration("2024-12-04 10:12:00", "CycleFlowPlugin Update Table", MigrationProcessType.Update)]
     public class UpdateTableMigration : Migration
     {
         public static string TableName<T>() where T : BaseEntity
@@ -40,11 +40,27 @@ namespace Nop.Plugin.Misc.CycleFlow.Migrations
                 Alter.Table(TableName<OrderStatusSorting>())
                     .AddColumn(nameof(OrderStatusSorting.ClientSmsTemplateId)).AsInt32().Nullable().ForeignKey<SmsTemplate>(onDelete: System.Data.Rule.None);
             }
-
             if (!Schema.Table(TableName<OrderStatusSorting>()).Column(nameof(OrderStatusSorting.UserSmsTemplateId)).Exists())
             {
                 Alter.Table(TableName<OrderStatusSorting>())
                     .AddColumn(nameof(OrderStatusSorting.UserSmsTemplateId)).AsInt32().Nullable().ForeignKey<SmsTemplate>(onDelete: System.Data.Rule.None);
+            }
+            
+            if (!Schema.Table(TableName<OrderStatusSorting>()).Column(nameof(OrderStatusSorting.IsEnableReturn)).Exists())
+            {
+                Alter.Table(TableName<OrderStatusSorting>())
+                    .AddColumn(nameof(OrderStatusSorting.IsEnableReturn)).AsBoolean().Nullable();
+            }
+            if (!Schema.Table(TableName<OrderStatusSorting>()).Column(nameof(OrderStatusSorting.ReturnStepId)).Exists())
+            {
+                Alter.Table(TableName<OrderStatusSorting>())
+                    .AddColumn(nameof(OrderStatusSorting.ReturnStepId)).AsInt32().Nullable().ForeignKey<OrderStatus>(onDelete: System.Data.Rule.None);
+            }
+
+            if (!Schema.Table(TableName<OrderStateOrderMapping>()).Column(nameof(OrderStateOrderMapping.Note)).Exists())
+            {
+                Alter.Table(TableName<OrderStateOrderMapping>())
+                    .AddColumn(nameof(OrderStateOrderMapping.Note)).AsString().Nullable();
             }
         }
     }

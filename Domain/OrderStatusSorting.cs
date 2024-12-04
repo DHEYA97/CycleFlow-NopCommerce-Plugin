@@ -2,7 +2,7 @@
 
 namespace Nop.Plugin.Misc.CycleFlow.Domain
 {
-    public class OrderStatusSorting : BaseEntity
+    public class OrderStatusSorting : BaseCycleFlowEntity
     {
         public int NopStoreId { get; set; }
         public int PosUserId { get; set; }
@@ -14,5 +14,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Domain
         public int? ClientSmsTemplateId { get; set; }
         public bool IsEnableSendToUser { get; set; }
         public int? UserSmsTemplateId { get; set; }
+        public bool IsEnableReturn { get; set; }
+        public int? ReturnStepId { get; set; }
     }
 }

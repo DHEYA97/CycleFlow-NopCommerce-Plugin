@@ -20,7 +20,12 @@ namespace Nop.Plugin.Misc.CycleFlow.Mapping.Builders
                  .WithColumn(nameof(OrderStateOrderImageMapping.OrderStatusId)).AsInt32().ForeignKey<Domain.OrderStatus>()
                  .WithColumn(nameof(OrderStateOrderImageMapping.PosUserId)).AsInt32()
                  .WithColumn(nameof(OrderStateOrderImageMapping.OrderId)).AsInt32().ForeignKey<Order>()
-                 .WithColumn(nameof(OrderStateOrderImageMapping.PictureId)).AsInt32().ForeignKey<Picture>();
+                 .WithColumn(nameof(OrderStateOrderImageMapping.PictureId)).AsInt32().ForeignKey<Picture>()
+
+                .WithColumn(nameof(OrderStateOrderImageMapping.InsertedByUser)).AsInt32().Nullable()
+                .WithColumn(nameof(OrderStateOrderImageMapping.InsertionDate)).AsDateTime().Nullable()
+                .WithColumn(nameof(OrderStateOrderImageMapping.UpdatedByUser)).AsInt32().Nullable()
+                .WithColumn(nameof(OrderStateOrderImageMapping.UpdatingDate)).AsDateTime().Nullable();
         }
     }
 }

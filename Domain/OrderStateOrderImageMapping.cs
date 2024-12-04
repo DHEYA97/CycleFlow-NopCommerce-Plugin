@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Nop.Plugin.Misc.CycleFlow.Domain
 {
-    public class OrderStateOrderImageMapping : BaseEntity
+    public class OrderStateOrderImageMapping : BaseCycleFlowEntity
     {
         public int NopStoreId { get; set; }
         public int PosUserId { get; set; }
