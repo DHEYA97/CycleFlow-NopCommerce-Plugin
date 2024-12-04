@@ -23,6 +23,12 @@ namespace Nop.Plugin.Misc.CycleFlow.Permission
             SystemName = "ManageCycleFlowPluginAccount",
             Category = "CycleFlow"
         };
+        public static readonly PermissionRecord DeportationCycleFlowPlugin = new()
+        {
+            Name = "Deportation CycleFlow",
+            SystemName = "DeportationCycleFlow",
+            Category = "CycleFlow"
+        };
         public virtual IEnumerable<PermissionRecord> GetPermissions()
         {
             return new[]
