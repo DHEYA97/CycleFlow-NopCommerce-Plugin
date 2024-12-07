@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
@@ -9,9 +10,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Deportation
         #region Ctor
         public DeportationModel()
         {
-            ImageTypeId = new List<int>();
-            ImageTypeName = new List<string>();
             ProductOrderItem = new List<ProductOrderItemModel>();
+            ImageType = new List<ImageTypeModel>();
         }
         #endregion
         #region Properties
@@ -37,9 +37,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Deportation
         [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.CustomerId")]
         public int CustomerId { get; set; }
         public string? CustomerName { get; set; }
-        public IList<int>? ImageTypeId { get; set; }
-        [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.ImageTypeName")]
-        public IList<string>? ImageTypeName { get; set; }
         
         [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.IsEnableSendToClient")]
         public bool IsEnableSendToClient { get; set; }
@@ -58,7 +55,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Deportation
         [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.ReturnStep")]
         public int? ReturnStepId { get; set; }
 
+        public string? Note { get; set; }
+
         public IList<ProductOrderItemModel> ProductOrderItem { get; set; }
+        public IList<ImageTypeModel>? ImageType { get; set; }
 
         #endregion
         #region Nested Classes
@@ -71,6 +71,14 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Deportation
             public string Sku { get; set; }
 
             public string PictureThumbnailUrl { get; set; }
+        }
+        public partial record ImageTypeModel : BaseNopEntityModel
+        {
+
+            [UIHint("Picture")]
+            [NopResourceDisplayName("Admin.Catalog.Products.Pictures.Fields.Picture")]
+            public int? ImageTypeId { get; set; }
+            public string? ImageTypeUrl { get; set; }
         }
         #endregion
     }

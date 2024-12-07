@@ -1,4 +1,5 @@
-﻿using Nop.Plugin.Misc.CycleFlow.Models.Deportation;
+﻿using Nop.Plugin.Misc.CycleFlow.Domain;
+using Nop.Plugin.Misc.CycleFlow.Models.Deportation;
 
 
 namespace Nop.Plugin.Misc.CycleFlow.Factories
@@ -7,5 +8,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
     {
         Task<DeportationSearchModel> PrepareDeportationSearchModelAsync(DeportationSearchModel searchModel);
         Task<DeportationListModel> PrepareDeportationModelListModelAsync(DeportationSearchModel searchModel);
+        Task<DeportationModel> PrepareDeportationModelAsync(DeportationModel model, OrderStateOrderMapping orderStateOrderMapping, bool excludeProperties = false, int currentId = 0);
     }
 }

@@ -132,7 +132,16 @@ namespace Nop.Plugin.Misc.CycleFlow
                         ActionName = "List",
                         IconClass = "far fa-dot-circle",
                         Visible = true,
-                    }
+                    },
+                     new SiteMapNode()
+                    {
+                        SystemName = "Deportation",
+                        Title = _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.Deportation").Result,
+                        ControllerName = "Deportation",
+                        ActionName = "List",
+                        IconClass = "far fa-dot-circle",
+                        Visible = true,
+                    },
 
                 }
             };

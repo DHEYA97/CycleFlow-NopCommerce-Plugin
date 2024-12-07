@@ -56,7 +56,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.DeportationCycleFlowPlugin))
                 return AccessDeniedView();
 
-            var model = await _deportationModelFactory.PrepareDeportationSearchModelSearchModelAsync(new DeportationSearchModel());
+            var model = await _deportationModelFactory.PrepareDeportationSearchModelAsync(new DeportationSearchModel());
             return View(model);
         }
         [HttpPost]
@@ -65,7 +65,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.DeportationCycleFlowPlugin))
                 return await AccessDeniedDataTablesJson();
 
-            var model = await _deportationModelFactory.PrepareDeportationSearchModelListModelAsync(searchModel);
+            var model = await _deportationModelFactory.PrepareDeportationModelListModelAsync(searchModel);
             return Json(model);
         }
         #endregion

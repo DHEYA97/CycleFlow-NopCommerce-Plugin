@@ -4,6 +4,7 @@ using Nop.Plugin.Misc.CycleFlow.Models.OrderStatus;
 using Nop.Plugin.Misc.CycleFlow.Models.ImageType;
 using Nop.Plugin.Misc.CycleFlow.Domain;
 using Nop.Plugin.Misc.CycleFlow.Models.CycleFlowSetting;
+using Nop.Plugin.Misc.CycleFlow.Models.Deportation;
 
 namespace Nop.Plugin.Misc.CycleFlow.Infrastructure
 {
@@ -21,6 +22,9 @@ namespace Nop.Plugin.Misc.CycleFlow.Infrastructure
             CreateMap<OrderStatusModel, OrderStatus>()
                 .ReverseMap();
             CreateMap<ImageTypeModel, ImageType>()
+                .ReverseMap();
+            
+            CreateMap<OrderStateOrderMapping, DeportationModel>()
                 .ReverseMap();
 
 

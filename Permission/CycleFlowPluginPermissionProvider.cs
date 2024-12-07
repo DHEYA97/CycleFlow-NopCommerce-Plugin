@@ -35,6 +35,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Permission
             {
                 AccessToCycleFlowPluginMenu,
                 ManageCycleFlowPlugin,
+                DeportationCycleFlowPlugin
             };
         }
         /// <summary>

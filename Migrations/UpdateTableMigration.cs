@@ -9,7 +9,7 @@ using Nop.Plugin.Misc.SmsAuthentication.Domains;
 
 namespace Nop.Plugin.Misc.CycleFlow.Migrations
 {
-    [NopMigration("2024-12-04 10:12:00", "CycleFlowPlugin Update Table", MigrationProcessType.Update)]
+    [NopMigration("2024-12-07 10:12:00", "CycleFlowPlugin Update Table", MigrationProcessType.Update)]
     public class UpdateTableMigration : Migration
     {
         public static string TableName<T>() where T : BaseEntity

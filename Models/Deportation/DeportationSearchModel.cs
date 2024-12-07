@@ -6,8 +6,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Deportation
     public record DeportationSearchModel : BaseSearchModel
     {
         #region Properties
-        [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.DeportationModel.Fields.SearchName")]
-        public string SearchName { get; set; }
+        [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.DeportationModel.Fields.OrderNumber")]
+        public int OrderNumber { get; set; }
         #endregion
     }
 }

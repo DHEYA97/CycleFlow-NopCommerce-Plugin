@@ -539,7 +539,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             }
             return true;
         }
-        public virtual async Task<string> CheckOrderStatusSequence(int posUserId)
+        public virtual async Task<(string,bool)> CheckOrderStatusSequence(int posUserId)
         {
             var orderStatusSorting = await _orderStatusSortingTypeRepository.Table
                 .Where(x => x.PosUserId == posUserId)
@@ -547,15 +547,16 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
 
             var firstStep = orderStatusSorting.FirstOrDefault(x => x.IsFirstStep);
             var lastStep = orderStatusSorting.FirstOrDefault(x => x.IsLastStep);
+            bool status = false;
 
             if (firstStep == null)
             {
-                return $"<div class='alert alert-danger'>لا توجد حالة أولى (IsFirstStep == true).</div>";
+                return ($"<div class='alert alert-danger'>لا توجد حالة أولى (IsFirstStep == true).</div>", status);
             }
 
             if (lastStep == null)
             {
-                return $"<div class='alert alert-danger'>لا توجد حالة أخيرة (IsLastStep == true).</div>";
+                return ($"<div class='alert alert-danger'>لا توجد حالة أخيرة (IsLastStep == true).</div>", status);
             }
 
             var currentStatus = firstStep;
@@ -565,7 +566,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             var firstStatusName = await GetOrderStatusNameAsync(currentStatus.OrderStatusId);
 
             string sequenceHtml = $"<div class='sequence-box'>{firstStatusName} ({currentStatus.OrderStatusId})</div>";
-            
             while (currentStatus != null)
             {
                 var nextStatus = orderStatusSorting.FirstOrDefault(x => x.OrderStatusId == currentStatus.NextStep);
@@ -602,14 +602,23 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                     sequenceHtml += $"<div class='sequence-box'>{lastStatusName} ({nextStatus.NextStep})</div>";
 
                     sequenceHtml += "<div class='alert alert-success'>السلسلة مكتملة.</div>";
+                    status = true;
                     break;
                 }
 
                 currentStatus = nextStatus;
             }
-            return sequenceHtml;
+            return (sequenceHtml,status);
         }
-
+        public virtual async Task<Customer> GetCustomerByOrderStatusId(int orderStateId, int posUserId)
+        {
+            var customerId = await _orderStatusPermissionMappingRepository.Table
+                                                                    .Where(x => x.OrderStatusId == orderStateId && x.PosUserId == posUserId)
+                                                                    .Select(x=>x.CustomerId)
+                                                                    .FirstOrDefaultAsync();
+            var customer = await _customerService.GetCustomerByIdAsync(customerId);
+            return customer;
+        }
 
 
         #endregion
