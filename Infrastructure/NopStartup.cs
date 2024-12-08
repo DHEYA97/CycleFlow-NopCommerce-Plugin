@@ -42,6 +42,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Infrastructure
 
             services.AddScoped<IDeportationModelFactory, DeportationModelFactory>();
             services.AddScoped<IDeportationService, DeportationService>();
+            services.AddScoped<IOrderStateOrderImageMappingService, OrderStateOrderImageMappingService>();
             
 
         }
