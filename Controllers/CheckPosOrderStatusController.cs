@@ -77,7 +77,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
                 _notificationService.ErrorNotification("Nop.Plugin.Misc.CycleFlow.OrderStatusSorting.NotFound");
                 return RedirectToAction(nameof(List));
             }
-            var (sequenceHtml,status) = await _cycleFlowSettingService.CheckOrderStatusSequence(id);
+            var (sequenceHtml,status) = await _cycleFlowSettingService.CheckOrderStatusSequenceAsync(id);
             return View(model: sequenceHtml);
         }
         #endregion

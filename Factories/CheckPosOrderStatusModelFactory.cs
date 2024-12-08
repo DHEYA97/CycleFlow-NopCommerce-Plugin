@@ -75,7 +75,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
         {
             model.Id = posUser.Id;
             model.PosUserName = await _customerService.GetCustomerFullNameAsync(await _posUserService.GetUserByIdAsync(posUser.Id)) ?? string.Empty;
-            model.CheckResult = await _cycleFlowSettingService.CheckOrderStatusSequence(posUser.Id);
+            //model.CheckResult = await _cycleFlowSettingService.CheckOrderStatusSequenceAsync(posUser.Id);
             return model;
         }
         public async Task PreparePosUsersListAsync(IList<SelectListItem> items)

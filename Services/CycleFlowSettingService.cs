@@ -1,4 +1,6 @@
-﻿using iTextSharp.text.html.simpleparser;
+﻿using DocumentFormat.OpenXml.Spreadsheet;
+using iTextSharp.text.html.simpleparser;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Nop.Core;
 using Nop.Core.Domain.Customers;
 using Nop.Core.Domain.Orders;
@@ -8,10 +10,12 @@ using Nop.Plugin.Misc.CycleFlow.Models.CycleFlowSetting;
 using Nop.Plugin.Misc.POSSystem.Domains;
 using Nop.Plugin.Misc.POSSystem.Services;
 using Nop.Services.Customers;
+using Nop.Services.Localization;
 using Nop.Services.Messages;
 using Nop.Services.Shipping;
 using Nop.Services.Stores;
 using Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
+using System.Security.Policy;
 using System.Transactions;
 namespace Nop.Plugin.Misc.CycleFlow.Services
 {
@@ -30,6 +34,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
         private readonly IPosUserService _posUserService;
         private readonly ICustomerService _customerService;
         protected readonly IWorkContext _workContext;
+        protected readonly ILocalizationService _localizationService;
         #endregion
 
         #region Ctor
@@ -45,7 +50,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             IOrderStatusService orderStatusService,
             IPosUserService posUserService,
             ICustomerService customerService,
-            IWorkContext workContext
+            IWorkContext workContext,
+            ILocalizationService localizationService
             )
         {
             _orderStatusRepository = orderStatusRepository;
@@ -60,6 +66,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             _posUserService = posUserService;
             _customerService = customerService;
             _workContext = workContext;
+            _localizationService = localizationService;
 
         }
         #endregion
@@ -539,7 +546,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             }
             return true;
         }
-        public virtual async Task<(string,bool)> CheckOrderStatusSequence(int posUserId)
+        public virtual async Task<(string,bool)> CheckOrderStatusSequenceAsync(int posUserId)
         {
             var orderStatusSorting = await _orderStatusSortingTypeRepository.Table
                 .Where(x => x.PosUserId == posUserId)
@@ -610,7 +617,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             }
             return (sequenceHtml,status);
         }
-        public virtual async Task<Customer> GetCustomerByOrderStatusId(int orderStateId, int posUserId)
+        public virtual async Task<Customer> GetCustomerByOrderStatusIdAsync(int orderStateId, int posUserId)
         {
             var customerId = await _orderStatusPermissionMappingRepository.Table
                                                                     .Where(x => x.OrderStatusId == orderStateId && x.PosUserId == posUserId)
@@ -619,7 +626,26 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             var customer = await _customerService.GetCustomerByIdAsync(customerId);
             return customer;
         }
-
+        public virtual async Task<OrderStatusSorting> GetFirstStepInPosUserAsync(int posUserId)
+        {
+            return await _orderStatusSortingTypeRepository.Table
+                                                          .Where(x => x.PosUserId == posUserId && x.IsFirstStep)
+                                                          .FirstOrDefaultAsync();
+        }
+        public virtual async Task NotificationPosUserAsync()
+        {
+            var posUsers = await (await _posUserService.GetPosUserListAsync()).Where(ps => ps.Active).ToListAsync();
+            foreach (var user in posUsers)
+            {
+                 var posUserId = (await _posUserService.GetPosUserByNopCustomerIdAsync(user.Id)).Id;
+                 var posUserName = (await _customerService.GetCustomerFullNameAsync(user));
+                 var (text, status) = await CheckOrderStatusSequenceAsync(posUserId);
+                 if(!status)
+                 {
+                    _notificationService.ErrorNotification(string.Format(await _localizationService.GetResourceAsync("Admin.Plugin.Misc.CycleFlow.Deportation.Check"), posUserId, posUserName, $"<a href='/Admin/CheckPosOrderStatus/View/{posUserId}'>Her</a>", $"<a href='/Admin/CycleFlowSetting/List'>Her</a>"), false);
+                 }
+            }
+        }
 
         #endregion
         #region Utilite

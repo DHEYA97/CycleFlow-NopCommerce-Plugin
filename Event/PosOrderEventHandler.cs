@@ -1,31 +1,48 @@
-﻿using Nop.Core.Infrastructure;
+﻿using Nop.Core;
+using Nop.Core.Domain.Catalog;
+using Nop.Core.Events;
+using Nop.Core.Infrastructure;
 using Nop.Data;
 using Nop.Plugin.Misc.CycleFlow.Controllers;
 using Nop.Plugin.Misc.CycleFlow.Domain;
 using Nop.Plugin.Misc.CycleFlow.Services;
 using Nop.Plugin.Misc.POSSystem.Domains;
 using Nop.Services.Events;
+using Nop.Services.Localization;
+using Nop.Services.Messages;
 namespace Nop.Plugin.Misc.CycleFlow.Event
 {
-    public class PosOrderEventHandler : IConsumer<PosOrderEvent>
+    public class PosOrderEventHandler : IConsumer<EntityInsertedEvent<PosOrder>>
     {
-        public async Task HandleEventAsync(PosOrderEvent eventMessage)
+        public async Task HandleEventAsync(EntityInsertedEvent<PosOrder> eventMessage)
         {
-            if (eventMessage?.PosOrder != null)
+            var posOrder = eventMessage.Entity;
+            if (posOrder != null)
             {
-                PosOrder posOrder = eventMessage.PosOrder;
-                var cycleFlowSettingService = EngineContext.Current.Resolve<CycleFlowSettingService>();
+                var cycleFlowSettingService = EngineContext.Current.Resolve<ICycleFlowSettingService>();
                 var orderStateOrderMappingRepo = EngineContext.Current.Resolve<IRepository<OrderStateOrderMapping>>();
+                var workContext = EngineContext.Current.Resolve<IWorkContext>();
+                var notificationService = EngineContext.Current.Resolve<INotificationService>();
+                var localizationService = EngineContext.Current.Resolve<ILocalizationService>();
 
-                var (sequenceHtml, status) = await cycleFlowSettingService.CheckOrderStatusSequence(posOrder.PosUserId);
-                
+                var firstSortingStep = await cycleFlowSettingService.GetFirstStepInPosUserAsync(posOrder.PosUserId);
+                if (firstSortingStep == null)
+                {
+                    notificationService.ErrorNotification(localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.OrderStatusSorting.First.NotFound").Result, false);
+                    return;
+                }
+                var customer = await cycleFlowSettingService.GetCustomerByOrderStatusIdAsync(firstSortingStep.OrderStatusId, firstSortingStep.PosUserId);
+
                 OrderStateOrderMapping orderStateOrderMapping = new OrderStateOrderMapping
                 {
                     OrderId = posOrder.Id,
                     NopStoreId  = posOrder.NopStoreId,
                     PosUserId = posOrder.PosUserId,
-                    CustomerId
+                    OrderStatusId = firstSortingStep.OrderStatusId,
+                    CustomerId = customer.Id,
                 };
+                await orderStateOrderMapping.SetBaseInfoAsync<OrderStateOrderImageMapping>(workContext);
+                await orderStateOrderMappingRepo.InsertAsync(orderStateOrderMapping);
             }
         }
     }

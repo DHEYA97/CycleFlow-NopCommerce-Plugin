@@ -117,6 +117,7 @@ namespace Nop.Plugin.Misc.CycleFlow
                 ["Admin.Plugin.CycleFlow.CycleFlowSetting.Fields.SearchStore"] = "Search Store",
                 ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.CurrentOrderStatusName"] = "Current Order Status Name",
                 ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.PosUserName"] = "Pos User Name",
+                ["Admin.Plugin.Misc.CycleFlow.Deportation.Check"] = "Sequencing error for {0} - {1} The sequence is incomplete For Charting {2} and Editing {3}",
 
                 #endregion
             };
@@ -218,7 +219,7 @@ namespace Nop.Plugin.Misc.CycleFlow
                 ["Admin.Plugin.CycleFlow.CycleFlowSetting.Fields.SearchStore"] = "بحث عن المتجر",
                 ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.CurrentOrderStatusName"] = "حالة الطلب الحالية",
                 ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.PosUserName"] = "اسم نقطة البيع",
-
+                ["Admin.Plugin.Misc.CycleFlow.Deportation.Check"] = "خطأ في التسلسل لـ {0} - {1}. التسلسل غير مكتمل لرسم المخططات {2} وتحرير {3}.",
                 #endregion
             };
         }

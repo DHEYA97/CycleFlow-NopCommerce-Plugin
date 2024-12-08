@@ -1701,3 +1701,4 @@ F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.Cy
 F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.CycleFlow\obj\Debug\net6.0\refint\Nop.Plugin.Misc.CycleFlow.dll
 F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.CycleFlow\obj\Debug\net6.0\Nop.Plugin.Misc.CycleFlow.pdb
 F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.CycleFlow\obj\Debug\net6.0\ref\Nop.Plugin.Misc.CycleFlow.dll
+F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\Deportation\List.cshtml

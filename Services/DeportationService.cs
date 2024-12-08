@@ -71,26 +71,35 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
 
         #region Methods
         public virtual async Task<IPagedList<OrderStateOrderMapping>> SearchOrderStateOrderMappingAsync(
-            int orderNumber = 0,
-            int pageIndex = 0, int pageSize = int.MaxValue, bool getOnlyTotalCount = false)
-        {
+                int orderNumber = 0,
+                int pageIndex = 0,int pageSize = int.MaxValue,bool getOnlyTotalCount = false)
+            {
             var customer = await _workContext.GetCurrentCustomerAsync();
 
-            var query = await _orderStateOrderMappingRepository.GetAllPagedAsync(query =>
+            var allRecords = await _orderStateOrderMappingRepository.Table.ToListAsync();
+
+            var groupedRecords = allRecords
+                .GroupBy(x => x.OrderId)
+                .Select(g => g.OrderByDescending(x => x.InsertionDate).FirstOrDefault());
+
+            var filteredRecords = new List<OrderStateOrderMapping>();
+
+            foreach (var record in groupedRecords)
             {
-                query = query.Where(x => _cycleFlowSettingService.GetCustomerAsync(x.OrderStatusId, x.PosUserId).Result.Id == customer.Id)
-                             .GroupBy(x => x.OrderId)
-                             .Select(g => g.OrderByDescending(x => x.InsertionDate).First());
-
-                if (orderNumber > 0)
+                var customerSetting = await _cycleFlowSettingService.GetCustomerAsync(record.PosUserId, record.OrderStatusId);
+                if (customerSetting.Id == customer.Id)
                 {
-                    query = query.Where(x => x.OrderId == orderNumber);
+                    filteredRecords.Add(record);
                 }
-                return query;
-
-            }, pageIndex, pageSize, getOnlyTotalCount);
-            return query;
+            }
+            if (orderNumber > 0)
+            {
+                filteredRecords = filteredRecords.Where(x => x.OrderId == orderNumber).ToList();
+            }
+            var pagedList = new PagedList<OrderStateOrderMapping>(filteredRecords, pageIndex, pageSize);
+            return pagedList;
         }
+
         #endregion
     }
 }
