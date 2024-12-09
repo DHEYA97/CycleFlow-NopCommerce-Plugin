@@ -61,6 +61,13 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             name = name.Trim();
             return await _imageTypeRepository.Table.AnyAsync(t => t.Name == name && t.Id != id);
         }
+        public virtual async Task<string> GetImageTypeNameAsync(int id)
+        {
+            return await _imageTypeRepository.Table
+                           .Where(x => x.Id == id)
+                           .Select(x => x.Name)
+                           .FirstOrDefaultAsync() ?? string.Empty;
+        }
         #endregion
 
         #region Utility

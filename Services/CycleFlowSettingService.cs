@@ -404,7 +404,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             var query = _orderStatusRepository.Table
                 .Where(z => z.IsActive && !z.Deleted);
 
-            var next = await GetNextStepByFirstStep(currentId, posUserId);
+            var next = await GetNextStepByFirstStepAsync(currentId, posUserId);
 
             if (exclude)
             {
@@ -493,7 +493,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             return list.Select(x => (x.Id, x.Name,x.Return)).ToList();
         }
 
-        public virtual async Task<int> GetNextStepByFirstStep(int firstStep, int posUserId)
+        public virtual async Task<int> GetNextStepByFirstStepAsync(int firstStep, int posUserId)
         {
             return await _orderStatusSortingTypeRepository.Table
                     .Where(x => x.OrderStatusId == firstStep && x.PosUserId == posUserId)
@@ -570,7 +570,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             HashSet<int> visitedStatuses = new HashSet<int>();
             visitedStatuses.Add(currentStatus.OrderStatusId);
 
-            var firstStatusName = await GetOrderStatusNameAsync(currentStatus.OrderStatusId);
+            var firstStatusName = await _orderStatusService.GetOrderStatusNameAsync(currentStatus.OrderStatusId);
 
             string sequenceHtml = $"<div class='sequence-box'>{firstStatusName} ({currentStatus.OrderStatusId})</div>";
             while (currentStatus != null)
@@ -579,16 +579,16 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                 if (nextStatus == null)
                 {
                     sequenceHtml += "<div class='arrow'></div>";
-                    sequenceHtml += $"<div class='sequence-box'>{GetOrderStatusNameAsync(currentStatus.NextStep).Result} ({currentStatus.NextStep})</div>";
+                    sequenceHtml += $"<div class='sequence-box'>{_orderStatusService.GetOrderStatusNameAsync(currentStatus.NextStep).Result} ({currentStatus.NextStep})</div>";
 
-                    sequenceHtml += $"<div class='alert alert-danger'>انقطاع في السلسلة: لم يتم العثور على الحالة التالية بعد {currentStatus.NextStep} ({GetOrderStatusNameAsync(currentStatus.NextStep).Result}).</div>";
+                    sequenceHtml += $"<div class='alert alert-danger'>انقطاع في السلسلة: لم يتم العثور على الحالة التالية بعد {currentStatus.NextStep} ({_orderStatusService.GetOrderStatusNameAsync(currentStatus.NextStep).Result}).</div>";
                     break;
                 }
 
                 if (visitedStatuses.Contains(nextStatus.OrderStatusId))
                 {
                     sequenceHtml += "<div class='arrow'></div>";
-                    sequenceHtml += $"<div class='sequence-box'>{GetOrderStatusNameAsync(currentStatus.NextStep).Result} ({currentStatus.NextStep})</div>";
+                    sequenceHtml += $"<div class='sequence-box'>{_orderStatusService.GetOrderStatusNameAsync(currentStatus.NextStep).Result} ({currentStatus.NextStep})</div>";
 
                     sequenceHtml += $"<div class='alert alert-danger'>انقطاع في السلسلة: تم العثور على حلقة بين الحالة {currentStatus.OrderStatusId} ({firstStatusName}) والحالة {nextStatus.OrderStatusId}.</div>";
                     break;
@@ -596,14 +596,14 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
 
                 visitedStatuses.Add(nextStatus.OrderStatusId);
 
-                var nextStatusName = await GetOrderStatusNameAsync(nextStatus.OrderStatusId);
+                var nextStatusName = await _orderStatusService.GetOrderStatusNameAsync(nextStatus.OrderStatusId);
 
                 sequenceHtml += "<div class='arrow'></div>";
                 sequenceHtml += $"<div class='sequence-box'>{nextStatusName} ({nextStatus.OrderStatusId})</div>";
 
                 if (nextStatus.IsLastStep)
                 {
-                    var lastStatusName = await GetOrderStatusNameAsync(nextStatus.NextStep);
+                    var lastStatusName = await _orderStatusService.GetOrderStatusNameAsync(nextStatus.NextStep);
 
                     sequenceHtml += "<div class='arrow'></div>";
                     sequenceHtml += $"<div class='sequence-box'>{lastStatusName} ({nextStatus.NextStep})</div>";
@@ -646,28 +646,21 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                  }
             }
         }
+        public virtual async Task<int?> GetReturnStepByNextStepAsync(int statusId, int posUserId)
+        {
+            return await _orderStatusSortingTypeRepository.Table
+                    .Where(x => x.OrderStatusId == statusId && x.PosUserId == posUserId)
+                    .Select(o => o.ReturnStepId)
+                    .FirstOrDefaultAsync();
+        }
 
         #endregion
         #region Utilite
-        protected virtual async Task<string> GetOrderStatusNameAsync(int statusId)
-        {
-           return await _orderStatusRepository.Table
-                          .Where(x => x.Id == statusId)
-                          .Select(x => x.Name)
-                          .FirstOrDefaultAsync()?? string.Empty;
-        }
         protected virtual async Task<int?> GetFirstStepByNextStepAsync(int nextstep, int posUserId)
         {
             return await _orderStatusSortingTypeRepository.Table
                     .Where(x => x.NextStep == nextstep && x.PosUserId == posUserId)
                     .Select(o => o.OrderStatusId)
-                    .FirstOrDefaultAsync();
-        }
-        protected virtual async Task<int?> GetReturnStepByNextStepAsync(int statusId, int posUserId)
-        {
-            return await _orderStatusSortingTypeRepository.Table
-                    .Where(x => x.OrderStatusId == statusId && x.PosUserId == posUserId)
-                    .Select(o => o.ReturnStepId)
                     .FirstOrDefaultAsync();
         }
         #endregion

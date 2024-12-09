@@ -11,5 +11,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
         Task UpdateOrderStatusAsync(OrderStatus orderStatus);
         Task DeleteOrderStatusAsync(OrderStatus orderStatus);
         Task<bool> IsOrderStatesNameFoundAsync(string Name,int Id);
+        Task<string> GetOrderStatusNameAsync(int statusId);
     }
 }

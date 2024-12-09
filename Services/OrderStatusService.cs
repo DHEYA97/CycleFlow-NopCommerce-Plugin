@@ -63,6 +63,13 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
 
             return query;
         }
+        public virtual async Task<string> GetOrderStatusNameAsync(int statusId)
+        {
+            return await _orderStatusRepository.Table
+                           .Where(x => x.Id == statusId)
+                           .Select(x => x.Name)
+                           .FirstOrDefaultAsync() ?? string.Empty;
+        }
         #endregion
         #region Utilite
         #endregion

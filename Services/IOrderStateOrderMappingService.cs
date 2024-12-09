@@ -1,4 +1,5 @@
 ﻿using Nop.Plugin.Misc.CycleFlow.Domain;
+using Nop.Plugin.Misc.CycleFlow.Models.Deportation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
     {
         Task<string?> GetPictureUrlByImageTypeIdAsync(int imgTypeId, int posUserId, int orderId, int orderStatusId);
         Task<OrderStateOrderMapping> GetOrderStateOrderMappingByIdAsync(int id);
+        Task<List<AllDeportationModel>> GetAllDeportationModelByIdAsync(int posOrderId);
     }
 }

@@ -11,5 +11,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
         Task UpdateImageTypeAsync(ImageType imageType);
         Task DeleteImageTypeAsync(ImageType imageType);
         Task<bool> IsImageTypeNameFoundAsync(string name, int id);
+        Task<string> GetImageTypeNameAsync(int id);
     }
 }

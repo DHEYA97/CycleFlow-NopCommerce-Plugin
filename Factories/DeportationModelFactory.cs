@@ -114,9 +114,9 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                 model ??= orderStateOrderMapping.ToModel<DeportationModel>();
 
                 var order = await _posOrderService.GetPosOrderByIdAsync(orderStateOrderMapping.OrderId);
-                var orderItems = await _posOrderService.GetPosOrderItemsByNopOrderIdAsync(orderStateOrderMapping.OrderId);
+                var orderItems = await _orderService.GetOrderItemsAsync(order.NopOrderId);
                 var orderStatus = await _orderStatusService.GetOrderStatusByIdAsync(orderStateOrderMapping.OrderStatusId);
-                var nextOrderStatus = await _orderStatusService.GetOrderStatusByIdAsync(await _cycleFlowSettingService.GetNextStepByFirstStep(orderStateOrderMapping.OrderStatusId, orderStateOrderMapping.PosUserId));
+                var nextOrderStatus = await _orderStatusService.GetOrderStatusByIdAsync(await _cycleFlowSettingService.GetNextStepByFirstStepAsync(orderStateOrderMapping.OrderStatusId, orderStateOrderMapping.PosUserId));
                 
                 model.CurrentOrderStatusName = orderStatus?.Name ?? string.Empty;
                 model.NextOrderStatusName = nextOrderStatus?.Name ?? string.Empty;
@@ -126,6 +126,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                     var customer = await _customerService.GetCustomerByIdAsync(orderStateOrderMapping.CustomerId);
                     var orderSorting = await _orderStatusSortingTypeRepository.Table.FirstOrDefaultAsync(x => x.PosUserId == orderStateOrderMapping.PosUserId && x.OrderStatusId == orderStateOrderMapping.OrderStatusId);
                     var imageTypes = await _OrderStatusImageTypeMapping.Table.Where(x => x.PosUserId == orderStateOrderMapping.PosUserId && x.OrderStatusId == orderStateOrderMapping.OrderStatusId).ToListAsync();
+                    var returnStatus = await _orderStatusService.GetOrderStatusByIdAsync(await _cycleFlowSettingService.GetReturnStepByNextStepAsync(orderStateOrderMapping.OrderStatusId, orderStateOrderMapping.PosUserId) ?? 0);
 
                     model.StoreName = store?.Name ?? string.Empty;
                     model.OrderDate = order.CreatedOnUtc;
@@ -136,12 +137,13 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                     model.UserSmsTemplateId = orderSorting.UserSmsTemplateId;
                     model.IsEnableReturn = orderSorting.IsEnableReturn;
                     model.ReturnStepId = orderSorting.ReturnStepId;
-                    model.OrderItemCount = orderItems.Sum(x=>x.PosProductUnitQuantity);
+                    model.ReturnStepName = returnStatus?.Name ?? string.Empty;
+                    model.OrderItemCount = orderItems.Sum(x=>x.Quantity);
                     foreach(var orderItem in orderItems)
                     {
                         
-                        var product = await _orderService.GetProductByOrderItemIdAsync(orderItem.NopOrderItemId);
-                        var orderItemAttributesXml = (await _orderService.GetOrderItemByIdAsync(product.Id)).AttributesXml;
+                        var product = await _orderService.GetProductByOrderItemIdAsync(orderItem.Id);
+                        var orderItemAttributesXml = (await _orderService.GetOrderItemByIdAsync(orderItem.Id)).AttributesXml;
                         var picture = await _pictureService.GetProductPictureAsync(product, orderItemAttributesXml);
                         var pictureUrl = await _pictureService.GetPictureUrlAsync(picture.Id);
                         model.ProductOrderItem.Add(
@@ -151,7 +153,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                                     Sku = product.Sku,
                                     ProductName = product.Name,
                                     PictureThumbnailUrl = pictureUrl,
-                                    Quantity = orderItem.PosProductUnitQuantity,
+                                    Quantity = orderItem.Quantity,
                                 }
                             );
                     }
@@ -163,12 +165,13 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                                 new DeportationModel.ImageTypeModel
                                     {
                                         ImageTypeId = imageType.Id,
+                                        ImageTypeName = await _imageTypeService.GetImageTypeNameAsync(imageType.Id),
                                         ImageTypeUrl = await _orderStateOrderMappingService.GetPictureUrlByImageTypeIdAsync(imageType.Id, orderStateOrderMapping.PosUserId, orderStateOrderMapping.OrderId, orderStateOrderMapping.OrderStatusId)
-                                }
+                                    }
                                 );
                         }
                     }
-
+                    model.AllDeportation = await _orderStateOrderMappingService.GetAllDeportationModelByIdAsync(order.Id);
                 }
             }
             return model;

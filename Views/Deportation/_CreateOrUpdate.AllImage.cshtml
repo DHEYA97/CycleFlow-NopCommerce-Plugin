@@ -1,6 +1,118 @@
-﻿@model Nop.Plugin.Misc.CycleFlow.Models.CycleFlowSetting.CycleFlowSettingModel
+﻿@model Nop.Plugin.Misc.CycleFlow.Models.Deportation.DeportationModel
+<style>
+    .image-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+        .image-container img {
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+            max-width: 100px;
+            max-height: 100px;
+        }
+
+    .image-type {
+        text-align: center;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+</style>
+
+
 <div class="card-body">
     <div class="cards-group">
+        <div class="form-group row">
+            <div class="col-md-12" style="overflow-x: auto;">
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                @T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.StatusName")
+                            </th>
+                            <th>
+                                @T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.NextStatusName")
+                            </th>
+                            <th>
+                                @T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.DeportationDate")
+                            </th>
+                            <th>
+                                @T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.ImageType")
+                            </th>
+                            <th>
+                                @T("Admin.Orders.Products.Picture")
+                            </th>
 
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tbody>
+                            @foreach (var item in Model.AllDeportation)
+                            {
+                            <tr>
+                                <td class="text-center">
+                                    <p>@item.StatusName</p>
+                                </td>
+                                <td class="text-center">
+                                        @if (item.NextStatusName != null)
+                                        {
+                                            <p>@item.NextStatusName</p>
+                                        }
+                                        else
+                                        {
+                                            <p>@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.NoNextStatusName")</p>
+                                        }
+                                    </td>
+                                <td class="text-center">
+                                    <p>@item.DeportationDate</p>
+                                </td>
+                                <td class="text-center">
+                                        @if (item.ImageType != null && item.ImageType.Any())
+                                        {
+                                            foreach (var tuple in item.ImageType)
+                                            {
+                                                if (tuple.HasValue)
+                                                {
+                                                    var (imgType, _) = tuple.Value;
+                                                    <div class="image-type">@imgType</div>
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <p>@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.NoimgType")</p>
+                                        }
+                                </td>
+                                <td class="text-center">
+                                        @if (item.ImageType != null && item.ImageType.Any())
+                                        {
+                                            foreach (var tuple in item.ImageType)
+                                            {
+                                                if (tuple.HasValue)
+                                                {
+                                                    var (_, picture) = tuple.Value;
+                                                    <div class="image-container">
+                                                        <img src="@picture" alt="Picture" />
+                                                    </div>
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                        <p>@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.NoPicture")</p>
+                                        }
+                                </td>
+                            </tr>
+                            }
+                    </tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>

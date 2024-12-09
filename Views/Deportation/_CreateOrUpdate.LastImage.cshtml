@@ -1,45 +1,60 @@
-﻿@model Nop.Plugin.Misc.CycleFlow.Models.CycleFlowSetting.CycleFlowSettingModel
+﻿@model Nop.Plugin.Misc.CycleFlow.Models.Deportation.DeportationModel
 <div class="card-body">
     <div class="cards-group">
+        <div class="form-group row">
+            <div class="col-md-12" style="overflow-x: auto;">
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                @T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.ImageType")
+                            </th>
+                            <th>
+                                @T("Admin.Orders.Products.Picture")
+                            </th>
+                            <th>
+                                @T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.AddPicture")
+                            </th>
 
-        <div class="form-group row">
-            <div class="col-md-3">
-                <nop-label asp-for="IsEnableSendToClient" />
-            </div>
-            <div class="col-md-9">
-                <nop-editor asp-for="IsEnableSendToClient" />
-                <span asp-validation-for="IsEnableSendToClient"></span>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            @if (Model.ImageType?.Count > 0)
+                            { 
+                                @for (int i = 0; i < Model.ImageType?.Count; i++)
+                                {
+                                    <tr>
+                                        <td class="text-center">
+                                            <p>@Model.ImageType[i].ImageTypeName</p>
+                                        </td>
+                                        <td>
+                                            <img src="@Model.ImageType[i].ImageTypeUrl" alt="Picture" style="border: 1px solid #ddd; padding: 5px; width: 100px; height: auto;" />
+                                        </td>
+                                        <td>
+                                            <div class="form-group row">
+                                                <div class="col-md-3">
+                                                    <nop-label asp-for="ImageType[i].ImageTypeId" />
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <nop-editor asp-for="ImageType[i].ImageTypeId" />
+                                                    <span asp-validation-for="ImageType[i].ImageTypeId"></span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }    
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="3" class="text-center">
+                                        <p>@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.NoImages")</p>
+                                    </td>
+                                </tr>
+                            }
+                    </tbody>
+                </table>
             </div>
         </div>
-        <div class="form-group row">
-            <div class="col-md-3">
-                <nop-label asp-for="ClientSmsTemplateId" />
-            </div>
-            <div class="col-md-9">
-                <nop-select asp-for="ClientSmsTemplateId" asp-items="Model.AvailableClientSmsTemplates" />
-                <span asp-validation-for="ClientSmsTemplateId"></span>
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <div class="col-md-3">
-                <nop-label asp-for="IsEnableSendToUser" />
-            </div>
-            <div class="col-md-9">
-                <nop-editor asp-for="IsEnableSendToUser" />
-                <span asp-validation-for="IsEnableSendToUser"></span>
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-md-3">
-                <nop-label asp-for="UserSmsTemplateId" />
-            </div>
-            <div class="col-md-9">
-                <nop-select asp-for="UserSmsTemplateId" asp-items="Model.AvailableUserSmsTemplates" />
-                <span asp-validation-for="UserSmsTemplateId"></span>
-            </div>
-        </div>
-
     </div>
 </div>
-<nop-alert asp-alert-id="validationAlert" asp-alert-message="@T("Admin.Common.Alert.ValidationError")" />

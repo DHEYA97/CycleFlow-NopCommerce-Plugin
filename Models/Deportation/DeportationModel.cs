@@ -5,7 +5,7 @@ using Nop.Web.Framework.Mvc.ModelBinding;
 
 namespace Nop.Plugin.Misc.CycleFlow.Models.Deportation
 {
-    public record DeportationModel : BaseNopEntityModel
+    public partial record DeportationModel : BaseNopEntityModel
     {
         #region Ctor
         public DeportationModel()
@@ -57,6 +57,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Deportation
         public bool IsEnableReturn { get; set; }
         [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.ReturnStep")]
         public int? ReturnStepId { get; set; }
+        [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.ReturnStepName")]
+        public string? ReturnStepName { get; set; }
 
         public string? Note { get; set; }
 
@@ -80,21 +82,11 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Deportation
         {
 
             [UIHint("Picture")]
-            [NopResourceDisplayName("Admin.Catalog.Products.Pictures.Fields.Picture")]
+            [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.ReturnStep.Picture")]
             public int? ImageTypeId { get; set; }
+            [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.ReturnStep.Name")]
+            public string? ImageTypeName { get; set; }
             public string? ImageTypeUrl { get; set; }
-        }
-        public partial record AllDeportationModel : BaseNopEntityModel
-        {
-            public AllDeportationModel()
-            {
-                ImageType = new List<(string,string)?>();
-            }
-            public string StatusName { get; set; }
-            public string? NextStatusName { get; set; }
-            public DateTime DeportationDate { get; set; }
-            public IList<(string,string)?> ImageType { get; set; }
-
         }
         #endregion
     }
