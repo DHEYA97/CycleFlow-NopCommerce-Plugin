@@ -1,0 +1,53 @@
+﻿@model Nop.Plugin.Misc.CycleFlow.Models.Deportation.DeportationModel
+
+<div class="card-body">
+    <div class="form-group row">
+        <div class="col-md-12" style="overflow-x: auto;">
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            @T("Admin.Orders.Products.Number")
+                        </th>
+                        <th>
+                            @T("Admin.Orders.Products.SKU")
+                        </th>
+                        <th>
+                            @T("Admin.Orders.Products.ProductName")
+                        </th>
+                        <th>
+                            @T("Admin.Orders.Products.Quantity")
+                        </th>
+                        <th>
+                            @T("Admin.Orders.Products.Picture")
+                        </th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @{int index = 0;}
+                @foreach (var item in Model.ProductOrderItem)
+                {
+                    <tr>
+                        <td class="text-center">
+                            <p>@(++index)</p>
+                        </td>
+                        <td class="text-center">
+                            <p>@item.Sku</p>
+                        </td>
+                        <td class="text-center">
+                            <p>@item.ProductName</p>
+                        </td>
+                        <td class="text-center">
+                            <p>@item.Quantity</p>
+                        </td>
+                        <td class="text-center">
+                            <img src="@item.PictureThumbnailUrl" alt="" title="" />
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

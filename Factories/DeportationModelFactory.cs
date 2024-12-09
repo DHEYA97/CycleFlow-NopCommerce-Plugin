@@ -38,7 +38,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
         private readonly IRepository<OrderStatusSorting> _orderStatusSortingTypeRepository;
         private readonly IRepository<OrderStatusImageTypeMapping> _OrderStatusImageTypeMapping;
         private readonly IPictureService _pictureService;
-        private readonly IOrderStateOrderImageMappingService _orderStateOrderImageMappingService;
+        private readonly IOrderStateOrderMappingService _orderStateOrderMappingService;
+        private readonly IPosOrderService _posOrderService;
         #endregion
         #region Ctor
         public DeportationModelFactory(ILocalizationService localizationService,
@@ -58,7 +59,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
             IRepository<OrderStatusSorting> orderStatusSortingTypeRepository,
             IPictureService pictureService,
             IRepository<OrderStatusImageTypeMapping> OrderStatusImageTypeMapping,
-            IOrderStateOrderImageMappingService orderStateOrderImageMappingService
+            IOrderStateOrderMappingService orderStateOrderMappingService,
+            IPosOrderService posOrderService
             )
         {
             _localizationService = localizationService;
@@ -78,7 +80,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
             _orderStatusSortingTypeRepository = orderStatusSortingTypeRepository;
             _pictureService = pictureService;
             _OrderStatusImageTypeMapping = OrderStatusImageTypeMapping;
-            _orderStateOrderImageMappingService = orderStateOrderImageMappingService;
+            _orderStateOrderMappingService = orderStateOrderMappingService;
+            _posOrderService = posOrderService;
         }
         #endregion
         #region Methods
@@ -110,8 +113,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
             {
                 model ??= orderStateOrderMapping.ToModel<DeportationModel>();
 
-                var order = await _orderService.GetOrderByIdAsync(orderStateOrderMapping.OrderId);
-                var orderItems = await _orderService.GetOrderItemsAsync(orderStateOrderMapping.OrderId);
+                var order = await _posOrderService.GetPosOrderByIdAsync(orderStateOrderMapping.OrderId);
+                var orderItems = await _posOrderService.GetPosOrderItemsByNopOrderIdAsync(orderStateOrderMapping.OrderId);
                 var orderStatus = await _orderStatusService.GetOrderStatusByIdAsync(orderStateOrderMapping.OrderStatusId);
                 var nextOrderStatus = await _orderStatusService.GetOrderStatusByIdAsync(await _cycleFlowSettingService.GetNextStepByFirstStep(orderStateOrderMapping.OrderStatusId, orderStateOrderMapping.PosUserId));
                 
@@ -133,18 +136,22 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                     model.UserSmsTemplateId = orderSorting.UserSmsTemplateId;
                     model.IsEnableReturn = orderSorting.IsEnableReturn;
                     model.ReturnStepId = orderSorting.ReturnStepId;
+                    model.OrderItemCount = orderItems.Sum(x=>x.PosProductUnitQuantity);
                     foreach(var orderItem in orderItems)
                     {
-                        var product = await _orderService.GetProductByOrderItemIdAsync(orderItem.ProductId);
-                        var picture = await _pictureService.GetProductPictureAsync(product, orderItem.AttributesXml);
+                        
+                        var product = await _orderService.GetProductByOrderItemIdAsync(orderItem.NopOrderItemId);
+                        var orderItemAttributesXml = (await _orderService.GetOrderItemByIdAsync(product.Id)).AttributesXml;
+                        var picture = await _pictureService.GetProductPictureAsync(product, orderItemAttributesXml);
                         var pictureUrl = await _pictureService.GetPictureUrlAsync(picture.Id);
                         model.ProductOrderItem.Add(
                                 new DeportationModel.ProductOrderItemModel
                                 {
-                                    ProductId = orderItem.ProductId,
+                                    ProductId = product.Id,
                                     Sku = product.Sku,
                                     ProductName = product.Name,
-                                    PictureThumbnailUrl = pictureUrl
+                                    PictureThumbnailUrl = pictureUrl,
+                                    Quantity = orderItem.PosProductUnitQuantity,
                                 }
                             );
                     }
@@ -156,7 +163,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                                 new DeportationModel.ImageTypeModel
                                     {
                                         ImageTypeId = imageType.Id,
-                                        ImageTypeUrl = await _orderStateOrderImageMappingService.GetPictureUrlByImageTypeIdAsync(imageType.Id, orderStateOrderMapping.PosUserId, orderStateOrderMapping.OrderId, orderStateOrderMapping.OrderStatusId)
+                                        ImageTypeUrl = await _orderStateOrderMappingService.GetPictureUrlByImageTypeIdAsync(imageType.Id, orderStateOrderMapping.PosUserId, orderStateOrderMapping.OrderId, orderStateOrderMapping.OrderStatusId)
                                 }
                                 );
                         }

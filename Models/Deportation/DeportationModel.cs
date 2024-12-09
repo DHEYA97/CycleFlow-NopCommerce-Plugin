@@ -12,6 +12,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Deportation
         {
             ProductOrderItem = new List<ProductOrderItemModel>();
             ImageType = new List<ImageTypeModel>();
+            AllDeportation = new List<AllDeportationModel>();
         }
         #endregion
         #region Properties
@@ -25,6 +26,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Deportation
         public int OrderId { get; set; }
         [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.OrderDate")]
         public DateTime OrderDate { get; set; }
+        [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.OrderItemCount")]
+        public int OrderItemCount { get; set; }
 
         [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.OrderStatusId")]
         public int OrderStatusId { get; set; }
@@ -59,7 +62,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Deportation
 
         public IList<ProductOrderItemModel> ProductOrderItem { get; set; }
         public IList<ImageTypeModel>? ImageType { get; set; }
-
+        public IList<AllDeportationModel> AllDeportation { get; set; }
         #endregion
         #region Nested Classes
         public partial record ProductOrderItemModel : BaseNopEntityModel
@@ -71,6 +74,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Deportation
             public string Sku { get; set; }
 
             public string PictureThumbnailUrl { get; set; }
+            public int Quantity { get; set; }
         }
         public partial record ImageTypeModel : BaseNopEntityModel
         {
@@ -79,6 +83,18 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Deportation
             [NopResourceDisplayName("Admin.Catalog.Products.Pictures.Fields.Picture")]
             public int? ImageTypeId { get; set; }
             public string? ImageTypeUrl { get; set; }
+        }
+        public partial record AllDeportationModel : BaseNopEntityModel
+        {
+            public AllDeportationModel()
+            {
+                ImageType = new List<(string,string)?>();
+            }
+            public string StatusName { get; set; }
+            public string? NextStatusName { get; set; }
+            public DateTime DeportationDate { get; set; }
+            public IList<(string,string)?> ImageType { get; set; }
+
         }
         #endregion
     }

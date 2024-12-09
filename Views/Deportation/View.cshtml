@@ -1,0 +1,22 @@
+﻿@using Nop.Plugin.Misc.CycleFlow.Models.Deportation
+@model DeportationModel
+@{
+    ViewBag.PageTitle = T("Admin.Plugin.Misc.CycleFlow.Deportation.Title").Text;
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    NopHtml.SetActiveMenuItemSystemName("Deportation");
+}
+<form asp-controller="Deportation" asp-action="Deportation" method="post">
+    @await Html.PartialAsync("_CreateOrUpdate", Model)
+    <div class="content-footer clearfix">
+        <div class="float-right">
+            <button type="submit" name="save" class="btn btn-primary">
+                <i class="far fa-save"></i>
+                @T("Admin.Common.Save")
+            </button>
+            <button type="submit" name="save-continue" class="btn btn-primary">
+                <i class="far fa-save"></i>
+                @T("Admin.Common.SaveContinue")
+            </button>
+        </div>
+    </div>
+</form>

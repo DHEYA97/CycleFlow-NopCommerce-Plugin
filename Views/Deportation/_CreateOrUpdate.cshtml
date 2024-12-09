@@ -1,0 +1,37 @@
+﻿@using Nop.Plugin.Misc.CycleFlow.Models.Deportation
+@model DeportationModel
+
+@{
+    var customer = await workContext.GetCurrentCustomerAsync();
+    
+    const string hideInfoBlockAttributeName = "Deportation.HideInfoBlock";
+    var hideInfoBlock = await genericAttributeService.GetAttributeAsync<bool>(customer, hideInfoBlockAttributeName);
+
+    const string hideOrderBlockAttributeName = "Deportation.HideOrderBlock";
+    var hideOrderBlock = await genericAttributeService.GetAttributeAsync<bool>(customer, hideOrderBlockAttributeName);
+
+    const string hideAllDeportationImageBlockAttributeName = "Deportation.HideAllDeportationImageBlock";
+    var hideAllBlock = await genericAttributeService.GetAttributeAsync<bool>(customer, hideAllDeportationImageBlockAttributeName);
+
+    const string hideLastDeportationImageBlockAttributeName = "Deportation.HideLastDeportationImageBlock";
+    var hideLastDeportationImageBlock = await genericAttributeService.GetAttributeAsync<bool>(customer, hideLastDeportationImageBlockAttributeName);
+    
+    const string hideDeportationBlockAttributeName = "Deportation.HideDeportationBlock";
+    var hideDeportationBlock = await genericAttributeService.GetAttributeAsync<bool>(customer, hideDeportationBlockAttributeName);
+}
+
+<div asp-validation-summary="All"></div>
+<input asp-for="Id" type="hidden" />
+<section class="content">
+    <div class="container-fluid">
+        <div class="form-horizontal">
+            <nop-cards id="vendor-cards">
+                <nop-card asp-name="vendor-info" asp-icon="fas fa-info" asp-title="@T("Admin.Plugin.Misc.CycleFlow.Deportation.Info")" asp-hide-block-attribute-name="@hideInfoBlockAttributeName" asp-hide="@hideInfoBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.Info", Model)</nop-card>
+                <nop-card asp-name="Send" asp-icon="fas fa-search-plus" asp-title="@T("Admin.Plugin.Misc.CycleFlow.Deportation.Order")" asp-hide-block-attribute-name="@hideOrderBlockAttributeName" asp-hide="@hideOrderBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.Order", Model)</nop-card>
+                <nop-card asp-name="Send" asp-icon="fas fa-search-plus" asp-title="@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage")" asp-hide-block-attribute-name="@hideAllDeportationImageBlockAttributeName" asp-hide="@hideAllBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.AllImage", Model)</nop-card>
+                <nop-card asp-name="Send" asp-icon="fas fa-search-plus" asp-title="@T("Admin.Plugin.Misc.CycleFlow.Deportation.LastDeportationImage")" asp-hide-block-attribute-name="@hideLastDeportationImageBlockAttributeName" asp-hide="@hideLastDeportationImageBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.LastImage", Model)</nop-card>
+                <nop-card asp-name="Send" asp-icon="fas fa-search-plus" asp-title="@T("Admin.Plugin.Misc.CycleFlow.Deportation.Deportation")" asp-hide-block-attribute-name="@hideDeportationBlockAttributeName" asp-hide="@hideDeportationBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.Deportation", Model)</nop-card>
+            </nop-cards>
+        </div>
+    </div>
+</section>

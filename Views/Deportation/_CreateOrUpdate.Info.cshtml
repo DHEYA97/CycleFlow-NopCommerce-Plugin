@@ -1,0 +1,70 @@
+﻿@model Nop.Plugin.Misc.CycleFlow.Models.Deportation.DeportationModel
+ 
+<div class="card-body">
+    <div class="cards-group">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <nop-label asp-for="OrderId" />
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-text-row">@Model.OrderId</div>
+                    </div>
+                    <input asp-for="OrderId" type="hidden" />
+                </div>
+                
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <nop-label asp-for="OrderDate" />
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-text-row">@Model.OrderDate</div>
+                    </div>
+                    <input asp-for="OrderDate" type="hidden" />
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <nop-label asp-for="OrderItemCount" />
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-text-row">@Model.OrderItemCount</div>
+                    </div>
+                    <input asp-for="OrderItemCount" type="hidden" />
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <nop-label asp-for="StoreName" />
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-text-row">@Model.StoreName</div>
+                    </div>
+                    <input asp-for="NopStoreId" type="hidden" />
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <nop-label asp-for="PosUserName" />
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-text-row">@Model.PosUserName</div>
+                    </div>
+                    <input asp-for="PosUserId" type="hidden" />
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <nop-label asp-for="CustomerName" />
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-text-row">@Model.CustomerName</div>
+                    </div>
+                    <input asp-for="CustomerId" type="hidden" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
