@@ -29,6 +29,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         private readonly IDeportationModelFactory _deportationModelFactory;
         private readonly ICycleFlowSettingService _cycleFlowSettingService;
         private readonly IPosUserService _posUserService;
+        private readonly IOrderStateOrderMappingService _orderStateOrderMappingService;
         #endregion
         #region Ctor
         public DeportationController(
@@ -36,7 +37,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             INotificationService notificationService,
             IDeportationModelFactory deportationModelFactory,
             ICycleFlowSettingService cycleFlowSettingService,
-            IPosUserService posUserService
+            IPosUserService posUserService,
+            IOrderStateOrderMappingService orderStateOrderMappingService
             )
         {
             _permissionService = permissionService;
@@ -44,6 +46,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             _deportationModelFactory = deportationModelFactory;
             _cycleFlowSettingService = cycleFlowSettingService;
             _posUserService = posUserService;
+            _orderStateOrderMappingService = orderStateOrderMappingService;
         }
         #endregion
         #region Methods
@@ -67,6 +70,20 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             await _cycleFlowSettingService.NotificationPosUserAsync();
             var model = await _deportationModelFactory.PrepareDeportationModelListModelAsync(searchModel);
             return Json(model);
+        }
+        public virtual async Task<IActionResult> View(int id)
+        {
+            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.DeportationCycleFlowPlugin))
+                return AccessDeniedView();
+            var orderStateOrderMapping = await _orderStateOrderMappingService.GetOrderStateOrderMappingByIdAsync(id);
+            if(orderStateOrderMapping == null)
+            {
+                _notificationService.ErrorNotification("Nop.Plugin.Misc.CycleFlow.Deportation.NotFound");
+                return RedirectToAction(nameof(List));
+            }
+            await _cycleFlowSettingService.NotificationPosUserAsync();
+            var model = await _deportationModelFactory.PrepareDeportationModelAsync(null, orderStateOrderMapping);
+            return View(model);
         }
         #endregion
     }
