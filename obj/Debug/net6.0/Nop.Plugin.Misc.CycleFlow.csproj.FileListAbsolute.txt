@@ -1702,3 +1702,10 @@ F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.Cy
 F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.CycleFlow\obj\Debug\net6.0\Nop.Plugin.Misc.CycleFlow.pdb
 F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.CycleFlow\obj\Debug\net6.0\ref\Nop.Plugin.Misc.CycleFlow.dll
 F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\Deportation\List.cshtml
+F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\Deportation\View.cshtml
+F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\Deportation\_CreateOrUpdate.AllImage.cshtml
+F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\Deportation\_CreateOrUpdate.cshtml
+F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\Deportation\_CreateOrUpdate.Deportation.cshtml
+F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\Deportation\_CreateOrUpdate.Info.cshtml
+F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\Deportation\_CreateOrUpdate.LastImage.cshtml
+F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\Deportation\_CreateOrUpdate.Order.cshtml
