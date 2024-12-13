@@ -642,7 +642,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                  var (text, status) = await CheckOrderStatusSequenceAsync(posUserId);
                  if(!status)
                  {
-                    _notificationService.ErrorNotification(string.Format(await _localizationService.GetResourceAsync("Admin.Plugin.Misc.CycleFlow.Deportation.Check"), posUserId, posUserName, $"<a href='/Admin/CheckPosOrderStatus/View/{posUserId}'>Her</a>", $"<a href='/Admin/CycleFlowSetting/List'>Her</a>"), false);
+                    _notificationService.WarningNotification(string.Format(await _localizationService.GetResourceAsync("Admin.Plugin.Misc.CycleFlow.Deportation.Check"), posUserId, posUserName, $"<a href='/Admin/CheckPosOrderStatus/View/{posUserId}'>Her</a>", $"<a href='/Admin/CycleFlowSetting/List'>Her</a>"), false);
                  }
             }
         }

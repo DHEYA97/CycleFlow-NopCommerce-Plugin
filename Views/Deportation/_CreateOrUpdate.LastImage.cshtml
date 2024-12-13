@@ -20,29 +20,33 @@
                     </thead>
                     <tbody>
                             @if (Model.ImageType?.Count > 0)
-                            { 
+                            {
                                 @for (int i = 0; i < Model.ImageType?.Count; i++)
                                 {
                                     <tr>
                                         <td class="text-center">
                                             <p>@Model.ImageType[i].ImageTypeName</p>
                                         </td>
-                                        <td>
-                                            <img src="@Model.ImageType[i].ImageTypeUrl" alt="Picture" style="border: 1px solid #ddd; padding: 5px; width: 100px; height: auto;" />
+
+                                        <td class="text-center">
+                                            <img src="@Model.ImageType[i].ImageTypeUrl" alt="Picture"
+                                                 style="border: 1px solid #ddd; padding: 5px; width: 100px; height: auto;" />
                                         </td>
+
                                         <td>
-                                            <div class="form-group row">
-                                                <div class="col-md-3">
-                                                    <nop-label asp-for="ImageType[i].ImageTypeId" />
+                                            <div class="form-group">
+                                                <div class="form-input">
+                                                    <nop-editor asp-for="ImageType[i].PictureId"
+                                                                asp-template="Picture" />
+                                                    <span asp-validation-for="ImageType[i].PictureId" class="text-danger"></span>
                                                 </div>
-                                                <div class="col-md-9">
-                                                    <nop-editor asp-for="ImageType[i].ImageTypeId" />
-                                                    <span asp-validation-for="ImageType[i].ImageTypeId"></span>
-                                                </div>
+                                                <input asp-for="ImageType[i].ImageTypeId" type="hidden" />
                                             </div>
+
                                         </td>
                                     </tr>
-                                }    
+                                }
+
                             }
                             else
                             {
