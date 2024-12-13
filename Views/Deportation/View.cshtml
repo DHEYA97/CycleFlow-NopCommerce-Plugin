@@ -5,10 +5,11 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
     NopHtml.SetActiveMenuItemSystemName("Deportation");
 }
-<form asp-controller="Deportation" asp-action="Deportation" method="post">
-    @await Html.PartialAsync("_CreateOrUpdate", Model)
-
-    <div class="content-footer clearfix">
+<form asp-controller="Deportation" asp-action="DeportationProcess" method="post">
+    <div class="content-header clearfix">
+        <h1 class="float-left">
+            @T("Admin.Orders")
+        </h1>
         <div class="float-right">
             <button type="submit" name="save" class="btn btn-primary">
                 <i class="far fa-save"></i>
@@ -17,11 +18,12 @@
             @if (@Model.IsEnableReturn)
             {
 
-                <button type="submit" name="save-continue" class="btn btn-primary">
+                <button type="submit" name="return" class="btn btn-primary">
                     <i class="far fa-save"></i>
                     @T("Admin.Plugin.Misc.CycleFlow.Deportation.Return")
                 </button>
             }
         </div>
     </div>
+    @await Html.PartialAsync("_CreateOrUpdate", Model)
 </form>

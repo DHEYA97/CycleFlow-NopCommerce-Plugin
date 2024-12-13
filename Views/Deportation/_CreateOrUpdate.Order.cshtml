@@ -1,5 +1,20 @@
 ﻿@model Nop.Plugin.Misc.CycleFlow.Models.Deportation.DeportationModel
-
+<style>
+    .image-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    .image-container img {
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        padding: 5px;
+        max-width: 100px;
+        max-height: 100px;
+    }
+</style>
 <div class="card-body">
     <div class="cards-group">
         <div class="form-group row">
@@ -43,7 +58,9 @@
                                 <p>@item.Quantity</p>
                             </td>
                             <td class="text-center">
-                                <img src="@item.PictureThumbnailUrl" alt="" title="" />
+                                    <div class="image-container">
+                                        <img src="@item.PictureThumbnailUrl" alt="" title=""  />
+                                    </div>
                             </td>
                         </tr>
                     }

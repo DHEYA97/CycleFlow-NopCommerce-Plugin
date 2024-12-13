@@ -61,7 +61,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Deportation
         public string? ReturnStepName { get; set; }
 
         public string? Note { get; set; }
-
         public IList<ProductOrderItemModel> ProductOrderItem { get; set; }
         public IList<ImageTypeModel>? ImageType { get; set; }
         public IList<AllDeportationModel> AllDeportation { get; set; }
@@ -83,6 +82,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Deportation
 
             [UIHint("Picture")]
             [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.ReturnStep.Picture")]
+            public int? PictureId { get; set; }
             public int? ImageTypeId { get; set; }
             [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.ReturnStep.Name")]
             public string? ImageTypeName { get; set; }

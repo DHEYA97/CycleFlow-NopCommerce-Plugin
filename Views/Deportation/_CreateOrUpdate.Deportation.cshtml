@@ -34,14 +34,17 @@
                         <tr>
                             <td class="text-center">
                                 <p>@Model.CurrentOrderStatusName</p>
+                                <input asp-for="OrderStatusId" type="hidden" />
                             </td>
                             <td class="text-center">
                                 <p>@Model.NextOrderStatusName</p>
+                                <input asp-for="NextOrderStatusId" type="hidden" />
                             </td>
                             <@if(@Model.IsEnableReturn)
                             {
                                 <th>
                                         <p>@Model.ReturnStepName</p>
+                                        <input asp-for="ReturnStepId" type="hidden" />
                                 </th>
                             }
                         </tr>    

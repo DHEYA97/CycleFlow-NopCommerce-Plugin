@@ -91,7 +91,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                 foreach (var img in imgTypes)
                 {
                     imgTypeList.Add(
-                        new( await _imageTypeService.GetImageTypeNameAsync(img.Id), await GetPictureUrlByImageTypeIdAsync(img.Id,img.PosUserId,posOrderId,img.OrderStatusId)??string.Empty)
+                        new( await _imageTypeService.GetImageTypeNameAsync(img.ImageTypeId), await GetPictureUrlByImageTypeIdAsync(img.ImageTypeId,img.PosUserId,posOrderId,img.OrderStatusId)??string.Empty)
                         );
                 }
                 AllDeportationModelList.Add(
