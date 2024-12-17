@@ -30,17 +30,14 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
         private readonly IShippingService _shippingService;
         private readonly IOrderStatusService _orderStatusService;
         private readonly IBaseAdminModelFactory _baseAdminModelFactory;
-        private readonly IPosStoreService _posStoreService;
         private readonly IPosUserService _posUserService;
         private readonly ICustomerService _customerService;
         private readonly IImageTypeService _imageTypeService;
-        protected readonly ISmsTemplateService _smsTemplateService;
         protected readonly IOrderService _orderService;
         private readonly IRepository<OrderStatusSorting> _orderStatusSortingTypeRepository;
         private readonly IRepository<OrderStatusImageTypeMapping> _OrderStatusImageTypeMapping;
         private readonly IPictureService _pictureService;
         private readonly IOrderStateOrderMappingService _orderStateOrderMappingService;
-        private readonly IPosOrderService _posOrderService;
         #endregion
         #region Ctor
         public DeportationModelFactory(ILocalizationService localizationService,
@@ -51,17 +48,14 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
             IShippingService shippingService,
             IOrderStatusService orderStatusService,
             IBaseAdminModelFactory baseAdminModelFactory,
-            IPosStoreService posStoreService,
             IPosUserService posUserService,
             ICustomerService customerService,
             IImageTypeService imageTypeService,
-            ISmsTemplateService smsTemplateService,
             IOrderService orderService,
             IRepository<OrderStatusSorting> orderStatusSortingTypeRepository,
             IPictureService pictureService,
             IRepository<OrderStatusImageTypeMapping> OrderStatusImageTypeMapping,
-            IOrderStateOrderMappingService orderStateOrderMappingService,
-            IPosOrderService posOrderService
+            IOrderStateOrderMappingService orderStateOrderMappingService
             )
         {
             _localizationService = localizationService;
@@ -72,17 +66,14 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
             _shippingService = shippingService;
             _orderStatusService = orderStatusService;
             _baseAdminModelFactory = baseAdminModelFactory;
-            _posStoreService = posStoreService;
             _posUserService = posUserService;
             _customerService = customerService;
             _imageTypeService = imageTypeService;
-            _smsTemplateService = smsTemplateService;
             _orderService = orderService;
             _orderStatusSortingTypeRepository = orderStatusSortingTypeRepository;
             _pictureService = pictureService;
             _OrderStatusImageTypeMapping = OrderStatusImageTypeMapping;
             _orderStateOrderMappingService = orderStateOrderMappingService;
-            _posOrderService = posOrderService;
         }
         #endregion
         #region Methods
@@ -114,8 +105,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
             {
                 model ??= orderStateOrderMapping.ToModel<DeportationModel>();
 
-                var order = await _posOrderService.GetPosOrderByIdAsync(orderStateOrderMapping.OrderId);
-                var orderItems = await _orderService.GetOrderItemsAsync(order.NopOrderId);
+                var order = await _orderService.GetOrderByIdAsync(orderStateOrderMapping.OrderId);
+                var orderItems = await _orderService.GetOrderItemsAsync(order.Id);
                 var orderStatus = await _orderStatusService.GetOrderStatusByIdAsync(orderStateOrderMapping.OrderStatusId);
                 var nextOrderStatus = await _orderStatusService.GetOrderStatusByIdAsync(await _cycleFlowSettingService.GetNextStepByFirstStepAsync(orderStateOrderMapping.OrderStatusId, orderStateOrderMapping.PosUserId));
                 
@@ -127,7 +118,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                     var customer = await _customerService.GetCustomerByIdAsync(orderStateOrderMapping.CustomerId);
                     var orderSorting = await _orderStatusSortingTypeRepository.Table.FirstOrDefaultAsync(x => x.PosUserId == orderStateOrderMapping.PosUserId && x.OrderStatusId == orderStateOrderMapping.OrderStatusId);
                     var imageTypes = await _OrderStatusImageTypeMapping.Table.Where(x => x.PosUserId == orderStateOrderMapping.PosUserId && x.OrderStatusId == orderStateOrderMapping.OrderStatusId).ToListAsync();
-                    var returnStatus = await _orderStatusService.GetOrderStatusByIdAsync(await _cycleFlowSettingService.GetReturnStepByNextStepAsync(orderStateOrderMapping.OrderStatusId, orderStateOrderMapping.PosUserId) ?? 0);
+                    var returnStatus = await _orderStatusService.GetOrderStatusByIdAsync(await _cycleFlowSettingService.GetReturnStepByCurentStepAsync(orderStateOrderMapping.OrderStatusId, orderStateOrderMapping.PosUserId) ?? 0);
                     var posUser = await _posUserService.GetPosUserByIdAsync(orderStateOrderMapping.PosUserId);
 
                     model.StoreName = store?.Name ?? string.Empty;
@@ -141,6 +132,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                     model.IsEnableReturn = orderSorting.IsEnableReturn;
                     model.ReturnStepId = orderSorting.ReturnStepId;
                     model.ReturnStepName = returnStatus?.Name ?? string.Empty;
+                    model.NextOrderStatusId = nextOrderStatus.Id;
                     model.OrderItemCount = orderItems.Sum(x=>x.Quantity);
                     model.ProductOrderItem = new List<ProductOrderItemModel>();
                     foreach (var orderItem in orderItems)

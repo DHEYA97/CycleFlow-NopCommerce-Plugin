@@ -29,21 +29,21 @@ namespace Nop.Plugin.Misc.CycleFlow.Infrastructure
             {
                 options.ViewLocationExpanders.Add(new CycleFlowViewLocationExpander());
             });
-            services.AddScoped<IOrderStatusService, OrderStatusService>();
+            #region Factory
             services.AddScoped<IOrderStatusModelFactory, OrderStatusModelFactory>();
-
-            services.AddScoped<IImageTypeService, ImageTypeService>();
             services.AddScoped<IImageTypeModelFactory, ImageTypeModelFactory>();
-
-            services.AddScoped<ICycleFlowSettingService, CycleFlowSettingService>();
             services.AddScoped<ICycleFlowSettingModelFactory, CycleFlowSettingModelFactory>();
-
             services.AddScoped<ICheckPosOrderStatusModelFactory, CheckPosOrderStatusModelFactory>();
-
             services.AddScoped<IDeportationModelFactory, DeportationModelFactory>();
+            #endregion
+
+            #region Service
+            services.AddScoped<IOrderStatusService, OrderStatusService>();
+            services.AddScoped<IImageTypeService, ImageTypeService>();
+            services.AddScoped<ICycleFlowSettingService, CycleFlowSettingService>();
             services.AddScoped<IDeportationService, DeportationService>();
             services.AddScoped<IOrderStateOrderMappingService, OrderStateOrderMappingService>();
-            
+            #endregion
 
         }
     }

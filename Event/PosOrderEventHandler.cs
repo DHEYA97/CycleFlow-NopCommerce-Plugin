@@ -7,6 +7,7 @@ using Nop.Plugin.Misc.CycleFlow.Controllers;
 using Nop.Plugin.Misc.CycleFlow.Domain;
 using Nop.Plugin.Misc.CycleFlow.Services;
 using Nop.Plugin.Misc.POSSystem.Domains;
+using Nop.Plugin.Misc.POSSystem.Services;
 using Nop.Services.Events;
 using Nop.Services.Localization;
 using Nop.Services.Messages;
@@ -26,16 +27,17 @@ namespace Nop.Plugin.Misc.CycleFlow.Event
                 var localizationService = EngineContext.Current.Resolve<ILocalizationService>();
 
                 var firstSortingStep = await cycleFlowSettingService.GetFirstStepInPosUserAsync(posOrder.PosUserId);
+               
                 if (firstSortingStep == null)
                 {
                     notificationService.ErrorNotification(localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.OrderStatusSorting.First.NotFound").Result, false);
                     return;
                 }
-                var customer = await cycleFlowSettingService.GetCustomerByOrderStatusIdAsync(firstSortingStep.OrderStatusId, firstSortingStep.PosUserId);
+                var customer = await cycleFlowSettingService.GetCustomerByOrderStatusIdAsync(firstSortingStep.PosUserId,firstSortingStep.OrderStatusId);
 
                 OrderStateOrderMapping orderStateOrderMapping = new OrderStateOrderMapping
                 {
-                    OrderId = posOrder.Id,
+                    OrderId = posOrder.NopOrderId,
                     NopStoreId  = posOrder.NopStoreId,
                     PosUserId = posOrder.PosUserId,
                     OrderStatusId = firstSortingStep.OrderStatusId,

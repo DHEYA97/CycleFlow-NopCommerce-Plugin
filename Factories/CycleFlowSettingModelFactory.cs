@@ -103,7 +103,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                 var orderStatus = await _orderStatusService.GetOrderStatusByIdAsync(orderStatusSorting.OrderStatusId);
                 var nextOrderStatus = await _orderStatusService.GetOrderStatusByIdAsync(orderStatusSorting.NextStep);
                 var posUser = await _posUserService.GetPosUserByIdAsync(orderStatusSorting.PosUserId);
-                var customer = await _cycleFlowSettingService.GetCustomerAsync(orderStatusSorting.PosUserId, orderStatusSorting.OrderStatusId);
+                var customer = await _cycleFlowSettingService.GetCustomerByOrderStatusIdAsync(orderStatusSorting.PosUserId, orderStatusSorting.OrderStatusId);
                 
                 model.StoreName = store?.Name ?? string.Empty;
                 model.CurrentOrderStatusName = orderStatus?.Name ?? string.Empty;

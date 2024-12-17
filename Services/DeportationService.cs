@@ -1,9 +1,14 @@
 ﻿using Nop.Core;
 using Nop.Data;
+using Nop.Plugin.Misc.CycleFlow.Constant.Enum;
 using Nop.Plugin.Misc.CycleFlow.Domain;
+using Nop.Plugin.Misc.CycleFlow.Models.CycleFlowSetting;
+using Nop.Plugin.Misc.CycleFlow.Models.Deportation;
+using Nop.Plugin.Misc.POSSystem.Domains;
 using Nop.Plugin.Misc.POSSystem.Services;
 using Nop.Services.Customers;
 using Nop.Services.Messages;
+using Nop.Services.Orders;
 using Nop.Services.Shipping;
 using Nop.Services.Stores;
 using System;
@@ -31,6 +36,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
         private readonly ICustomerService _customerService;
         protected readonly IWorkContext _workContext;
         protected readonly ICycleFlowSettingService _cycleFlowSettingService;
+        protected readonly IOrderService _orderService;
+        protected readonly IOrderStateOrderMappingService _orderStateOrderMappingService;
         #endregion
 
         #region Ctor
@@ -48,7 +55,9 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             IPosUserService posUserService,
             ICustomerService customerService,
             IWorkContext workContext,
-            ICycleFlowSettingService cycleFlowSettingService
+            ICycleFlowSettingService cycleFlowSettingService,
+            IOrderService orderService,
+            IOrderStateOrderMappingService orderStateOrderMappingService
             )
         {
             _orderStatusRepository = orderStatusRepository;
@@ -65,7 +74,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             _customerService = customerService;
             _workContext = workContext;
             _cycleFlowSettingService = cycleFlowSettingService;
-
+            _orderService = orderService;
+            _orderStateOrderMappingService = orderStateOrderMappingService;
         }
         #endregion
 
@@ -86,7 +96,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
 
             foreach (var record in groupedRecords)
             {
-                var customerSetting = await _cycleFlowSettingService.GetCustomerAsync(record.PosUserId, record.OrderStatusId);
+                var customerSetting = await _cycleFlowSettingService.GetCustomerByOrderStatusIdAsync(record.PosUserId, record.OrderStatusId);
                 if (customerSetting.Id == customer.Id)
                 {
                     filteredRecords.Add(record);
@@ -99,7 +109,33 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             var pagedList = new PagedList<OrderStateOrderMapping>(filteredRecords, pageIndex, pageSize);
             return pagedList;
         }
+        public async Task DeportationAsync(DeportationModel model, Deportation deportationType)
+        {
+            var order = await _orderService.GetOrderByIdAsync(model.OrderId);
+            if (order == null)
+                throw new ArgumentNullException(nameof(CycleFlowSettingModel), $"PosOrderId  {model.OrderId} not Found");
+            var currentOrderStatusId = await _orderStatusService.GetOrderStatusByIdAsync(model.OrderStatusId);
+            if(currentOrderStatusId == null)
+                throw new Exception("OrderStatusId Not Found");
+            var isIsLastStep = await _cycleFlowSettingService.IsLastStepInSortingByStatusIdAsync(model.OrderStatusId, model.PosUserId);
+            if(isIsLastStep)
+                throw new Exception("OrderStatusId LastStep in Sorting");
+            var nextOrderStatusId = await _orderStatusService.GetOrderStatusByIdAsync(model.NextOrderStatusId);
+            if (nextOrderStatusId == null)
+                throw new Exception("NextOrderStatusId Not Found");
 
+            if (deportationType == Deportation.Return)
+            {
+                if (!model.IsEnableReturn)
+                    throw new Exception("Return Not Allowed");
+                if (!model.ReturnStepId.HasValue || model.ReturnStepId <= 0)
+                    throw new Exception("Return Step not Found");
+                var returnOrderStatusId = await _orderStatusService.GetOrderStatusByIdAsync((int)model.ReturnStepId!);
+                if (returnOrderStatusId == null)
+                    throw new Exception("Return Step not Found");
+            }
+            await _orderStateOrderMappingService.InsertStepAsync(model, deportationType);
+        }
         #endregion
     }
 }

@@ -17,7 +17,8 @@ using Nop.Services.Security;
 using Nop.Plugin.Misc.CycleFlow.Models.Deportation;
 using Nop.Plugin.Misc.CycleFlow.Domain;
 using DocumentFormat.OpenXml.Office2010.Excel;
-
+using Nop.Plugin.Misc.CycleFlow.Constant.Enum;
+using Nop.Services.Localization;
 namespace Nop.Plugin.Misc.CycleFlow.Controllers
 {
     [Area(AreaNames.Admin)]
@@ -32,6 +33,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         private readonly ICycleFlowSettingService _cycleFlowSettingService;
         private readonly IPosUserService _posUserService;
         private readonly IOrderStateOrderMappingService _orderStateOrderMappingService;
+        private readonly IDeportationService _deportationService;
+        private readonly ILocalizationService _localizationService;
         #endregion
         #region Ctor
         public DeportationController(
@@ -40,7 +43,9 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             IDeportationModelFactory deportationModelFactory,
             ICycleFlowSettingService cycleFlowSettingService,
             IPosUserService posUserService,
-            IOrderStateOrderMappingService orderStateOrderMappingService
+            IOrderStateOrderMappingService orderStateOrderMappingService,
+            IDeportationService deportationService,
+            ILocalizationService localizationService
             )
         {
             _permissionService = permissionService;
@@ -49,6 +54,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             _cycleFlowSettingService = cycleFlowSettingService;
             _posUserService = posUserService;
             _orderStateOrderMappingService = orderStateOrderMappingService;
+            _deportationService = deportationService;
+            _localizationService = localizationService;
         }
         #endregion
         #region Methods
@@ -80,7 +87,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             var orderStateOrderMapping = await _orderStateOrderMappingService.GetOrderStateOrderMappingByIdAsync(id);
             if(orderStateOrderMapping == null)
             {
-                _notificationService.ErrorNotification("Nop.Plugin.Misc.CycleFlow.Deportation.NotFound");
+                _notificationService.ErrorNotification(_localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.Deportation.NotFound").Result);
                 return RedirectToAction(nameof(List));
             }
             await _cycleFlowSettingService.NotificationPosUserAsync();
@@ -88,20 +95,20 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             return View(model);
         }
         [HttpPost]
-        public virtual async Task<IActionResult> DeportationProcess(DeportationModel model)
+        public virtual async Task<IActionResult> DeportationProcess(DeportationModel model, Deportation deportationType)
         {
             if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.DeportationCycleFlowPlugin))
                 return await AccessDeniedDataTablesJson();
             await _cycleFlowSettingService.NotificationPosUserAsync();
             if(ModelState.IsValid)
             {
-
+                await _deportationService.DeportationAsync(model, deportationType);
                 return RedirectToAction(nameof(List));
             }
             var orderStateOrderMapping = await _orderStateOrderMappingService.GetOrderStateOrderMappingByIdAsync(model.Id);
             if (orderStateOrderMapping == null)
             {
-                _notificationService.ErrorNotification("Nop.Plugin.Misc.CycleFlow.Deportation.NotFound");
+                _notificationService.ErrorNotification(_localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.Deportation.NotFound").Result);
                 return RedirectToAction(nameof(List));
             }
             await _cycleFlowSettingService.NotificationPosUserAsync();

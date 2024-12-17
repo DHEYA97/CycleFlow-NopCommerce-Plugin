@@ -41,6 +41,9 @@
                                 @T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.DeportationDate")
                             </th>
                             <th>
+                                @T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.Note")
+                            </th>
+                            <th>
                                 @T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.ImageType")
                             </th>
                             <th>
@@ -69,6 +72,9 @@
                                     </td>
                                 <td class="text-center">
                                     <p>@item.DeportationDate</p>
+                                </td>
+                                <td class="text-center">
+                                    <p>@item.Note</p>
                                 </td>
                                 <td class="text-center d-flex flex-column justify-content-between">
                                         @if (item.ImageType != null && item.ImageType.Any())

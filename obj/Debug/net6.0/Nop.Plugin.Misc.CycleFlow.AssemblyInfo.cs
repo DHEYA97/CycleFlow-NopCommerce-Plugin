@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Nop.Plugin.Misc.CycleFlow")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+94a63f424176d0431825e11fab8bff9bfb36a710")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+718a36203c6d76234567e7d0f8ef03c152221451")]
 [assembly: System.Reflection.AssemblyProductAttribute("Nop.Plugin.Misc.CycleFlow")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Nop.Plugin.Misc.CycleFlow")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
