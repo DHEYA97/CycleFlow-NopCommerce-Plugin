@@ -6,8 +6,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
 {
     public interface IDeportationModelFactory
     {
-        Task<DeportationSearchModel> PrepareDeportationSearchModelAsync(DeportationSearchModel searchModel);
+        Task<DeportationSearchModel> PrepareDeportationSearchModelAsync(DeportationSearchModel searchModel, bool justShowByCustomer = false, bool justLastStepOrder = false);
         Task<DeportationListModel> PrepareDeportationModelListModelAsync(DeportationSearchModel searchModel);
-        Task<DeportationModel> PrepareDeportationModelAsync(DeportationModel model, OrderStateOrderMapping orderStateOrderMapping, bool excludeProperties = false, int currentId = 0);
+        Task<DeportationModel> PrepareDeportationModelAsync(DeportationModel model, OrderStateOrderMapping orderStateOrderMapping, bool showAllInfo, bool excludeProperties = false, int currentId = 0);
     }
 }

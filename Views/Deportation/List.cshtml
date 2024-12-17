@@ -47,6 +47,8 @@
                                             <nop-editor asp-for="OrderNumber" />
                                         </div>
                                     </div>
+                                    <input asp-for="JustShowByCustomer" type="hidden" />
+                                    <input asp-for="JustLastStepOrder" type="hidden" />
                                 </div>
                             </div>
                             <div class="row">
@@ -66,13 +68,15 @@
                         @await Html.PartialAsync("Table", new DataTablesModel
                         {
                            Name = "deportation-grid",
-                           UrlRead = new DataUrl("List", "Deportation", null),
+                           UrlRead = new DataUrl("List", "Deportation"),
                            SearchButtonId = "search-deportation",
                            Length = Model.PageSize,
                            LengthMenu = Model.AvailablePageSizes,
                            Filters = new List<FilterParameter>
                             {
                             new FilterParameter(nameof(Model.OrderNumber)),
+                            new FilterParameter(nameof(Model.JustShowByCustomer)),
+                            new FilterParameter(nameof(Model.JustLastStepOrder)),
                             },  
                             ColumnCollection = new List<ColumnProperty>
                                 {
@@ -96,7 +100,7 @@
                                 Title = T("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.View").Text,
                                 Width = "100",
                                 ClassName =  NopColumnClassDefaults.CenterAll,
-                                Render = new RenderButtonView(new DataUrl(Url.Action("View","Deportation")))
+                                Render = new RenderButtonView(new DataUrl(Url.Action("View", "Deportation", new { showAllInfo = Model.JustShowByCustomer})))
                                 },
                             }
                         });

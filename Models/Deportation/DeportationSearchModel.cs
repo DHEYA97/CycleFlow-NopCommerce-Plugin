@@ -8,6 +8,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Deportation
         #region Properties
         [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.DeportationModel.Fields.OrderNumber")]
         public int OrderNumber { get; set; }
+        public bool JustShowByCustomer { get; set; }
+        public bool JustLastStepOrder { get; set; }
         #endregion
     }
 }

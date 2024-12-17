@@ -29,13 +29,20 @@ namespace Nop.Plugin.Misc.CycleFlow.Permission
             SystemName = "DeportationCycleFlow",
             Category = "CycleFlow"
         };
+        public static readonly PermissionRecord ShowAllOrderCycleFlowPlugin = new()
+        {
+            Name = "Show All Order CycleFlow Plugin",
+            SystemName = "ShowAllOrderCycleFlow",
+            Category = "CycleFlow"
+        };
         public virtual IEnumerable<PermissionRecord> GetPermissions()
         {
             return new[]
             {
                 AccessToCycleFlowPluginMenu,
                 ManageCycleFlowPlugin,
-                DeportationCycleFlowPlugin
+                DeportationCycleFlowPlugin,
+                ShowAllOrderCycleFlowPlugin
             };
         }
         /// <summary>

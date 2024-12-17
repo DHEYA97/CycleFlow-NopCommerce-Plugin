@@ -61,6 +61,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Deportation
         public string? ReturnStepName { get; set; }
 
         public string? Note { get; set; }
+        public bool ShowAllInfo { get; set; }
         public IList<ProductOrderItemModel> ProductOrderItem { get; set; }
         public IList<ImageTypeModel>? ImageType { get; set; }
         public IList<AllDeportationModel> AllDeportation { get; set; }

@@ -27,11 +27,16 @@
     <div class="container-fluid">
         <div class="form-horizontal">
             <nop-cards id="vendor-cards">
-                <nop-card asp-name="vendor-info" asp-icon="fas fa-info" asp-title="@T("Admin.Plugin.Misc.CycleFlow.Deportation.Info")" asp-hide-block-attribute-name="@hideInfoBlockAttributeName" asp-hide="@hideInfoBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.Info", Model)</nop-card>
-                <nop-card asp-name="Send" asp-icon="fas fa-search-plus" asp-title="@T("Admin.Plugin.Misc.CycleFlow.Deportation.Order")" asp-hide-block-attribute-name="@hideOrderBlockAttributeName" asp-hide="@hideOrderBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.Order", Model)</nop-card>
-                <nop-card asp-name="Send" asp-icon="fas fa-search-plus" asp-title="@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage")" asp-hide-block-attribute-name="@hideAllDeportationImageBlockAttributeName" asp-hide="@hideAllBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.AllImage", Model)</nop-card>
-                <nop-card asp-name="Send" asp-icon="fas fa-search-plus" asp-title="@T("Admin.Plugin.Misc.CycleFlow.Deportation.LastDeportationImage")" asp-hide-block-attribute-name="@hideLastDeportationImageBlockAttributeName" asp-hide="@hideLastDeportationImageBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.LastImage", Model)</nop-card>
-                <nop-card asp-name="Send" asp-icon="fas fa-search-plus" asp-title="@T("Admin.Plugin.Misc.CycleFlow.Deportation.Deportation")" asp-hide-block-attribute-name="@hideDeportationBlockAttributeName" asp-hide="@hideDeportationBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.Deportation", Model)</nop-card>
+                @if (Model.ShowAllInfo)
+                {
+                    <nop-card asp-name="vendor-info" asp-icon="fas fa-info" asp-title="@T("Admin.Plugin.Misc.CycleFlow.Deportation.Info")" asp-hide-block-attribute-name="@hideInfoBlockAttributeName" asp-hide="@hideInfoBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.Info", Model)</nop-card>
+                    <nop-card asp-name="Send" asp-icon="fas fa-search-plus" asp-title="@T("Admin.Plugin.Misc.CycleFlow.Deportation.Order")" asp-hide-block-attribute-name="@hideOrderBlockAttributeName" asp-hide="@hideOrderBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.Order", Model)</nop-card>
+                    <nop-card asp-name="Send" asp-icon="fas fa-search-plus" asp-title="@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage")" asp-hide-block-attribute-name="@hideAllDeportationImageBlockAttributeName" asp-hide="@hideAllBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.AllImage", Model)</nop-card>
+                    <nop-card asp-name="Send" asp-icon="fas fa-search-plus" asp-title="@T("Admin.Plugin.Misc.CycleFlow.Deportation.LastDeportationImage")" asp-hide-block-attribute-name="@hideLastDeportationImageBlockAttributeName" asp-hide="@hideLastDeportationImageBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.LastImage", Model)</nop-card>
+                    <nop-card asp-name="Send" asp-icon="fas fa-search-plus" asp-title="@T("Admin.Plugin.Misc.CycleFlow.Deportation.Deportation")" asp-hide-block-attribute-name="@hideDeportationBlockAttributeName" asp-hide="@hideDeportationBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.Deportation", Model)</nop-card>                }else{
+                    <nop-card asp-name="Send" asp-icon="fas fa-search-plus" asp-title="@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage")" asp-hide-block-attribute-name="@hideAllDeportationImageBlockAttributeName" asp-hide="@hideAllBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.AllImage", Model)</nop-card>
+                }
+                
             </nop-cards>
         </div>
     </div>

@@ -89,7 +89,7 @@ namespace Nop.Plugin.Misc.CycleFlow
         {
             var menueItem = new SiteMapNode()
             {
-                SystemName = "CycleFlow",
+                SystemName = SystemDefaults.CYCLE_FLOW_SITE_MAP_NODE_SYSTEM_NAME,
                 Title = _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.CycleFlow").Result,
                 ControllerName = null,
                 ActionName = null,
@@ -145,9 +145,32 @@ namespace Nop.Plugin.Misc.CycleFlow
 
                 }
             };
+            var AllOrderChildNode = new SiteMapNode()
+            {
+                SystemName = "Deportation",
+                Title = _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.Deportation.AllOrder").Result,
+                ControllerName = "Deportation",
+                ActionName = "AllOrder",
+                IconClass = "far fa-dot-circle",
+                Visible = true,
+            };
+            var LastStepChildNode = new SiteMapNode()
+            {
+                SystemName = "Deportation",
+                Title = _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.Deportation.LastStepOrder").Result,
+                ControllerName = "Deportation",
+                ActionName = "LastStepOrder",
+                IconClass = "far fa-dot-circle",
+                Visible = true,
+            };
             if (await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.AccessToCycleFlowPluginMenu))
             {
                 rootNode.ChildNodes.Add(menueItem);
+            }
+            if (await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ShowAllOrderCycleFlowPlugin))
+            {
+                rootNode.ChildNodes.FirstOrDefault(s => s.SystemName.Equals(SystemDefaults.CYCLE_FLOW_SITE_MAP_NODE_SYSTEM_NAME))?.ChildNodes.Add(AllOrderChildNode);
+                rootNode.ChildNodes.FirstOrDefault(s => s.SystemName.Equals(SystemDefaults.CYCLE_FLOW_SITE_MAP_NODE_SYSTEM_NAME))?.ChildNodes.Add(LastStepChildNode);
             }
         }
         #endregion

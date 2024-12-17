@@ -68,7 +68,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.DeportationCycleFlowPlugin))
                 return AccessDeniedView();
             await _cycleFlowSettingService.NotificationPosUserAsync();
-            var model = await _deportationModelFactory.PrepareDeportationSearchModelAsync(new DeportationSearchModel());
+            var model = await _deportationModelFactory.PrepareDeportationSearchModelAsync(new DeportationSearchModel(),true,false);
             return View(model);
         }
         [HttpPost]
@@ -80,7 +80,23 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             var model = await _deportationModelFactory.PrepareDeportationModelListModelAsync(searchModel);
             return Json(model);
         }
-        public virtual async Task<IActionResult> View(int id)
+        public virtual async Task<IActionResult> AllOrder()
+        {
+            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ShowAllOrderCycleFlowPlugin))
+                return AccessDeniedView();
+            await _cycleFlowSettingService.NotificationPosUserAsync();
+            var model = await _deportationModelFactory.PrepareDeportationSearchModelAsync(new DeportationSearchModel(),false);
+            return View("List", model);
+        }
+        public virtual async Task<IActionResult> LastStepOrder()
+        {
+            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ShowAllOrderCycleFlowPlugin))
+                return AccessDeniedView();
+            await _cycleFlowSettingService.NotificationPosUserAsync();
+            var model = await _deportationModelFactory.PrepareDeportationSearchModelAsync(new DeportationSearchModel(),justLastStepOrder: true);
+            return View("List", model);
+        }
+        public virtual async Task<IActionResult> View(int id,bool showAllInfo = false)
         {
             if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.DeportationCycleFlowPlugin))
                 return AccessDeniedView();
@@ -91,7 +107,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
                 return RedirectToAction(nameof(List));
             }
             await _cycleFlowSettingService.NotificationPosUserAsync();
-            var model = await _deportationModelFactory.PrepareDeportationModelAsync(null, orderStateOrderMapping);
+            var model = await _deportationModelFactory.PrepareDeportationModelAsync(null, orderStateOrderMapping,showAllInfo);
             return View(model);
         }
         [HttpPost]
@@ -112,7 +128,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
                 return RedirectToAction(nameof(List));
             }
             await _cycleFlowSettingService.NotificationPosUserAsync();
-            model = await _deportationModelFactory.PrepareDeportationModelAsync(model, orderStateOrderMapping);
+            model = await _deportationModelFactory.PrepareDeportationModelAsync(model, orderStateOrderMapping,false);
             return View(nameof(View),model);
         }
         #endregion

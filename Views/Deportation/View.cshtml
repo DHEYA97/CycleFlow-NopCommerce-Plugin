@@ -12,10 +12,13 @@
             @T("Admin.Plugin.Misc.CycleFlow.Deportation.Title")
         </h1>
         <div class="float-right">
-            <button type="submit" name="deportationType" value="@Deportation.NextStep" class="btn btn-primary">
-                <i class="far fa-save"></i>
-                @T("Admin.Plugin.Misc.CycleFlow.Deportation")
-            </button>
+            @if (Model.ShowAllInfo)
+            {
+                <button type="submit" name="deportationType" value="@Deportation.NextStep" class="btn btn-primary">
+                    <i class="far fa-save"></i>
+                    @T("Admin.Plugin.Misc.CycleFlow.Deportation")
+                </button>
+            }
             @if (@Model.IsEnableReturn)
             {
 

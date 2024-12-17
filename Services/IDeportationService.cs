@@ -13,8 +13,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
     public interface IDeportationService
     {
         Task<IPagedList<OrderStateOrderMapping>> SearchOrderStateOrderMappingAsync(
-            int orderNumber = 0,
-            int pageIndex = 0, int pageSize = int.MaxValue, bool getOnlyTotalCount = false);
+                int orderNumber = 0, bool justShowByCustomer = false, bool justLastStepOrder = false,
+                int pageIndex = 0, int pageSize = int.MaxValue, bool getOnlyTotalCount = false);
         Task DeportationAsync(DeportationModel model, Deportation deportationType);
     }
 }

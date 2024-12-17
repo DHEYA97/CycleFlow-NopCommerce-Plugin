@@ -81,25 +81,42 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
 
         #region Methods
         public virtual async Task<IPagedList<OrderStateOrderMapping>> SearchOrderStateOrderMappingAsync(
-                int orderNumber = 0,
+                int orderNumber = 0,bool justShowByCustomer = false ,bool justLastStepOrder = false,
                 int pageIndex = 0,int pageSize = int.MaxValue,bool getOnlyTotalCount = false)
             {
-            var customer = await _workContext.GetCurrentCustomerAsync();
-
+            
+            var filteredRecords = new List<OrderStateOrderMapping>();
             var allRecords = await _orderStateOrderMappingRepository.Table.ToListAsync();
-
             var groupedRecords = allRecords
                 .GroupBy(x => x.OrderId)
                 .Select(g => g.OrderByDescending(x => x.InsertionDate).FirstOrDefault());
-
-            var filteredRecords = new List<OrderStateOrderMapping>();
-
-            foreach (var record in groupedRecords)
+            
+            
+            var customer = await _workContext.GetCurrentCustomerAsync();
+            if (groupedRecords.Any())
             {
-                var customerSetting = await _cycleFlowSettingService.GetCustomerByOrderStatusIdAsync(record.PosUserId, record.OrderStatusId);
-                if (customerSetting.Id == customer.Id)
+                foreach (var record in groupedRecords)
                 {
+                    if (justShowByCustomer)
+                    {
+                        var customerSetting = await _cycleFlowSettingService.GetCustomerByOrderStatusIdAsync(record!.PosUserId, record.OrderStatusId);
+                        if (customerSetting.Id == customer.Id)
+                        {
+                            filteredRecords.Add(record);
+                        }
+                        continue;
+                    }
+                    if (justLastStepOrder)
+                    {
+                        var IsLastStep = await _cycleFlowSettingService.IsLastStepInSortingByStatusIdAsync(record!.OrderStatusId, record.PosUserId);
+                        if (IsLastStep)
+                        {
+                            filteredRecords.Add(record);
+                        }
+                        continue;
+                    }
                     filteredRecords.Add(record);
+
                 }
             }
             if (orderNumber > 0)

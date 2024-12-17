@@ -77,29 +77,33 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
         }
         #endregion
         #region Methods
-        public Task<DeportationSearchModel> PrepareDeportationSearchModelAsync(DeportationSearchModel searchModel)
+        public Task<DeportationSearchModel> PrepareDeportationSearchModelAsync(DeportationSearchModel searchModel, bool justShowByCustomer = false, bool justLastStepOrder = false)
        {
             if (searchModel == null)
                 throw new ArgumentNullException(nameof(searchModel));
             // Prepare parameters
             searchModel.SetGridPageSize();
+            searchModel.JustShowByCustomer = justShowByCustomer;
+            searchModel.JustLastStepOrder = justLastStepOrder;
             return Task.FromResult(searchModel);
        }
        public async Task<DeportationListModel> PrepareDeportationModelListModelAsync(DeportationSearchModel searchModel)
        {
             var deportation = await _deportationService.SearchOrderStateOrderMappingAsync(
-                orderNumber: searchModel.OrderNumber
+                orderNumber: searchModel.OrderNumber,
+                justShowByCustomer: searchModel.JustShowByCustomer,
+                justLastStepOrder: searchModel.JustLastStepOrder
             );
 
             return await new DeportationListModel().PrepareToGridAsync(searchModel, deportation, () =>
             {
                 return deportation.SelectAwait(async deportation =>
                 {
-                    return await PrepareDeportationModelAsync(null, deportation, true);
+                    return await PrepareDeportationModelAsync(null, deportation,searchModel.JustShowByCustomer, true);
                 });
             });
         }
-        public async Task<DeportationModel> PrepareDeportationModelAsync(DeportationModel model, OrderStateOrderMapping orderStateOrderMapping, bool excludeProperties = false, int currentId = 0)
+        public async Task<DeportationModel> PrepareDeportationModelAsync(DeportationModel model, OrderStateOrderMapping orderStateOrderMapping, bool showAllInfo , bool excludeProperties = false, int currentId = 0)
         {
             if (orderStateOrderMapping != null)
             {
@@ -133,6 +137,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                     model.ReturnStepId = orderSorting.ReturnStepId;
                     model.ReturnStepName = returnStatus?.Name ?? string.Empty;
                     model.NextOrderStatusId = nextOrderStatus.Id;
+                    model.ShowAllInfo = showAllInfo;
                     model.OrderItemCount = orderItems.Sum(x=>x.Quantity);
                     model.ProductOrderItem = new List<ProductOrderItemModel>();
                     foreach (var orderItem in orderItems)
