@@ -30,6 +30,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         private readonly ICheckPosOrderStatusModelFactory _checkPosOrderStatusModelFactory;
         private readonly ICycleFlowSettingService _cycleFlowSettingService;
         private readonly IPosUserService _posUserService;
+        private readonly ILocalizationService _localizationService;
         #endregion
         #region Ctor
         public CheckPosOrderStatusController(
@@ -37,7 +38,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             INotificationService notificationService,
             ICheckPosOrderStatusModelFactory checkPosOrderStatusModelFactory,
             ICycleFlowSettingService cycleFlowSettingService,
-            IPosUserService posUserService
+            IPosUserService posUserService,
+            ILocalizationService localizationService
             )
         {
             _permissionService = permissionService;
@@ -45,6 +47,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             _checkPosOrderStatusModelFactory = checkPosOrderStatusModelFactory;
             _cycleFlowSettingService = cycleFlowSettingService;
             _posUserService = posUserService;
+            _localizationService = localizationService;
         }
         #endregion
         #region Methods
@@ -74,7 +77,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             var posUser = await _posUserService.GetPosUserByIdAsync(id);
             if (posUser == null)
             {
-                _notificationService.ErrorNotification("Nop.Plugin.Misc.CycleFlow.OrderStatusSorting.NotFound");
+                _notificationService.ErrorNotification(_localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.OrderStatusSorting.NotFound").Result);
                 return RedirectToAction(nameof(List));
             }
             var (sequenceHtml,status) = await _cycleFlowSettingService.CheckOrderStatusSequenceAsync(id);

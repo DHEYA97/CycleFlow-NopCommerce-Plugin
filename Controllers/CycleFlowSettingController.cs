@@ -138,7 +138,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
 
             if (orderStatusSorting == null)
             {
-                _notificationService.ErrorNotification("Nop.Plugin.Misc.CycleFlow.OrderStatusSorting.NotFound");
+                _notificationService.ErrorNotification(_localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.OrderStatusSorting.NotFound").Result);
                 return RedirectToAction(nameof(List));
             }
 

@@ -1,4 +1,5 @@
-﻿@using Nop.Plugin.Misc.CycleFlow.Models.Deportation
+﻿@using Nop.Plugin.Misc.CycleFlow.Constant.Enum;
+@using Nop.Plugin.Misc.CycleFlow.Models.Deportation
 @model DeportationModel
 
 @{
@@ -35,3 +36,30 @@
         </div>
     </div>
 </section>
+
+<div id="return-model" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="returnModelTitle">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">@T("Admin.Plugin.Misc.CycleFlow.Deportation.Return")</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group text-center row">
+                <p>@T("Admin.Plugin.Misc.CycleFlow.Deportation.Return.Confirmation")</p>
+                    <div class="col-md-3">
+                        <nop-label asp-for="Note" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="Note" asp-template="RichEditor" asp-required="true" />
+                        <span asp-validation-for="Note"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@T("Admin.Common.Close")</button>
+                <button type="submit" name="deportationType" value="@Deportation.Return" class="btn btn-primary" form="deportationForm">@T("Admin.Common.Confirm")</button>
+            </div>
+        </div>
+    </div>
+</div>
