@@ -85,7 +85,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
         public async Task<IActionResult> Create(CycleFlowSettingModel model, bool continueEditing)
         {
-            if (ModelState.IsValid)
+                if (ModelState.IsValid)
             {
                 await _cycleFlowSettingService.InsertCycleFlowSettingAsync(model);
 

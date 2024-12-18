@@ -6,7 +6,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
     NopHtml.SetActiveMenuItemSystemName("Deportation");
 }
-<form asp-controller="Deportation" asp-action="DeportationProcess" method="post">
+<form asp-controller="Deportation" asp-action="DeportationProcess" method="post" id="deportationForm">
     <div class="content-header clearfix">
         <h1 class="float-left">
             @T("Admin.Plugin.Misc.CycleFlow.Deportation.Title")
@@ -14,15 +14,16 @@
         <div class="float-right">
             @if (Model.ShowAllInfo)
             {
-                <button type="submit" name="deportationType" value="@Deportation.NextStep" class="btn btn-primary">
+                <input type="hidden" id="deportationType" name="deportationType" value="@Deportation.NextStep"/>
+                
+                <button type="submit" class="btn btn-primary">
                     <i class="far fa-save"></i>
                     @T("Admin.Plugin.Misc.CycleFlow.Deportation")
                 </button>
             }
             @if (@Model.IsEnableReturn)
             {
-
-                <button type="submit" id="return-button" name="deportationType" value="@Deportation.Return" class="btn btn-primary">
+                <button type="submit" id="return-button" class="btn btn-primary">
                     <i class="far fa-save"></i>
                     @T("Admin.Plugin.Misc.CycleFlow.Deportation.Return")
                 </button>

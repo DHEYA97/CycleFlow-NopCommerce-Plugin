@@ -128,7 +128,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
                 return RedirectToAction(nameof(List));
             }
             await _cycleFlowSettingService.NotificationPosUserAsync();
-            model = await _deportationModelFactory.PrepareDeportationModelAsync(model, orderStateOrderMapping,false);
+            model = await _deportationModelFactory.PrepareDeportationModelAsync(model, orderStateOrderMapping,true);
             return View(nameof(View),model);
         }
         #endregion

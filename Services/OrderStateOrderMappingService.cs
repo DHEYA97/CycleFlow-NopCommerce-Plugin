@@ -111,7 +111,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                     {
                         DeportationDate = item.InsertionDate,
                         StatusName = await _orderStatusService.GetOrderStatusNameAsync(item.OrderStatusId),
-                        NextStatusName = await _orderStatusService.GetOrderStatusNameAsync((await _cycleFlowSettingService.GetNextStepByFirstStepAsync(item.OrderStatusId, item.PosUserId))),
+                        NextStatusName = await _orderStatusService.GetOrderStatusNameAsync((await _cycleFlowSettingService.GetNextStepByFirstStepAsync(item.OrderStatusId, item.PosUserId)??0)),
                         ImageType = imgTypeList,
                         Note = item.Note,
                     });

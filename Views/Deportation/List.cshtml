@@ -100,10 +100,17 @@
                                 Title = T("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.View").Text,
                                 Width = "100",
                                 ClassName =  NopColumnClassDefaults.CenterAll,
-                                Render = new RenderButtonView(new DataUrl(Url.Action("View", "Deportation", new { showAllInfo = Model.JustShowByCustomer})))
+                                Render=new RenderCustom("renderDeportationView")
                                 },
                             }
                         });
+                         <script>
+                            function renderDeportationView(data, type, row, meta) {
+                                const showAllInfo = @Model.JustShowByCustomer.ToString().ToLower();
+                                const url = `/Admin/Deportation/View/${row.Id}?showAllInfo=${showAllInfo}`;
+                                return `<a href="${url}" class="btn btn-default"><i class="far fa-eye"></i>معاينة</a>`;
+                            }
+                         </script>
                     </div>
                 </div>
             </div>

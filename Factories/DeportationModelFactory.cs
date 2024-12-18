@@ -112,7 +112,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                 var order = await _orderService.GetOrderByIdAsync(orderStateOrderMapping.OrderId);
                 var orderItems = await _orderService.GetOrderItemsAsync(order.Id);
                 var orderStatus = await _orderStatusService.GetOrderStatusByIdAsync(orderStateOrderMapping.OrderStatusId);
-                var nextOrderStatus = await _orderStatusService.GetOrderStatusByIdAsync(await _cycleFlowSettingService.GetNextStepByFirstStepAsync(orderStateOrderMapping.OrderStatusId, orderStateOrderMapping.PosUserId));
+                var nextOrderStatus = await _orderStatusService.GetOrderStatusByIdAsync(await _cycleFlowSettingService.GetNextStepByFirstStepAsync(orderStateOrderMapping.OrderStatusId, orderStateOrderMapping.PosUserId)??0);
                 
                 model.CurrentOrderStatusName = orderStatus?.Name ?? string.Empty;
                 model.NextOrderStatusName = nextOrderStatus?.Name ?? string.Empty;
@@ -136,7 +136,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                     model.IsEnableReturn = orderSorting.IsEnableReturn;
                     model.ReturnStepId = orderSorting.ReturnStepId;
                     model.ReturnStepName = returnStatus?.Name ?? string.Empty;
-                    model.NextOrderStatusId = nextOrderStatus.Id;
+                    model.NextOrderStatusId = nextOrderStatus?.Id??0;
                     model.ShowAllInfo = showAllInfo;
                     model.OrderItemCount = orderItems.Sum(x=>x.Quantity);
                     model.ProductOrderItem = new List<ProductOrderItemModel>();

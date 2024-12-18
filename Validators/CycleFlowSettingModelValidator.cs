@@ -52,22 +52,32 @@ namespace Nop.Plugin.Misc.CycleFlow.Validators
             }).WithMessageAwait(localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.CycleFlowSetting.CurrentOrderStatusId.Found"));
 
             RuleFor(x => x.NextOrderStatusId).MustAwait(async (model, cans) =>
-            {
-                if (model.NextOrderStatusId <= 0)
-                {
-                    return false;
-                }
+                        {
+                            if (model.IsLastStep)
+                            {
+                                return model.NextOrderStatusId == 0;
+                            }
+                            if (model.NextOrderStatusId <= 0)
+                            {
+                                return false;
+                            }
 
-                if (model != null)
-                {
-                    if (model.PosUserId > 0)
-                    {
-                        var exsist = await cycleFlowSettingService.IsNextOrderStatesExsistInSortingAsync(model.NextOrderStatusId, model.PosUserId, model.Id > 0 ? model.Id : 0);
-                        return !exsist;
-                    }
-                }
-                return true;
-            }).WithMessageAwait(localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.CycleFlowSetting.CurrentOrderStatusId.Found"));
+                            if (model != null)
+                            {
+                                if (model.PosUserId > 0)
+                                {
+                                    var exsist = await cycleFlowSettingService.IsNextOrderStatesExsistInSortingAsync(
+                                        model.NextOrderStatusId,
+                                        model.PosUserId,
+                                        currentId: model.Id > 0 ? model.Id : 0);
+
+                                    return !exsist;
+                                }
+                            }
+                            return true;
+                        })
+                        .WithMessageAwait(localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.CycleFlowSetting.NextOrderStatusId.Found"));
+
 
             RuleFor(x => x.IsFirstStep).MustAwait(async (model, cans) =>
             {

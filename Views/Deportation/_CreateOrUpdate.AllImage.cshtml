@@ -21,6 +21,31 @@
         font-weight: bold;
         margin-top: 5px;
     }
+
+
+    /* #modal-image {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+        max-height: 80vh;
+    } */
+
+    #prev-image, #next-image {
+        text-decoration: none;
+        display: inline-block;
+        z-index: 1050; /* فوق الصورة */
+        opacity: 0.8;
+        font-size: 2rem;
+        padding: 10px 20px;
+        color: white;
+        background-color: #6c757d; /* لون زر Bootstrap */
+        border-radius: 5px;
+    }
+
+        #prev-image:hover, #next-image:hover {
+            opacity: 1;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
 </style>
 
 
@@ -53,30 +78,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <tbody>
                             @foreach (var item in Model.AllDeportation)
                             {
-                            <tr>
-                                <td class="text-center">
-                                    <p>@item.StatusName</p>
-                                </td>
-                                <td class="text-center">
-                                        @if (item.NextStatusName != null)
-                                        {
-                                            <p>@item.NextStatusName</p>
-                                        }
-                                        else
-                                        {
-                                            <p>@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.NoNextStatusName")</p>
-                                        }
+                                <tr id="row-@item.Id">
+                                    <td class="text-center">
+                                        <p>@item.StatusName</p>
                                     </td>
-                                <td class="text-center">
-                                    <p>@item.DeportationDate</p>
-                                </td>
-                                <td class="text-center">
-                                    <p>@item.Note</p>
-                                </td>
-                                <td class="text-center d-flex flex-column justify-content-between">
+                                    <td class="text-center">
+                                            @if (item.NextStatusName != null)
+                                            {
+                                                <p>@item.NextStatusName</p>
+                                            }
+                                            else
+                                            {
+                                                <p>@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.NoNextStatusName")</p>
+                                            }
+                                        </td>
+                                    <td class="text-center">
+                                        <p>@item.DeportationDate</p>
+                                    </td>
+                                    <td class="text-center">
+                                        <p>@item.Note</p>
+                                    </td>
+                                    <td class="text-center d-flex flex-column justify-content-between">
                                         @if (item.ImageType != null && item.ImageType.Any())
                                         {
                                             foreach (var tuple in item.ImageType)
@@ -92,33 +116,106 @@
                                         {
                                             <p>@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.NoimgType")</p>
                                         }
-                                </td>
-                                <td class="text-center">
-                                        @if (item.ImageType != null && item.ImageType.Any())
-                                        {
-                                            foreach (var tuple in item.ImageType)
+                                    </td>
+                                    <td class="text-center">
+                                            @if (item.ImageType != null && item.ImageType.Any())
                                             {
-                                                if (tuple.HasValue)
+                                                foreach (var tuple in item.ImageType)
                                                 {
-                                                    var (_, picture) = tuple.Value;
+                                                    if (tuple.HasValue)
+                                                    {
+                                                        var (_, picture) = tuple.Value;
                                                     <div class="image-container">
-                                                        <img src="@picture" alt="Picture" />
+                                                        <img src="@picture" alt="Picture" class="deportation-image" data-src="@picture" />
                                                     </div>
+                                                    }
                                                 }
                                             }
-                                        }
-                                        else
-                                        {
-                                        <p>@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.NoPicture")</p>
-                                        }
-                                </td>
-                            </tr>
+                                            else
+                                            {
+                                            <p>@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.NoPicture")</p>
+                                            }
+                                    </td>
+                                </tr>
                             }
-                    </tbody>
-
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
+<div id="img-model" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="returnModelTitle">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">@T("Admin.Plugin.Misc.CycleFlow.Deportation.Return")</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body text-center">
+                <a id="prev-image" class="btn btn-secondary position-absolute" style="left: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                    &lt; <!-- السابق -->
+                </a>
+                <img id="modal-image" src="" alt="Selected Image" class="img-fluid" style="max-height: 80vh;" />
+                <a id="next-image" class="btn btn-secondary position-absolute" style="right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                    &gt; <!-- التالي -->
+                </a>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    @T("Admin.Common.Close")
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        let currentRow = null; // الصف الحالي
+        let currentImages = []; // الصور داخل الصف
+        let currentIndex = 0; // الفهرس الحالي للصورة
+
+        // عند الضغط على الصورة
+        $('.deportation-image').on('click', function () {
+            const imgSrc = $(this).data('src'); // رابط الصورة
+            currentRow = $(this).closest('tr'); // تحديد الصف الحالي
+            currentImages = currentRow.find('.deportation-image'); // جميع الصور داخل الصف
+            currentIndex = currentImages.index(this); // الفهرس الحالي للصورة
+            updateModal(imgSrc); // عرض الصورة في المودال
+            $('#img-model').modal('show'); // فتح المودال
+        });
+
+        // تحديث الصورة في المودال
+        function updateModal(imgSrc) {
+            $('#modal-image').attr('src', imgSrc);
+        }
+
+        // التنقل إلى الصورة السابقة
+        $('#prev-image').on('click', function () {
+            if (currentImages.length > 0) {
+                currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length; // الانتقال للخلف
+                const prevImgSrc = $(currentImages[currentIndex]).data('src');
+                updateModal(prevImgSrc);
+            }
+        });
+
+        // التنقل إلى الصورة التالية
+        $('#next-image').on('click', function () {
+            if (currentImages.length > 0) {
+                currentIndex = (currentIndex + 1) % currentImages.length; // الانتقال للأمام
+                const nextImgSrc = $(currentImages[currentIndex]).data('src');
+                updateModal(nextImgSrc);
+            }
+        });
+
+        // إعادة تعيين البيانات عند إغلاق المودال
+        $('#img-model').on('hidden.bs.modal', function () {
+            currentRow = null;
+            currentImages = [];
+            currentIndex = 0;
+            $('#modal-image').attr('src', ''); // إزالة الرابط
+        });
+    });
+
+</script>

@@ -97,18 +97,20 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             {
                 foreach (var record in groupedRecords)
                 {
+                    var IsLastStep = await _cycleFlowSettingService.IsLastStepInSortingByStatusIdAsync(record!.OrderStatusId, record.PosUserId);
                     if (justShowByCustomer)
                     {
                         var customerSetting = await _cycleFlowSettingService.GetCustomerByOrderStatusIdAsync(record!.PosUserId, record.OrderStatusId);
                         if (customerSetting.Id == customer.Id)
                         {
+                            if (IsLastStep)
+                                continue;
                             filteredRecords.Add(record);
                         }
                         continue;
                     }
                     if (justLastStepOrder)
                     {
-                        var IsLastStep = await _cycleFlowSettingService.IsLastStepInSortingByStatusIdAsync(record!.OrderStatusId, record.PosUserId);
                         if (IsLastStep)
                         {
                             filteredRecords.Add(record);

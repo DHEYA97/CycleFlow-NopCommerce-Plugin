@@ -20,7 +20,12 @@
     const string hideDeportationBlockAttributeName = "Deportation.HideDeportationBlock";
     var hideDeportationBlock = await genericAttributeService.GetAttributeAsync<bool>(customer, hideDeportationBlockAttributeName);
 }
-
+<style>
+    #Note{
+    width : 100%;
+    height: 100px;
+}
+</style>
 <div asp-validation-summary="All"></div>
 <input asp-for="Id" type="hidden" />
 <section class="content">
@@ -33,7 +38,8 @@
                     <nop-card asp-name="Send" asp-icon="fas fa-search-plus" asp-title="@T("Admin.Plugin.Misc.CycleFlow.Deportation.Order")" asp-hide-block-attribute-name="@hideOrderBlockAttributeName" asp-hide="@hideOrderBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.Order", Model)</nop-card>
                     <nop-card asp-name="Send" asp-icon="fas fa-search-plus" asp-title="@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage")" asp-hide-block-attribute-name="@hideAllDeportationImageBlockAttributeName" asp-hide="@hideAllBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.AllImage", Model)</nop-card>
                     <nop-card asp-name="Send" asp-icon="fas fa-search-plus" asp-title="@T("Admin.Plugin.Misc.CycleFlow.Deportation.LastDeportationImage")" asp-hide-block-attribute-name="@hideLastDeportationImageBlockAttributeName" asp-hide="@hideLastDeportationImageBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.LastImage", Model)</nop-card>
-                    <nop-card asp-name="Send" asp-icon="fas fa-search-plus" asp-title="@T("Admin.Plugin.Misc.CycleFlow.Deportation.Deportation")" asp-hide-block-attribute-name="@hideDeportationBlockAttributeName" asp-hide="@hideDeportationBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.Deportation", Model)</nop-card>                }else{
+                    <nop-card asp-name="Send" asp-icon="fas fa-search-plus" asp-title="@T("Admin.Plugin.Misc.CycleFlow.Deportation.Deportation")" asp-hide-block-attribute-name="@hideDeportationBlockAttributeName" asp-hide="@hideDeportationBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.Deportation", Model)</nop-card>
+                }else{
                     <nop-card asp-name="Send" asp-icon="fas fa-search-plus" asp-title="@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage")" asp-hide-block-attribute-name="@hideAllDeportationImageBlockAttributeName" asp-hide="@hideAllBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.AllImage", Model)</nop-card>
                 }
                 
@@ -47,11 +53,13 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">@T("Admin.Plugin.Misc.CycleFlow.Deportation.Return")</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
             </div>
             <div class="modal-body">
+                <h3>@T("Admin.Plugin.Misc.CycleFlow.Deportation.Return.Confirmation")</h3>
                 <div class="form-group text-center row">
-                <p>@T("Admin.Plugin.Misc.CycleFlow.Deportation.Return.Confirmation")</p>
                     <div class="col-md-3">
                         <nop-label asp-for="Note" />
                     </div>
@@ -62,9 +70,23 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@T("Admin.Common.Close")</button>
-                <button type="submit" name="deportationType" value="@Deportation.Return" class="btn btn-primary" form="deportationForm">@T("Admin.Common.Confirm")</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    @T("Admin.Common.Close")
+                </button>
+                <button type="button" id="confirm-return" class="btn btn-primary">
+                    @T("Admin.Common.Confirm")
+                </button>
             </div>
         </div>
     </div>
 </div>
+
+
+<script>
+    $(document).ready(function () {
+         $('#confirm-return').on('click', function () {
+            $('#deportationType').val('@Deportation.Return');
+            $('#deportationForm').submit();
+        });
+    });
+</script>

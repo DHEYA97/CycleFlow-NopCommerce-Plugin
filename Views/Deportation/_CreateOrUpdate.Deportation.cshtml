@@ -40,12 +40,13 @@
                                 <p>@Model.NextOrderStatusName</p>
                                 <input asp-for="NextOrderStatusId" type="hidden" />
                             </td>
-                            <@if(@Model.IsEnableReturn)
+                            @if(@Model.IsEnableReturn)
                             {
-                                <th>
-                                        <p>@Model.ReturnStepName</p>
-                                        <input asp-for="ReturnStepId" type="hidden" />
-                                </th>
+                                <td class="text-center">
+                                    <p>@Model.ReturnStepName</p>
+                                    <input asp-for="ReturnStepId" type="hidden" />
+                                    <input asp-for="IsEnableReturn" type="hidden" />
+                                </td>
                             }
                         </tr>    
                     </tbody>

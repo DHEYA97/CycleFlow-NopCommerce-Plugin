@@ -107,7 +107,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                 throw new ArgumentNullException(nameof(CycleFlowSettingModel));
             if (IsCurrentOrderStatesExsistInSortingAsync(model.CurrentOrderStatusId, model.PosUserId).Result)
                 throw new ArgumentNullException(nameof(CycleFlowSettingModel), "CurrentOrderStatusId already exist");
-            if (IsNextOrderStatesExsistInSortingAsync(model.NextOrderStatusId, model.PosUserId).Result)
+            if (IsNextOrderStatesExsistInSortingAsync(model.NextOrderStatusId, model.PosUserId,model.IsLastStep).Result)
                 throw new ArgumentNullException(nameof(CycleFlowSettingModel), "NextOrderStatusId already exist");
 
             using (var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
@@ -135,7 +135,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                     {
                         throw new Exception($"orderStatus not fount with id value {model.CurrentOrderStatusId}");
                     }
-                    if (nextOrderStatus == null)
+                    if (nextOrderStatus == null && !model.IsLastStep)
                     {
                         throw new Exception($"nextOrderStatus not fount with id value {model.NextOrderStatusId}");
                     }
@@ -143,7 +143,9 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                     await orderStatusSorting.SetBaseInfoAsync<OrderStatusSorting>(_workContext);
                     orderStatusSorting.ClientSmsTemplateId = model.ClientSmsTemplateId <= 0 ? null : model.ClientSmsTemplateId;
                     orderStatusSorting.UserSmsTemplateId = model.UserSmsTemplateId <= 0 ? null : model.UserSmsTemplateId;
-                    orderStatusSorting.ReturnStepId = model.IsEnableReturn ? model.ReturnStepId <= 0 ? (GetReturnStepByCurentStepAsync(model.CurrentOrderStatusId,model.PosUserId).Result)??null : model.ReturnStepId : null;
+                    orderStatusSorting.ReturnStepId = model.IsEnableReturn ? model.ReturnStepId <= 0 ? (GetFirstStepByNextStepAsync(model.CurrentOrderStatusId,model.PosUserId).Result)??null : model.ReturnStepId : null;
+                    if (model.NextOrderStatusId <= 0)
+                        orderStatusSorting.NextStep = null;
 
                     await _orderStatusSortingTypeRepository.InsertAsync(orderStatusSorting);
                     OrderStatusPermissionMapping orderStatusPermissionMapping = new OrderStatusPermissionMapping
@@ -195,7 +197,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
         {
             if (model == null)
                 throw new ArgumentNullException(nameof(model));
-            if (await IsNextOrderStatesExsistInSortingAsync(model.NextOrderStatusId, model.PosUserId, model.Id))
+            if (await IsNextOrderStatesExsistInSortingAsync(model.NextOrderStatusId, model.PosUserId,model.IsLastStep, model.Id))
                 throw new ArgumentException($"NextOrderStatusId {model.NextOrderStatusId} already exists in sorting.");
 
             using (var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
@@ -216,7 +218,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                         throw new Exception($"customer not found with id value {model.CustomerId}");
                     if (orderStatus == null)
                         throw new Exception($"OrderStatus not found with id value {model.CurrentOrderStatusId}");
-                    if (nextOrderStatus == null)
+                    if (nextOrderStatus == null && !model.IsLastStep)
                         throw new Exception($"NextOrderStatus not found with id value {model.NextOrderStatusId}");
 
                     var existingOrderStatusSorting = await _orderStatusSortingTypeRepository.Table
@@ -228,7 +230,9 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                         existingOrderStatusSorting.NextStep = model.NextOrderStatusId;
                         existingOrderStatusSorting.ClientSmsTemplateId = model.ClientSmsTemplateId <= 0 ? null : model.ClientSmsTemplateId;
                         existingOrderStatusSorting.UserSmsTemplateId = model.UserSmsTemplateId <= 0 ? null : model.UserSmsTemplateId;
-                        existingOrderStatusSorting.ReturnStepId  = model.IsEnableReturn ? model.ReturnStepId <= 0 ? (GetReturnStepByCurentStepAsync(model.CurrentOrderStatusId, model.PosUserId).Result) ?? null : model.ReturnStepId : null;
+                        existingOrderStatusSorting.ReturnStepId  = model.IsEnableReturn ? model.ReturnStepId <= 0 ? (GetNextStepByFirstStepAsync(model.CurrentOrderStatusId, model.PosUserId).Result) : model.ReturnStepId : null;
+                        if (model.NextOrderStatusId <= 0 && model.IsLastStep)
+                            existingOrderStatusSorting.NextStep = null;
 
                         await existingOrderStatusSorting.SetBaseInfoAsync<OrderStatusSorting>(_workContext);
                         await _orderStatusSortingTypeRepository.UpdateAsync(existingOrderStatusSorting);
@@ -428,10 +432,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                 {
                     Id = x.Id.ToString(),
                     Name = x.Name.ToString(),
-                    Next = next
+                    Next = next??0
                 })
                 .ToListAsync();
-            var result = list.Select(x => (x.Id, x.Name, next)).ToList();
+            var result = list.Select(x => (x.Id, x.Name, x.Next)).ToList();
             return result;
         }
         public virtual async Task<IList<(string, string,int)>> GetReturnOrderStatusAsync(int posUserId, int currentId = 0, bool exclude = false)
@@ -440,7 +444,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                 .Where(z => z.IsActive && !z.Deleted);
             var orderStetsList = new List<int?>();
 
-            var returnstep = await GetReturnStepByCurentStepAsync(currentId, posUserId);
+            var returnStep = await GetReturnStepByCurentStepAsync(currentId, posUserId);
             if (exclude && currentId > 0)
             {
                 var isFirst = await _orderStatusSortingTypeRepository.Table
@@ -486,14 +490,14 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                 {
                     Id = x.Id.ToString(),
                     Name = x.Name.ToString(),
-                    Return = returnstep ?? 0
+                    Return = returnStep ?? 0
                 })
                 .ToListAsync();
 
             return list.Select(x => (x.Id, x.Name,x.Return)).ToList();
         }
 
-        public virtual async Task<int> GetNextStepByFirstStepAsync(int firstStep, int posUserId)
+        public virtual async Task<int?> GetNextStepByFirstStepAsync(int firstStep, int posUserId)
         {
             return await _orderStatusSortingTypeRepository.Table
                     .Where(x => x.OrderStatusId == firstStep && x.PosUserId == posUserId)
@@ -534,9 +538,9 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             }
             return true;
         }
-        public virtual async Task<bool> IsNextOrderStatesExsistInSortingAsync(int orderStateId, int posUserId, int currentId = 0)
+        public virtual async Task<bool> IsNextOrderStatesExsistInSortingAsync(int orderStateId, int posUserId,bool IsLastStep = false ,int currentId = 0)
         {
-            if (orderStateId > 0 && posUserId > 0)
+            if (orderStateId > 0 && posUserId > 0 || IsLastStep)
             {
                 var query = _orderStatusSortingTypeRepository.Table.Where(os => os.NextStep == orderStateId && os.PosUserId == posUserId);
 
@@ -586,8 +590,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                     // استبدال النص الثابت بنص مترجم
                     var errorMessage = await _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.OrderStatusSorting.SequenceBreak");
                     sequenceHtml += "<div class='arrow'></div>";
-                    sequenceHtml += $"<div class='sequence-box'>{_orderStatusService.GetOrderStatusNameAsync(currentStatus.NextStep).Result} ({currentStatus.NextStep})</div>";
-                    sequenceHtml += $"<div class='alert alert-danger'>{errorMessage} {currentStatus.NextStep} ({_orderStatusService.GetOrderStatusNameAsync(currentStatus.NextStep).Result}).</div>";
+                    sequenceHtml += $"<div class='sequence-box'>{_orderStatusService.GetOrderStatusNameAsync(currentStatus?.NextStep??0).Result} ({currentStatus.NextStep})</div>";
+                    sequenceHtml += $"<div class='alert alert-danger'>{errorMessage} {currentStatus.NextStep} ({_orderStatusService.GetOrderStatusNameAsync(currentStatus?.NextStep??0).Result}).</div>";
                     break;
                 }
 
@@ -596,7 +600,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                     // استبدال النص الثابت بنص مترجم
                     var errorMessage = await _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.OrderStatusSorting.LoopDetected");
                     sequenceHtml += "<div class='arrow'></div>";
-                    sequenceHtml += $"<div class='sequence-box'>{_orderStatusService.GetOrderStatusNameAsync(currentStatus.NextStep).Result} ({currentStatus.NextStep})</div>";
+                    sequenceHtml += $"<div class='sequence-box'>{_orderStatusService.GetOrderStatusNameAsync(currentStatus?.NextStep??0).Result} ({currentStatus.NextStep})</div>";
                     sequenceHtml += $"<div class='alert alert-danger'>{errorMessage} {currentStatus.OrderStatusId} ({firstStatusName}) و {nextStatus.OrderStatusId}.</div>";
                     break;
                 }
@@ -610,12 +614,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
 
                 if (nextStatus.IsLastStep)
                 {
-                    var lastStatusName = await _orderStatusService.GetOrderStatusNameAsync(nextStatus.NextStep);
-
-                    sequenceHtml += "<div class='arrow'></div>";
-                    sequenceHtml += $"<div class='sequence-box'>{lastStatusName} ({nextStatus.NextStep})</div>";
-
-                    // استبدال النص الثابت بنص مترجم
                     var successMessage = await _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.OrderStatusSorting.CompleteSequence");
                     sequenceHtml += $"<div class='alert alert-success'>{successMessage}</div>";
                     status = true;
@@ -651,8 +649,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
         public virtual async Task<int?> GetReturnStepByCurentStepAsync(int statusId, int posUserId)
         {
             return await _orderStatusSortingTypeRepository.Table
-                    .Where(x => x.NextStep == statusId && x.PosUserId == posUserId)
-                    .Select(o => o.OrderStatusId)
+                    .Where(x => x.OrderStatusId == statusId && x.PosUserId == posUserId)
+                    .Select(o => o.ReturnStepId)
                     .FirstOrDefaultAsync();
         }
         public virtual async Task<bool> IsLastStepInSortingByStatusIdAsync(int statusId, int posUserId)
