@@ -65,9 +65,9 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
         }
         #endregion
         #region Method
-        public async Task<string?> GetPictureUrlByImageTypeIdAsync(int imgTypeId,int posUserId,int orderId,int orderStatusId)
+        public async Task<string?> GetPictureUrlByImageTypeIdAsync(int imgTypeId,int posUserId,int orderId,int orderStatusId,int orderStateOrderMappingId)
         {
-            var pictureId = await _orderStateOrderImageMapping.Table.Where(x=>x.PosUserId == posUserId && x.OrderId == orderId && x.OrderStatusId == orderStatusId && x.ImageTypeId == imgTypeId).Select(x=>x.PictureId).FirstOrDefaultAsync();
+            var pictureId = await _orderStateOrderImageMapping.Table.Where(x=>x.PosUserId == posUserId && x.OrderId == orderId && x.OrderStatusId == orderStatusId && x.ImageTypeId == imgTypeId && x.OrderStateOrderMappingId == orderStateOrderMappingId).Select(x=>x.PictureId).FirstOrDefaultAsync();
             var pictureUrl = await _pictureService.GetPictureUrlAsync(pictureId);
             return pictureUrl;
         }
@@ -103,7 +103,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                 foreach (var img in imgTypes)
                 {
                     imgTypeList.Add(
-                        new( await _imageTypeService.GetImageTypeNameAsync(img.ImageTypeId), await GetPictureUrlByImageTypeIdAsync(img.ImageTypeId,img.PosUserId,posOrderId,img.OrderStatusId)??string.Empty)
+                        new( await _imageTypeService.GetImageTypeNameAsync(img.ImageTypeId), await GetPictureUrlByImageTypeIdAsync(img.ImageTypeId,img.PosUserId,posOrderId,img.OrderStatusId,item.Id)??string.Empty)
                         );
                 }
                 AllDeportationModelList.Add(
@@ -114,6 +114,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                         NextStatusName = await _orderStatusService.GetOrderStatusNameAsync((await _cycleFlowSettingService.GetNextStepByFirstStepAsync(item.OrderStatusId, item.PosUserId)??0)),
                         ImageType = imgTypeList,
                         Note = item.Note,
+                        IsReturn = item.IsReturn,
                     });
             }
             return AllDeportationModelList;
@@ -124,6 +125,16 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             {
                 try
                 {
+                    bool? isReturn = deportationType == Deportation.Return ? true : null;
+                    if(!string.IsNullOrEmpty(model.Note) | isReturn?? false)
+                    {
+                        var currentOrderStatusOrderMapping = await GetOrderStateOrderMappingByIdAsync(model.Id);
+                        currentOrderStatusOrderMapping.Note = model.Note;
+                        currentOrderStatusOrderMapping.IsReturn = isReturn;
+                        await currentOrderStatusOrderMapping.SetBaseInfoAsync<OrderStateOrderMapping>(_workContext);
+                        await _orderStateOrderMapping.UpdateAsync(currentOrderStatusOrderMapping);
+                    }
+                    
                     var nextStep = deportationType == Deportation.NextStep ? model.NextOrderStatusId : model.ReturnStepId;
                     var customer = await _cycleFlowSettingService.GetCustomerByOrderStatusIdAsync(model.PosUserId, (int)nextStep!);
                     var orderStatusOrderMapping = new OrderStateOrderMapping()
@@ -131,9 +142,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                         OrderId = model.OrderId,
                         OrderStatusId = (int)nextStep!,
                         NopStoreId = model.NopStoreId,
-                        Note = model.Note,
                         PosUserId = model.PosUserId,
-                        CustomerId = customer.Id
+                        CustomerId = customer.Id,
                     };
                     await orderStatusOrderMapping.SetBaseInfoAsync<OrderStateOrderMapping>(_workContext);
                     await _orderStateOrderMapping.InsertAsync(orderStatusOrderMapping);
@@ -150,6 +160,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                                 OrderStatusId = model.OrderStatusId,
                                 PosUserId = model.PosUserId,
                                 PictureId = (int)img.PictureId!,
+                                OrderStateOrderMappingId = model.Id,
                             };
                             await orderStatusOrderImageTypingMapping.SetBaseInfoAsync<OrderStateOrderImageMapping>(_workContext);
                             await _orderStateOrderImageMapping.InsertAsync(orderStatusOrderImageTypingMapping);

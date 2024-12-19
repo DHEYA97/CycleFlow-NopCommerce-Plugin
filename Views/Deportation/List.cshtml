@@ -14,14 +14,7 @@
 <div class="content-header clearfix">
     <h1 class="float-left">
         @T("Admin.Plugin.Misc.CycleFlow.Deportation.Title")
-    </h1>
-    <div class="float-right">
-        <a asp-action="Create" class="btn btn-primary">
-            <i class="fas fa-plus-square"></i>
-            @T("Admin.Common.AddNew")
-        </a>
-        @await Component.InvokeAsync("AdminWidget", new { widgetZone = AdminWidgetZones.VendorListButtons, additionalData = Model })
-    </div>
+    </h1> 
 </div>
 
 <section class="content">

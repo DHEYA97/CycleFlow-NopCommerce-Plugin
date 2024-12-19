@@ -168,7 +168,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                                     {
                                         ImageTypeId = imageType.ImageTypeId,
                                         ImageTypeName = await _imageTypeService.GetImageTypeNameAsync(imageType.ImageTypeId),
-                                        ImageTypeUrl = await _orderStateOrderMappingService.GetPictureUrlByImageTypeIdAsync(imageType.ImageTypeId, orderStateOrderMapping.PosUserId, orderStateOrderMapping.OrderId, orderStateOrderMapping.OrderStatusId)
+                                        ImageTypeUrl = await _orderStateOrderMappingService.GetPictureUrlByImageTypeIdAsync(imageType.ImageTypeId, orderStateOrderMapping.PosUserId, orderStateOrderMapping.OrderId, orderStateOrderMapping.OrderStatusId, orderStateOrderMapping.Id)
                                     }
                                 );
                         }

@@ -191,9 +191,7 @@ namespace Nop.Plugin.Misc.CycleFlow
                 ["Nop.Plugin.Misc.CycleFlow.Deportation"] = "Deportation",
                 ["Nop.Plugin.Misc.CycleFlow.Deportation.LastStepOrder"] = "Last Step Order",
                 ["Nop.Plugin.Misc.CycleFlow.Deportation.AllOrder"] = "All Order",
-
-
-
+                ["Nop.Plugin.Misc.CycleFlow.CycleFlowSetting.IsEnableReturn.Invalid"] = "Returns are not allowed if it is the first Step",
 
 
 
@@ -372,7 +370,7 @@ namespace Nop.Plugin.Misc.CycleFlow
                 ["Nop.Plugin.Misc.CycleFlow.Deportation"] = "الترحيل",
                 ["Nop.Plugin.Misc.CycleFlow.Deportation.LastStepOrder"] = "الطلبات المرحلة",
                 ["Nop.Plugin.Misc.CycleFlow.Deportation.AllOrder"] = "تتبع كل الطلبات",
-
+                ["Nop.Plugin.Misc.CycleFlow.CycleFlowSetting.IsEnableReturn.Invalid"] = "لا يسمح بالارجاع اذا كانت اول حالة",
                 #endregion
             };
         }

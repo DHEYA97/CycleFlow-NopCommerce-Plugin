@@ -15,12 +15,14 @@ namespace Nop.Plugin.Misc.CycleFlow.Mapping.Builders
         public override void MapEntity(CreateTableExpressionBuilder table)
         {
             table
-                 .WithColumn(nameof(OrderStateOrderImageMapping.NopStoreId)).AsInt32().ForeignKey<Store>()
-                 .WithColumn(nameof(OrderStateOrderImageMapping.CustomerId)).AsInt32().ForeignKey<Customer>()
-                 .WithColumn(nameof(OrderStateOrderImageMapping.OrderStatusId)).AsInt32().ForeignKey<Domain.OrderStatus>()
-                 .WithColumn(nameof(OrderStateOrderImageMapping.PosUserId)).AsInt32()
-                 .WithColumn(nameof(OrderStateOrderImageMapping.OrderId)).AsInt32().ForeignKey<Order>()
-                 .WithColumn(nameof(OrderStateOrderImageMapping.PictureId)).AsInt32().ForeignKey<Picture>()
+                .WithColumn(nameof(OrderStateOrderImageMapping.NopStoreId)).AsInt32().ForeignKey<Store>()
+                .WithColumn(nameof(OrderStateOrderImageMapping.CustomerId)).AsInt32().ForeignKey<Customer>()
+                .WithColumn(nameof(OrderStateOrderImageMapping.OrderStatusId)).AsInt32().ForeignKey<Domain.OrderStatus>()
+                .WithColumn(nameof(OrderStateOrderImageMapping.PosUserId)).AsInt32()
+                .WithColumn(nameof(OrderStateOrderImageMapping.OrderId)).AsInt32().ForeignKey<Order>()
+                .WithColumn(nameof(OrderStateOrderImageMapping.PictureId)).AsInt32().ForeignKey<Picture>()
+                .WithColumn(nameof(OrderStateOrderImageMapping.ImageTypeId)).AsInt32().ForeignKey<ImageType>(onDelete:System.Data.Rule.SetNull)
+                .WithColumn(nameof(OrderStateOrderImageMapping.OrderStateOrderMappingId)).AsInt32().Nullable().ForeignKey<OrderStateOrderMapping>(onDelete: System.Data.Rule.None)
 
                 .WithColumn(nameof(OrderStateOrderImageMapping.InsertedByUser)).AsInt32().Nullable()
                 .WithColumn(nameof(OrderStateOrderImageMapping.InsertionDate)).AsDateTime().Nullable()

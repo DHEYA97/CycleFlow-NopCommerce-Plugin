@@ -64,6 +64,14 @@
                             </td>
                         </tr>
                     }
+                        <tr>
+                            <td colspan="3">
+                                @T("Admin.Orders.Products.Quantity")
+                            </td>
+                            <td colspan="2">
+                                @Model.ProductOrderItem.Sum(x=>x.Quantity)
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

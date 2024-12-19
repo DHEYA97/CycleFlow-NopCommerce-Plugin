@@ -16,6 +16,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Deportation
         public string? NextStatusName { get; set; }
         public DateTime? DeportationDate { get; set; }
         public string? Note { get; set; }
+        public bool? IsReturn { get; set; }
         public IList<(string,string)?> ImageType { get; set; }
         #endregion
 

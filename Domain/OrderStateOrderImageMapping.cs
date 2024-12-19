@@ -16,5 +16,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Domain
         public int CustomerId { get; set; }
         public int ImageTypeId { get; set; }
         public int PictureId { get; set; }
+        public int OrderStateOrderMappingId { get; set; }
     }
 }

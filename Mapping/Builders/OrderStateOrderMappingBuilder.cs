@@ -20,6 +20,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Mapping.Builders
                  .WithColumn(nameof(OrderStateOrderMapping.PosUserId)).AsInt32()
                  .WithColumn(nameof(OrderStateOrderMapping.OrderId)).AsInt32().ForeignKey<Order>()
                  .WithColumn(nameof(OrderStateOrderMapping.Note)).AsString().Nullable()
+                 .WithColumn(nameof(OrderStateOrderMapping.IsReturn)).AsBoolean().Nullable()
 
                  .WithColumn(nameof(OrderStateOrderMapping.InsertedByUser)).AsInt32().Nullable()
                 .WithColumn(nameof(OrderStateOrderMapping.InsertionDate)).AsDateTime().Nullable()

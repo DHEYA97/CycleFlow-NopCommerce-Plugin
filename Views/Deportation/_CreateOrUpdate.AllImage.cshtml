@@ -80,7 +80,7 @@
                     <tbody>
                             @foreach (var item in Model.AllDeportation)
                             {
-                                <tr id="row-@item.Id">
+                                <tr id="row-@item.Id" class="@((item?.IsReturn == true) ? "table-danger" : string.Empty)">
                                     <td class="text-center">
                                         <p>@item.StatusName</p>
                                     </td>
@@ -98,7 +98,7 @@
                                         <p>@item.DeportationDate</p>
                                     </td>
                                     <td class="text-center">
-                                        <p>@item.Note</p>
+                                        @Html.Raw(item.Note)
                                     </td>
                                     <td class="text-center d-flex flex-column justify-content-between">
                                         @if (item.ImageType != null && item.ImageType.Any())

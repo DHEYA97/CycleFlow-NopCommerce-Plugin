@@ -59,7 +59,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Deportation
         public int? ReturnStepId { get; set; }
         [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.ReturnStepName")]
         public string? ReturnStepName { get; set; }
-
         public string? Note { get; set; }
         public bool ShowAllInfo { get; set; }
         public IList<ProductOrderItemModel> ProductOrderItem { get; set; }
