@@ -5,6 +5,7 @@ using Nop.Plugin.Misc.CycleFlow.Models.ImageType;
 using Nop.Plugin.Misc.CycleFlow.Domain;
 using Nop.Plugin.Misc.CycleFlow.Models.CycleFlowSetting;
 using Nop.Plugin.Misc.CycleFlow.Models.Deportation;
+using Nop.Plugin.Misc.CycleFlow.Models.Return;
 
 namespace Nop.Plugin.Misc.CycleFlow.Infrastructure
 {
@@ -36,6 +37,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Infrastructure
                 .ForMember(m => m.NextStep, opt => opt.MapFrom(o => o.IsLastStep))
                 .ReverseMap();
 
+            CreateMap<FilterReturnModel, ReturnModel>();
         }
         #endregion
     }

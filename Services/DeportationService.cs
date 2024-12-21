@@ -4,6 +4,7 @@ using Nop.Plugin.Misc.CycleFlow.Constant.Enum;
 using Nop.Plugin.Misc.CycleFlow.Domain;
 using Nop.Plugin.Misc.CycleFlow.Models.CycleFlowSetting;
 using Nop.Plugin.Misc.CycleFlow.Models.Deportation;
+using Nop.Plugin.Misc.CycleFlow.Models.Return;
 using Nop.Plugin.Misc.POSSystem.Domains;
 using Nop.Plugin.Misc.POSSystem.Services;
 using Nop.Services.Customers;
@@ -16,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Nop.Plugin.Misc.CycleFlow.Models.Return.FilterReturnModel;
 
 namespace Nop.Plugin.Misc.CycleFlow.Services
 {
@@ -126,6 +128,76 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                 filteredRecords = filteredRecords.Where(x => x.OrderId == orderNumber).ToList();
             }
             var pagedList = new PagedList<OrderStateOrderMapping>(filteredRecords, pageIndex, pageSize);
+            return pagedList;
+        }
+        public virtual async Task<IPagedList<FilterReturnModel>> SearchReturnAsync(
+               IList<int> posUserIds = null,
+               IList<int> customerIds = null,
+               IList<int> years = null,
+               IList<int> months = null,
+               int pageIndex = 0, int pageSize = int.MaxValue, bool getOnlyTotalCount = false)
+        {
+
+            var filteredRecords = new List<FilterReturnModel>();
+            var allRecords = await _orderStateOrderMappingRepository.Table.Where(x=>x.IsReturn.HasValue && x.IsReturn == true).ToListAsync();
+
+            var groupedRecords = allRecords
+                .GroupBy(o => new
+                {
+                    o.PosUserId,
+                    o.CustomerId,
+                    Year = o.InsertionDate.HasValue ? o.InsertionDate.Value.Year : 0,
+                    Month = o.InsertionDate.HasValue ? o.InsertionDate.Value.Month : 0
+                                })
+                    .Select(g => new
+                    {
+                        PosUserId = g.Key.PosUserId,
+                        PosUserName = string.Empty,
+                        CustomerId = g.Key.CustomerId,
+                        CustomerName = string.Empty,
+                        Year = g.Key.Year,
+                        Month = g.Key.Month,
+                        ReturnCount = g.Count(),
+                        Orders = g.Select(o => new
+                        {
+                            o.OrderId,
+                            o.OrderStatusId
+                        }).ToList()
+                    }).ToList();
+
+            if (groupedRecords.Any())
+            {
+                foreach (var record in groupedRecords)
+                {
+                    filteredRecords.Add(
+                    new FilterReturnModel
+                    {
+                        PosUserId = record.PosUserId,
+                        PosUserName = record.PosUserName,
+                        CustomerId = record.CustomerId,
+                        CustomerName = record.CustomerName,
+                        Year = record.Year,
+                        Month = record.Month,
+                        ReturnCount = record.ReturnCount,
+                        OrderDetail = record.Orders.Select(x=>new OrderDetailModel
+                        {
+                            OrderId = x.OrderId,
+                            OrderStatusId = x.OrderStatusId,
+                        }).ToList()
+                    });
+                }
+            }
+
+            if (customerIds?.Any(x => x != 0) ?? false)
+                filteredRecords = filteredRecords.Where(p => customerIds.Contains(p.CustomerId)).ToList();
+            if (posUserIds?.Any(x => x != 0) ?? false)
+                filteredRecords = filteredRecords.Where(p => posUserIds.Contains(p.PosUserId)).ToList();
+            if (years?.Any(x => x != 0) ?? false)
+                filteredRecords = filteredRecords.Where(p => years.Contains(p.Year)).ToList();
+            if (months?.Any(x => x != 0) ?? false)
+                filteredRecords = filteredRecords.Where(p => months.Contains(p.Month)).ToList();
+
+            var pagedList = new PagedList<FilterReturnModel>(filteredRecords, pageIndex, pageSize);
             return pagedList;
         }
         public async Task DeportationAsync(DeportationModel model, Deportation deportationType)
