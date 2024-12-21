@@ -83,6 +83,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
         {
             return await _orderStateOrderMapping.Table.Where(x => x.OrderId == orderId).OrderBy(x=>x.InsertionDate).ToListAsync();
         }
+        public async Task<List<OrderStateOrderMapping>> GeAllOrderStateOrderMappingAsync()
+        {
+            return await _orderStateOrderMapping.Table.OrderBy(x => x.InsertionDate).ToListAsync();
+        }
         public async Task<List<AllDeportationModel>> GetAllDeportationModelByIdAsync(int posOrderId)
         {
             var order = _posOrderService.GetNopOrderByPosOrderIdAsync(posOrderId);

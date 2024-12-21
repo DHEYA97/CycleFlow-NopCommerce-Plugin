@@ -35,6 +35,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Infrastructure
             services.AddScoped<ICycleFlowSettingModelFactory, CycleFlowSettingModelFactory>();
             services.AddScoped<ICheckPosOrderStatusModelFactory, CheckPosOrderStatusModelFactory>();
             services.AddScoped<IDeportationModelFactory, DeportationModelFactory>();
+            services.AddScoped<IReturnModelFactory, ReturnModelFactory>();
             #endregion
 
             #region Service

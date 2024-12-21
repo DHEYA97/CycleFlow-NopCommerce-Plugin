@@ -22,13 +22,12 @@
         margin-top: 5px;
     }
 
-
     /* #modal-image {
-        display: block;
-        margin: 0 auto;
-        max-width: 100%;
-        max-height: 80vh;
-    } */
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            max-height: 80vh;
+        } */
 
     #prev-image, #next-image {
         text-decoration: none;
@@ -46,10 +45,28 @@
             opacity: 1;
             background-color: rgba(0, 0, 0, 0.5);
         }
+
+    #print-deportation-button {
+        margin-bottom: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        #print-deportation-button:hover {
+            background-color: #0056b3;
+        }
 </style>
 
-
-<div class="card-body">
+@if (!Model.ShowAllInfo)
+{
+    <button id="print-deportation-button" type="button">طباعة</button>
+}
+<div class="card-body" id="print-section">
     <div class="cards-group">
         <div class="form-group row">
             <div class="col-md-12" style="overflow-x: auto;">
@@ -74,76 +91,76 @@
                             <th>
                                 @T("Admin.Orders.Products.Picture")
                             </th>
-
                         </tr>
                     </thead>
                     <tbody>
-                            @foreach (var item in Model.AllDeportation)
-                            {
-                                <tr id="row-@item.Id" class="@((item?.IsReturn == true) ? "table-danger" : string.Empty)">
-                                    <td class="text-center">
-                                        <p>@item.StatusName</p>
-                                    </td>
-                                    <td class="text-center">
-                                            @if (item.NextStatusName != null)
-                                            {
-                                                <p>@item.NextStatusName</p>
-                                            }
-                                            else
-                                            {
-                                                <p>@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.NoNextStatusName")</p>
-                                            }
-                                        </td>
-                                    <td class="text-center">
-                                        <p>@item.DeportationDate</p>
-                                    </td>
-                                    <td class="text-center">
-                                        @Html.Raw(item.Note)
-                                    </td>
-                                    <td class="text-center d-flex flex-column justify-content-between">
-                                        @if (item.ImageType != null && item.ImageType.Any())
+                        @foreach (var item in Model.AllDeportation)
+                        {
+                            <tr id="row-@item.Id" class="@((item?.IsReturn == true) ? "table-danger" : string.Empty)">
+                                <td class="text-center">
+                                    <p>@item.StatusName</p>
+                                </td>
+                                <td class="text-center">
+                                    @if (item.NextStatusName != null)
+                                    {
+                                        <p>@item.NextStatusName</p>
+                                    }
+                                    else
+                                    {
+                                        <p>@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.NoNextStatusName")</p>
+                                    }
+                                </td>
+                                <td class="text-center">
+                                    <p>@item.DeportationDate</p>
+                                </td>
+                                <td class="text-center">
+                                    @Html.Raw(item.Note)
+                                </td>
+                                <td class="text-center d-flex flex-column justify-content-between">
+                                    @if (item.ImageType != null && item.ImageType.Any())
+                                    {
+                                        foreach (var tuple in item.ImageType)
                                         {
-                                            foreach (var tuple in item.ImageType)
+                                            if (tuple.HasValue)
                                             {
-                                                if (tuple.HasValue)
-                                                {
-                                                    var (imgType, _) = tuple.Value;
-                                                    <div class="image-type">@imgType</div>
-                                                }
+                                                var (imgType, _) = tuple.Value;
+                                                <div class="image-type">@imgType</div>
                                             }
                                         }
-                                        else
+                                    }
+                                    else
+                                    {
+                                        <p>@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.NoimgType")</p>
+                                    }
+                                </td>
+                                <td class="text-center">
+                                    @if (item.ImageType != null && item.ImageType.Any())
+                                    {
+                                        foreach (var tuple in item.ImageType)
                                         {
-                                            <p>@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.NoimgType")</p>
+                                            if (tuple.HasValue)
+                                            {
+                                                var (_, picture) = tuple.Value;
+                                                <div class="image-container">
+                                                    <img src="@picture" alt="Picture" class="deportation-image" data-src="@picture" />
+                                                </div>
+                                            }
                                         }
-                                    </td>
-                                    <td class="text-center">
-                                            @if (item.ImageType != null && item.ImageType.Any())
-                                            {
-                                                foreach (var tuple in item.ImageType)
-                                                {
-                                                    if (tuple.HasValue)
-                                                    {
-                                                        var (_, picture) = tuple.Value;
-                                                    <div class="image-container">
-                                                        <img src="@picture" alt="Picture" class="deportation-image" data-src="@picture" />
-                                                    </div>
-                                                    }
-                                                }
-                                            }
-                                            else
-                                            {
-                                            <p>@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.NoPicture")</p>
-                                            }
-                                    </td>
-                                </tr>
-                            }
+                                    }
+                                    else
+                                    {
+                                        <p>@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.NoPicture")</p>
+                                    }
+                                </td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
+
 <div id="img-model" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="returnModelTitle">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
@@ -168,10 +185,14 @@
         </div>
     </div>
 </div>
-
-
 <script>
     $(document).ready(function () {
+        
+        $('#print-deportation-button').on('click', function (e) {
+            e.preventDefault();
+            window.print();
+        });
+        
         let currentRow = null; // الصف الحالي
         let currentImages = []; // الصور داخل الصف
         let currentIndex = 0; // الفهرس الحالي للصورة
@@ -217,5 +238,4 @@
             $('#modal-image').attr('src', ''); // إزالة الرابط
         });
     });
-
 </script>

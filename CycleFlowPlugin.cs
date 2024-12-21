@@ -163,6 +163,15 @@ namespace Nop.Plugin.Misc.CycleFlow
                 IconClass = "far fa-dot-circle",
                 Visible = true,
             };
+            var ReturnChildNode = new SiteMapNode()
+            {
+                SystemName = "Return",
+                Title = _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.Return").Result,
+                ControllerName = "Return",
+                ActionName = "List",
+                IconClass = "far fa-dot-circle",
+                Visible = true,
+            };
             if (await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.AccessToCycleFlowPluginMenu))
             {
                 rootNode.ChildNodes.Add(menueItem);
@@ -171,6 +180,7 @@ namespace Nop.Plugin.Misc.CycleFlow
             {
                 rootNode.ChildNodes.FirstOrDefault(s => s.SystemName.Equals(SystemDefaults.CYCLE_FLOW_SITE_MAP_NODE_SYSTEM_NAME))?.ChildNodes.Add(AllOrderChildNode);
                 rootNode.ChildNodes.FirstOrDefault(s => s.SystemName.Equals(SystemDefaults.CYCLE_FLOW_SITE_MAP_NODE_SYSTEM_NAME))?.ChildNodes.Add(LastStepChildNode);
+                rootNode.ChildNodes.FirstOrDefault(s => s.SystemName.Equals(SystemDefaults.CYCLE_FLOW_SITE_MAP_NODE_SYSTEM_NAME))?.ChildNodes.Add(ReturnChildNode);
             }
         }
         #endregion
