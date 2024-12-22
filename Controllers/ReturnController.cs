@@ -71,26 +71,31 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         [HttpPost]
         public virtual async Task<IActionResult> List(ReturnSearchModel searchModel)
         {
-            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.DeportationCycleFlowPlugin))
+            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ShowAllOrderCycleFlowPlugin))
                 return await AccessDeniedDataTablesJson();
             await _cycleFlowSettingService.NotificationPosUserAsync();
             var model = await _returnModelFactory.PrepareReturnModelListModelAsync(searchModel);
             return Json(model);
         }
-        //public virtual async Task<IActionResult> View(int id,bool showAllInfo = false)
-        //{
-        //    if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.DeportationCycleFlowPlugin))
-        //        return AccessDeniedView();
-        //    var orderStateOrderMapping = await _orderStateOrderMappingService.GetOrderStateOrderMappingByIdAsync(id);
-        //    if(orderStateOrderMapping == null)
-        //    {
-        //        _notificationService.ErrorNotification(_localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.Deportation.NotFound").Result);
-        //        return RedirectToAction(nameof(List));
-        //    }
-        //    await _cycleFlowSettingService.NotificationPosUserAsync();
-        //    var model = await _deportationModelFactory.PrepareDeportationModelAsync(null, orderStateOrderMapping,showAllInfo);
-        //    return View(model);
-        //}
+        public virtual async Task<IActionResult> View(int customerId,int year,int month)
+        {
+            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ShowAllOrderCycleFlowPlugin))
+                return AccessDeniedView();
+            
+            var filterReturnModel = (await _deportationService.SearchReturnAsync(
+                                    customerIds: new List<int>(customerId),
+                                    years: new List<int>(year),
+                                    months: new List<int>(month)
+                                    )).FirstOrDefault();
+            
+            if (filterReturnModel == null)
+            {
+                _notificationService.ErrorNotification(_localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.filterReturnModel.NotFound").Result);
+                return RedirectToAction(nameof(List));
+            }
+            var model = await _returnModelFactory.PrepareReturnModelAsync(null, filterReturnModel);
+            return View(model);
+        }
         #endregion
     }
 }
