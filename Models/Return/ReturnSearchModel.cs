@@ -8,8 +8,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Return
         #region Ctor
         public ReturnSearchModel()
         {
-            SearchPosUsersIds = new List<int>();
-            AvailablePosUsers = new List<SelectListItem>();
             SearchCustomerIds = new List<int>();
             AvailableCustomers = new List<SelectListItem>();
             SearchYearIds = new List<int>();
@@ -19,9 +17,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Return
         }
         #endregion
         #region Properties
-        [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.SearchPosUser")]
-        public IList<int> SearchPosUsersIds { get; set; }
-        public IList<SelectListItem> AvailablePosUsers { get; set; }
         [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.SearchCustomer")]
         public IList<int> SearchCustomerIds { get; set; }
         public IList<SelectListItem> AvailableCustomers { get; set; }

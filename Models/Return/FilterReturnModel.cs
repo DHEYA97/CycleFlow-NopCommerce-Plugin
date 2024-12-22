@@ -16,9 +16,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Return
         }
         #endregion
         #region Properties
-        public int PosUserId { get; set; }
-        [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Return.Fields.PosUserName")]
-        public string PosUserName { get; set; }
         
         [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Return.Fields.CustomerId")]
         public int CustomerId { get; set; }
@@ -35,10 +32,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Return
         public partial record OrderDetailModel : BaseNopEntityModel
         {
 
-            [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Return.Fields.ReturnStep.OrderId")]
-            public int OrderId { get; set; }
-            [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Return.Fields.ReturnStep.OrderStatusId")]
-            public int OrderStatusId { get; set; }
+            [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Return.Fields.ReturnStep.OrderStateOrderMappingId")]
+            public int OrderStateOrderMappingId { get; set; }
         }
         #endregion
     }

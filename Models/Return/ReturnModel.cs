@@ -11,14 +11,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Return
         #region Ctor
         public ReturnModel()
         {
-            AllDeportation = new List<AllDeportationModel>();
+            AllReturn = new List<AllReturnModel>();
         }
         #endregion
         #region Properties
-        public int PosUserId { get; set; }
-        [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Return.Fields.PosUserName")]
-        public string? PosUserName { get; set; }
-        
         [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Return.Fields.CustomerId")]
         public int CustomerId { get; set; }
         public string? CustomerName { get; set; }
@@ -28,10 +24,32 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Return
         public int Month { get; set; }
         [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Return.Fields.ReturnCount")]
         public int ReturnCount { get; set; }
-        public IList<AllDeportationModel> AllDeportation { get; set; }
+        public IList<AllReturnModel> AllReturn { get; set; }
         #endregion
         #region Nested Classes
-        
+        public partial record AllReturnModel : BaseNopEntityModel
+        {
+            #region Ctor
+            public AllReturnModel()
+            {
+                ImageType = new List<(string, string)?>();
+            }
+            #endregion
+            #region Properties
+            public int OrderStateOrderMappingId { get; set; }
+            public int OrderId { get; set; }
+            public string PosUserName { get; set; }
+            public string PosStoreName { get; set; }
+            public string ReturnStatusName { get; set; }
+            public string ReturnFromStatusName { get; set; }
+            public string CustomerReturnName { get; set; }
+            public string CustomerReturnFromName { get; set; }
+            public DateTime ReturnDate { get; set; }
+            public string? Note { get; set; }
+            public IList<(string, string)?> ImageType { get; set; }
+            #endregion
+
+        }
         #endregion
     }
 }

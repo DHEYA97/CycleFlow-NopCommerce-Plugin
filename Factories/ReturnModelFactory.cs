@@ -18,6 +18,7 @@ using Nop.Services.Stores;
 using Nop.Web.Areas.Admin.Factories;
 using Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
 using Nop.Web.Framework.Models.Extensions;
+using static Nop.Plugin.Misc.CycleFlow.Models.Return.ReturnModel;
 
 namespace Nop.Plugin.Misc.CycleFlow.Factories
 {
@@ -83,13 +84,11 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
         {
             searchModel ??= new ReturnSearchModel();
 
-            await PreparePosUsersListAsync(searchModel.AvailablePosUsers);
             await PrepareCustomerListAsync(searchModel.AvailableCustomers);
             await PrepareYearListAsync(searchModel.AvailableYears);
             await PrepareMonthListAsync(searchModel.AvailableMonths);
             
             searchModel.SearchCustomerIds
-                = searchModel.SearchPosUsersIds
                 = searchModel.SearchYearIds
                 = searchModel.SearchMonthIds
                 = new List<int>() { 0 };
@@ -100,7 +99,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
         public async Task<ReturnListModel> PrepareReturnModelListModelAsync(ReturnSearchModel searchModel)
         {
             var deportation = await _deportationService.SearchReturnAsync(
-                posUserIds:searchModel.SearchPosUsersIds,
                 customerIds:searchModel.SearchCustomerIds,
                 years:searchModel.SearchYearIds,
                 months:searchModel.SearchMonthIds
@@ -119,72 +117,53 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
             if (filterReturnModel != null)
             {
                 model ??= filterReturnModel.ToModel<ReturnModel>();
-
-                var posUser = await _posUserService.GetPosUserByIdAsync(filterReturnModel.PosUserId);
                 var customer = await _customerService.GetCustomerByIdAsync(filterReturnModel.CustomerId);
 
-                model.PosUserName = await _customerService.GetCustomerFullNameAsync(await _posUserService.GetUserByIdAsync(posUser.Id)) ?? string.Empty;
                 model.CustomerName = await _customerService.GetCustomerFullNameAsync(customer) ?? string.Empty;
 
-                //if (!excludeProperties)
-                //{
-                //    var store = await _storeService.GetStoreByIdAsync(orderStateOrderMapping.NopStoreId);
-                //    var customer = await _customerService.GetCustomerByIdAsync(orderStateOrderMapping.CustomerId);
-                //    var orderSorting = await _orderStatusSortingTypeRepository.Table.FirstOrDefaultAsync(x => x.PosUserId == orderStateOrderMapping.PosUserId && x.OrderStatusId == orderStateOrderMapping.OrderStatusId);
-                //    var imageTypes = await _OrderStatusImageTypeMapping.Table.Where(x => x.PosUserId == orderStateOrderMapping.PosUserId && x.OrderStatusId == orderStateOrderMapping.OrderStatusId).ToListAsync();
-                //    var returnStatus = await _orderStatusService.GetOrderStatusByIdAsync(await _cycleFlowSettingService.GetReturnStepByCurentStepAsync(orderStateOrderMapping.OrderStatusId, orderStateOrderMapping.PosUserId) ?? 0);
-                //    var posUser = await _posUserService.GetPosUserByIdAsync(orderStateOrderMapping.PosUserId);
-
-                //    model.StoreName = store?.Name ?? string.Empty;
-                //    model.PosUserName = await _customerService.GetCustomerFullNameAsync(await _posUserService.GetUserByIdAsync(posUser.Id)) ?? string.Empty;
-                //    model.OrderDate = order.CreatedOnUtc;
-                //    model.CustomerName = await _customerService.GetCustomerFullNameAsync(customer);
-                //    model.IsEnableSendToClient = orderSorting.IsEnableSendToClient;
-                //    model.ClientSmsTemplateId = orderSorting.ClientSmsTemplateId;
-                //    model.IsEnableSendToUser = orderSorting.IsEnableSendToUser;
-                //    model.UserSmsTemplateId = orderSorting.UserSmsTemplateId;
-                //    model.IsEnableReturn = orderSorting.IsEnableReturn;
-                //    model.ReturnStepId = orderSorting.ReturnStepId;
-                //    model.ReturnStepName = returnStatus?.Name ?? string.Empty;
-                //    model.NextOrderStatusId = nextOrderStatus?.Id ?? 0;
-                //    model.ShowAllInfo = showAllInfo;
-                //    model.OrderItemCount = orderItems.Sum(x => x.Quantity);
-                //    model.ProductOrderItem = new List<ProductOrderItemModel>();
-                //    foreach (var orderItem in orderItems)
-                //    {
-
-                //        var product = await _orderService.GetProductByOrderItemIdAsync(orderItem.Id);
-                //        var orderItemAttributesXml = (await _orderService.GetOrderItemByIdAsync(orderItem.Id)).AttributesXml;
-                //        var picture = await _pictureService.GetProductPictureAsync(product, orderItemAttributesXml);
-                //        var pictureUrl = await _pictureService.GetPictureUrlAsync(picture.Id);
-                //        model.ProductOrderItem.Add(
-                //                new ProductOrderItemModel
-                //                {
-                //                    ProductId = product.Id,
-                //                    Sku = product.Sku,
-                //                    ProductName = product.Name,
-                //                    PictureThumbnailUrl = pictureUrl,
-                //                    Quantity = orderItem.Quantity,
-                //                }
-                //            );
-                //    }
-                //    if (imageTypes != null && imageTypes.Count() > 0)
-                //    {
-                //        model.ImageType = new List<ImageTypeModel>();
-                //        foreach (var imageType in imageTypes)
-                //        {
-                //            model.ImageType!.Add(
-                //                new ImageTypeModel
-                //                {
-                //                    ImageTypeId = imageType.ImageTypeId,
-                //                    ImageTypeName = await _imageTypeService.GetImageTypeNameAsync(imageType.ImageTypeId),
-                //                    ImageTypeUrl = await _orderStateOrderMappingService.GetPictureUrlByImageTypeIdAsync(imageType.ImageTypeId, orderStateOrderMapping.PosUserId, orderStateOrderMapping.OrderId, orderStateOrderMapping.OrderStatusId, orderStateOrderMapping.Id)
-                //                }
-                //                );
-                //        }
-                //    }
-                //    model.AllDeportation = await _orderStateOrderMappingService.GetAllDeportationModelByIdAsync(order.Id);
-                //}
+                if (!excludeProperties)
+                {
+                    var AllReturnList = new List<AllReturnModel>();
+                    if (filterReturnModel?.OrderDetail != null && filterReturnModel?.OrderDetail.Count > 0)
+                    {
+                        foreach(var orderMapp in filterReturnModel.OrderDetail)
+                        {
+                            var OrderStateOrderMapping = await _orderStateOrderMappingService.GetOrderStateOrderMappingByIdAsync(orderMapp.OrderStateOrderMappingId);
+                            var posUser = await _posUserService.GetPosUserByIdAsync(OrderStateOrderMapping.PosUserId);
+                            var store = await _storeService.GetStoreByIdAsync(OrderStateOrderMapping.NopStoreId);
+                            var ImgTypeIds = await _orderStateOrderMappingService.GetImageTypeIdsByOrderStatusIdAsync(OrderStateOrderMapping.PosUserId, OrderStateOrderMapping.OrderStatusId);
+                            var ImageTypeList = new List<(string, string)?>();
+                            if (ImgTypeIds != null && ImgTypeIds?.Count > 0)
+                            {
+                                foreach (var imgType in ImgTypeIds)
+                                {
+                                    ImageTypeList.Add(
+                                        (
+                                            await _imageTypeService.GetImageTypeNameAsync(imgType.ImageTypeId),
+                                            await _orderStateOrderMappingService.GetPictureUrlByImageTypeIdAsync(imgType.ImageTypeId, OrderStateOrderMapping.PosUserId, OrderStateOrderMapping.OrderId, OrderStateOrderMapping.OrderStatusId, OrderStateOrderMapping.Id)
+                                        )
+                                     );
+                                }
+                            }
+                            AllReturnList.Add(
+                                new AllReturnModel
+                                {
+                                    CustomerReturnName = model.CustomerName,
+                                    Note = OrderStateOrderMapping.Note??string.Empty,
+                                    OrderId = OrderStateOrderMapping.OrderId,
+                                    OrderStateOrderMappingId = OrderStateOrderMapping.Id,
+                                    PosUserName = _customerService.GetCustomerFullNameAsync(_posUserService.GetUserByIdAsync(posUser.Id).Result).Result ?? string.Empty,
+                                    PosStoreName = store?.Name ?? string.Empty,
+                                    ReturnDate = OrderStateOrderMapping.InsertionDate!.Value,
+                                    ReturnStatusName = _orderStatusService.GetOrderStatusNameAsync(OrderStateOrderMapping.OrderStatusId).Result,
+                                    ReturnFromStatusName = string.Empty,
+                                    CustomerReturnFromName = string.Empty,
+                                    ImageType = ImageTypeList
+                                }
+                            );
+                        }
+                    }
+                }
             }
             return model;
         }

@@ -170,11 +170,11 @@
             </div>
             <div class="modal-body text-center">
                 <a id="prev-image" class="btn btn-secondary position-absolute" style="left: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
-                    &lt; <!-- السابق -->
+                    &lt;
                 </a>
                 <img id="modal-image" src="" alt="Selected Image" class="img-fluid" style="max-height: 80vh;" />
                 <a id="next-image" class="btn btn-secondary position-absolute" style="right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
-                    &gt; <!-- التالي -->
+                    &gt;
                 </a>
             </div>
             <div class="modal-footer">
@@ -187,55 +187,63 @@
 </div>
 <script>
     $(document).ready(function () {
-        
+          window.onbeforeprint = function () {
+            $('#print-deportation-button').hide()
+          };
+
+        window.onafterprint = function () {
+            $('#print-deportation-button').show()
+        };
+    })
+    function printPage() {
+        $('#print-deportation-button').hide()
+        window.print();
+        $('#print-deportation-button').show()
+    }
+    $(document).ready(function () {
         $('#print-deportation-button').on('click', function (e) {
             e.preventDefault();
-            window.print();
+            printPage();
         });
         
-        let currentRow = null; // الصف الحالي
-        let currentImages = []; // الصور داخل الصف
-        let currentIndex = 0; // الفهرس الحالي للصورة
+        let currentRow = null; 
+        let currentImages = []; 
+        let currentIndex = 0; 
 
-        // عند الضغط على الصورة
         $('.deportation-image').on('click', function () {
-            const imgSrc = $(this).data('src'); // رابط الصورة
-            currentRow = $(this).closest('tr'); // تحديد الصف الحالي
-            currentImages = currentRow.find('.deportation-image'); // جميع الصور داخل الصف
-            currentIndex = currentImages.index(this); // الفهرس الحالي للصورة
-            updateModal(imgSrc); // عرض الصورة في المودال
-            $('#img-model').modal('show'); // فتح المودال
+            const imgSrc = $(this).data('src'); 
+            currentRow = $(this).closest('tr'); 
+            currentImages = currentRow.find('.deportation-image');
+            currentIndex = currentImages.index(this);
+            updateModal(imgSrc); 
+            $('#img-model').modal('show');
         });
 
-        // تحديث الصورة في المودال
         function updateModal(imgSrc) {
             $('#modal-image').attr('src', imgSrc);
         }
 
-        // التنقل إلى الصورة السابقة
         $('#prev-image').on('click', function () {
             if (currentImages.length > 0) {
-                currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length; // الانتقال للخلف
+                currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
                 const prevImgSrc = $(currentImages[currentIndex]).data('src');
                 updateModal(prevImgSrc);
             }
         });
 
-        // التنقل إلى الصورة التالية
         $('#next-image').on('click', function () {
             if (currentImages.length > 0) {
-                currentIndex = (currentIndex + 1) % currentImages.length; // الانتقال للأمام
+                currentIndex = (currentIndex + 1) % currentImages.length;
                 const nextImgSrc = $(currentImages[currentIndex]).data('src');
                 updateModal(nextImgSrc);
             }
         });
 
-        // إعادة تعيين البيانات عند إغلاق المودال
         $('#img-model').on('hidden.bs.modal', function () {
             currentRow = null;
             currentImages = [];
             currentIndex = 0;
-            $('#modal-image').attr('src', ''); // إزالة الرابط
+            $('#modal-image').attr('src', '');
         });
     });
 </script>

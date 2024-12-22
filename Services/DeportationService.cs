@@ -144,15 +144,12 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             var groupedRecords = allRecords
                 .GroupBy(o => new
                 {
-                    o.PosUserId,
                     o.CustomerId,
                     Year = o.InsertionDate.HasValue ? o.InsertionDate.Value.Year : 0,
                     Month = o.InsertionDate.HasValue ? o.InsertionDate.Value.Month : 0
                                 })
                     .Select(g => new
                     {
-                        PosUserId = g.Key.PosUserId,
-                        PosUserName = string.Empty,
                         CustomerId = g.Key.CustomerId,
                         CustomerName = string.Empty,
                         Year = g.Key.Year,
@@ -160,8 +157,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                         ReturnCount = g.Count(),
                         Orders = g.Select(o => new
                         {
-                            o.OrderId,
-                            o.OrderStatusId
+                            o.Id
                         }).ToList()
                     }).ToList();
 
@@ -172,8 +168,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                     filteredRecords.Add(
                     new FilterReturnModel
                     {
-                        PosUserId = record.PosUserId,
-                        PosUserName = record.PosUserName,
                         CustomerId = record.CustomerId,
                         CustomerName = record.CustomerName,
                         Year = record.Year,
@@ -181,8 +175,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                         ReturnCount = record.ReturnCount,
                         OrderDetail = record.Orders.Select(x=>new OrderDetailModel
                         {
-                            OrderId = x.OrderId,
-                            OrderStatusId = x.OrderStatusId,
+                            OrderStateOrderMappingId = x.Id,
                         }).ToList()
                     });
                 }
@@ -190,10 +183,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
 
             if (customerIds?.Any(x => x != 0) ?? false)
                 filteredRecords = filteredRecords.Where(p => customerIds.Contains(p.CustomerId)).ToList();
-            if (posUserIds?.Any(x => x != 0) ?? false)
-                filteredRecords = filteredRecords.Where(p => posUserIds.Contains(p.PosUserId)).ToList();
+            
             if (years?.Any(x => x != 0) ?? false)
                 filteredRecords = filteredRecords.Where(p => years.Contains(p.Year)).ToList();
+            
             if (months?.Any(x => x != 0) ?? false)
                 filteredRecords = filteredRecords.Where(p => months.Contains(p.Month)).ToList();
 

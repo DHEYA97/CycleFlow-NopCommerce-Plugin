@@ -16,5 +16,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
         Task<List<AllDeportationModel>> GetAllDeportationModelByIdAsync(int posOrderId);
         Task<List<OrderStateOrderMapping>> GeAllOrderStateOrderMappingAsync();
         Task InsertStepAsync(DeportationModel model, Deportation deportationType);
+        Task<List<OrderStatusImageTypeMapping>> GetImageTypeIdsByOrderStatusIdAsync(int posUserId, int orderStatusId);
     }
 }
