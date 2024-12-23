@@ -21,6 +21,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Mapping.Builders
                  .WithColumn(nameof(OrderStateOrderMapping.OrderId)).AsInt32().ForeignKey<Order>()
                  .WithColumn(nameof(OrderStateOrderMapping.Note)).AsString().Nullable()
                  .WithColumn(nameof(OrderStateOrderMapping.IsReturn)).AsBoolean().Nullable()
+                 .WithColumn(nameof(OrderStateOrderMapping.ReturnOrderStatusId)).AsInt32().Nullable().ForeignKey<Domain.OrderStatus>(onDelete: System.Data.Rule.None)
 
                  .WithColumn(nameof(OrderStateOrderMapping.InsertedByUser)).AsInt32().Nullable()
                 .WithColumn(nameof(OrderStateOrderMapping.InsertionDate)).AsDateTime().Nullable()

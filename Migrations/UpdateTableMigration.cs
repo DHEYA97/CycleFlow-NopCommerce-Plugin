@@ -9,7 +9,7 @@ using Nop.Plugin.Misc.SmsAuthentication.Domains;
 
 namespace Nop.Plugin.Misc.CycleFlow.Migrations
 {
-    [NopMigration("2024-12-17 12:12:04", "CycleFlowPlugin Update Table", MigrationProcessType.Update)]
+    [NopMigration("2024-12-22 12:12:04", "CycleFlowPlugin Update Table", MigrationProcessType.Update)]
     public class UpdateTableMigration : Migration
     {
         public static string TableName<T>() where T : BaseEntity
@@ -77,6 +77,11 @@ namespace Nop.Plugin.Misc.CycleFlow.Migrations
             {
                 Alter.Table(TableName<OrderStateOrderMapping>())
                     .AddColumn(nameof(OrderStateOrderMapping.IsReturn)).AsBoolean().Nullable();
+            }
+            if (!Schema.Table(TableName<OrderStateOrderMapping>()).Column(nameof(OrderStateOrderMapping.ReturnOrderStatusId)).Exists())
+            {
+                Alter.Table(TableName<OrderStateOrderMapping>())
+                    .AddColumn(nameof(OrderStateOrderMapping.ReturnOrderStatusId)).AsInt32().Nullable().ForeignKey<Domain.OrderStatus>(onDelete: System.Data.Rule.None);
             }
 
 

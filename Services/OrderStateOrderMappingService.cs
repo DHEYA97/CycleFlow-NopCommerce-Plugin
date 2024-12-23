@@ -135,6 +135,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                         var currentOrderStatusOrderMapping = await GetOrderStateOrderMappingByIdAsync(model.Id);
                         currentOrderStatusOrderMapping.Note = model.Note;
                         currentOrderStatusOrderMapping.IsReturn = isReturn;
+                        currentOrderStatusOrderMapping.ReturnOrderStatusId = model.OrderStatusId;
                         await currentOrderStatusOrderMapping.SetBaseInfoAsync<OrderStateOrderMapping>(_workContext);
                         await _orderStateOrderMapping.UpdateAsync(currentOrderStatusOrderMapping);
                     }

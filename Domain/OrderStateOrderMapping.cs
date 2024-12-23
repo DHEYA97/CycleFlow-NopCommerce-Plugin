@@ -16,5 +16,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Domain
         public int CustomerId { get; set; }
         public string? Note { get; set; }
         public bool? IsReturn { get; set; }
+        public int? ReturnOrderStatusId { get; set; }
     }
 }
