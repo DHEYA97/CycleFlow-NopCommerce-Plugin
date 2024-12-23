@@ -20,15 +20,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Infrastructure
         #region Ctor
         public MapperConfiguration()
         {
-            CreateMap<OrderStatusModel, OrderStatus>()
-                .ReverseMap();
-            CreateMap<ImageTypeModel, ImageType>()
-                .ReverseMap();
-            
-            CreateMap<OrderStateOrderMapping, DeportationModel>()
-                .ReverseMap();
-
-
             CreateMap<CycleFlowSettingModel, OrderStatusSorting>()
                 .ForMember(m => m.OrderStatusId, opt => opt.MapFrom(o => o.CurrentOrderStatusId))
                 .ForMember(m => m.NopStoreId, opt => opt.MapFrom(o => o.StoreId))
@@ -36,8 +27,19 @@ namespace Nop.Plugin.Misc.CycleFlow.Infrastructure
                 .ForMember(m => m.IsFirstStep, opt => opt.MapFrom(o => o.IsFirstStep))
                 .ForMember(m => m.NextStep, opt => opt.MapFrom(o => o.IsLastStep))
                 .ReverseMap();
-
+            
             CreateMap<FilterReturnModel, ReturnModel>();
+
+            CreateMap<ImageTypeModel, ImageType>()
+                .ReverseMap();
+            
+            CreateMap<OrderStatusModel, OrderStatus>()
+                .ReverseMap();
+            
+            CreateMap<OrderStateOrderMapping, DeportationModel>()
+                .ReverseMap();
+
+
         }
         #endregion
     }

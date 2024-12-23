@@ -21,10 +21,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Event
             if (posOrder != null)
             {
                 var cycleFlowSettingService = EngineContext.Current.Resolve<ICycleFlowSettingService>();
+                var localizationService = EngineContext.Current.Resolve<ILocalizationService>();
+                var notificationService = EngineContext.Current.Resolve<INotificationService>();
                 var orderStateOrderMappingRepo = EngineContext.Current.Resolve<IRepository<OrderStateOrderMapping>>();
                 var workContext = EngineContext.Current.Resolve<IWorkContext>();
-                var notificationService = EngineContext.Current.Resolve<INotificationService>();
-                var localizationService = EngineContext.Current.Resolve<ILocalizationService>();
 
                 var firstSortingStep = await cycleFlowSettingService.GetFirstStepInPosUserAsync(posOrder.PosUserId);
                

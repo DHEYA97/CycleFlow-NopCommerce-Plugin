@@ -27,35 +27,35 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
     public class DeportationController : BasePluginController
     {
         #region Fields
-        private readonly IPermissionService _permissionService;
-        private readonly INotificationService _notificationService;
-        private readonly IDeportationModelFactory _deportationModelFactory;
         private readonly ICycleFlowSettingService _cycleFlowSettingService;
-        private readonly IPosUserService _posUserService;
-        private readonly IOrderStateOrderMappingService _orderStateOrderMappingService;
+        private readonly IDeportationModelFactory _deportationModelFactory;
         private readonly IDeportationService _deportationService;
         private readonly ILocalizationService _localizationService;
+        private readonly INotificationService _notificationService;
+        private readonly IOrderStateOrderMappingService _orderStateOrderMappingService;
+        private readonly IPermissionService _permissionService;
+        private readonly IPosUserService _posUserService;
         #endregion
         #region Ctor
         public DeportationController(
-            IPermissionService permissionService,
-            INotificationService notificationService,
-            IDeportationModelFactory deportationModelFactory,
             ICycleFlowSettingService cycleFlowSettingService,
-            IPosUserService posUserService,
-            IOrderStateOrderMappingService orderStateOrderMappingService,
             IDeportationService deportationService,
-            ILocalizationService localizationService
+            IDeportationModelFactory deportationModelFactory,
+            ILocalizationService localizationService,
+            INotificationService notificationService,
+            IOrderStateOrderMappingService orderStateOrderMappingService,
+            IPermissionService permissionService,
+            IPosUserService posUserService
             )
         {
-            _permissionService = permissionService;
-            _notificationService = notificationService;
-            _deportationModelFactory = deportationModelFactory;
             _cycleFlowSettingService = cycleFlowSettingService;
-            _posUserService = posUserService;
-            _orderStateOrderMappingService = orderStateOrderMappingService;
+            _deportationModelFactory = deportationModelFactory;
             _deportationService = deportationService;
             _localizationService = localizationService;
+            _notificationService = notificationService;
+            _orderStateOrderMappingService = orderStateOrderMappingService;
+            _permissionService = permissionService;
+            _posUserService = posUserService;
         }
         #endregion
         #region Methods
@@ -68,7 +68,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.DeportationCycleFlowPlugin))
                 return AccessDeniedView();
             await _cycleFlowSettingService.NotificationPosUserAsync();
-            var model = await _deportationModelFactory.PrepareDeportationSearchModelAsync(new DeportationSearchModel(),true,false);
+            var model = await _deportationModelFactory.PrepareDeportationSearchModelAsync(new DeportationSearchModel(), true, false);
             return View(model);
         }
         [HttpPost]
@@ -85,7 +85,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ShowAllOrderCycleFlowPlugin))
                 return AccessDeniedView();
             await _cycleFlowSettingService.NotificationPosUserAsync();
-            var model = await _deportationModelFactory.PrepareDeportationSearchModelAsync(new DeportationSearchModel(),false);
+            var model = await _deportationModelFactory.PrepareDeportationSearchModelAsync(new DeportationSearchModel(), false);
             return View("List", model);
         }
         public virtual async Task<IActionResult> LastStepOrder()
@@ -93,7 +93,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ShowAllOrderCycleFlowPlugin))
                 return AccessDeniedView();
             await _cycleFlowSettingService.NotificationPosUserAsync();
-            var model = await _deportationModelFactory.PrepareDeportationSearchModelAsync(new DeportationSearchModel(),justLastStepOrder: true);
+            var model = await _deportationModelFactory.PrepareDeportationSearchModelAsync(new DeportationSearchModel(), justLastStepOrder: true);
             return View("List", model);
         }
         public virtual async Task<IActionResult> View(int id,bool showAllInfo = false)

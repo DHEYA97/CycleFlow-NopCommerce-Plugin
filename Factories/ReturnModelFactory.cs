@@ -25,59 +25,42 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
     public class ReturnModelFactory : IReturnModelFactory
     {
         #region Felid
-        private readonly ILocalizationService _localizationService;
+        private readonly IBaseCycleFlowModelFactory _baseCycleFlowModelFactory;
         private readonly ICycleFlowSettingService _cycleFlowSettingService;
-        private readonly IDeportationService _deportationService;
-        private readonly IStoreContext _storeContext;
-        private readonly IStoreService _storeService;
-        private readonly IShippingService _shippingService;
-        private readonly IOrderStatusService _orderStatusService;
-        private readonly IBaseAdminModelFactory _baseAdminModelFactory;
-        private readonly IPosUserService _posUserService;
         private readonly ICustomerService _customerService;
+        private readonly IDeportationService _deportationService;
         private readonly IImageTypeService _imageTypeService;
-        protected readonly IOrderService _orderService;
-        private readonly IRepository<OrderStatusSorting> _orderStatusSortingTypeRepository;
-        private readonly IRepository<OrderStatusImageTypeMapping> _OrderStatusImageTypeMapping;
-        private readonly IPictureService _pictureService;
+        private readonly ILocalizationService _localizationService;
+        private readonly IOrderStatusService _orderStatusService;
         private readonly IOrderStateOrderMappingService _orderStateOrderMappingService;
+        private readonly IPosUserService _posUserService;
+        private readonly IStoreService _storeService;
         
         #endregion
         #region Ctor
-        public ReturnModelFactory(ILocalizationService localizationService,
+        public ReturnModelFactory(
+            IBaseCycleFlowModelFactory baseCycleFlowModelFactory,
             ICycleFlowSettingService cycleFlowSettingService,
-            IDeportationService deportationService,
-            IStoreContext storeContext,
-            IStoreService storeService,
-            IShippingService shippingService,
-            IOrderStatusService orderStatusService,
-            IBaseAdminModelFactory baseAdminModelFactory,
-            IPosUserService posUserService,
             ICustomerService customerService,
+            IDeportationService deportationService,
             IImageTypeService imageTypeService,
-            IOrderService orderService,
-            IRepository<OrderStatusSorting> orderStatusSortingTypeRepository,
-            IPictureService pictureService,
-            IRepository<OrderStatusImageTypeMapping> OrderStatusImageTypeMapping,
-            IOrderStateOrderMappingService orderStateOrderMappingService
+            ILocalizationService localizationService,
+            IOrderStatusService orderStatusService,
+            IOrderStateOrderMappingService orderStateOrderMappingService,
+            IPosUserService posUserService,
+            IStoreService storeService
             )
         {
-            _localizationService = localizationService;
+            _baseCycleFlowModelFactory = baseCycleFlowModelFactory;
             _cycleFlowSettingService = cycleFlowSettingService;
-            _deportationService = deportationService;
-            _storeContext = storeContext;
-            _storeService = storeService;
-            _shippingService = shippingService;
-            _orderStatusService = orderStatusService;
-            _baseAdminModelFactory = baseAdminModelFactory;
-            _posUserService = posUserService;
             _customerService = customerService;
+            _deportationService = deportationService;
             _imageTypeService = imageTypeService;
-            _orderService = orderService;
-            _orderStatusSortingTypeRepository = orderStatusSortingTypeRepository;
-            _pictureService = pictureService;
-            _OrderStatusImageTypeMapping = OrderStatusImageTypeMapping;
+            _localizationService = localizationService;
+            _orderStatusService = orderStatusService;
             _orderStateOrderMappingService = orderStateOrderMappingService;
+            _posUserService = posUserService;
+            _storeService = storeService;
         }
         #endregion
         #region Methods
@@ -85,7 +68,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
         {
             searchModel ??= new ReturnSearchModel();
 
-            await PrepareCustomerListAsync(searchModel.AvailableCustomers);
+            await  _baseCycleFlowModelFactory.PrepareCustomerListAsync(searchModel.AvailableCustomers);
             await PrepareYearListAsync(searchModel.AvailableYears);
             await PrepareMonthListAsync(searchModel.AvailableMonths);
             
@@ -172,26 +155,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
         }
         #endregion
         #region Utilite
-        protected async Task PreparePosUsersListAsync(IList<SelectListItem> items)
-        {
-
-            var availablePosUsers = await (await _posUserService.GetPosUserListAsync()).Where(ps => ps.Active).ToListAsync();
-            foreach (var user in availablePosUsers)
-            {
-                items.Add(new SelectListItem { Value = _posUserService.GetPosUserByNopCustomerIdAsync(user.Id).Result.Id.ToString(), Text = _customerService.GetCustomerFullNameAsync(user).Result.ToString() });
-            }
-            items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Plugin.Misc.CycleFlow.Common.Select"), Value = "0" });
-        }
-        protected async Task PrepareCustomerListAsync(IList<SelectListItem> items)
-        {
-            var cycleFowRole = await _customerService.GetCustomerRoleBySystemNameAsync(SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
-            var availableCustomer = await _customerService.GetAllCustomersAsync(customerRoleIds: new int[] { cycleFowRole.Id }).Result.ToListAsync();
-            foreach (var customer in availableCustomer)
-            {
-                items.Add(new SelectListItem { Value = customer.Id.ToString(), Text = await _customerService.GetCustomerFullNameAsync(customer) });
-            }
-            items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Plugin.Misc.CycleFlow.Common.Select"), Value = "0" });
-        }
         protected async Task PrepareYearListAsync(IList<SelectListItem> items)
         {
             var orderStateOrderMappingList = await _orderStateOrderMappingService.GeAllOrderStateOrderMappingAsync();

@@ -22,71 +22,72 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
     public class DeportationModelFactory : IDeportationModelFactory
     {
         #region Felid
-        private readonly ILocalizationService _localizationService;
+        private readonly IBaseAdminModelFactory _baseAdminModelFactory;
+        private readonly ICustomerService _customerService;
         private readonly ICycleFlowSettingService _cycleFlowSettingService;
         private readonly IDeportationService _deportationService;
-        private readonly IStoreContext _storeContext;
-        private readonly IStoreService _storeService;
-        private readonly IShippingService _shippingService;
-        private readonly IOrderStatusService _orderStatusService;
-        private readonly IBaseAdminModelFactory _baseAdminModelFactory;
-        private readonly IPosUserService _posUserService;
-        private readonly ICustomerService _customerService;
         private readonly IImageTypeService _imageTypeService;
+        private readonly ILocalizationService _localizationService;
+        private readonly IOrderStatusService _orderStatusService;
         protected readonly IOrderService _orderService;
         private readonly IRepository<OrderStatusSorting> _orderStatusSortingTypeRepository;
         private readonly IRepository<OrderStatusImageTypeMapping> _OrderStatusImageTypeMapping;
-        private readonly IPictureService _pictureService;
         private readonly IOrderStateOrderMappingService _orderStateOrderMappingService;
+        private readonly IPosUserService _posUserService;
+        private readonly IPictureService _pictureService;
+        private readonly IStoreContext _storeContext;
+        private readonly IStoreService _storeService;
+        private readonly IShippingService _shippingService;
         #endregion
         #region Ctor
-        public DeportationModelFactory(ILocalizationService localizationService,
+        public DeportationModelFactory(
+            IBaseAdminModelFactory baseAdminModelFactory,
+            ICustomerService customerService,
             ICycleFlowSettingService cycleFlowSettingService,
             IDeportationService deportationService,
+            IImageTypeService imageTypeService,
+            ILocalizationService localizationService,
+            IOrderStatusService orderStatusService,
             IStoreContext storeContext,
             IStoreService storeService,
             IShippingService shippingService,
-            IOrderStatusService orderStatusService,
-            IBaseAdminModelFactory baseAdminModelFactory,
-            IPosUserService posUserService,
-            ICustomerService customerService,
-            IImageTypeService imageTypeService,
             IOrderService orderService,
             IRepository<OrderStatusSorting> orderStatusSortingTypeRepository,
-            IPictureService pictureService,
             IRepository<OrderStatusImageTypeMapping> OrderStatusImageTypeMapping,
-            IOrderStateOrderMappingService orderStateOrderMappingService
+            IOrderStateOrderMappingService orderStateOrderMappingService,
+            IPosUserService posUserService,
+            IPictureService pictureService
             )
         {
-            _localizationService = localizationService;
+            _baseAdminModelFactory = baseAdminModelFactory;
+            _customerService = customerService;
             _cycleFlowSettingService = cycleFlowSettingService;
             _deportationService = deportationService;
+            _imageTypeService = imageTypeService;
+            _localizationService = localizationService;
             _storeContext = storeContext;
             _storeService = storeService;
             _shippingService = shippingService;
             _orderStatusService = orderStatusService;
-            _baseAdminModelFactory = baseAdminModelFactory;
-            _posUserService = posUserService;
-            _customerService = customerService;
-            _imageTypeService = imageTypeService;
             _orderService = orderService;
             _orderStatusSortingTypeRepository = orderStatusSortingTypeRepository;
-            _pictureService = pictureService;
             _OrderStatusImageTypeMapping = OrderStatusImageTypeMapping;
             _orderStateOrderMappingService = orderStateOrderMappingService;
+            _posUserService = posUserService;
+            _pictureService = pictureService;
         }
         #endregion
         #region Methods
         public Task<DeportationSearchModel> PrepareDeportationSearchModelAsync(DeportationSearchModel searchModel, bool justShowByCustomer = false, bool justLastStepOrder = false)
-       {
-            if (searchModel == null)
+        {
+            if(searchModel == null)
                 throw new ArgumentNullException(nameof(searchModel));
             // Prepare parameters
             searchModel.SetGridPageSize();
             searchModel.JustShowByCustomer = justShowByCustomer;
             searchModel.JustLastStepOrder = justLastStepOrder;
             return Task.FromResult(searchModel);
-       }
+        }
        public async Task<DeportationListModel> PrepareDeportationModelListModelAsync(DeportationSearchModel searchModel)
        {
             var deportation = await _deportationService.SearchOrderStateOrderMappingAsync(

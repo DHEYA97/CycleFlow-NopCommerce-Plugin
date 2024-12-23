@@ -25,29 +25,29 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
     public class CheckPosOrderStatusController : BasePluginController
     {
         #region Fields
-        private readonly IPermissionService _permissionService;
-        private readonly INotificationService _notificationService;
-        private readonly ICheckPosOrderStatusModelFactory _checkPosOrderStatusModelFactory;
         private readonly ICycleFlowSettingService _cycleFlowSettingService;
-        private readonly IPosUserService _posUserService;
+        private readonly ICheckPosOrderStatusModelFactory _checkPosOrderStatusModelFactory;
         private readonly ILocalizationService _localizationService;
+        private readonly INotificationService _notificationService;
+        private readonly IPermissionService _permissionService;
+        private readonly IPosUserService _posUserService;
         #endregion
         #region Ctor
         public CheckPosOrderStatusController(
-            IPermissionService permissionService,
-            INotificationService notificationService,
             ICheckPosOrderStatusModelFactory checkPosOrderStatusModelFactory,
             ICycleFlowSettingService cycleFlowSettingService,
-            IPosUserService posUserService,
-            ILocalizationService localizationService
+            ILocalizationService localizationService,
+            INotificationService notificationService,
+            IPermissionService permissionService,
+            IPosUserService posUserService
             )
         {
-            _permissionService = permissionService;
-            _notificationService = notificationService;
             _checkPosOrderStatusModelFactory = checkPosOrderStatusModelFactory;
             _cycleFlowSettingService = cycleFlowSettingService;
-            _posUserService = posUserService;
             _localizationService = localizationService;
+            _notificationService = notificationService;
+            _permissionService = permissionService;
+            _posUserService = posUserService;
         }
         #endregion
         #region Methods

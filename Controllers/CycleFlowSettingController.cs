@@ -26,31 +26,31 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
     public class CycleFlowSettingController : BasePluginController
     {
         #region Fields
-        private readonly IPermissionService _permissionService;
-        private readonly INotificationService _notificationService;
-        private readonly ILocalizationService _localizationService;
-        private readonly ILocalizedEntityService _localizedEntityService;
         private readonly ICycleFlowSettingModelFactory _cycleFlowSettingFactory;
         private readonly ICycleFlowSettingService _cycleFlowSettingService; 
+        private readonly ILocalizationService _localizationService;
+        private readonly ILocalizedEntityService _localizedEntityService;
+        private readonly INotificationService _notificationService;
+        private readonly IPermissionService _permissionService;
         private readonly IOrderStatusService _orderStatusService;
         #endregion
         #region Ctor
         public CycleFlowSettingController(
-            IPermissionService permissionService,
-            INotificationService notificationService,
-            ILocalizationService localizationService,
-            ILocalizedEntityService localizedEntityService,
             ICycleFlowSettingModelFactory cycleFlowSettingFactory,
             ICycleFlowSettingService cycleFlowSettingService,
+            ILocalizationService localizationService,
+            ILocalizedEntityService localizedEntityService,
+            INotificationService notificationService,
+            IPermissionService permissionService,
             IOrderStatusService orderStatusService
             )
         {
-            _permissionService = permissionService;
-            _notificationService = notificationService;
-            _localizationService = localizationService;
-            _localizedEntityService = localizedEntityService;
             _cycleFlowSettingFactory = cycleFlowSettingFactory;
             _cycleFlowSettingService = cycleFlowSettingService;
+            _localizationService = localizationService;
+            _localizedEntityService = localizedEntityService;
+            _notificationService = notificationService;
+            _permissionService = permissionService;
             _orderStatusService = orderStatusService;
         }
         #endregion

@@ -23,45 +23,46 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
     public class OrderStateOrderMappingService : IOrderStateOrderMappingService
     {
         #region Fields
+        private readonly ICycleFlowSettingService _cycleFlowSettingService;
+        private readonly IImageTypeService _imageTypeService;
+        private readonly ILocalizationService _localizationService;
+        protected readonly INotificationService _notificationService;
         private readonly IRepository<OrderStateOrderImageMapping> _orderStateOrderImageMapping;
         private readonly IRepository<OrderStateOrderMapping> _orderStateOrderMapping;
         private readonly IRepository<OrderStatusImageTypeMapping> _orderStatusImageTypeMapping;
         private readonly IPictureService _pictureService;
         private readonly IPosOrderService _posOrderService;
-        private readonly ICycleFlowSettingService _cycleFlowSettingService;
         private readonly IOrderStatusService _orderStatusService;
-        private readonly IImageTypeService _imageTypeService;
         protected readonly IWorkContext _workContext;
-        protected readonly INotificationService _notificationService;
-        private readonly ILocalizationService _localizationService;
 
         #endregion
 
         #region Ctor
         public OrderStateOrderMappingService(
+            ICycleFlowSettingService cycleFlowSettingService,
+            IImageTypeService imageTypeService,
+            ILocalizationService localizationService,
+            INotificationService notificationService,
             IRepository<OrderStateOrderImageMapping> orderStateOrderImageMapping,
             IRepository<OrderStateOrderMapping> orderStateOrderMapping,
             IRepository<OrderStatusImageTypeMapping> orderStatusImageTypeMapping,
             IPictureService pictureService,
             IPosOrderService posOrderService,
-            ICycleFlowSettingService cycleFlowSettingService,
             IOrderStatusService orderStatusService,
-            IImageTypeService imageTypeService,
-            IWorkContext workContext,
-            INotificationService notificationService,
-            ILocalizationService localizationService)
+            IWorkContext workContext
+            )
         {
+            _cycleFlowSettingService = cycleFlowSettingService;
+            _imageTypeService = imageTypeService;
+            _localizationService = localizationService;
+            _notificationService = notificationService;
             _orderStateOrderImageMapping = orderStateOrderImageMapping;
             _orderStateOrderMapping = orderStateOrderMapping;
             _orderStatusImageTypeMapping = orderStatusImageTypeMapping;
             _pictureService = pictureService;
             _posOrderService = posOrderService;
-            _cycleFlowSettingService = cycleFlowSettingService;
             _orderStatusService = orderStatusService;
-            _imageTypeService = imageTypeService;
             _workContext = workContext;
-            _notificationService = notificationService;
-            _localizationService = localizationService;
         }
         #endregion
         #region Method
@@ -115,7 +116,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                     {
                         DeportationDate = item.InsertionDate,
                         StatusName = await _orderStatusService.GetOrderStatusNameAsync(item.OrderStatusId),
-                        NextStatusName = await _orderStatusService.GetOrderStatusNameAsync((await _cycleFlowSettingService.GetNextStepByFirstStepAsync(item.OrderStatusId, item.PosUserId)??0)),
+                        NextStatusName = item.IsReturn??false 
+                                        ? await _orderStatusService.GetOrderStatusNameAsync((await _cycleFlowSettingService.GetNextStepByFirstStepAsync(item.ReturnOrderStatusId??0, item.PosUserId) ?? 0))
+                                        : await _orderStatusService.GetOrderStatusNameAsync((await _cycleFlowSettingService.GetNextStepByFirstStepAsync(item.OrderStatusId, item.PosUserId)??0))
+                                          ,
                         ImageType = imgTypeList,
                         Note = item.Note,
                         IsReturn = item.IsReturn,

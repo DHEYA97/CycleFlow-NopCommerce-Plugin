@@ -13,23 +13,24 @@ namespace Nop.Plugin.Misc.POSSystem.Areas.Admin.Factories
     public class ImageTypeModelFactory : IImageTypeModelFactory
     {
         #region Fields
+        private readonly IHtmlFormatter _htmlFormatter;
         private readonly IImageTypeService _imageTypeService;
         private readonly ILocalizationService _localizationService;
         private readonly ILocalizedModelFactory _localizedModelFactory;
-        private readonly IHtmlFormatter _htmlFormatter;
         #endregion
 
         #region Ctor
         public ImageTypeModelFactory(
+            IHtmlFormatter htmlFormatter,
             IImageTypeService imageTypeService,
             ILocalizationService localizationService,
-            ILocalizedModelFactory localizedModelFactory,
-            IHtmlFormatter htmlFormatter)
+            ILocalizedModelFactory localizedModelFactory
+            )
         {
+            _htmlFormatter = htmlFormatter;
             _imageTypeService = imageTypeService;
             _localizationService = localizationService;
             _localizedModelFactory = localizedModelFactory;
-            _htmlFormatter = htmlFormatter;
         }
         #endregion
 

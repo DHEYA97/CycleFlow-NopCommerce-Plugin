@@ -23,22 +23,24 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
     public class CheckPosOrderStatusModelFactory : ICheckPosOrderStatusModelFactory
     {
         #region Felid
+        private readonly IBaseCycleFlowModelFactory _baseCycleFlowModelFactory;
         private readonly ILocalizationService _localizationService;
         private readonly ICycleFlowSettingService _cycleFlowSettingService;
         private readonly IPosUserService _posUserService;
         private readonly ICustomerService _customerService;
         #endregion
         #region Ctor
-        public CheckPosOrderStatusModelFactory(ILocalizationService localizationService,
-            ICycleFlowSettingService cycleFlowSettingService,
+        public CheckPosOrderStatusModelFactory(
+            IBaseCycleFlowModelFactory baseCycleFlowModelFactory,
+            ILocalizationService localizationService,
             IPosUserService posUserService,
             ICustomerService customerService
             )
         {
-            _localizationService = localizationService;
-            _cycleFlowSettingService = cycleFlowSettingService;
-            _posUserService = posUserService;
+            _baseCycleFlowModelFactory = baseCycleFlowModelFactory;
             _customerService = customerService;
+            _localizationService = localizationService;
+            _posUserService = posUserService;
         }
         #endregion
         #region Methods
@@ -46,7 +48,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
         {
             searchModel ??= new CheckPosOrderStatusSearchModel();
 
-            await PreparePosUsersListAsync(searchModel.AvailablePosUsers);
+            await _baseCycleFlowModelFactory.PreparePosUsersListAsync(searchModel.AvailablePosUsers);
 
 
             searchModel.SearchPosUsersIds
@@ -71,22 +73,11 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
         }
         #endregion
         #region Utilite
-        public async Task<CheckPosOrderStatusModel> PrepareCheckPosOrderStatusModelAsync(CheckPosOrderStatusModel model, PosUser posUser)
+        protected async Task<CheckPosOrderStatusModel> PrepareCheckPosOrderStatusModelAsync(CheckPosOrderStatusModel model, PosUser posUser)
         {
             model.Id = posUser.Id;
             model.PosUserName = await _customerService.GetCustomerFullNameAsync(await _posUserService.GetUserByIdAsync(posUser.Id)) ?? string.Empty;
-            //model.CheckResult = await _cycleFlowSettingService.CheckOrderStatusSequenceAsync(posUser.Id);
             return model;
-        }
-        public async Task PreparePosUsersListAsync(IList<SelectListItem> items)
-        {
-
-            var availablePosUsers = await (await _posUserService.GetPosUserListAsync()).Where(ps => ps.Active).ToListAsync();
-            foreach (var user in availablePosUsers)
-            {
-                items.Add(new SelectListItem { Value = _posUserService.GetPosUserByNopCustomerIdAsync(user.Id).Result.Id.ToString(), Text = _customerService.GetCustomerFullNameAsync(user).Result.ToString() });
-            }
-            items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Plugin.Misc.CycleFlow.Common.Select"), Value = "0" });
         }
         #endregion
     }

@@ -1714,3 +1714,8 @@ F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugi
 F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\Return\_View.AllImage.cshtml
 F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\Return\_View.cshtml
 F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\Return\_View.Info.cshtml
+F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\Customer\Info.cshtml
+F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\Customer\Login.cshtml
+F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\Customer\PasswordRecovery.cshtml
+F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\Customer\PasswordRecoveryConfirm.cshtml
+F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\Customer\Register.cshtml

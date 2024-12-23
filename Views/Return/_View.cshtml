@@ -2,11 +2,11 @@
 @model ReturnModel
 @{
     var customer = await workContext.GetCurrentCustomerAsync();
-    const string hideInfoBlockAttributeName = "Deportation.HideInfoBlock";
+    const string hideInfoBlockAttributeName = "Return.HideInfoBlock";
     var hideInfoBlock = await genericAttributeService.GetAttributeAsync<bool>(customer, hideInfoBlockAttributeName);
 
-    const string hideAllDeportationImageBlockAttributeName = "Deportation.HideAllDeportationImageBlock";
-    var hideAllBlock = await genericAttributeService.GetAttributeAsync<bool>(customer, hideAllDeportationImageBlockAttributeName);
+    const string hideAllReturnImageBlockAttributeName = "Return.HideAllReturnImageBlock";
+    var hideAllBlock = await genericAttributeService.GetAttributeAsync<bool>(customer, hideAllReturnImageBlockAttributeName);
 }
 <div asp-validation-summary="All"></div>
 <input asp-for="Id" type="hidden" />
@@ -14,8 +14,8 @@
     <div class="container-fluid">
         <div class="form-horizontal">
             <nop-cards id="vendor-cards">
-                <nop-card asp-name="vendor-info" asp-icon="fas fa-info" asp-title="@T("Admin.Plugin.Misc.CycleFlow.Deportation.Info")" asp-hide-block-attribute-name="@hideInfoBlockAttributeName" asp-hide="@hideInfoBlock" asp-advanced="false">@await Html.PartialAsync("_View.Info", Model)</nop-card>
-                <nop-card asp-name="Send" asp-icon="fas fa-search-plus" asp-title="@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage")" asp-hide-block-attribute-name="@hideAllDeportationImageBlockAttributeName" asp-hide="@hideAllBlock" asp-advanced="false">@await Html.PartialAsync("_View.AllImage", Model)</nop-card>
+                <nop-card asp-name="vendor-info" asp-icon="fas fa-info" asp-title="@T("Admin.Plugin.Misc.CycleFlow.Return.Info")" asp-hide-block-attribute-name="@hideInfoBlockAttributeName" asp-hide="@hideInfoBlock" asp-advanced="false">@await Html.PartialAsync("_View.Info", Model)</nop-card>
+                <nop-card asp-name="Send" asp-icon="fas fa-search-plus" asp-title="@T("Admin.Plugin.Misc.CycleFlow.Return.AllReturnImage")" asp-hide-block-attribute-name="@hideAllReturnImageBlockAttributeName" asp-hide="@hideAllBlock" asp-advanced="false">@await Html.PartialAsync("_View.AllImage", Model)</nop-card>
             </nop-cards>
         </div>
     </div>

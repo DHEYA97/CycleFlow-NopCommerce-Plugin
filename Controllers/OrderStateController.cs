@@ -22,32 +22,33 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
     {
         #region Fields
 
-        private readonly IPermissionService _permissionService;
-        private readonly INotificationService _notificationService;
         private readonly ILocalizationService _localizationService;
         private readonly ILocalizedEntityService _localizedEntityService;
+        private readonly INotificationService _notificationService;
         private readonly IOrderStatusModelFactory _orderStatusModelFactory;
         private readonly IOrderStatusService _orderStatusService;
+        private readonly IPermissionService _permissionService;
         protected readonly IWorkContext _workContext;
         #endregion
 
         #region Ctor
 
-        public OrderStatusController(IPermissionService permissionService,
-            INotificationService notificationService,
+        public OrderStatusController(
             ILocalizationService localizationService,
             ILocalizedEntityService localizedEntityService,
+            INotificationService notificationService,
             IOrderStatusModelFactory orderStatusModelFactory,
             IOrderStatusService orderStatusService,
+            IPermissionService permissionService,
             IWorkContext workContext
             )
         {
-            _permissionService = permissionService;
-            _notificationService = notificationService;
             _localizationService = localizationService;
             _localizedEntityService = localizedEntityService;
+            _notificationService = notificationService;
             _orderStatusModelFactory = orderStatusModelFactory;
             _orderStatusService = orderStatusService;
+            _permissionService = permissionService;
             _workContext = workContext;
         }
 

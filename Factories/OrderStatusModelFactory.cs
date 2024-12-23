@@ -12,25 +12,34 @@ namespace Nop.Plugin.Misc.POSSystem.Areas.Admin.Factories
     public class OrderStatusModelFactory : IOrderStatusModelFactory
     {
         #region Fields
+        private readonly IHtmlFormatter _htmlFormatter;
         private readonly IOrderStatusService _orderStatusService;
         private readonly ILocalizationService _localizationService;
         private readonly ILocalizedModelFactory _localizedModelFactory;
-        private readonly IHtmlFormatter _htmlFormatter;
         #endregion
         #region Ctor
         public OrderStatusModelFactory(
+            IHtmlFormatter htmlFormatter,
             IOrderStatusService orderStatusService,
             ILocalizationService localizationService,
-            ILocalizedModelFactory localizedModelFactory,
-            IHtmlFormatter htmlFormatter)
+            ILocalizedModelFactory localizedModelFactory
+            )
         {
+            _htmlFormatter = htmlFormatter;
             _orderStatusService = orderStatusService;
             _localizationService = localizationService;
             _localizedModelFactory = localizedModelFactory;
-            _htmlFormatter = htmlFormatter;
         }
         #endregion
         #region Methods
+        public Task<OrderStatusSearchModel> PrepareOrderStatusSearchModelAsync(OrderStatusSearchModel searchModel)
+        {
+            if (searchModel == null)
+                throw new ArgumentNullException(nameof(searchModel));
+            //prepare parameters
+            searchModel.SetGridPageSize();
+            return Task.FromResult(searchModel);
+        }
         public async Task<OrderStatusListModel> PrepareOrderStatusListModelAsync(OrderStatusSearchModel searchModel)
         {
             if (searchModel == null)
@@ -53,7 +62,6 @@ namespace Nop.Plugin.Misc.POSSystem.Areas.Admin.Factories
 
 
         }
-
         public async Task<OrderStatusModel> PrepareOrderStatusModelAsync(OrderStatusModel model, OrderStatus orderStatus, bool excludeProperties = false)
         {
 
@@ -78,14 +86,6 @@ namespace Nop.Plugin.Misc.POSSystem.Areas.Admin.Factories
 
             return model;
 
-        }
-        public Task<OrderStatusSearchModel> PrepareOrderStatusSearchModelAsync(OrderStatusSearchModel searchModel)
-        {
-            if (searchModel == null)
-                throw new ArgumentNullException(nameof(searchModel));
-            //prepare parameters
-            searchModel.SetGridPageSize();
-            return Task.FromResult(searchModel);
         }
         #endregion
     }

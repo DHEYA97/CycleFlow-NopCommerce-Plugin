@@ -30,19 +30,20 @@ namespace Nop.Plugin.Misc.CycleFlow.Infrastructure
                 options.ViewLocationExpanders.Add(new CycleFlowViewLocationExpander());
             });
             #region Factory
-            services.AddScoped<IOrderStatusModelFactory, OrderStatusModelFactory>();
-            services.AddScoped<IImageTypeModelFactory, ImageTypeModelFactory>();
-            services.AddScoped<ICycleFlowSettingModelFactory, CycleFlowSettingModelFactory>();
+            services.AddScoped<IBaseCycleFlowModelFactory, BaseCycleFlowModelFactory>();
             services.AddScoped<ICheckPosOrderStatusModelFactory, CheckPosOrderStatusModelFactory>();
+            services.AddScoped<ICycleFlowSettingModelFactory, CycleFlowSettingModelFactory>();
             services.AddScoped<IDeportationModelFactory, DeportationModelFactory>();
+            services.AddScoped<IImageTypeModelFactory, ImageTypeModelFactory>();
+            services.AddScoped<IOrderStatusModelFactory, OrderStatusModelFactory>();
             services.AddScoped<IReturnModelFactory, ReturnModelFactory>();
             #endregion
 
             #region Service
-            services.AddScoped<IOrderStatusService, OrderStatusService>();
-            services.AddScoped<IImageTypeService, ImageTypeService>();
             services.AddScoped<ICycleFlowSettingService, CycleFlowSettingService>();
             services.AddScoped<IDeportationService, DeportationService>();
+            services.AddScoped<IImageTypeService, ImageTypeService>();
+            services.AddScoped<IOrderStatusService, OrderStatusService>();
             services.AddScoped<IOrderStateOrderMappingService, OrderStateOrderMappingService>();
             #endregion
 

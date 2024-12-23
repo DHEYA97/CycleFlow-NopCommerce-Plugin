@@ -24,32 +24,33 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
     {
         #region Fields
 
-        private readonly IPermissionService _permissionService;
-        private readonly INotificationService _notificationService;
+        private readonly IImageTypeService _imageTypeService;
+        private readonly IImageTypeModelFactory _imageTypeModelFactory;
         private readonly ILocalizationService _localizationService;
         private readonly ILocalizedEntityService _localizedEntityService;
-        private readonly IImageTypeModelFactory _imageTypeModelFactory;
-        private readonly IImageTypeService _imageTypeService;
+        private readonly INotificationService _notificationService;
+        private readonly IPermissionService _permissionService;
         protected readonly IWorkContext _workContext;
         #endregion
 
         #region Ctor
 
-        public ImageTypeController(IPermissionService permissionService,
-            INotificationService notificationService,
-            ILocalizationService localizationService,
-            ILocalizedEntityService localizedEntityService,
+        public ImageTypeController(
             IImageTypeModelFactory imageTypeModelFactory,
             IImageTypeService imageTypeService,
+            ILocalizationService localizationService,
+            ILocalizedEntityService localizedEntityService,
+            INotificationService notificationService,
+            IPermissionService permissionService,
             IWorkContext workContext
             )
         {
-            _permissionService = permissionService;
-            _notificationService = notificationService;
             _localizationService = localizationService;
             _localizedEntityService = localizedEntityService;
             _imageTypeModelFactory = imageTypeModelFactory;
             _imageTypeService = imageTypeService;
+            _notificationService = notificationService;
+            _permissionService = permissionService;
             _workContext = workContext;
         
         }

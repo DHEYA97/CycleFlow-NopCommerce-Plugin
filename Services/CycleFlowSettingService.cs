@@ -22,36 +22,36 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
     public class CycleFlowSettingService : ICycleFlowSettingService
     {
         #region Fields
+        private readonly ICustomerService _customerService;
+        private readonly IImageTypeService _imageTypeService;
+        private readonly INotificationService _notificationService;
+        protected readonly ILocalizationService _localizationService;
         private readonly IRepository<Domain.OrderStatus> _orderStatusRepository;
         private readonly IRepository<OrderStatusSorting> _orderStatusSortingTypeRepository;
         private readonly IRepository<OrderStatusPermissionMapping> _orderStatusPermissionMappingRepository;
         private readonly IRepository<OrderStatusImageTypeMapping> _orderStatusImageTypeMappingRepository;
-        private readonly INotificationService _notificationService;
-        private readonly IImageTypeService _imageTypeService;
-        private readonly IStoreService _storeService;
-        private readonly IShippingService _shippingService;
         private readonly IOrderStatusService _orderStatusService;
         private readonly IPosUserService _posUserService;
-        private readonly ICustomerService _customerService;
+        private readonly IStoreService _storeService;
+        private readonly IShippingService _shippingService;
         protected readonly IWorkContext _workContext;
-        protected readonly ILocalizationService _localizationService;
         #endregion
 
         #region Ctor
         public CycleFlowSettingService(
+            ICustomerService customerService,
+            IImageTypeService imageTypeService,
+            INotificationService notificationService,
+            ILocalizationService localizationService,
             IRepository<Domain.OrderStatus> orderStatusRepository,
             IRepository<OrderStatusSorting> orderStatusSortingTypeRepository,
             IRepository<OrderStatusPermissionMapping> orderStatusPermissionMappingRepository,
             IRepository<OrderStatusImageTypeMapping> orderStatusImageTypeMappingRepository,
-            INotificationService notificationService,
-            IImageTypeService imageTypeService,
-            IStoreService storeService,
-            IShippingService shippingService,
             IOrderStatusService orderStatusService,
             IPosUserService posUserService,
-            ICustomerService customerService,
-            IWorkContext workContext,
-            ILocalizationService localizationService
+            IStoreService storeService,
+            IShippingService shippingService,
+            IWorkContext workContext
             )
         {
             _orderStatusRepository = orderStatusRepository;

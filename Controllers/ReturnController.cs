@@ -24,35 +24,35 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
     public class ReturnController : BasePluginController
     {
         #region Fields
-        private readonly IPermissionService _permissionService;
-        private readonly INotificationService _notificationService;
-        private readonly IReturnModelFactory _returnModelFactory;
         private readonly ICycleFlowSettingService _cycleFlowSettingService;
-        private readonly IPosUserService _posUserService;
-        private readonly IOrderStateOrderMappingService _orderStateOrderMappingService;
         private readonly IDeportationService _deportationService;
         private readonly ILocalizationService _localizationService;
+        private readonly INotificationService _notificationService;
+        private readonly IOrderStateOrderMappingService _orderStateOrderMappingService;
+        private readonly IPermissionService _permissionService;
+        private readonly IPosUserService _posUserService;
+        private readonly IReturnModelFactory _returnModelFactory;
         #endregion
         #region Ctor
         public ReturnController(
-            IPermissionService permissionService,
-            INotificationService notificationService,
-            IReturnModelFactory returnModelFactory,
             ICycleFlowSettingService cycleFlowSettingService,
-            IPosUserService posUserService,
-            IOrderStateOrderMappingService orderStateOrderMappingService,
             IDeportationService deportationService,
-            ILocalizationService localizationService
+            ILocalizationService localizationService,
+            INotificationService notificationService,
+            IOrderStateOrderMappingService orderStateOrderMappingService,
+            IPermissionService permissionService,
+            IPosUserService posUserService,
+            IReturnModelFactory returnModelFactory
             )
         {
-            _permissionService = permissionService;
-            _notificationService = notificationService;
-            _returnModelFactory = returnModelFactory;
             _cycleFlowSettingService = cycleFlowSettingService;
-            _posUserService = posUserService;
-            _orderStateOrderMappingService = orderStateOrderMappingService;
             _deportationService = deportationService;
             _localizationService = localizationService;
+            _notificationService = notificationService;
+            _permissionService = permissionService;
+            _posUserService = posUserService;
+            _orderStateOrderMappingService = orderStateOrderMappingService;
+            _returnModelFactory = returnModelFactory;
         }
         #endregion
         #region Methods

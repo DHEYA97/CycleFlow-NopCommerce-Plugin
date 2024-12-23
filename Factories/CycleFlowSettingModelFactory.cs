@@ -20,45 +20,49 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
     public class CycleFlowSettingModelFactory : ICycleFlowSettingModelFactory
     {
         #region Felid
-        private readonly ILocalizationService _localizationService;
+        private readonly IBaseAdminModelFactory _baseAdminModelFactory;
+        private readonly IBaseCycleFlowModelFactory _baseCycleFlowModelFactory;
         private readonly ICycleFlowSettingService _cycleFlowSettingService;
+        private readonly ICustomerService _customerService;
+        private readonly IImageTypeService _imageTypeService;
+        private readonly ILocalizationService _localizationService;
+        private readonly IOrderStatusService _orderStatusService;
         private readonly IStoreContext _storeContext;
         private readonly IStoreService _storeService;
         private readonly IShippingService _shippingService;
-        private readonly IOrderStatusService _orderStatusService;
-        private readonly IBaseAdminModelFactory _baseAdminModelFactory;
+        private readonly ISmsTemplateService _smsTemplateService;
         private readonly IPosStoreService _posStoreService;
         private readonly IPosUserService _posUserService;
-        private readonly ICustomerService _customerService;
-        private readonly IImageTypeService _imageTypeService;
-        protected readonly ISmsTemplateService _smsTemplateService;
         #endregion
         #region Ctor
-        public CycleFlowSettingModelFactory(ILocalizationService localizationService,
+        public CycleFlowSettingModelFactory(
+            IBaseAdminModelFactory baseAdminModelFactory,
+            IBaseCycleFlowModelFactory baseCycleFlowModelFactory,
             ICycleFlowSettingService cycleFlowSettingService,
+            ICustomerService customerService,
+            IImageTypeService imageTypeService,
+            ILocalizationService localizationService,
+            IOrderStatusService orderStatusService,
             IStoreContext storeContext,
             IStoreService storeService,
             IShippingService shippingService,
-            IOrderStatusService orderStatusService,
-            IBaseAdminModelFactory baseAdminModelFactory,
+            ISmsTemplateService smsTemplateService,
             IPosStoreService posStoreService,
-            IPosUserService posUserService,
-            ICustomerService customerService,
-            IImageTypeService imageTypeService,
-            ISmsTemplateService smsTemplateService
-            )
+            IPosUserService posUserService
+        )
         {
-            _localizationService = localizationService;
+            _baseAdminModelFactory = baseAdminModelFactory;
+            _baseCycleFlowModelFactory = baseCycleFlowModelFactory;
             _cycleFlowSettingService = cycleFlowSettingService;
+            _customerService = customerService;
+            _imageTypeService = imageTypeService;
+            _localizationService = localizationService;
             _storeContext = storeContext;
             _storeService = storeService;
             _shippingService = shippingService;
             _orderStatusService = orderStatusService;
-            _baseAdminModelFactory = baseAdminModelFactory;
             _posStoreService = posStoreService;
             _posUserService = posUserService;
-            _customerService = customerService;
-            _imageTypeService = imageTypeService;
             _smsTemplateService = smsTemplateService;
         }
         #endregion
@@ -67,8 +71,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
         {
             searchModel ??= new CycleFlowSettingSearchModel();
 
-            await PreparePosUsersListAsync(searchModel.AvailablePosUsers);
-            await PreparePosStoresAsync(searchModel.AvailableStores);
+            await _baseCycleFlowModelFactory.PreparePosUsersListAsync(searchModel.AvailablePosUsers);
+            await _baseCycleFlowModelFactory.PreparePosStoresAsync(searchModel.AvailableStores);
 
             searchModel.SearchStoreIds
                 = searchModel.SearchPosUsersIds
@@ -119,9 +123,9 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
             if (!excludeProperties)
             {
                 
-                await PreparePosStoresAsync(model.AvailableStores);
-                await PrepareCustomerListAsync(model.AvailableCustomers);
-                await PreparePosUsersListAsync(model.AvailablePosUsers);
+                await _baseCycleFlowModelFactory.PreparePosStoresAsync(model.AvailableStores);
+                await _baseCycleFlowModelFactory.PrepareCustomerListAsync(model.AvailableCustomers);
+                await _baseCycleFlowModelFactory.PreparePosUsersListAsync(model.AvailablePosUsers);
                 await PrepareImageTypeListAsync(model.AvailableImageTypes);
                 await PrepareCurrentSelectedImageTypeAsync(model.SelectedImageTypeIds,model.PosUserId,model.CurrentOrderStatusId);
                 await PrepareSmsTemplatesAsync(model.AvailableClientSmsTemplates);
@@ -136,26 +140,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
         #endregion
 
         #region Utilite
-        protected async Task PreparePosStoresAsync(IList<SelectListItem> items)
-        {
-            var availableStores = await (await _posStoreService.GetAllPosStoresAsync()).Where(ps => ps.StoreType != StoreTypes.Online).ToListAsync();
-            foreach (var store in availableStores)
-            {
-                var nopStore = await _storeService.GetStoreByIdAsync(store.NopStoreId);
-                items.Add(new SelectListItem { Value = store.Id.ToString(), Text = nopStore.Name});
-            }
-            items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Plugin.Misc.CycleFlow.Common.Select"), Value = "0" });
-        }
-        protected async Task PrepareCustomerListAsync(IList<SelectListItem> items)
-        {
-            var cycleFowRole = await _customerService.GetCustomerRoleBySystemNameAsync(SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
-            var availableCustomer = await _customerService.GetAllCustomersAsync(customerRoleIds: new int[] { cycleFowRole.Id }).Result.ToListAsync();
-            foreach (var customer in availableCustomer)
-            {
-                items.Add(new SelectListItem { Value = customer.Id.ToString(), Text = await _customerService.GetCustomerFullNameAsync(customer) });
-            }
-            items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Plugin.Misc.CycleFlow.Common.Select"), Value = "0" });
-        }
+        
         protected async Task PrepareCurrentSelectedImageTypeAsync(IList<int> items,int posUserId,int orderStatusId)
         {
             var currentImageType = await _cycleFlowSettingService.GetAllOrderCurrentSelectedImageTypeAsync(posUserId,orderStatusId);
@@ -164,16 +149,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                 items.Add(imgId);
             }
         }
-        protected async Task PreparePosUsersListAsync(IList<SelectListItem> items)
-        {
-            
-            var availablePosUsers = await (await _posUserService.GetPosUserListAsync()).Where(ps => ps.Active).ToListAsync();
-            foreach (var user in availablePosUsers)
-            {
-                items.Add(new SelectListItem { Value = _posUserService.GetPosUserByNopCustomerIdAsync(user.Id).Result.Id.ToString(), Text = _customerService.GetCustomerFullNameAsync(user).Result.ToString() });
-            }
-            items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Plugin.Misc.CycleFlow.Common.Select"), Value = "0" });
-        }
+       
         //public async Task PrepareCurrentOrderStatusListAsync(IList<SelectListItem> items,int currentId = 0)
         //{
         //    IList<(string Id, string Name)> availableOrderStatus = await _cycleFlowSettingService.GetAllOrderStatusAsync(true,currentId);
