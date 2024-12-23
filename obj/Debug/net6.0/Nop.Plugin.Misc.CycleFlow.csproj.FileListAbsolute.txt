@@ -1711,3 +1711,6 @@ F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugi
 F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\Deportation\_CreateOrUpdate.Order.cshtml
 F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\Return\List.cshtml
 F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\Return\View.cshtml
+F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\Return\_View.AllImage.cshtml
+F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\Return\_View.cshtml
+F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\Return\_View.Info.cshtml

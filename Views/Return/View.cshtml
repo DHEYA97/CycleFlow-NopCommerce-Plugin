@@ -1,11 +1,13 @@
 ﻿@using Nop.Plugin.Misc.CycleFlow.Models.Return
 @model ReturnModel
 @{
-    ViewBag.PageTitle = T("Admin.Plugin.Misc.CycleFlow.ReturnModel.Title").Text;
+    ViewBag.PageTitle = T("Admin.Plugin.Misc.CycleFlow.Return.Title").Text;
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
-    NopHtml.SetActiveMenuItemSystemName("ReturnModel");
+    NopHtml.SetActiveMenuItemSystemName("Return");
 }
-<h2>@Model.CustomerName</h2>
-<h2>@Model.Year</h2>
-<h2>@Model.Month</h2>
-<h2>@Model.ReturnCount</h2>
+<div class="content-header clearfix">
+    <h1 class="float-left">
+        @T("Admin.Plugin.Misc.CycleFlow.Return.Title")
+    </h1>
+</div>
+@await Html.PartialAsync("_View", Model)

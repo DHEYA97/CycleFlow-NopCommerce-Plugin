@@ -41,6 +41,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
         private readonly IRepository<OrderStatusImageTypeMapping> _OrderStatusImageTypeMapping;
         private readonly IPictureService _pictureService;
         private readonly IOrderStateOrderMappingService _orderStateOrderMappingService;
+        
         #endregion
         #region Ctor
         public ReturnModelFactory(ILocalizationService localizationService,
@@ -132,6 +133,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                             var posUser = await _posUserService.GetPosUserByIdAsync(OrderStateOrderMapping.PosUserId);
                             var store = await _storeService.GetStoreByIdAsync(OrderStateOrderMapping.NopStoreId);
                             var ImgTypeIds = await _orderStateOrderMappingService.GetImageTypeIdsByOrderStatusIdAsync(OrderStateOrderMapping.PosUserId, OrderStateOrderMapping.OrderStatusId);
+                            var CustomerReturnFromName = await _cycleFlowSettingService.GetCustomerByOrderStatusIdAsync(OrderStateOrderMapping.PosUserId, OrderStateOrderMapping.ReturnOrderStatusId ?? 0);
                             var ImageTypeList = new List<(string, string)?>();
                             if (ImgTypeIds != null && ImgTypeIds?.Count > 0)
                             {
@@ -156,12 +158,13 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                                     PosStoreName = store?.Name ?? string.Empty,
                                     ReturnDate = OrderStateOrderMapping.InsertionDate!.Value,
                                     ReturnStatusName = _orderStatusService.GetOrderStatusNameAsync(OrderStateOrderMapping.OrderStatusId).Result,
-                                    ReturnFromStatusName = string.Empty,
-                                    CustomerReturnFromName = string.Empty,
+                                    ReturnFromStatusName = _orderStatusService.GetOrderStatusNameAsync(OrderStateOrderMapping.ReturnOrderStatusId??0).Result,
+                                    CustomerReturnFromName = _customerService.GetCustomerFullNameAsync(CustomerReturnFromName).Result ?? string.Empty,
                                     ImageType = ImageTypeList
                                 }
                             );
                         }
+                        model.AllReturn = AllReturnList;
                     }
                 }
             }

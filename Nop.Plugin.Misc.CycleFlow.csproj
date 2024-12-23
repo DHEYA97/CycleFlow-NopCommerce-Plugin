@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Components\" />
-    <Folder Include="Views\Return\" />
     <Folder Include="Views\Sheared\" />
   </ItemGroup>
   <ItemGroup>
@@ -137,6 +136,15 @@
     </None>
     <None Update="Views\Return\View.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\Return\_View.AllImage.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\Return\_View.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\Return\_View.Info.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

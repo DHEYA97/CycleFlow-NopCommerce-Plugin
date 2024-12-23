@@ -1,0 +1,261 @@
+﻿@using Nop.Plugin.Misc.CycleFlow.Models.Return
+@model ReturnModel
+<style>
+    .image-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+        .image-container img {
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+            max-width: 100px;
+            max-height: 100px;
+        }
+
+    .image-type {
+        text-align: center;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    /* #modal-image {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            max-height: 80vh;
+        } */
+
+    #prev-image, #next-image {
+        text-decoration: none;
+        display: inline-block;
+        z-index: 1050; /* فوق الصورة */
+        opacity: 0.8;
+        font-size: 2rem;
+        padding: 10px 20px;
+        color: white;
+        background-color: #6c757d; /* لون زر Bootstrap */
+        border-radius: 5px;
+    }
+
+        #prev-image:hover, #next-image:hover {
+            opacity: 1;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+    #print-deportation-button {
+        margin-bottom: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        #print-deportation-button:hover {
+            background-color: #0056b3;
+        }
+</style>
+
+
+<button id="print-deportation-button" type="button">طباعة</button>
+
+<div class="card-body" id="print-section">
+    <div class="cards-group">
+        <div class="form-group row">
+            <div class="col-md-12" style="overflow-x: auto;">
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                @T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.PosUserName")
+                            </th>
+                            <th>
+                                @T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.ReturnStatusName")
+                            </th>
+                            <th>
+                                @T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.ReturnFromStatusName")
+                            </th>
+                            <th>
+                                @T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.CustomerReturnFromName")
+                            </th>
+                            <th>
+                                @T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.ReturnDate")
+                            </th>
+                            <th>
+                                @T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.Note")
+                            </th>
+                            <th>
+                                @T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.ImageType")
+                            </th>
+                            <th>
+                                @T("Admin.Orders.Products.Picture")
+                            </th>
+                            <th>
+                                @T("Admin.Orders.Products.View")
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.AllReturn)
+                        {
+                            <tr id="row-@item.Id">
+                                <td class="text-center">
+                                    <p>@item.PosUserName</p>
+                                </td>
+                                <td class="text-center">
+                                    <p>@item.ReturnStatusName</p>
+                                </td>
+                                <td class="text-center">
+                                    <p>@item.ReturnFromStatusName</p>
+                                </td>
+                                <td class="text-center">
+                                    <p>@item.CustomerReturnFromName</p>
+                                </td>
+                                <td class="text-center">
+                                    <p>@item.ReturnDate</p>
+                                </td>
+                                <td class="text-center">
+                                    <p>@item.Note</p>
+                                </td>
+                                
+                                <td class="text-center d-flex flex-column justify-content-between">
+                                    @if (item.ImageType != null && item.ImageType.Any())
+                                    {
+                                        foreach (var tuple in item.ImageType)
+                                        {
+                                            if (tuple.HasValue)
+                                            {
+                                                var (imgType, _) = tuple.Value;
+                                                <div class="image-type">@imgType</div>
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <p>@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.NoimgType")</p>
+                                    }
+                                </td>
+                                <td class="text-center">
+                                    @if (item.ImageType != null && item.ImageType.Any())
+                                    {
+                                        foreach (var tuple in item.ImageType)
+                                        {
+                                            if (tuple.HasValue)
+                                            {
+                                                var (_, picture) = tuple.Value;
+                                                <div class="image-container">
+                                                    <img src="@picture" alt="Picture" class="deportation-image" data-src="@picture" />
+                                                </div>
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <p>@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.NoPicture")</p>
+                                    }
+                                </td>
+                                <td>
+                                    <a href=@($"/Admin/Deportation/View/{item.OrderStateOrderMappingId}?showAllInfo={false}") class="btn btn-default"><i class="far fa-eye"></i>@T("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.View")</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="img-model" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="returnModelTitle">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">@T("Admin.Plugin.Misc.CycleFlow.Deportation.Return")</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body text-center">
+                <a id="prev-image" class="btn btn-secondary position-absolute" style="left: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                    &lt;
+                </a>
+                <img id="modal-image" src="" alt="Selected Image" class="img-fluid" style="max-height: 80vh;" />
+                <a id="next-image" class="btn btn-secondary position-absolute" style="right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                    &gt;
+                </a>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    @T("Admin.Common.Close")
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+          window.onbeforeprint = function () {
+            $('#print-deportation-button').hide()
+          };
+
+        window.onafterprint = function () {
+            $('#print-deportation-button').show()
+        };
+    })
+    function printPage() {
+        $('#print-deportation-button').hide()
+        window.print();
+        $('#print-deportation-button').show()
+    }
+    $(document).ready(function () {
+        $('#print-deportation-button').on('click', function (e) {
+            e.preventDefault();
+            printPage();
+        });
+        
+        let currentRow = null; 
+        let currentImages = []; 
+        let currentIndex = 0; 
+
+        $('.deportation-image').on('click', function () {
+            const imgSrc = $(this).data('src'); 
+            currentRow = $(this).closest('tr'); 
+            currentImages = currentRow.find('.deportation-image');
+            currentIndex = currentImages.index(this);
+            updateModal(imgSrc); 
+            $('#img-model').modal('show');
+        });
+
+        function updateModal(imgSrc) {
+            $('#modal-image').attr('src', imgSrc);
+        }
+
+        $('#prev-image').on('click', function () {
+            if (currentImages.length > 0) {
+                currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+                const prevImgSrc = $(currentImages[currentIndex]).data('src');
+                updateModal(prevImgSrc);
+            }
+        });
+
+        $('#next-image').on('click', function () {
+            if (currentImages.length > 0) {
+                currentIndex = (currentIndex + 1) % currentImages.length;
+                const nextImgSrc = $(currentImages[currentIndex]).data('src');
+                updateModal(nextImgSrc);
+            }
+        });
+
+        $('#img-model').on('hidden.bs.modal', function () {
+            currentRow = null;
+            currentImages = [];
+            currentIndex = 0;
+            $('#modal-image').attr('src', '');
+        });
+    });
+</script>
