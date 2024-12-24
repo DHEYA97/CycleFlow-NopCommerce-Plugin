@@ -88,7 +88,9 @@
                                 new ColumnProperty(nameof(OrderStatusModel.IsActive))
                                 {
                                 Title = T("Admin.Plugin.Misc.CycleFlow.OrderStatus.Fields.IsActive").Text,
-                                Width = "100"
+                                Width = "100",
+                                ClassName = NopColumnClassDefaults.CenterAll,
+                                Render = new RenderBoolean()
                                 }
                                 ,
                                 // new ColumnProperty(nameof(OrderStatusModel.Id))

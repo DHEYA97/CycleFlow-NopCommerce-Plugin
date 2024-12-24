@@ -81,19 +81,26 @@
                                 new ColumnProperty(nameof(DeportationModel.CurrentOrderStatusName))
                                 {
                                 Title = T("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.CurrentOrderStatusName").Text,
-                                Width = "300"
+                                Width = "200"
                                 },
                                 new ColumnProperty(nameof(DeportationModel.NextOrderStatusName))
                                 {
                                 Title = T("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.NextOrderStatusName").Text,
-                                Width = "300"
+                                Width = "200"
                                 },
                                 new ColumnProperty(nameof(DeportationModel.Id))
                                 {
                                 Title = T("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.View").Text,
-                                Width = "100",
+                                Width = "150",
                                 ClassName =  NopColumnClassDefaults.CenterAll,
                                 Render=new RenderCustom("renderDeportationView")
+                                },
+                                new ColumnProperty(nameof(DeportationModel.Id))
+                                {
+                                Title = T("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.Chart").Text,
+                                Width = "150",
+                                ClassName =  NopColumnClassDefaults.CenterAll,
+                                Render=new RenderCustom("renderChartView")
                                 },
                             }
                         });
@@ -102,6 +109,10 @@
                                 const showAllInfo = @Model.JustShowByCustomer.ToString().ToLower();
                                 const url = `/Admin/Deportation/View/${row.Id}?showAllInfo=${showAllInfo}`;
                                 return `<a href="${url}" class="btn btn-default"><i class="far fa-eye"></i>معاينة</a>`;
+                            }
+                            function renderChartView(data, type, row, meta) {
+                                const url = `/Admin/Deportation/Chart/${row.Id}`;
+                                return `<a href="${url}" class="btn btn-info"><i class="far fa-eye"></i>Chart</a>`;
                             }
                          </script>
                     </div>
