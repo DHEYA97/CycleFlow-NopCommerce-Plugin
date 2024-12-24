@@ -20,13 +20,14 @@
                     <i class="far fa-save"></i>
                     @T("Admin.Plugin.Misc.CycleFlow.Deportation")
                 </button>
-            }
-            @if (@Model.IsEnableReturn)
-            {
-                <button type="submit" id="return-button" class="btn btn-primary">
-                    <i class="far fa-save"></i>
-                    @T("Admin.Plugin.Misc.CycleFlow.Deportation.Return")
-                </button>
+                
+                @if (@Model.IsEnableReturn)
+                {
+                    <button type="submit" id="return-button" class="btn btn-primary">
+                        <i class="far fa-save"></i>
+                        @T("Admin.Plugin.Misc.CycleFlow.Deportation.Return")
+                    </button>
+                }
             }
         </div>
     </div>

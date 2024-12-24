@@ -113,10 +113,12 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                         foreach(var orderMapp in filterReturnModel.OrderDetail)
                         {
                             var OrderStateOrderMapping = await _orderStateOrderMappingService.GetOrderStateOrderMappingByIdAsync(orderMapp.OrderStateOrderMappingId);
+                            var RetuneFromOrderStateOrderMapping = await _orderStateOrderMappingService.GetOrderStateOrderMappingByIdAsync(OrderStateOrderMapping.ReturnOrderStatusId??0)??null;
                             var posUser = await _posUserService.GetPosUserByIdAsync(OrderStateOrderMapping.PosUserId);
                             var store = await _storeService.GetStoreByIdAsync(OrderStateOrderMapping.NopStoreId);
                             var ImgTypeIds = await _orderStateOrderMappingService.GetImageTypeIdsByOrderStatusIdAsync(OrderStateOrderMapping.PosUserId, OrderStateOrderMapping.OrderStatusId);
-                            var CustomerReturnFromName = await _cycleFlowSettingService.GetCustomerByOrderStatusIdAsync(OrderStateOrderMapping.PosUserId, OrderStateOrderMapping.ReturnOrderStatusId ?? 0);
+                            var CustomerReturnFrom = await _cycleFlowSettingService.GetCustomerByOrderStatusIdAsync(OrderStateOrderMapping.PosUserId, OrderStateOrderMapping.ReturnOrderStatusId ?? 0);
+                            var CustomerReturnFromName = CustomerReturnFrom!= null ? await _customerService.GetCustomerFullNameAsync(CustomerReturnFrom) ?? string.Empty : string.Empty;
                             var ImageTypeList = new List<(string, string)?>();
                             if (ImgTypeIds != null && ImgTypeIds?.Count > 0)
                             {
@@ -134,7 +136,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                                 new AllReturnModel
                                 {
                                     CustomerReturnName = model.CustomerName,
-                                    Note = OrderStateOrderMapping.Note??string.Empty,
+                                    Note = RetuneFromOrderStateOrderMapping?.Note?? string.Empty,
                                     OrderId = OrderStateOrderMapping.OrderId,
                                     OrderStateOrderMappingId = OrderStateOrderMapping.Id,
                                     PosUserName = _customerService.GetCustomerFullNameAsync(_posUserService.GetUserByIdAsync(posUser.Id).Result).Result ?? string.Empty,
@@ -142,7 +144,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                                     ReturnDate = OrderStateOrderMapping.InsertionDate!.Value,
                                     ReturnStatusName = _orderStatusService.GetOrderStatusNameAsync(OrderStateOrderMapping.OrderStatusId).Result,
                                     ReturnFromStatusName = _orderStatusService.GetOrderStatusNameAsync(OrderStateOrderMapping.ReturnOrderStatusId??0).Result,
-                                    CustomerReturnFromName = _customerService.GetCustomerFullNameAsync(CustomerReturnFromName).Result ?? string.Empty,
+                                    CustomerReturnFromName = CustomerReturnFromName,
                                     ImageType = ImageTypeList
                                 }
                             );

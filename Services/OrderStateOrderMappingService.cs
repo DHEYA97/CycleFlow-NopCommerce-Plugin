@@ -116,10 +116,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                     {
                         DeportationDate = item.InsertionDate,
                         StatusName = await _orderStatusService.GetOrderStatusNameAsync(item.OrderStatusId),
-                        NextStatusName = item.IsReturn??false 
-                                        ? await _orderStatusService.GetOrderStatusNameAsync((await _cycleFlowSettingService.GetNextStepByFirstStepAsync(item.ReturnOrderStatusId??0, item.PosUserId) ?? 0))
-                                        : await _orderStatusService.GetOrderStatusNameAsync((await _cycleFlowSettingService.GetNextStepByFirstStepAsync(item.OrderStatusId, item.PosUserId)??0))
-                                          ,
+                        NextStatusName =  await _orderStatusService.GetOrderStatusNameAsync((await _cycleFlowSettingService.GetNextStepByFirstStepAsync(item.OrderStatusId, item.PosUserId)??0)),
                         ImageType = imgTypeList,
                         Note = item.Note,
                         IsReturn = item.IsReturn,
@@ -134,12 +131,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                 try
                 {
                     bool? isReturn = deportationType == Deportation.Return ? true : null;
-                    if(!string.IsNullOrEmpty(model.Note) | isReturn?? false)
+                    if(!string.IsNullOrEmpty(model.Note))
                     {
                         var currentOrderStatusOrderMapping = await GetOrderStateOrderMappingByIdAsync(model.Id);
                         currentOrderStatusOrderMapping.Note = model.Note;
-                        currentOrderStatusOrderMapping.IsReturn = isReturn;
-                        currentOrderStatusOrderMapping.ReturnOrderStatusId = model.OrderStatusId;
                         await currentOrderStatusOrderMapping.SetBaseInfoAsync<OrderStateOrderMapping>(_workContext);
                         await _orderStateOrderMapping.UpdateAsync(currentOrderStatusOrderMapping);
                     }
@@ -153,6 +148,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                         NopStoreId = model.NopStoreId,
                         PosUserId = model.PosUserId,
                         CustomerId = customer.Id,
+                        ReturnOrderStatusId =  deportationType == Deportation.Return ? model.OrderStatusId : null,
+                        IsReturn =  isReturn??false
                     };
                     await orderStatusOrderMapping.SetBaseInfoAsync<OrderStateOrderMapping>(_workContext);
                     await _orderStateOrderMapping.InsertAsync(orderStatusOrderMapping);

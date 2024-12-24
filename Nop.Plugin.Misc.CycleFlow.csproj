@@ -56,6 +56,9 @@
     <None Update="Views\CheckPosOrderStatus\List.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Views\Deportation\View.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Views\Deportation\_CreateOrUpdate.AllImage.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -95,7 +98,7 @@
     <None Update="Views\CycleFlowSetting\_CreateOrUpdate.Info.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Views\Deportation\View.cshtml">
+    <None Update="Views\Deportation\Chart.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Views\Deportation\List.cshtml">

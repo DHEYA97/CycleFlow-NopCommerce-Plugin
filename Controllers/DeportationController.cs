@@ -110,6 +110,20 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
             var model = await _deportationModelFactory.PrepareDeportationModelAsync(null, orderStateOrderMapping,showAllInfo);
             return View(model);
         }
+        public virtual async Task<IActionResult> Chart(int id)
+        {
+            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.DeportationCycleFlowPlugin))
+                return AccessDeniedView();
+            var orderStateOrderMapping = await _orderStateOrderMappingService.GetOrderStateOrderMappingByIdAsync(id);
+            if (orderStateOrderMapping == null)
+            {
+                _notificationService.ErrorNotification(_localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.Deportation.NotFound").Result);
+                return RedirectToAction(nameof(List));
+            }
+            await _cycleFlowSettingService.NotificationPosUserAsync();
+            var model = await _deportationModelFactory.PrepareDeportationModelAsync(null, orderStateOrderMapping,false);
+            return View(model);
+        }
         [HttpPost]
         public virtual async Task<IActionResult> DeportationProcess(DeportationModel model, Deportation deportationType)
         {

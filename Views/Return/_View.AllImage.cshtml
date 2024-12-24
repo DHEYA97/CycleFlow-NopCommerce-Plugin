@@ -20,7 +20,9 @@
     .image-type {
         text-align: center;
         font-weight: bold;
-        margin-top: 5px;
+        font-size: 16px;
+        display: block;
+
     }
 
     /* #modal-image {
@@ -61,6 +63,10 @@
         #print-deportation-button:hover {
             background-color: #0056b3;
         }
+
+    .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
+        vertical-align: middle !important;
+    }
 </style>
 
 
@@ -75,6 +81,9 @@
                         <tr>
                             <th>
                                 @T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.PosUserName")
+                            </th>
+                            <th>
+                                @T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.OrderId")
                             </th>
                             <th>
                                 @T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.ReturnStatusName")
@@ -110,6 +119,9 @@
                                     <p>@item.PosUserName</p>
                                 </td>
                                 <td class="text-center">
+                                    <p>@item.OrderId</p>
+                                </td>
+                                <td class="text-center">
                                     <p>@item.ReturnStatusName</p>
                                 </td>
                                 <td class="text-center">
@@ -124,8 +136,8 @@
                                 <td class="text-center">
                                     <p>@item.Note</p>
                                 </td>
-                                
-                                <td class="text-center d-flex flex-column justify-content-between">
+
+                                <td class="text-center" style="vertical-align: middle;">
                                     @if (item.ImageType != null && item.ImageType.Any())
                                     {
                                         foreach (var tuple in item.ImageType)
@@ -133,13 +145,13 @@
                                             if (tuple.HasValue)
                                             {
                                                 var (imgType, _) = tuple.Value;
-                                                <div class="image-type">@imgType</div>
+                                                <div class="image-type badge bg-primary mb-3">@imgType</div>
                                             }
                                         }
                                     }
                                     else
                                     {
-                                        <p>@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.NoimgType")</p>
+                                        <p class="image-type">@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.NoimgType")</p>
                                     }
                                 </td>
                                 <td class="text-center">
@@ -158,7 +170,7 @@
                                     }
                                     else
                                     {
-                                        <p>@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.NoPicture")</p>
+                                        <p class="image-type">@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.NoPicture")</p>
                                     }
                                 </td>
                                 <td>

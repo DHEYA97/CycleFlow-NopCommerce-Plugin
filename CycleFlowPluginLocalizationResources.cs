@@ -221,12 +221,14 @@ namespace Nop.Plugin.Misc.CycleFlow
                 ["Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.ReturnDate"] = "Return Date",
                 ["Admin.Plugin.Misc.CycleFlow.Deportation.Return"] = "Return",
                 ["Nop.Plugin.Misc.CycleFlow.Return"] = "Return",
+                ["Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.OrderId"] = "Order Number",
+                ["Admin.Plugin.Misc.CycleFlow.Deportation.Fields.View"] = "View",
+				["Admin.Plugin.Misc.CycleFlow.Deportation.Fields.Chart"] = "Chart",
 
 
 
-
-                #endregion
-            };
+				#endregion
+			};
         }
 
         private static IDictionary<string, string> PluginArabicResources()
@@ -430,7 +432,9 @@ namespace Nop.Plugin.Misc.CycleFlow
                 ["Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.ReturnDate"] = "تاريخ المرتجع",
                 ["Admin.Plugin.Misc.CycleFlow.Deportation.Return"] = "المرتجعات",
                 ["Nop.Plugin.Misc.CycleFlow.Return"] = "المرتجعات",
-
+                ["Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.OrderId"] = "رقم الطلب",
+                ["Admin.Plugin.Misc.CycleFlow.Deportation.Fields.View"] = "عرض",
+                ["Admin.Plugin.Misc.CycleFlow.Deportation.Fields.Chart"] = "رسم بياني",
 
                 #endregion
             };
