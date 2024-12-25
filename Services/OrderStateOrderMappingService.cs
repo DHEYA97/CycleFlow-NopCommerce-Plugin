@@ -88,7 +88,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
         {
             return await _orderStateOrderMapping.Table.OrderBy(x => x.InsertionDate).ToListAsync();
         }
-        public async Task<List<AllDeportationModel>> GetAllDeportationModelByIdAsync(int posOrderId)
+        public async Task<List<AllDeportationModel>> GetAllDeportationModelByIdAsync(int posOrderId,bool skipLast = true)
         {
             var order = _posOrderService.GetNopOrderByPosOrderIdAsync(posOrderId);
             if (order == null)
@@ -101,7 +101,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                 throw new ArgumentNullException(nameof(CycleFlowSettingModel), $"Thar is No Deportation to order : {posOrderId}");
             }
             List<AllDeportationModel> AllDeportationModelList = new List<AllDeportationModel>();
-            foreach (var item in orderMapping.Take(orderMapping.Count - 1))
+            foreach (var item in skipLast ? orderMapping.Take(orderMapping.Count - 1) : orderMapping)
             {
                 var imgTypes = await GetImageTypeIdsByOrderStatusIdAsync(item.PosUserId, item.OrderStatusId);
                 var imgTypeList = new List<(string, string)?>();

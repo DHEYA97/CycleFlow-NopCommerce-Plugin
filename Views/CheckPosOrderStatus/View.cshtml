@@ -10,62 +10,69 @@
 }
 
 <style>
-    .sequence-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        flex-wrap: wrap;
-    }
-
-    .sequence-box {
-        width: 150px;
-        height: 70px;
-        background-color: #007bff;
-        color: white;
+    .flow span {
+        display: block;
+        padding: 10px 20px;
+        color: #ffffff;
         text-align: center;
-        line-height: 70px;
+        text-transform: uppercase;
+        text-decoration: none;
+        border: 1px solid #ccc;
         border-radius: 5px;
-        margin: 10px;
-        font-size: 16px;
-        flex-grow: 1;
+        opacity: 0;
     }
 
-    .arrow {
-        width: 0;
-        height: 0;
-        border-left: 10px solid transparent;
-        border-right: 10px solid transparent;
-        border-top: 20px solid #007bff;
-        margin: 10px;
-        flex-grow: 1;
-        margin-inline: auto;
+    .flow .line {
+        position: relative;
+        width: 2px;
+        background: #4c4cae;
+        margin: 0 auto;
+        height: 30px;
+        opacity: 0;
     }
 
-    .alert {
-        width: 100%;
-        text-align: center;
-        margin-top: 20px;
-        font-size: 18px;
-    }
-    .alert-info {
-        display: flex;
-        justify-content: center;
-    }
-    .alert-success {
-        background-color: #28a745;
-        color: white;
-    }
+        .flow .line::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 10px solid #4c4cae;
+            transform: translateX(-50%);
+        }
 
-    .alert-danger {
+    .danger {
         background-color: #dc3545;
-        color: white;
+        border-color: #dc3545;
+    }
+
+    .normal {
+        background-color: #4c4cae;
+        border-color: #ccc;
     }
 </style>
 
-
-<div class="alert alert-info">
-    <div>
-        <strong>@T("Admin.Plugin.Misc.CycleFlow.ResultOfCheck"): </strong>@Html.Raw(Model)
+<strong>@T("Admin.Plugin.Misc.CycleFlow.ResultOfCheck"): </strong>        
+<div class="container mb-5 py-5 w-50 mx-auto">
+    <div class="flow text-center">
+        @Html.Raw(Model)
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        const spans = $('.flow span');
+        const lines = $('.flow .line');
+
+        spans.each(function (index) {
+            $(this).delay(index * 1000).animate({ opacity: 1 }, 600, function () {
+                if (index < lines.length) {
+                    lines.eq(index).delay(200).animate({ opacity: 1 }, 600);
+                }
+            });
+        });
+    });
+</script>

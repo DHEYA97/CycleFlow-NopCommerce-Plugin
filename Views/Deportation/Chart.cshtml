@@ -22,7 +22,7 @@
     .flow .line {
         position: relative;
         width: 2px;
-        background: #dc3545;
+        background: #4c4cae;
         margin: 0 auto;
         height: 30px;
         opacity: 0;
@@ -37,7 +37,7 @@
         height: 0;
         border-left: 5px solid transparent;
         border-right: 5px solid transparent;
-        border-top: 10px solid #dc3545;
+        border-top: 10px solid #4c4cae;
         transform: translateX(-50%);
     }
     .danger {
@@ -54,12 +54,12 @@
     <div class="flow text-center">
         @foreach (var item in Model.AllDeportation) {
             <div>
-                <span class="mb-3 @(item.IsReturn == true ? "danger" : "normal")">
+                <span class="@(item.IsReturn == true ? "danger" : "normal")">
                     @item.StatusName
                 </span>
             </div>
             @if (item != Model.AllDeportation.Last()) {
-                <div class="line"></div>
+                <div class="line mb-3"></div>
             }
         }
     </div>

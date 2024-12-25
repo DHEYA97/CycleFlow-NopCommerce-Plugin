@@ -104,7 +104,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                 });
             });
         }
-        public async Task<DeportationModel> PrepareDeportationModelAsync(DeportationModel model, OrderStateOrderMapping orderStateOrderMapping, bool showAllInfo , bool excludeProperties = false, int currentId = 0)
+        public async Task<DeportationModel> PrepareDeportationModelAsync(DeportationModel model, OrderStateOrderMapping orderStateOrderMapping, bool showAllInfo , bool excludeProperties = false, int currentId = 0 , bool skipLast = true)
         {
             if (orderStateOrderMapping != null)
             {
@@ -174,7 +174,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                                 );
                         }
                     }
-                    model.AllDeportation = await _orderStateOrderMappingService.GetAllDeportationModelByIdAsync(order.Id);
+                    model.AllDeportation = await _orderStateOrderMappingService.GetAllDeportationModelByIdAsync(order.Id,skipLast);
                 }
             }
             return model;

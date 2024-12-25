@@ -563,16 +563,14 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
 
             if (firstStep == null)
             {
-                // استبدال النص الثابت بنص مترجم
                 var errorMessage = await _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.OrderStatusSorting.NotFoundFirstStep");
-                return ($"<div class='alert alert-danger'>{errorMessage}</div>", status);
+                return ($"<div><span class='danger'>{errorMessage}</span></div>", status);
             }
 
             if (lastStep == null)
             {
-                // استبدال النص الثابت بنص مترجم
                 var errorMessage = await _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.OrderStatusSorting.NotFoundLastStep");
-                return ($"<div class='alert alert-danger'>{errorMessage}</div>", status);
+                return ($"<div><span class='danger'>{errorMessage}</span></div>", status);
             }
 
             var currentStatus = firstStep;
@@ -581,45 +579,41 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
 
             var firstStatusName = await _orderStatusService.GetOrderStatusNameAsync(currentStatus.OrderStatusId);
 
-            string sequenceHtml = $"<div class='sequence-box'>{firstStatusName} ({currentStatus.OrderStatusId})</div>";
+            string sequenceHtml = $"<div><span class='normal'>{firstStatusName} ({currentStatus.OrderStatusId})</span></div>";
             while (currentStatus != null)
             {
                 var nextStatus = orderStatusSorting.FirstOrDefault(x => x.OrderStatusId == currentStatus.NextStep);
                 if (nextStatus == null)
                 {
-                    // استبدال النص الثابت بنص مترجم
                     var errorMessage = await _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.OrderStatusSorting.SequenceBreak");
-                    sequenceHtml += "<div class='arrow'></div>";
-                    sequenceHtml += $"<div class='sequence-box'>{_orderStatusService.GetOrderStatusNameAsync(currentStatus?.NextStep??0).Result} ({currentStatus.NextStep})</div>";
-                    sequenceHtml += $"<div class='alert alert-danger'>{errorMessage} {currentStatus.NextStep} ({_orderStatusService.GetOrderStatusNameAsync(currentStatus?.NextStep??0).Result}).</div>";
+                    sequenceHtml += "<div class='line mb-3'></div>";
+                    sequenceHtml += $"<div><span class='normal'>{_orderStatusService.GetOrderStatusNameAsync(currentStatus?.NextStep??0).Result} ({currentStatus.NextStep})</span></div>";
+                    sequenceHtml += $"<div><span class='danger'>{errorMessage} {currentStatus.NextStep} ({_orderStatusService.GetOrderStatusNameAsync(currentStatus?.NextStep??0).Result})</span></div>";
                     break;
                 }
 
                 if (visitedStatuses.Contains(nextStatus.OrderStatusId))
                 {
-                    // استبدال النص الثابت بنص مترجم
                     var errorMessage = await _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.OrderStatusSorting.LoopDetected");
-                    sequenceHtml += "<div class='arrow'></div>";
-                    sequenceHtml += $"<div class='sequence-box'>{_orderStatusService.GetOrderStatusNameAsync(currentStatus?.NextStep??0).Result} ({currentStatus.NextStep})</div>";
-                    sequenceHtml += $"<div class='alert alert-danger'>{errorMessage} {currentStatus.OrderStatusId} ({firstStatusName}) و {nextStatus.OrderStatusId}.</div>";
+                    sequenceHtml += "<div class='line mb-3 '></div>";
+                    sequenceHtml += $"<div><span class='normal'>{_orderStatusService.GetOrderStatusNameAsync(currentStatus?.NextStep ?? 0).Result} ({currentStatus.NextStep})</span></div>";
+                    sequenceHtml += $"<div><span class='danger'>{errorMessage} {currentStatus.OrderStatusId} ({firstStatusName}) و {nextStatus.OrderStatusId}</span></div>";
                     break;
                 }
 
                 visitedStatuses.Add(nextStatus.OrderStatusId);
 
                 var nextStatusName = await _orderStatusService.GetOrderStatusNameAsync(nextStatus.OrderStatusId);
-
-                sequenceHtml += "<div class='arrow'></div>";
-                sequenceHtml += $"<div class='sequence-box'>{nextStatusName} ({nextStatus.OrderStatusId})</div>";
+                sequenceHtml += "<div class='line mb-3 '></div>";
+                sequenceHtml += $"<div><span class='normal'>{nextStatusName} ({nextStatus.OrderStatusId})</span></div>";
 
                 if (nextStatus.IsLastStep)
                 {
                     var successMessage = await _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.OrderStatusSorting.CompleteSequence");
-                    sequenceHtml += $"<div class='alert alert-success'>{successMessage}</div>";
+                    sequenceHtml += $"<div><span class='bg-success'>{successMessage}</span></div>";
                     status = true;
                     break;
                 }
-
                 currentStatus = nextStatus;
             }
             return (sequenceHtml, status);

@@ -19,12 +19,11 @@ using Nop.Plugin.Misc.CycleFlow.Domain;
 using DocumentFormat.OpenXml.Office2010.Excel;
 using Nop.Plugin.Misc.CycleFlow.Constant.Enum;
 using Nop.Services.Localization;
+using Nop.Web.Areas.Admin.Controllers;
+using Nop.Plugin.Misc.CycleFlow.Constant;
 namespace Nop.Plugin.Misc.CycleFlow.Controllers
 {
-    [Area(AreaNames.Admin)]
-    [AuthorizeAdmin]
-    [AutoValidateAntiforgeryToken]
-    public class DeportationController : BasePluginController
+    public class DeportationController : BaseCycleFlowController
     {
         #region Fields
         private readonly ICycleFlowSettingService _cycleFlowSettingService;
@@ -65,8 +64,11 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         }
         public virtual async Task<IActionResult> List()
         {
-            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.DeportationCycleFlowPlugin))
-                return AccessDeniedView();
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.DeportationCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
+            if (result != null)
+                return result;
+
+            
             await _cycleFlowSettingService.NotificationPosUserAsync();
             var model = await _deportationModelFactory.PrepareDeportationSearchModelAsync(new DeportationSearchModel(), true, false);
             return View(model);
@@ -74,32 +76,40 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         [HttpPost]
         public virtual async Task<IActionResult> List(DeportationSearchModel searchModel)
         {
-            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.DeportationCycleFlowPlugin))
-                return await AccessDeniedDataTablesJson();
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.DeportationCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME,true);
+            if (result != null)
+                return result;
+
             await _cycleFlowSettingService.NotificationPosUserAsync();
             var model = await _deportationModelFactory.PrepareDeportationModelListModelAsync(searchModel);
             return Json(model);
         }
         public virtual async Task<IActionResult> AllOrder()
         {
-            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ShowAllOrderCycleFlowPlugin))
-                return AccessDeniedView();
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.ShowAllOrderCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
+            if (result != null)
+                return result;
+
             await _cycleFlowSettingService.NotificationPosUserAsync();
             var model = await _deportationModelFactory.PrepareDeportationSearchModelAsync(new DeportationSearchModel(), false);
             return View("List", model);
         }
         public virtual async Task<IActionResult> LastStepOrder()
         {
-            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ShowAllOrderCycleFlowPlugin))
-                return AccessDeniedView();
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.ShowAllOrderCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
+            if (result != null)
+                return result;
+
             await _cycleFlowSettingService.NotificationPosUserAsync();
             var model = await _deportationModelFactory.PrepareDeportationSearchModelAsync(new DeportationSearchModel(), justLastStepOrder: true);
             return View("List", model);
         }
         public virtual async Task<IActionResult> View(int id,bool showAllInfo = false)
         {
-            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.DeportationCycleFlowPlugin))
-                return AccessDeniedView();
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.DeportationCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
+            if (result != null)
+                return result;
+
             var orderStateOrderMapping = await _orderStateOrderMappingService.GetOrderStateOrderMappingByIdAsync(id);
             if(orderStateOrderMapping == null)
             {
@@ -112,8 +122,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         }
         public virtual async Task<IActionResult> Chart(int id)
         {
-            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.DeportationCycleFlowPlugin))
-                return AccessDeniedView();
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.DeportationCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
+            if (result != null)
+                return result;
+
             var orderStateOrderMapping = await _orderStateOrderMappingService.GetOrderStateOrderMappingByIdAsync(id);
             if (orderStateOrderMapping == null)
             {
@@ -121,7 +133,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
                 return RedirectToAction(nameof(List));
             }
             await _cycleFlowSettingService.NotificationPosUserAsync();
-            var model = await _deportationModelFactory.PrepareDeportationModelAsync(null, orderStateOrderMapping,false);
+            var model = await _deportationModelFactory.PrepareDeportationModelAsync(null, orderStateOrderMapping,false,skipLast:false);
             return View(model);
         }
         [HttpPost]

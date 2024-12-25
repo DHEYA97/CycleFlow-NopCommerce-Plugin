@@ -13,7 +13,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
     {
         Task<string?> GetPictureUrlByImageTypeIdAsync(int imgTypeId, int posUserId, int orderId, int orderStatusId, int orderStateOrderMappingId);
         Task<OrderStateOrderMapping> GetOrderStateOrderMappingByIdAsync(int id);
-        Task<List<AllDeportationModel>> GetAllDeportationModelByIdAsync(int posOrderId);
+        Task<List<AllDeportationModel>> GetAllDeportationModelByIdAsync(int posOrderId, bool skipLast = true);
         Task<List<OrderStateOrderMapping>> GeAllOrderStateOrderMappingAsync();
         Task InsertStepAsync(DeportationModel model, Deportation deportationType);
         Task<List<OrderStatusImageTypeMapping>> GetImageTypeIdsByOrderStatusIdAsync(int posUserId, int orderStatusId);
