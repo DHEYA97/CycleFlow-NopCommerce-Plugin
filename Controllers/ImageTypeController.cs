@@ -14,13 +14,12 @@ using Nop.Plugin.Misc.CycleFlow.Services;
 using Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
 using Nop.Core;
 using Nop.Plugin.Misc.Accounting.Domain;
+using Nop.Web.Areas.Admin.Controllers;
+using Nop.Plugin.Misc.CycleFlow.Constant;
 
 namespace Nop.Plugin.Misc.CycleFlow.Controllers
 {
-    [Area(AreaNames.Admin)]
-    [AuthorizeAdmin]
-    [AutoValidateAntiforgeryToken]
-    public class ImageTypeController : BasePluginController
+    public class ImageTypeController : BaseCycleFlowController
     {
         #region Fields
 
@@ -81,9 +80,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
 
         public virtual async Task<IActionResult> List()
         {
-            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin))
-                return AccessDeniedView();
-            // إعداد النموذج
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
+            if (result != null)
+                return result;
+            
             var model = await _imageTypeModelFactory.PrepareImageTypeSearchModelAsync(new ImageTypeSearchModel());
             return View(model);
         }
@@ -91,8 +91,9 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         [HttpPost]
         public virtual async Task<IActionResult> List(ImageTypeSearchModel searchModel)
         {
-            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin))
-                return await AccessDeniedDataTablesJson();
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME,true);
+            if (result != null)
+                return result;
 
             var model = await _imageTypeModelFactory.PrepareImageTypeListModelAsync(searchModel);
             return Json(model);
@@ -100,8 +101,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
 
         public virtual async Task<IActionResult> Create()
         {
-            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin))
-                return AccessDeniedView();
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
+            if (result != null)
+                return result;
+
             var model = await _imageTypeModelFactory.PrepareImageTypeModelAsync(new ImageTypeModel(), null);
             return View(model);
         }
@@ -110,8 +113,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         [FormValueRequired("save", "save-continue")]
         public virtual async Task<IActionResult> Create(ImageTypeModel model, bool continueEditing, IFormCollection form)
         {
-            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin))
-                return AccessDeniedView();
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
+            if (result != null)
+                return result;
+
 
             if (ModelState.IsValid)
             {
@@ -131,8 +136,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
 
         public virtual async Task<IActionResult> Edit(int id)
         {
-            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin))
-                return AccessDeniedView();
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
+            if (result != null)
+                return result;
+
 
             var imageType = await _imageTypeService.GetImageTypeByIdAsync(id);
             if (imageType == null)
@@ -145,8 +152,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
         public virtual async Task<IActionResult> Edit(ImageTypeModel model, bool continueEditing, IFormCollection form)
         {
-            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin))
-                return AccessDeniedView();
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
+            if (result != null)
+                return result;
+
 
             var imageType = await _imageTypeService.GetImageTypeByIdAsync(model.Id);
             if (imageType == null)
@@ -180,8 +189,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         [HttpPost]
         public virtual async Task<IActionResult> Delete(int id)
         {
-            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin))
-                return AccessDeniedView();
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
+            if (result != null)
+                return result;
+
 
             var imageType = await _imageTypeService.GetImageTypeByIdAsync(id);
             if (imageType == null)

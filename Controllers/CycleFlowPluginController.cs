@@ -7,13 +7,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Nop.Web.Areas.Admin.Controllers;
 
 namespace Nop.Plugin.Misc.CycleFlow.Controllers
 {
-    [Area(AreaNames.Admin)]
-    [AuthorizeAdmin]
-    [AutoValidateAntiforgeryToken]
-    public class CycleFlowPluginController : BasePluginController
+    public class CycleFlowPluginController : BaseAdminController
     {
         public async Task<IActionResult> Configure()
         {

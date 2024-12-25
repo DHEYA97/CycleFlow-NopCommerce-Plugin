@@ -16,14 +16,13 @@ using Nop.Plugin.Misc.CycleFlow.Factories;
 using Nop.Plugin.Misc.CycleFlow.Services;
 using Nop.Plugin.Misc.CycleFlow.Models.CycleFlowSetting;
 using System.Diagnostics.Metrics;
+using Nop.Web.Areas.Admin.Controllers;
+using Nop.Plugin.Misc.CycleFlow.Constant;
 
 
 namespace Nop.Plugin.Misc.CycleFlow.Controllers
 {
-    [Area(AreaNames.Admin)]
-    [AuthorizeAdmin]
-    [AutoValidateAntiforgeryToken]
-    public class CycleFlowSettingController : BasePluginController
+    public class CycleFlowSettingController : BaseCycleFlowController
     {
         #region Fields
         private readonly ICycleFlowSettingModelFactory _cycleFlowSettingFactory;
@@ -61,23 +60,29 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         }
         public virtual async Task<IActionResult> List()
         {
-            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin))
-                return AccessDeniedView();
-           
-           var model = await _cycleFlowSettingFactory.PrepareCycleFlowSettingSearchModelAsync(new CycleFlowSettingSearchModel());
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
+            if (result != null)
+                return result;
+
+            var model = await _cycleFlowSettingFactory.PrepareCycleFlowSettingSearchModelAsync(new CycleFlowSettingSearchModel());
             return View(model);
         }
         [HttpPost]
         public virtual async Task<IActionResult> List(CycleFlowSettingSearchModel searchModel)
         {
-            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin))
-                return await AccessDeniedDataTablesJson();
-
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME,true);
+            if (result != null)
+                return result;
+            
             var model = await _cycleFlowSettingFactory.PrepareCycleFlowSettingListModelAsync(searchModel);
             return Json(model);
         }
         public async Task<IActionResult> Create()
         {
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
+            if (result != null)
+                return result;
+
             var model = await _cycleFlowSettingFactory.PrepareCycleFlowSettingModelAsync(new CycleFlowSettingModel(), null);
             return View(model);
         }
@@ -85,7 +90,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
         public async Task<IActionResult> Create(CycleFlowSettingModel model, bool continueEditing)
         {
-                if (ModelState.IsValid)
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
+            if (result != null)
+                return result;
+            if (ModelState.IsValid)
             {
                 await _cycleFlowSettingService.InsertCycleFlowSettingAsync(model);
 
@@ -100,8 +108,11 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         }
         public async Task<IActionResult> Edit(int id)
         {
-            var orderStatusSorting = await _cycleFlowSettingService.GetOrderStatusSortingByIdAsync(id);
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
+            if (result != null)
+                return result;
 
+            var orderStatusSorting = await _cycleFlowSettingService.GetOrderStatusSortingByIdAsync(id);
             if (orderStatusSorting == null)
                 return RedirectToAction(nameof(List));
 
@@ -111,8 +122,11 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
         public async Task<IActionResult> Edit(CycleFlowSettingModel model, bool continueEditing)
         {
-            var orderStatusSorting = await _cycleFlowSettingService.GetOrderStatusSortingByIdAsync(model.Id);
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
+            if (result != null)
+                return result;
 
+            var orderStatusSorting = await _cycleFlowSettingService.GetOrderStatusSortingByIdAsync(model.Id);
             if (orderStatusSorting == null)
                 return RedirectToAction(nameof(List));
 
@@ -134,8 +148,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
+            if (result != null)
+                return result;
             var orderStatusSorting = await _cycleFlowSettingService.GetOrderStatusSortingByIdAsync(id);
-
             if (orderStatusSorting == null)
             {
                 _notificationService.ErrorNotification(_localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.OrderStatusSorting.NotFound").Result);

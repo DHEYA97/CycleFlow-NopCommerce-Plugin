@@ -13,12 +13,11 @@ using Nop.Plugin.Misc.CycleFlow.Factories;
 using Nop.Plugin.Misc.CycleFlow.Services;
 using Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
 using Nop.Core;
+using Nop.Web.Areas.Admin.Controllers;
+using Nop.Plugin.Misc.CycleFlow.Constant;
 namespace Nop.Plugin.Misc.CycleFlow.Controllers
 {
-    [Area(AreaNames.Admin)]
-    [AuthorizeAdmin]
-    [AutoValidateAntiforgeryToken]
-    public class OrderStatusController : BasePluginController
+    public class OrderStatusController : BaseCycleFlowController
     {
         #region Fields
 
@@ -82,9 +81,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
 
         public virtual async Task<IActionResult> List()
         {
-            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin))
-                return AccessDeniedView();
-            //prepare model
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
+            if (result != null)
+                return result;
+
             var model = await _orderStatusModelFactory.PrepareOrderStatusSearchModelAsync(new OrderStatusSearchModel());
             return View(model);
         }
@@ -92,8 +92,9 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         [HttpPost]
         public virtual async Task<IActionResult> List(OrderStatusSearchModel searchModel)
         {
-            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin))
-                return await AccessDeniedDataTablesJson();
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME,true);
+            if (result != null)
+                return result;
 
             var model = await _orderStatusModelFactory.PrepareOrderStatusListModelAsync(searchModel);
             return Json(model);
@@ -101,8 +102,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
 
         public virtual async Task<IActionResult> Create()
         {
-            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin))
-                return AccessDeniedView();
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
+            if (result != null)
+                return result;
+
             var model = await _orderStatusModelFactory.PrepareOrderStatusModelAsync(new OrderStatusModel(), null);
             return View(model);
         }
@@ -111,8 +114,9 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         [FormValueRequired("save", "save-continue")]
         public virtual async Task<IActionResult> Create(OrderStatusModel model, bool continueEditing, IFormCollection form)
         {
-            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin))
-                return AccessDeniedView();
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
+            if (result != null)
+                return result;
 
             if (ModelState.IsValid)
             {
@@ -131,8 +135,9 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         }
         public virtual async Task<IActionResult> Edit(int id)
         {
-            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin))
-                return AccessDeniedView();
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
+            if (result != null)
+                return result;
 
             var orderStatus = await _orderStatusService.GetOrderStatusByIdAsync(id);
             if (orderStatus == null)
@@ -146,8 +151,9 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
         public virtual async Task<IActionResult> Edit(OrderStatusModel model, bool continueEditing, IFormCollection form)
         {
-            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin))
-                return AccessDeniedView();
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
+            if (result != null)
+                return result;
 
             var orderStatus = await _orderStatusService.GetOrderStatusByIdAsync(model.Id);
             if (orderStatus == null)
@@ -181,9 +187,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         [HttpPost]
         public virtual async Task<IActionResult> Delete(int id)
         {
-            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin))
-                return AccessDeniedView();
-
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
+            if (result != null)
+                return result;
+            
             var orderStatus = await _orderStatusService.GetOrderStatusByIdAsync(id);
             if (orderStatus == null)
                 return RedirectToAction("List");

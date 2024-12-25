@@ -16,12 +16,11 @@ using Nop.Services.Security;
 using Nop.Plugin.Misc.CycleFlow.Models.Deportation;
 using Nop.Plugin.Misc.CycleFlow.Models.Return;
 using Nop.Services.Localization;
+using Nop.Web.Areas.Admin.Controllers;
+using Nop.Plugin.Misc.CycleFlow.Constant;
 namespace Nop.Plugin.Misc.CycleFlow.Controllers
 {
-    [Area(AreaNames.Admin)]
-    [AuthorizeAdmin]
-    [AutoValidateAntiforgeryToken]
-    public class ReturnController : BasePluginController
+    public class ReturnController : BaseCycleFlowController
     {
         #region Fields
         private readonly ICycleFlowSettingService _cycleFlowSettingService;
@@ -62,8 +61,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         }
         public virtual async Task<IActionResult> List()
         {
-            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ShowAllOrderCycleFlowPlugin))
-                return AccessDeniedView();
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.ShowAllOrderCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
+            if (result != null)
+                return result;
+            
             await _cycleFlowSettingService.NotificationPosUserAsync();
             var model = await _returnModelFactory.PrepareReturnSearchModelAsync(new ReturnSearchModel());
             return View(model);
@@ -71,17 +72,20 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         [HttpPost]
         public virtual async Task<IActionResult> List(ReturnSearchModel searchModel)
         {
-            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ShowAllOrderCycleFlowPlugin))
-                return await AccessDeniedDataTablesJson();
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.ShowAllOrderCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME,true);
+            if (result != null)
+                return result;
+
             await _cycleFlowSettingService.NotificationPosUserAsync();
             var model = await _returnModelFactory.PrepareReturnModelListModelAsync(searchModel);
             return Json(model);
         }
         public virtual async Task<IActionResult> View(int customerId,int year,int month)
         {
-            if (!await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ShowAllOrderCycleFlowPlugin))
-                return AccessDeniedView();
-            
+            var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.ShowAllOrderCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
+            if (result != null)
+                return result;
+
             var filterReturnModel = (await _deportationService.SearchReturnAsync(
                                     customerIds: new List<int>(customerId),
                                     years: new List<int>(year),
