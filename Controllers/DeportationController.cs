@@ -108,7 +108,13 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         {
             var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.DeportationCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
             if (result != null)
-                return result;
+            {
+                var result2 = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.ShowAllOrderCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
+                if (result2 != null)
+                { 
+                    return result2;
+                }
+            }
 
             var orderStateOrderMapping = await _orderStateOrderMappingService.GetOrderStateOrderMappingByIdAsync(id);
             if(orderStateOrderMapping == null)
@@ -124,8 +130,13 @@ namespace Nop.Plugin.Misc.CycleFlow.Controllers
         {
             var result = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.DeportationCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
             if (result != null)
-                return result;
-
+            {
+                var result2 = await CheckPermissionAndRoleAsync(CycleFlowPluginPermissionProvider.ShowAllOrderCycleFlowPlugin, SystemDefaults.CYCLE_FLOW_USER_ROLE_SYSTEM_NAME);
+                if (result2 != null)
+                {
+                    return result2;
+                }
+            }
             var orderStateOrderMapping = await _orderStateOrderMappingService.GetOrderStateOrderMappingByIdAsync(id);
             if (orderStateOrderMapping == null)
             {

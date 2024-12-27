@@ -111,55 +111,15 @@ namespace Nop.Plugin.Misc.CycleFlow
                 ActionName = null,
                 IconClass = "fas fa-stream",
                 Visible = true,
-                ChildNodes = new List<SiteMapNode>
-                {
-                    new SiteMapNode()
-                    {
-                        SystemName = "OrderStatus",
-                        Title = _localizationService.GetResourceAsync( "Nop.Plugin.Misc.CycleFlow.OrderStatus").Result,
-                        ControllerName = "OrderStatus",
-                        ActionName = "List",
-                        IconClass = "far fa-dot-circle",
-                        Visible = true,
-                    },
-                    new SiteMapNode()
-                    {
-                        SystemName = "ImageType",
-                        Title = _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.ImageType").Result,
-                        ControllerName = "ImageType",
-                        ActionName = "List",
-                        IconClass = "far fa-dot-circle",
-                        Visible = true,  
-                    },
-                    new SiteMapNode()
-                    {
-                        SystemName = "CycleFlowSetting",
-                        Title = _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.CycleFlowSetting").Result,
-                        ControllerName = "CycleFlowSetting",
-                        ActionName = "List",
-                        IconClass = "far fa-dot-circle",
-                        Visible = true,
-                    },
-                     new SiteMapNode()
-                    {
-                        SystemName = "CheckPosOrderStatus",
-                        Title = _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.CheckPosOrderStatus").Result,
-                        ControllerName = "CheckPosOrderStatus",
-                        ActionName = "List",
-                        IconClass = "far fa-dot-circle",
-                        Visible = true,
-                    },
-                     new SiteMapNode()
-                    {
-                        SystemName = "Deportation",
-                        Title = _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.Deportation").Result,
-                        ControllerName = "Deportation",
-                        ActionName = "List",
-                        IconClass = "far fa-dot-circle",
-                        Visible = true,
-                    },
-
-                }
+            };
+            var DeportationChildNode = new SiteMapNode()
+            {
+                SystemName = "Deportation",
+                Title = _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.Deportation").Result,
+                ControllerName = "Deportation",
+                ActionName = "List",
+                IconClass = "far fa-dot-circle",
+                Visible = true,
             };
             var AllOrderChildNode = new SiteMapNode()
             {
@@ -188,9 +148,56 @@ namespace Nop.Plugin.Misc.CycleFlow
                 IconClass = "far fa-dot-circle",
                 Visible = true,
             };
+            var OrderStatusChildNode = new SiteMapNode()
+            {
+                SystemName = "OrderStatus",
+                Title = _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.OrderStatus").Result,
+                ControllerName = "OrderStatus",
+                ActionName = "List",
+                IconClass = "far fa-dot-circle",
+                Visible = true,
+            };
+            var ImageTypeChildNode = new SiteMapNode()
+            {
+                SystemName = "ImageType",
+                Title = _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.ImageType").Result,
+                ControllerName = "ImageType",
+                ActionName = "List",
+                IconClass = "far fa-dot-circle",
+                Visible = true,
+            };
+            var CycleFlowSettingChildNode = new SiteMapNode()
+            {
+                SystemName = "CycleFlowSetting",
+                Title = _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.CycleFlowSetting").Result,
+                ControllerName = "CycleFlowSetting",
+                ActionName = "List",
+                IconClass = "far fa-dot-circle",
+                Visible = true,
+            };
+            var CheckPosOrderStatusChildNode = new SiteMapNode()
+            {
+                SystemName = "CheckPosOrderStatus",
+                Title = _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.CheckPosOrderStatus").Result,
+                ControllerName = "CheckPosOrderStatus",
+                ActionName = "List",
+                IconClass = "far fa-dot-circle",
+                Visible = true,
+            };
             if (await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.AccessToCycleFlowPluginMenu))
             {
                 rootNode.ChildNodes.Add(menueItem);
+            }
+            if (await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ManageCycleFlowPlugin))
+            {
+                rootNode.ChildNodes.FirstOrDefault(s => s.SystemName.Equals(SystemDefaults.CYCLE_FLOW_SITE_MAP_NODE_SYSTEM_NAME))?.ChildNodes.Add(OrderStatusChildNode);
+                rootNode.ChildNodes.FirstOrDefault(s => s.SystemName.Equals(SystemDefaults.CYCLE_FLOW_SITE_MAP_NODE_SYSTEM_NAME))?.ChildNodes.Add(ImageTypeChildNode);
+                rootNode.ChildNodes.FirstOrDefault(s => s.SystemName.Equals(SystemDefaults.CYCLE_FLOW_SITE_MAP_NODE_SYSTEM_NAME))?.ChildNodes.Add(CycleFlowSettingChildNode);
+                rootNode.ChildNodes.FirstOrDefault(s => s.SystemName.Equals(SystemDefaults.CYCLE_FLOW_SITE_MAP_NODE_SYSTEM_NAME))?.ChildNodes.Add(CheckPosOrderStatusChildNode);
+            }
+            if (await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.DeportationCycleFlowPlugin))
+            {
+                rootNode.ChildNodes.FirstOrDefault(s => s.SystemName.Equals(SystemDefaults.CYCLE_FLOW_SITE_MAP_NODE_SYSTEM_NAME))?.ChildNodes.Add(DeportationChildNode);
             }
             if (await _permissionService.AuthorizeAsync(CycleFlowPluginPermissionProvider.ShowAllOrderCycleFlowPlugin))
             {
