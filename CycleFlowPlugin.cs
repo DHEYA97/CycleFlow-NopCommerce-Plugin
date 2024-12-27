@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Routing;
 using Nop.Core;
+using Nop.Core.Domain.Cms;
 using Nop.Core.Domain.Customers;
 using Nop.Core.Domain.Security;
 using Nop.Plugin.Misc.CycleFlow.Constant;
 using Nop.Plugin.Misc.CycleFlow.Permission;
 using Nop.Plugin.Misc.POSSystem;
 using Nop.Services.Cms;
+using Nop.Services.Configuration;
 using Nop.Services.Customers;
 using Nop.Services.Localization;
 using Nop.Services.Plugins;
@@ -24,6 +26,8 @@ namespace Nop.Plugin.Misc.CycleFlow
         private readonly ILanguageService _languageService;
         protected readonly IPermissionService _permissionService;
         protected readonly ICustomerService _customerService;
+        protected readonly WidgetSettings _widgetSettings;
+        protected readonly ISettingService _settingService;
         #endregion
         #region Ctor
         public CycleFlowPlugin(
@@ -31,7 +35,9 @@ namespace Nop.Plugin.Misc.CycleFlow
             ILocalizationService localizationService,
             ILanguageService languageService,
             IPermissionService permissionService,
-            ICustomerService customerService
+            ICustomerService customerService,
+            WidgetSettings widgetSettings,
+            ISettingService settingService
             )
         {
             _webHelper = webHelper;
@@ -39,12 +45,17 @@ namespace Nop.Plugin.Misc.CycleFlow
             _languageService = languageService;
             _permissionService = permissionService;
             _customerService = customerService;
+            _widgetSettings = widgetSettings;
+            _settingService = settingService;
         }
         #endregion
         #region Methods
         public bool HideInWidgetList => false;
         public string GetWidgetViewComponentName(string widgetZone)
         {
+            if (widgetZone == AdminWidgetZones.OrderDetailsButtons)
+                return SystemDefaults.ORDER_CYCLE_FLOW;
+
             return null;
         }
 
@@ -52,7 +63,7 @@ namespace Nop.Plugin.Misc.CycleFlow
         {
             return Task.FromResult(new List<string>()
             {
-
+                AdminWidgetZones.OrderDetailsButtons
             } as IList<string>);
         }
 
@@ -63,6 +74,11 @@ namespace Nop.Plugin.Misc.CycleFlow
         public override async Task InstallAsync()
         {
             await _permissionService.InstallPermissionsAsync(new CycleFlowPluginPermissionProvider());
+            if (!_widgetSettings.ActiveWidgetSystemNames.Contains(SystemDefaults.SYSTEM_NAME))
+            {
+                _widgetSettings.ActiveWidgetSystemNames.Add(SystemDefaults.SYSTEM_NAME);
+                await _settingService.SaveSettingAsync(_widgetSettings);
+            }
             await InsertInitialDataAsync();
             await base.InstallAsync();
         }

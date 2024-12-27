@@ -1,0 +1,13 @@
+@model int
+<div class="btn-group">
+    <button type="button" class="btn btn-success">
+        <i class="fas fa-stream"></i>
+        <a class="text-white" href=@($"/Admin/Deportation/View/{Model}?showAllInfo={false}")> @T("Nop.Plugin.Misc.CycleFlow.CycleFlow")</a>
+    </button>
+</div>
+<div class="btn-group">
+    <button type="button" class="btn btn-info">
+        <i class="fas fa-chart-bar"></i>
+        <a class="text-white" href=@($"/Admin/Deportation/Chart/{Model}")>@T("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.Chart")</a>
+    </button>
+</div>
