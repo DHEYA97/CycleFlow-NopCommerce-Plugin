@@ -8,7 +8,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Deportation
         #region Ctor
         public AllDeportationModel()
         {
-            ImageType = new List<(string,string)?>();
+            ImageType = new List<string>();
         }
         #endregion
         #region Properties
@@ -17,7 +17,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Deportation
         public DateTime? DeportationDate { get; set; }
         public string? Note { get; set; }
         public bool? IsReturn { get; set; }
-        public IList<(string,string)?> ImageType { get; set; }
+        public IList<string>? ImageType { get; set; }
         #endregion
 
     }

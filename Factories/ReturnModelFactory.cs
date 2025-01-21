@@ -29,12 +29,12 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
         private readonly ICycleFlowSettingService _cycleFlowSettingService;
         private readonly ICustomerService _customerService;
         private readonly IDeportationService _deportationService;
-        private readonly IImageTypeService _imageTypeService;
         private readonly ILocalizationService _localizationService;
         private readonly IOrderStatusService _orderStatusService;
         private readonly IOrderStateOrderMappingService _orderStateOrderMappingService;
         private readonly IPosUserService _posUserService;
         private readonly IStoreService _storeService;
+        private readonly IPictureService _pictureService;
         
         #endregion
         #region Ctor
@@ -43,24 +43,24 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
             ICycleFlowSettingService cycleFlowSettingService,
             ICustomerService customerService,
             IDeportationService deportationService,
-            IImageTypeService imageTypeService,
             ILocalizationService localizationService,
             IOrderStatusService orderStatusService,
             IOrderStateOrderMappingService orderStateOrderMappingService,
             IPosUserService posUserService,
-            IStoreService storeService
+            IStoreService storeService,
+            IPictureService pictureService
             )
         {
             _baseCycleFlowModelFactory = baseCycleFlowModelFactory;
             _cycleFlowSettingService = cycleFlowSettingService;
             _customerService = customerService;
             _deportationService = deportationService;
-            _imageTypeService = imageTypeService;
             _localizationService = localizationService;
             _orderStatusService = orderStatusService;
             _orderStateOrderMappingService = orderStateOrderMappingService;
             _posUserService = posUserService;
             _storeService = storeService;
+            _pictureService = pictureService;
         }
         #endregion
         #region Methods
@@ -116,18 +116,17 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                             var RetuneFromOrderStateOrderMapping = await _orderStateOrderMappingService.GetOrderStateOrderMappingByIdAsync(OrderStateOrderMapping.ReturnOrderStatusId??0)??null;
                             var posUser = await _posUserService.GetPosUserByIdAsync(OrderStateOrderMapping.PosUserId);
                             var store = await _storeService.GetStoreByIdAsync(OrderStateOrderMapping.NopStoreId);
-                            var ImgTypeIds = await _orderStateOrderMappingService.GetImageTypeIdsByOrderStatusIdAsync(OrderStateOrderMapping.PosUserId, OrderStateOrderMapping.OrderStatusId);
+                            var ImgList = await _orderStateOrderMappingService.GetAllOrderStateOrderImageMappingPictureOrderStatusIdAsync(OrderStateOrderMapping.PosUserId, OrderStateOrderMapping.OrderId, OrderStateOrderMapping.OrderStatusId);
                             var CustomerReturnFrom = await _cycleFlowSettingService.GetCustomerByOrderStatusIdAsync(OrderStateOrderMapping.PosUserId, OrderStateOrderMapping.ReturnOrderStatusId ?? 0);
                             var CustomerReturnFromName = CustomerReturnFrom!= null ? await _customerService.GetCustomerFullNameAsync(CustomerReturnFrom) ?? string.Empty : string.Empty;
-                            var ImageTypeList = new List<(string, string)?>();
-                            if (ImgTypeIds != null && ImgTypeIds?.Count > 0)
+                            var ImageTypeList = new List<string>();
+                            if (ImgList != null && ImgList?.Count > 0)
                             {
-                                foreach (var imgType in ImgTypeIds)
+                                foreach (var img in ImgList)
                                 {
                                     ImageTypeList.Add(
                                         (
-                                            await _imageTypeService.GetImageTypeNameAsync(imgType.ImageTypeId),
-                                            await _orderStateOrderMappingService.GetPictureUrlByImageTypeIdAsync(imgType.ImageTypeId, OrderStateOrderMapping.PosUserId, OrderStateOrderMapping.OrderId, OrderStateOrderMapping.OrderStatusId, OrderStateOrderMapping.Id)
+                                            await _pictureService.GetPictureUrlAsync(img.PictureId)
                                         )
                                      );
                                 }

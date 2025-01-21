@@ -26,12 +26,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
         #region Fields
         protected readonly ICycleFlowSettingService _cycleFlowSettingService;
         private readonly ICustomerService _customerService;
-        private readonly IImageTypeService _imageTypeService;
         private readonly INotificationService _notificationService;
         private readonly IRepository<Domain.OrderStatus> _orderStatusRepository;
         private readonly IRepository<OrderStatusSorting> _orderStatusSortingTypeRepository;
         private readonly IRepository<OrderStatusPermissionMapping> _orderStatusPermissionMappingRepository;
-        private readonly IRepository<OrderStatusImageTypeMapping> _orderStatusImageTypeMappingRepository;
         private readonly IRepository<OrderStateOrderMapping> _orderStateOrderMappingRepository;
         private readonly IOrderStatusService _orderStatusService;
         protected readonly IOrderStateOrderMappingService _orderStateOrderMappingService;
@@ -46,13 +44,11 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
         public DeportationService(
             ICustomerService customerService,
             ICycleFlowSettingService cycleFlowSettingService,
-            IImageTypeService imageTypeService,
             INotificationService notificationService,
             IRepository<Domain.OrderStatus> orderStatusRepository,
             IRepository<OrderStatusSorting> orderStatusSortingTypeRepository,
             IRepository<OrderStatusPermissionMapping> orderStatusPermissionMappingRepository,
             IRepository<OrderStateOrderMapping> orderStateOrderMappingRepository,
-            IRepository<OrderStatusImageTypeMapping> orderStatusImageTypeMappingRepository,
             IOrderStateOrderMappingService orderStateOrderMappingService,
             IOrderService orderService,
             IOrderStatusService orderStatusService,
@@ -64,13 +60,11 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
         {
             _customerService = customerService;
             _cycleFlowSettingService = cycleFlowSettingService;
-            _imageTypeService = imageTypeService;
             _notificationService = notificationService;
             _orderStatusRepository = orderStatusRepository;
             _orderStatusSortingTypeRepository = orderStatusSortingTypeRepository;
             _orderStatusPermissionMappingRepository = orderStatusPermissionMappingRepository;
             _orderStateOrderMappingRepository = orderStateOrderMappingRepository;
-            _orderStatusImageTypeMappingRepository = orderStatusImageTypeMappingRepository;
             _orderStatusService = orderStatusService;
             _orderService = orderService;
             _orderStateOrderMappingService = orderStateOrderMappingService;

@@ -5,17 +5,11 @@ using Nop.Plugin.Misc.CycleFlow.Domain;
 using Nop.Plugin.Misc.CycleFlow.Models.CycleFlowSetting;
 using Nop.Plugin.Misc.CycleFlow.Models.Deportation;
 using Nop.Plugin.Misc.POSSystem.Services;
-using Nop.Services.Customers;
 using Nop.Services.Localization;
 using Nop.Services.Media;
 using Nop.Services.Messages;
-using Nop.Services.Shipping;
-using Nop.Services.Stores;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using RestSharp;
+
 using System.Transactions;
 
 namespace Nop.Plugin.Misc.CycleFlow.Services
@@ -24,12 +18,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
     {
         #region Fields
         private readonly ICycleFlowSettingService _cycleFlowSettingService;
-        private readonly IImageTypeService _imageTypeService;
         private readonly ILocalizationService _localizationService;
         protected readonly INotificationService _notificationService;
         private readonly IRepository<OrderStateOrderImageMapping> _orderStateOrderImageMapping;
         private readonly IRepository<OrderStateOrderMapping> _orderStateOrderMapping;
-        private readonly IRepository<OrderStatusImageTypeMapping> _orderStatusImageTypeMapping;
         private readonly IPictureService _pictureService;
         private readonly IPosOrderService _posOrderService;
         private readonly IOrderStatusService _orderStatusService;
@@ -40,12 +32,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
         #region Ctor
         public OrderStateOrderMappingService(
             ICycleFlowSettingService cycleFlowSettingService,
-            IImageTypeService imageTypeService,
             ILocalizationService localizationService,
             INotificationService notificationService,
             IRepository<OrderStateOrderImageMapping> orderStateOrderImageMapping,
             IRepository<OrderStateOrderMapping> orderStateOrderMapping,
-            IRepository<OrderStatusImageTypeMapping> orderStatusImageTypeMapping,
             IPictureService pictureService,
             IPosOrderService posOrderService,
             IOrderStatusService orderStatusService,
@@ -53,12 +43,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             )
         {
             _cycleFlowSettingService = cycleFlowSettingService;
-            _imageTypeService = imageTypeService;
             _localizationService = localizationService;
             _notificationService = notificationService;
             _orderStateOrderImageMapping = orderStateOrderImageMapping;
             _orderStateOrderMapping = orderStateOrderMapping;
-            _orderStatusImageTypeMapping = orderStatusImageTypeMapping;
             _pictureService = pictureService;
             _posOrderService = posOrderService;
             _orderStatusService = orderStatusService;
@@ -66,29 +54,47 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
         }
         #endregion
         #region Method
-        public async Task<string?> GetPictureUrlByImageTypeIdAsync(int imgTypeId,int posUserId,int orderId,int orderStatusId,int orderStateOrderMappingId)
+        public virtual async Task InsertOrderStateOrderImageMappingAsync(OrderStateOrderImageMapping orderStateOrderImageMapping)
         {
-            var pictureId = await _orderStateOrderImageMapping.Table.Where(x=>x.PosUserId == posUserId && x.OrderId == orderId && x.OrderStatusId == orderStatusId && x.ImageTypeId == imgTypeId && x.OrderStateOrderMappingId == orderStateOrderMappingId).Select(x=>x.PictureId).FirstOrDefaultAsync();
-            var pictureUrl = await _pictureService.GetPictureUrlAsync(pictureId);
-            return pictureUrl;
+            await orderStateOrderImageMapping.SetBaseInfoAsync<OrderStateOrderImageMapping>(_workContext);
+            await _orderStateOrderImageMapping.InsertAsync(orderStateOrderImageMapping);
         }
-        public async Task<List<OrderStatusImageTypeMapping>> GetImageTypeIdsByOrderStatusIdAsync(int posUserId, int orderStatusId)
+        public virtual async Task UpdateOrderStateOrderImageMappingAsync(OrderStateOrderImageMapping orderStateOrderImageMapping)
         {
-            return await _orderStatusImageTypeMapping.Table.Where(x=>x.PosUserId == posUserId && x.OrderStatusId == orderStatusId).ToListAsync();
+            await orderStateOrderImageMapping.SetBaseInfoAsync<OrderStateOrderImageMapping>(_workContext);
+            await _orderStateOrderImageMapping.UpdateAsync(orderStateOrderImageMapping);
         }
-        public async Task<OrderStateOrderMapping> GetOrderStateOrderMappingByIdAsync(int id)
+        public virtual async Task DeleteOrderStateOrderImageMappingAsync(OrderStateOrderImageMapping orderStateOrderImageMapping)
+        {
+            await orderStateOrderImageMapping.SetBaseInfoAsync<OrderStateOrderImageMapping>(_workContext);
+            await _orderStateOrderImageMapping.DeleteAsync(orderStateOrderImageMapping);
+        }
+        public async Task<OrderStateOrderImageMapping> GetOrderStateOrderImageMappingByIdAsync(int orderStateOrderImageMappingId)
+        {
+            return await _orderStateOrderImageMapping.GetByIdAsync(orderStateOrderImageMappingId);
+        }
+        public virtual async Task<IList<OrderStateOrderImageMapping>> GetAllOrderStateOrderImageMappingPictureOrderStatusIdAsync(int posUserId,int orderId,int orderStatusId)
+        {
+             return await _orderStateOrderImageMapping.Table.Where(x=> x.PosUserId == posUserId && x.OrderId == orderId && x.OrderStatusId == orderStatusId).ToListAsync();
+                
+        }
+        public virtual async Task<OrderStateOrderMapping> GetOrderStateOrderMappingByIdAsync(int id)
         {
             return await _orderStateOrderMapping.GetByIdAsync(id);
         }
-        public async Task<List<OrderStateOrderMapping>> GeAllOrderStateOrderMappingByOrderIdAsync(int orderId)
+        public virtual async Task<IList<OrderStateOrderMapping>> GeAllOrderStateOrderMappingByOrderIdAsync(int orderId)
         {
             return await _orderStateOrderMapping.Table.Where(x => x.OrderId == orderId).OrderBy(x=>x.InsertionDate).ToListAsync();
         }
-        public async Task<List<OrderStateOrderMapping>> GeAllOrderStateOrderMappingAsync()
+        public virtual async Task<OrderStateOrderMapping> GeOrderStateOrderMappingAsync(OrderStatusPictureSearchModel searchModel)
+        {
+            return await _orderStateOrderMapping.Table.Where(x => x.PosUserId == searchModel.PosUserId && x.OrderId == searchModel.OrderId && x.OrderStatusId == searchModel.OrderStatusId).FirstOrDefaultAsync();
+        }
+        public virtual async Task<IList<OrderStateOrderMapping>> GeAllOrderStateOrderMappingAsync()
         {
             return await _orderStateOrderMapping.Table.OrderBy(x => x.InsertionDate).ToListAsync();
         }
-        public async Task<List<AllDeportationModel>> GetAllDeportationModelByIdAsync(int posOrderId,bool skipLast = true)
+        public virtual async Task<IList<AllDeportationModel>> GetAllDeportationModelByIdAsync(int posOrderId,bool skipLast = true)
         {
             var order = _posOrderService.GetNopOrderByPosOrderIdAsync(posOrderId);
             if (order == null)
@@ -103,12 +109,12 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             List<AllDeportationModel> AllDeportationModelList = new List<AllDeportationModel>();
             foreach (var item in skipLast ? orderMapping.Take(orderMapping.Count - 1) : orderMapping)
             {
-                var imgTypes = await GetImageTypeIdsByOrderStatusIdAsync(item.PosUserId, item.OrderStatusId);
-                var imgTypeList = new List<(string, string)?>();
-                foreach (var img in imgTypes)
+                var pictureList = await GetAllOrderStateOrderImageMappingPictureOrderStatusIdAsync(item.PosUserId,item.OrderId, item.OrderStatusId);
+                var imgTypeList = new List<string>();
+                foreach (var img in pictureList)
                 {
                     imgTypeList.Add(
-                        new( await _imageTypeService.GetImageTypeNameAsync(img.ImageTypeId), await GetPictureUrlByImageTypeIdAsync(img.ImageTypeId,img.PosUserId,posOrderId,img.OrderStatusId,item.Id)??string.Empty)
+                            await _pictureService.GetPictureUrlAsync(img.PictureId) ?? string.Empty
                         );
                 }
                 AllDeportationModelList.Add(
@@ -124,7 +130,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             }
             return AllDeportationModelList;
         }
-        public async Task InsertStepAsync(DeportationModel model, Deportation deportationType)
+        public virtual async Task InsertStepAsync(DeportationModel model, Deportation deportationType)
         {
             using (var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
             {
@@ -153,26 +159,25 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                     };
                     await orderStatusOrderMapping.SetBaseInfoAsync<OrderStateOrderMapping>(_workContext);
                     await _orderStateOrderMapping.InsertAsync(orderStatusOrderMapping);
-                    if (model.ImageType?.Count() > 0)
+                    if (model.OrderStatusPictureModels?.Count() > 0)
                     {
-                        foreach (var img in model.ImageType)
+                        foreach (var img in model.OrderStatusPictureModels)
                         {
-                            var orderStatusOrderImageTypingMapping = new OrderStateOrderImageMapping()
-                            {
-                                OrderId = model.OrderId,
-                                CustomerId = model.CustomerId,
-                                ImageTypeId = (int)img.ImageTypeId!,
-                                NopStoreId = model.NopStoreId,
-                                OrderStatusId = model.OrderStatusId,
-                                PosUserId = model.PosUserId,
-                                PictureId = (int)img.PictureId!,
-                                OrderStateOrderMappingId = model.Id,
-                            };
-                            await orderStatusOrderImageTypingMapping.SetBaseInfoAsync<OrderStateOrderImageMapping>(_workContext);
-                            await _orderStateOrderImageMapping.InsertAsync(orderStatusOrderImageTypingMapping);
+                            var orderStatusOrderImageTypingMapping = await GetOrderStateOrderImageMappingByIdAsync(img.Id);
+                            orderStatusOrderImageTypingMapping.OrderStatusId = model.OrderStatusId;
+                            orderStatusOrderImageTypingMapping.OrderStateOrderMappingId = model.Id;
+                            await UpdateOrderStateOrderImageMappingAsync(orderStatusOrderImageTypingMapping);
                         }
                     }
-                    _notificationService.SuccessNotification(_localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.Deportation.NextStep.Successfully").Result, encode: false);
+                    if(model.IsEnableSendToClient)
+                    {
+                        await SendByWhatsApp(model.CustomerName,model.CurrentOrderStatusName!,model.ClientSmsTemplateId??0);
+                    }
+                    if (model.IsEnableSendToUser)
+                    {
+                        await SendByWhatsApp(model.PosUserName, model.CurrentOrderStatusName!, model.UserSmsTemplateId ?? 0);
+                    }
+                    _notificationService.SuccessNotification(await _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.Deportation.NextStep.Successfully"), encode: false);
                     transaction.Complete();
                 }
                 catch (Exception exp)
@@ -183,5 +188,19 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
             }
         }
         #endregion
+
+        public async Task SendByWhatsApp(string name,string statusName,int TemplateId)
+        {
+            var url = "https://api.ultramsg.com/instance104502/messages/chat";
+            var client = new RestClient(url);
+
+            var request = new RestRequest(url, Method.Post);
+            request.AddHeader("content-type", "application/x-www-form-urlencoded");
+            request.AddParameter("token", "w67uvy5g1339gnrh");
+            request.AddParameter("to", "+966538308241");
+            var message = $"مرحبا {name} طلبك حاليا في مرحلة {statusName} ورقم القالب {TemplateId}";
+            request.AddParameter("body", message);
+            RestResponse response = await client.ExecuteAsync(request);
+        }
     }
 }

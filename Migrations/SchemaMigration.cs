@@ -16,11 +16,9 @@ namespace Nop.Plugin.Misc.CycleFlow.Migrations
         public override void Up()
         {
             Create.TableFor<OrderStatus>();
-            Create.TableFor<ImageType>();
             Create.TableFor<OrderStatusSorting>();
             Create.TableFor<OrderStateOrderMapping>();
             Create.TableFor<OrderStatusPermissionMapping>();
-            Create.TableFor<OrderStatusImageTypeMapping>();
             Create.TableFor<OrderStateOrderImageMapping>();
         }
     }

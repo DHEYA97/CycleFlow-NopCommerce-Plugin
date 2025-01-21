@@ -115,11 +115,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Validators
                 .WithMessageAwait(localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.CycleFlowSetting.UserSmsTemplateId.MustSelect"))
                 .When(x => x.IsEnableSendToUser);
 
-            RuleFor(x => x.SelectedImageTypeIds)
-                .Must((model, selectedImageTypeIds) =>
-                    !(model.IsFirstStep || model.IsLastStep) || (selectedImageTypeIds == null || !selectedImageTypeIds.Any(x=>x != 0)))
-                .WithMessageAwait(localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.CycleFlowSetting.SelectedImageTyp.MustNotSelect"))
-                .When(x => x.IsFirstStep || x.IsLastStep);
+            RuleFor(x => x.IsAddPictureRequired)
+                .Must((model, IsAddPictureRequired) =>
+                !IsAddPictureRequired || !(model.IsFirstStep || model.IsLastStep))
+                .WithMessageAwait(localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.CycleFlowSetting.SelectedImageTyp.MustNotSelect"));
 
             RuleFor(x => x.IsEnableReturn)
                 .Must((model, isEnableReturn) => !(model.IsFirstStep && isEnableReturn))

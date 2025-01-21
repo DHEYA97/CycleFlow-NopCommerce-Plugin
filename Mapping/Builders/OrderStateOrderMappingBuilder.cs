@@ -14,11 +14,11 @@ namespace Nop.Plugin.Misc.CycleFlow.Mapping.Builders
         public override void MapEntity(CreateTableExpressionBuilder table)
         {
             table
-                 .WithColumn(nameof(OrderStateOrderMapping.NopStoreId)).AsInt32().ForeignKey<Store>()
-                 .WithColumn(nameof(OrderStateOrderMapping.CustomerId)).AsInt32().ForeignKey<Customer>()
-                 .WithColumn(nameof(OrderStateOrderMapping.OrderStatusId)).AsInt32().ForeignKey<Domain.OrderStatus>()
+                 .WithColumn(nameof(OrderStateOrderMapping.NopStoreId)).AsInt32().ForeignKey<Store>(onDelete: System.Data.Rule.None)
+                 .WithColumn(nameof(OrderStateOrderMapping.CustomerId)).AsInt32().ForeignKey<Customer>(onDelete: System.Data.Rule.None)
+                 .WithColumn(nameof(OrderStateOrderMapping.OrderStatusId)).AsInt32().ForeignKey<Domain.OrderStatus>(onDelete: System.Data.Rule.None)
                  .WithColumn(nameof(OrderStateOrderMapping.PosUserId)).AsInt32()
-                 .WithColumn(nameof(OrderStateOrderMapping.OrderId)).AsInt32().ForeignKey<Order>()
+                 .WithColumn(nameof(OrderStateOrderMapping.OrderId)).AsInt32().ForeignKey<Order>(onDelete: System.Data.Rule.None)
                  .WithColumn(nameof(OrderStateOrderMapping.Note)).AsString().Nullable()
                  .WithColumn(nameof(OrderStateOrderMapping.IsReturn)).AsBoolean().Nullable()
                  .WithColumn(nameof(OrderStateOrderMapping.ReturnOrderStatusId)).AsInt32().Nullable().ForeignKey<Domain.OrderStatus>(onDelete: System.Data.Rule.None)

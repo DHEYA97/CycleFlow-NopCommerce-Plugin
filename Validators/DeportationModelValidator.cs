@@ -42,15 +42,12 @@ namespace Nop.Plugin.Misc.CycleFlow.Validators
                 .WithMessageAwait(localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.Deportation.UserSmsTemplateId.MustSelect"))
                 .When(x => x.IsEnableSendToUser);
 
-            RuleForEach(x => x.ImageType)
-                .Must(image => image.PictureId.HasValue && image.PictureId > 0)
-                .When(x => x.ImageType != null && x.ImageType.Count > 0)
-                .WithMessageAwait(localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.Deportation.Picture.MustNotEmpty"));
+            RuleForEach(x => x.OrderStatusPictureModels)
+            .Must(image => image.PictureId.HasValue && image.PictureId > 0)
+            .When(x => x.IsAddPictureRequired)
+            .WithMessageAwait(localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.Deportation.Picture.MustNotEmpty"));
 
-            RuleFor(x => x.ImageType)
-                .Must(imageList => imageList != null && imageList.All(img => img.PictureId.HasValue && img.PictureId > 0))
-                .When(x => x.ImageType?.Count > 0)
-                .WithMessageAwait(localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.Deportation.ImageType.MustNotEmpty"));
+           
 
         }
     }

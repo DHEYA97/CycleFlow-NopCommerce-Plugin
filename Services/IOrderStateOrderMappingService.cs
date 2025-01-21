@@ -11,11 +11,15 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
 {
     public interface IOrderStateOrderMappingService
     {
-        Task<string?> GetPictureUrlByImageTypeIdAsync(int imgTypeId, int posUserId, int orderId, int orderStatusId, int orderStateOrderMappingId);
+        Task<OrderStateOrderImageMapping> GetOrderStateOrderImageMappingByIdAsync(int orderStateOrderImageMappingId);
+        Task InsertOrderStateOrderImageMappingAsync(OrderStateOrderImageMapping orderStateOrderImageMapping);
+        Task UpdateOrderStateOrderImageMappingAsync(OrderStateOrderImageMapping orderStateOrderImageMapping);
+        Task DeleteOrderStateOrderImageMappingAsync(OrderStateOrderImageMapping orderStateOrderImageMapping);
         Task<OrderStateOrderMapping> GetOrderStateOrderMappingByIdAsync(int id);
-        Task<List<AllDeportationModel>> GetAllDeportationModelByIdAsync(int posOrderId, bool skipLast = true);
-        Task<List<OrderStateOrderMapping>> GeAllOrderStateOrderMappingAsync();
+        Task<IList<AllDeportationModel>> GetAllDeportationModelByIdAsync(int posOrderId, bool skipLast = true);
+        Task<IList<OrderStateOrderMapping>> GeAllOrderStateOrderMappingAsync();
         Task InsertStepAsync(DeportationModel model, Deportation deportationType);
-        Task<List<OrderStatusImageTypeMapping>> GetImageTypeIdsByOrderStatusIdAsync(int posUserId, int orderStatusId);
+        Task<OrderStateOrderMapping> GeOrderStateOrderMappingAsync(OrderStatusPictureSearchModel searchModel);
+        Task<IList<OrderStateOrderImageMapping>> GetAllOrderStateOrderImageMappingPictureOrderStatusIdAsync(int posUserId, int orderId, int orderStatusId);
     }
 }

@@ -13,12 +13,10 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.CycleFlowSetting
     {
         public CycleFlowSettingModel()
         {
-            SelectedImageTypeIds = new List<int>();
             AvailableCustomers = new List<SelectListItem>();
             AvailablePosUsers = new List<SelectListItem>();
             AvailableCurrentOrderStatus = new List<SelectListItem>();
             AvailableNextOrderStatus = new List<SelectListItem>();
-            AvailableImageTypes = new List<SelectListItem>();
             AvailableStores = new List<SelectListItem>();
             AvailableClientSmsTemplates = new List<SelectListItem>();
             AvailableUserSmsTemplates = new List<SelectListItem>();
@@ -51,10 +49,9 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.CycleFlowSetting
         public int NextOrderStatusId { get; set; }
         public string? NextOrderStatusName { get; set; }
         public IList<SelectListItem> AvailableNextOrderStatus { get; set; }
-        
-        [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.SelectedImageType")]
-        public IList<int>? SelectedImageTypeIds { get; set; }
-        public IList<SelectListItem> AvailableImageTypes { get; set; }
+
+        [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.IsAddPictureRequired")]
+        public bool IsAddPictureRequired { get; set; }
         [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.IsFirstStep")]
         public bool IsFirstStep { get; set; }
         [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.IsLastStep")]

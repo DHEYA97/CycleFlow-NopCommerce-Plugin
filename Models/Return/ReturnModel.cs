@@ -32,7 +32,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Return
             #region Ctor
             public AllReturnModel()
             {
-                ImageType = new List<(string, string)?>();
+                ImageType = new List<string>();
             }
             #endregion
             #region Properties
@@ -46,7 +46,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Return
             public string CustomerReturnFromName { get; set; }
             public DateTime ReturnDate { get; set; }
             public string? Note { get; set; }
-            public IList<(string, string)?> ImageType { get; set; }
+            public IList<string>? ImageType { get; set; }
             #endregion
 
         }

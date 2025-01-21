@@ -18,6 +18,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Mapping.Builders
                 .WithColumn(nameof(OrderStatusSorting.OrderStatusId)).AsInt32().ForeignKey<OrderStatus>(onDelete: System.Data.Rule.None)
                 .WithColumn(nameof(OrderStatusSorting.PosUserId)).AsInt32().ForeignKey<PosUser>()
                 .WithColumn(nameof(OrderStatusSorting.NextStep)).AsInt32().Nullable().ForeignKey<OrderStatus>(onDelete: System.Data.Rule.None)
+                .WithColumn(nameof(OrderStatusSorting.IsAddPictureRequired)).AsBoolean().Nullable()
                 .WithColumn(nameof(OrderStatusSorting.IsFirstStep)).AsBoolean().Nullable()
                 .WithColumn(nameof(OrderStatusSorting.IsLastStep)).AsBoolean().Nullable()
                 .WithColumn(nameof(OrderStatusSorting.IsEnableSendToClient)).AsBoolean().Nullable()

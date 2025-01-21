@@ -24,7 +24,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
         private readonly IBaseCycleFlowModelFactory _baseCycleFlowModelFactory;
         private readonly ICycleFlowSettingService _cycleFlowSettingService;
         private readonly ICustomerService _customerService;
-        private readonly IImageTypeService _imageTypeService;
         private readonly ILocalizationService _localizationService;
         private readonly IOrderStatusService _orderStatusService;
         private readonly IStoreContext _storeContext;
@@ -40,7 +39,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
             IBaseCycleFlowModelFactory baseCycleFlowModelFactory,
             ICycleFlowSettingService cycleFlowSettingService,
             ICustomerService customerService,
-            IImageTypeService imageTypeService,
             ILocalizationService localizationService,
             IOrderStatusService orderStatusService,
             IStoreContext storeContext,
@@ -55,7 +53,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
             _baseCycleFlowModelFactory = baseCycleFlowModelFactory;
             _cycleFlowSettingService = cycleFlowSettingService;
             _customerService = customerService;
-            _imageTypeService = imageTypeService;
             _localizationService = localizationService;
             _storeContext = storeContext;
             _storeService = storeService;
@@ -126,8 +123,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
                 await _baseCycleFlowModelFactory.PreparePosStoresAsync(model.AvailableStores);
                 await _baseCycleFlowModelFactory.PrepareCustomerListAsync(model.AvailableCustomers);
                 await _baseCycleFlowModelFactory.PreparePosUsersListAsync(model.AvailablePosUsers);
-                await PrepareImageTypeListAsync(model.AvailableImageTypes);
-                await PrepareCurrentSelectedImageTypeAsync(model.SelectedImageTypeIds,model.PosUserId,model.CurrentOrderStatusId);
                 await PrepareSmsTemplatesAsync(model.AvailableClientSmsTemplates);
                 await PrepareSmsTemplatesAsync(model.AvailableUserSmsTemplates);
                 model.EnableIsFirstStep = await _cycleFlowSettingService.EnableIsFirstStepAsync(model.PosUserId,currentId);
@@ -140,15 +135,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
         #endregion
 
         #region Utilite
-        
-        protected async Task PrepareCurrentSelectedImageTypeAsync(IList<int> items,int posUserId,int orderStatusId)
-        {
-            var currentImageType = await _cycleFlowSettingService.GetAllOrderCurrentSelectedImageTypeAsync(posUserId,orderStatusId);
-            foreach (var imgId in currentImageType)
-            {
-                items.Add(imgId);
-            }
-        }
        
         //public async Task PrepareCurrentOrderStatusListAsync(IList<SelectListItem> items,int currentId = 0)
         //{
@@ -173,15 +159,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
         //    }
         //    items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Plugin.Misc.CycleFlow.Common.Select"), Value = "0" });
         //}
-        protected async Task PrepareImageTypeListAsync(IList<SelectListItem> items)
-        {
-            var availableimageType = await (await _imageTypeService.GetAllImageTypesAsync()).Where(os => !os.Deleted).ToListAsync();
-            foreach (var imageType in availableimageType)
-            {
-                items.Add(new SelectListItem { Value = imageType.Id.ToString(), Text = imageType.Name.ToString() });
-            }
-            items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Plugin.Misc.CycleFlow.Common.Select"), Value = "0" });
-        }
         protected async Task PrepareSmsTemplatesAsync(IList<SelectListItem> items)
         {
             var availableSmsTemplatesType = await (await _smsTemplateService.GetAllSmsTemplatesAsync(0)).Where(os => os.Active).ToListAsync();

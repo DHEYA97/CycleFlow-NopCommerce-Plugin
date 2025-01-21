@@ -224,6 +224,9 @@ namespace Nop.Plugin.Misc.CycleFlow
                 ["Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.OrderId"] = "Order Number",
                 ["Admin.Plugin.Misc.CycleFlow.Deportation.Fields.View"] = "View",
 				["Admin.Plugin.Misc.CycleFlow.Deportation.Fields.Chart"] = "Chart",
+				["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.IsAddPictureRequired"] = "Is Add Picture Required",
+                ["Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.captureButton"] = "capture from Camera",
+				["Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.AddPicture"] = "Is Add Picture",
 
 
 
@@ -301,7 +304,7 @@ namespace Nop.Plugin.Misc.CycleFlow
                 ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Send"] = "إرسال",
                 ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.CurrentOrderStatus"] = "حالة الطلب الحالية",
                 ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.Store"] = "المتجر",
-                ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.Customer"] = "العميل",
+                ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.Customer"] = "الموظف",
                 ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.PosUser"] = "مستخدم نقاط البيع",
                 ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.NextOrderStatus"] = "حالة الطلب التالية",
                 ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.SelectedImageType"] = "نوع الصورة المحدد",
@@ -435,6 +438,9 @@ namespace Nop.Plugin.Misc.CycleFlow
                 ["Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.OrderId"] = "رقم الطلب",
                 ["Admin.Plugin.Misc.CycleFlow.Deportation.Fields.View"] = "عرض",
                 ["Admin.Plugin.Misc.CycleFlow.Deportation.Fields.Chart"] = "رسم بياني",
+                ["Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.IsAddPictureRequired"] = "هل ادخال الصور اجباري",
+                ["Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.captureButton"] = "التقط صوره من الكاميراء",
+                ["Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.AddPicture"] = "اضف الصورة من الملف",
 
                 #endregion
             };

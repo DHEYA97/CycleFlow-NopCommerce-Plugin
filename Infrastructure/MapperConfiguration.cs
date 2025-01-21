@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Nop.Core.Infrastructure.Mapper;
 using Nop.Plugin.Misc.CycleFlow.Models.OrderStatus;
-using Nop.Plugin.Misc.CycleFlow.Models.ImageType;
 using Nop.Plugin.Misc.CycleFlow.Domain;
 using Nop.Plugin.Misc.CycleFlow.Models.CycleFlowSetting;
 using Nop.Plugin.Misc.CycleFlow.Models.Deportation;
@@ -28,8 +27,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Infrastructure
             
             CreateMap<FilterReturnModel, ReturnModel>();
 
-            CreateMap<ImageTypeModel, ImageType>()
-                .ReverseMap();
             
             CreateMap<OrderStatusModel, OrderStatus>()
                 .ReverseMap();

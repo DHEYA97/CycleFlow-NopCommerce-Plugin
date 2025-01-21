@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Nop.Web.Areas.Admin.Models.Catalog;
 using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc.ModelBinding;
 
@@ -11,16 +12,20 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Deportation
         public DeportationModel()
         {
             ProductOrderItem = new List<ProductOrderItemModel>();
-            ImageType = new List<ImageTypeModel>();
+            OrderStatusPictureSearchModel = new OrderStatusPictureSearchModel();
+            AddOrderStatusPictureModel = new OrderStatusPictureModel();
+            OrderStatusPictureModels = new List<OrderStatusPictureModel>();
             AllDeportation = new List<AllDeportationModel>();
         }
         #endregion
         #region Properties
         [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.NopStoreId")]
         public int NopStoreId { get; set; }
+        [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.Store")]
         public string? StoreName { get; set; }
         [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.PosUserId")]
         public int PosUserId { get; set; }
+        [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.PosUserName")]
         public string? PosUserName { get; set; }
         [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.OrderId")]
         public int OrderId { get; set; }
@@ -39,6 +44,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Deportation
 
         [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.CustomerId")]
         public int CustomerId { get; set; }
+        [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.CycleFlowSetting.Fields.Customer")]
         public string? CustomerName { get; set; }
         
         [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.IsEnableSendToClient")]
@@ -51,6 +57,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Deportation
 
         [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.UserSmsTemplate")]
         public int? UserSmsTemplateId { get; set; }
+        public bool IsAddPictureRequired { get; set; }
 
         
         [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.IsEnableReturn")]
@@ -59,11 +66,15 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Deportation
         public int? ReturnStepId { get; set; }
         [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.ReturnStepName")]
         public string? ReturnStepName { get; set; }
+        [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.Note")]
         public string? Note { get; set; }
         public bool ShowAllInfo { get; set; }
         public IList<ProductOrderItemModel> ProductOrderItem { get; set; }
-        public IList<ImageTypeModel>? ImageType { get; set; }
         public IList<AllDeportationModel> AllDeportation { get; set; }
+        
+        public OrderStatusPictureSearchModel OrderStatusPictureSearchModel { get; set; }
+        public OrderStatusPictureModel AddOrderStatusPictureModel { get; set; }
+        public IList<OrderStatusPictureModel> OrderStatusPictureModels { get; set; }
         #endregion
         #region Nested Classes
         public partial record ProductOrderItemModel : BaseNopEntityModel
@@ -76,17 +87,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Models.Deportation
 
             public string PictureThumbnailUrl { get; set; }
             public int Quantity { get; set; }
-        }
-        public partial record ImageTypeModel : BaseNopEntityModel
-        {
-
-            [UIHint("Picture")]
-            [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.ReturnStep.Picture")]
-            public int? PictureId { get; set; }
-            public int? ImageTypeId { get; set; }
-            [NopResourceDisplayName("Admin.Plugin.Misc.CycleFlow.Deportation.Fields.ReturnStep.Name")]
-            public string? ImageTypeName { get; set; }
-            public string? ImageTypeUrl { get; set; }
         }
         #endregion
     }

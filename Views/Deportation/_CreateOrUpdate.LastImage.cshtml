@@ -1,64 +1,190 @@
-﻿@model Nop.Plugin.Misc.CycleFlow.Models.Deportation.DeportationModel
+﻿@using Nop.Plugin.Misc.CycleFlow.Models.Deportation;
+@using Microsoft.AspNetCore.Routing;
+@model DeportationModel
 <div class="card-body">
-    <div class="cards-group">
-        <div class="form-group row">
-            <div class="col-md-12" style="overflow-x: auto;">
-                <table class="table table-hover table-bordered">
-                    <thead>
-                        <tr>
-                            <th>
-                                @T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.ImageType")
-                            </th>
-                            <th>
-                                @T("Admin.Orders.Products.Picture")
-                            </th>
-                            <th>
-                                @T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.AddPicture")
-                            </th>
+    @if (Model.Id > 0)
+    {
+        @await Html.PartialAsync("Table", new DataTablesModel
+        {
+            Name = "deportation-pictures-grid",
+            UrlRead = new DataUrl("OrderStatusPictureList", "Deportation", new RouteValueDictionary { [nameof(Model.PosUserId)] = Model.PosUserId, [nameof(Model.OrderId)] = Model.OrderId, [nameof(Model.OrderStatusId)] = Model.OrderStatusId, }),
+            UrlDelete = new DataUrl("OrderStatusPictureDelete", "Deportation", null),
+            Length = Model.OrderStatusPictureSearchModel.PageSize,
+            LengthMenu = Model.OrderStatusPictureSearchModel.AvailablePageSizes,
+            ColumnCollection = new List<ColumnProperty>
+                {
+                    new ColumnProperty(nameof(OrderStatusPictureModel.PictureUrl))
+                    {
+                        Title = T("Admin.Catalog.Products.Pictures.Fields.Picture").Text,
+                        Render = new RenderCustom("renderPicturesColumnProductPictureUrl")
+                    },
+                    new ColumnProperty(nameof(OrderStatusPictureModel.Id))
+                    {
+                        Title = T("Admin.Common.Delete").Text,
+                        Width = "100",
+                        Render = new RenderButtonRemove(T("Admin.Common.Delete").Text),
+                        ClassName = NopColumnClassDefaults.Button
+                    }
+                }
+        })
+        
+        <script>
+            function renderPicturesColumnProductPictureUrl(data, type, row, meta) {
+                return '<a href="' + row.PictureUrl + '" target="_blank"><img alt="' + row.PictureId + '" src="' + row.PictureUrl + '" width="150" /></a>';
+            }
+        </script>
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                            @if (Model.ImageType?.Count > 0)
-                            {
-                                @for (int i = 0; i < Model.ImageType?.Count; i++)
-                                {
-                                    <tr>
-                                        <td class="text-center">
-                                            <p>@Model.ImageType[i].ImageTypeName</p>
-                                        </td>
+        <div class="card card-default">
+            <div class="card-header">
+                @T("Admin.Catalog.Products.Pictures.AddNew")
+            </div>
+            <div class="card-body">
+                <script>
+                    $(document).ready(function() {
+                        $('#addProductPicture').click(function() {
+                            var pictureId = $("#@Html.IdFor(model => model.AddOrderStatusPictureModel.PictureId)").val();
+                            var posUserId = $("#@Html.IdFor(model => model.PosUserId)").val();
+                            var orderId = $("#@Html.IdFor(model => model.OrderId)").val();
+                            var orderStatusId = $("#@Html.IdFor(model => model.OrderStatusId)").val();
+                            var storeId = $("#@Html.IdFor(model => model.NopStoreId)").val();
+                            var customerId = $("#@Html.IdFor(model => model.CustomerId)").val();
+                            
 
-                                        <td class="text-center">
-                                            <img src="@Model.ImageType[i].ImageTypeUrl" alt="Picture"
-                                                 style="border: 1px solid #ddd; padding: 5px; width: 100px; height: auto;" />
-                                        </td>
+                            if (pictureId == 0) {
+                                $("#addProductPictureAlert").click();
+                                return;
+                            }
 
-                                        <td>
-                                            <div class="form-group">
-                                                <div class="form-input">
-                                                    <nop-editor asp-for="ImageType[i].PictureId"
-                                                                asp-template="Picture" />
-                                                    <span asp-validation-for="ImageType[i].PictureId" class="text-danger"></span>
-                                                </div>
-                                                <input asp-for="ImageType[i].ImageTypeId" type="hidden" />
-                                            </div>
+                            $('#addProductPicture').attr('disabled', true);
 
-                                        </td>
-                                    </tr>
+                            var postData = {
+                                pictureId: pictureId,
+                                posUserId: posUserId,
+                                orderId: orderId,
+                                orderStatusId: orderStatusId,
+                                storeId: storeId,
+                                customerId: customerId,
+                                
+                            };
+                            addAntiForgeryToken(postData);
+
+                            $.ajax({
+                                cache: false,
+                                type: "POST",
+                                url: "@(Url.Action("OrderStatusPictureAdd", "Deportation"))",
+                                data: postData,
+                                success: function (data, textStatus, jqXHR) {
+                                    if (!data.Result) {
+                                        return;
+                                    }
+                                    updateTable('#deportation-pictures-grid');
+                                },
+                                error: function (jqXHR, textStatus, errorThrown) {
+                                    $("#productPictureAddAlert").click();
+                                },
+                                complete: function (jqXHR, textStatus) {
+                                    $('#addProductPicture').attr('disabled', false);
                                 }
-
-                            }
-                            else
-                            {
-                                <tr>
-                                    <td colspan="3" class="text-center">
-                                        <p>@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.NoImages")</p>
-                                    </td>
-                                </tr>
-                            }
-                    </tbody>
-                </table>
+                            });
+                        });
+                    });
+                </script>
+                <div class="form-group row">
+                    <div class="col-md-2">
+                        <input asp-for="IsAddPictureRequired" type="hidden" />
+                        <nop-label asp-for="AddOrderStatusPictureModel.PictureId" />
+                    </div>
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <nop-editor asp-for="AddOrderStatusPictureModel.PictureId" />
+                                <span asp-validation-for="AddOrderStatusPictureModel.PictureId"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <button id="captureButton" class="btn btn-primary">@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.captureButton")</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-9 offset-md-3">
+                        <button type="button" id="addProductPicture" class="btn btn-primary">@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.AddPicture")</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    }
+    else
+    {
+        <div class="card card-default">
+            <div class="card-body" id="product-pictures-area">
+                @T("Admin.Catalog.Products.Pictures.SaveBeforeEdit")
+            </div>
+        </div>
+    }
 </div>
+<script>
+    $(document).ready(function () {
+        $('#captureButton').on('click', function (e) {
+            e.preventDefault();
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function (stream) {
+                    var video = document.createElement('video');
+                    video.srcObject = stream;
+                    video.play();
+                    video.onloadedmetadata = function () {
+                        var canvas = document.createElement('canvas');
+                        canvas.width = video.videoWidth;
+                        canvas.height = video.videoHeight;
+                        var context = canvas.getContext('2d');
+                        context.imageSmoothingEnabled = false;
+                        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                        stream.getVideoTracks()[0].stop();
+
+                        var imageData = canvas.toDataURL('image/png');
+                        var base64Image = imageData.split(',')[1];
+                        
+                        var posUserId = $("#@Html.IdFor(model => model.PosUserId)").val();
+                        var orderId = $("#@Html.IdFor(model => model.OrderId)").val();
+                        var orderStatusId = $("#@Html.IdFor(model => model.OrderStatusId)").val();
+                        var storeId = $("#@Html.IdFor(model => model.NopStoreId)").val();
+                        var customerId = $("#@Html.IdFor(model => model.CustomerId)").val();
+
+                        var postData = {
+                            posUserId: posUserId,
+                            orderId: orderId,
+                            orderStatusId: orderStatusId,
+                            storeId: storeId,
+                            customerId: customerId,
+                            imageData: base64Image,
+                        };
+                        addAntiForgeryToken(postData);
+                        $.ajax({
+                            cache: false,
+                            type: "POST",
+                            url: "@(Url.Action("OrderStatusPictureAdd", "Deportation"))",
+                            data: postData,
+                            success: function (data, textStatus, jqXHR) {
+                                if (!data.Result) {
+                                    return;
+                                }
+                                updateTable('#deportation-pictures-grid');
+                            },
+                            error: function (jqXHR, textStatus, errorThrown) {
+                                $("#productPictureAddAlert").click();
+                            },
+                            complete: function (jqXHR, textStatus) {
+                                $('#addProductPicture').attr('disabled', false);
+                            }
+                        });
+                    };
+                })
+                .catch(function (err) {
+                    console.log('Error accessing camera: ' + err);
+                    alert('Failed to access camera.');
+                });
+        });
+    });
+</script>
+<nop-alert asp-alert-id="addProductPictureAlert" asp-alert-message="@T("Admin.Catalog.Products.Pictures.Alert.AddNew")" />
+<nop-alert asp-alert-id="productPictureAddAlert" asp-alert-message="@T("Admin.Catalog.Products.Pictures.Alert.PictureAdd")" />

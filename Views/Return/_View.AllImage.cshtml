@@ -101,9 +101,6 @@
                                 @T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.Note")
                             </th>
                             <th>
-                                @T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.ImageType")
-                            </th>
-                            <th>
                                 @T("Admin.Orders.Products.Picture")
                             </th>
                             <th>
@@ -140,32 +137,13 @@
                                 <td class="text-center" style="vertical-align: middle;">
                                     @if (item.ImageType != null && item.ImageType.Any())
                                     {
-                                        foreach (var tuple in item.ImageType)
+                                        foreach (var img in item.ImageType)
                                         {
-                                            if (tuple.HasValue)
-                                            {
-                                                var (imgType, _) = tuple.Value;
-                                                <div class="image-type badge bg-primary mb-3">@imgType</div>
-                                            }
-                                        }
-                                    }
-                                    else
-                                    {
-                                        <p class="image-type">@T("Admin.Plugin.Misc.CycleFlow.Deportation.AllDeportationImage.NoimgType")</p>
-                                    }
-                                </td>
-                                <td class="text-center">
-                                    @if (item.ImageType != null && item.ImageType.Any())
-                                    {
-                                        foreach (var tuple in item.ImageType)
-                                        {
-                                            if (tuple.HasValue)
-                                            {
-                                                var (_, picture) = tuple.Value;
-                                                <div class="image-container">
-                                                    <img src="@picture" alt="Picture" class="deportation-image" data-src="@picture" />
-                                                </div>
-                                            }
+
+                                            <div class="image-container">
+                                                <img src="@img" alt="Picture" class="deportation-image" data-src="@img" />
+                                            </div>
+                                            
                                         }
                                     }
                                     else

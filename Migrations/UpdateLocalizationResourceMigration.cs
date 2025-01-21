@@ -12,7 +12,7 @@ using Nop.Services.Localization;
 
 namespace Nop.Plugin.Misc.CycleFlow.Migrations
 {
-    [NopMigration("2024-12-23 00:02:00", "CycleFlowPlugin Update LocalizationResource", MigrationProcessType.Update)]
+    [NopMigration("2025-01-20 00:02:00", "CycleFlowPlugin Update LocalizationResource", MigrationProcessType.Update)]
     public class UpdateLocalizationResourceMigration : MigrationBase
     {
         public override void Down()

@@ -23,27 +23,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Migrations
 
         public override void Up()
         {
-            if (!Schema.Table(TableName<ImageType>()).Column(nameof(ImageType.InsertedByUser)).Exists())
-            {
-                Alter.Table(TableName<ImageType>())
-                    .AddColumn(nameof(OrderStatusSorting.InsertedByUser)).AsInt32().Nullable();
-            }
-            if (!Schema.Table(TableName<ImageType>()).Column(nameof(ImageType.InsertionDate)).Exists())
-            {
-                Alter.Table(TableName<ImageType>())
-                    .AddColumn(nameof(OrderStatusSorting.InsertionDate)).AsDateTime().Nullable();
-            }
-            if (!Schema.Table(TableName<ImageType>()).Column(nameof(ImageType.UpdatedByUser)).Exists())
-            {
-                Alter.Table(TableName<ImageType>())
-                    .AddColumn(nameof(OrderStatusSorting.UpdatedByUser)).AsInt32().Nullable();
-            }
-            if (!Schema.Table(TableName<ImageType>()).Column(nameof(ImageType.UpdatingDate)).Exists())
-            {
-                Alter.Table(TableName<ImageType>())
-                    .AddColumn(nameof(OrderStatusSorting.UpdatingDate)).AsDateTime().Nullable();
-            }
-
             if (!Schema.Table(TableName<OrderStateOrderImageMapping>()).Column(nameof(OrderStateOrderImageMapping.InsertedByUser)).Exists())
             {
                 Alter.Table(TableName<OrderStateOrderImageMapping>())
@@ -107,27 +86,7 @@ namespace Nop.Plugin.Misc.CycleFlow.Migrations
                     .AddColumn(nameof(OrderStatus.UpdatingDate)).AsDateTime().Nullable();
             }
 
-            if (!Schema.Table(TableName<OrderStatusImageTypeMapping>()).Column(nameof(OrderStatusImageTypeMapping.InsertedByUser)).Exists())
-            {
-                Alter.Table(TableName<OrderStatusImageTypeMapping>())
-                    .AddColumn(nameof(OrderStatusImageTypeMapping.InsertedByUser)).AsInt32().Nullable();
-            }
-            if (!Schema.Table(TableName<OrderStatusImageTypeMapping>()).Column(nameof(OrderStatusImageTypeMapping.InsertionDate)).Exists())
-            {
-                Alter.Table(TableName<OrderStatusImageTypeMapping>())
-                    .AddColumn(nameof(OrderStatusImageTypeMapping.InsertionDate)).AsDateTime().Nullable();
-            }
-            if (!Schema.Table(TableName<OrderStatusImageTypeMapping>()).Column(nameof(OrderStatusImageTypeMapping.UpdatedByUser)).Exists())
-            {
-                Alter.Table(TableName<OrderStatusImageTypeMapping>())
-                    .AddColumn(nameof(OrderStatusImageTypeMapping.UpdatedByUser)).AsInt32().Nullable();
-            }
-            if (!Schema.Table(TableName<OrderStatusImageTypeMapping>()).Column(nameof(OrderStatusImageTypeMapping.UpdatingDate)).Exists())
-            {
-                Alter.Table(TableName<OrderStatusImageTypeMapping>())
-                    .AddColumn(nameof(OrderStatusImageTypeMapping.UpdatingDate)).AsDateTime().Nullable();
-            }
-
+            
             if (!Schema.Table(TableName<OrderStatusPermissionMapping>()).Column(nameof(OrderStatusPermissionMapping.InsertedByUser)).Exists())
             {
                 Alter.Table(TableName<OrderStatusPermissionMapping>())

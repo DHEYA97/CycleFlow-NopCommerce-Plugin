@@ -34,7 +34,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Infrastructure
             services.AddScoped<ICheckPosOrderStatusModelFactory, CheckPosOrderStatusModelFactory>();
             services.AddScoped<ICycleFlowSettingModelFactory, CycleFlowSettingModelFactory>();
             services.AddScoped<IDeportationModelFactory, DeportationModelFactory>();
-            services.AddScoped<IImageTypeModelFactory, ImageTypeModelFactory>();
             services.AddScoped<IOrderStatusModelFactory, OrderStatusModelFactory>();
             services.AddScoped<IReturnModelFactory, ReturnModelFactory>();
             #endregion
@@ -42,7 +41,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Infrastructure
             #region Service
             services.AddScoped<ICycleFlowSettingService, CycleFlowSettingService>();
             services.AddScoped<IDeportationService, DeportationService>();
-            services.AddScoped<IImageTypeService, ImageTypeService>();
             services.AddScoped<IOrderStatusService, OrderStatusService>();
             services.AddScoped<IOrderStateOrderMappingService, OrderStateOrderMappingService>();
             #endregion

@@ -35,10 +35,16 @@
                             <td class="text-center">
                                 <p>@Model.CurrentOrderStatusName</p>
                                 <input asp-for="OrderStatusId" type="hidden" />
+                                <input asp-for="CurrentOrderStatusName" type="hidden" />
                             </td>
                             <td class="text-center">
                                 <p>@Model.NextOrderStatusName</p>
                                 <input asp-for="NextOrderStatusId" type="hidden" />
+                                <input asp-for="IsEnableSendToUser" type="hidden" />
+                                <input asp-for="UserSmsTemplateId" type="hidden" />
+                                <input asp-for="IsEnableSendToClient" type="hidden" />
+                                <input asp-for="ClientSmsTemplateId" type="hidden" />
+                                <input asp-for="CustomerName" type="hidden" />
                             </td>
                             @if(@Model.IsEnableReturn)
                             {

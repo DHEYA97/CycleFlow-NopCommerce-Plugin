@@ -1,6 +1,5 @@
 ﻿using Nop.Plugin.Misc.CycleFlow.Domain;
 using Nop.Plugin.Misc.CycleFlow.Models.CycleFlowSetting;
-using Nop.Plugin.Misc.CycleFlow.Models.ImageType;
 using Nop.Plugin.Misc.CycleFlow.Models.OrderStatus;
 using System;
 using System.Collections.Generic;

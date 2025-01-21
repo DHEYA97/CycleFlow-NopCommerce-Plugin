@@ -1266,11 +1266,6 @@ F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugi
 F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\Deportation\_CreateOrUpdate.Info.cshtml
 F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\Deportation\_CreateOrUpdate.LastImage.cshtml
 F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\Deportation\_CreateOrUpdate.Order.cshtml
-F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\ImageType\Create.cshtml
-F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\ImageType\Edit.cshtml
-F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\ImageType\List.cshtml
-F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\ImageType\_CreateOrUpdate.cshtml
-F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\ImageType\_CreateOrUpdate.Info.cshtml
 F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\OrderStatus\Create.cshtml
 F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\OrderStatus\Edit.cshtml
 F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\OrderStatus\List.cshtml
@@ -1721,3 +1716,4 @@ F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.Cy
 F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.CycleFlow\obj\Debug\net6.0\Nop.Plugin.Misc.CycleFlow.pdb
 F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Plugins\Nop.Plugin.Misc.CycleFlow\obj\Debug\net6.0\ref\Nop.Plugin.Misc.CycleFlow.dll
 F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\Views\Sheared\Components\OrderCycleFlow\Default.cshtml
+F:\nopCommerce\NopWithOutZatca2024\NopCommerce-Plugin\Presentation\Nop.Web\Plugins\Misc.CycleFlow\dll\RestSharp.dll
