@@ -171,11 +171,11 @@ namespace Nop.Plugin.Misc.CycleFlow.Services
                     }
                     if(model.IsEnableSendToClient)
                     {
-                        await SendByWhatsApp(model.CustomerName,model.CurrentOrderStatusName!,model.ClientSmsTemplateId??0);
+                        //await SendByWhatsApp(model.CustomerName,model.CurrentOrderStatusName!,model.ClientSmsTemplateId??0);
                     }
                     if (model.IsEnableSendToUser)
                     {
-                        await SendByWhatsApp(model.PosUserName, model.CurrentOrderStatusName!, model.UserSmsTemplateId ?? 0);
+                        //await SendByWhatsApp(model.PosUserName, model.CurrentOrderStatusName!, model.UserSmsTemplateId ?? 0);
                     }
                     _notificationService.SuccessNotification(await _localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.Deportation.NextStep.Successfully"), encode: false);
                     transaction.Complete();

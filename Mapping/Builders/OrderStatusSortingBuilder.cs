@@ -5,7 +5,6 @@ using Nop.Data.Extensions;
 using Nop.Data.Mapping.Builders;
 using Nop.Plugin.Misc.CycleFlow.Domain;
 using Nop.Plugin.Misc.POSSystem.Domains;
-using Nop.Plugin.Misc.SmsAuthentication.Domains;
 
 namespace Nop.Plugin.Misc.CycleFlow.Mapping.Builders
 {
@@ -23,8 +22,8 @@ namespace Nop.Plugin.Misc.CycleFlow.Mapping.Builders
                 .WithColumn(nameof(OrderStatusSorting.IsLastStep)).AsBoolean().Nullable()
                 .WithColumn(nameof(OrderStatusSorting.IsEnableSendToClient)).AsBoolean().Nullable()
                 .WithColumn(nameof(OrderStatusSorting.IsEnableSendToUser)).AsBoolean().Nullable()
-                .WithColumn(nameof(OrderStatusSorting.ClientSmsTemplateId)).AsInt32().Nullable().ForeignKey<SmsTemplate>(onDelete: System.Data.Rule.None)
-                .WithColumn(nameof(OrderStatusSorting.UserSmsTemplateId)).AsInt32().Nullable().ForeignKey<SmsTemplate>(onDelete: System.Data.Rule.None)
+                .WithColumn(nameof(OrderStatusSorting.ClientSmsTemplateId)).AsInt32().Nullable()
+                .WithColumn(nameof(OrderStatusSorting.UserSmsTemplateId)).AsInt32().Nullable()
                 .WithColumn(nameof(OrderStatusSorting.IsEnableReturn)).AsBoolean().Nullable()
                 .WithColumn(nameof(OrderStatusSorting.ReturnStepId)).AsInt32().Nullable().ForeignKey<OrderStatus>(onDelete: System.Data.Rule.None)
 

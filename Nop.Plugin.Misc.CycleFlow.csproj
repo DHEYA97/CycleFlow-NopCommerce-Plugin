@@ -52,7 +52,6 @@
     <ProjectReference Include="..\..\Presentation\Nop.Web.Framework\Nop.Web.Framework.csproj" />
     <ProjectReference Include="..\..\Presentation\Nop.Web\Nop.Web.csproj" />
     <ProjectReference Include="..\Nop.Plugin.Misc.POSSystem\Nop.Plugin.Misc.POSSystem.csproj" />
-    <ProjectReference Include="..\Nop.Plugin.Misc.SmsAuthentication\Nop.Plugin.Misc.SmsAuthentication.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="dll\RestSharp.dll">

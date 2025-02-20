@@ -5,7 +5,6 @@ using Nop.Data.Mapping;
 using Nop.Plugin.Misc.POSSystem.Domains;
 using Nop.Plugin.Misc.CycleFlow.Domain;
 using Nop.Data.Extensions;
-using Nop.Plugin.Misc.SmsAuthentication.Domains;
 using Nop.Core.Infrastructure;
 using Nop.Data;
 using Nop.Services.Localization;

@@ -8,7 +8,6 @@ using Nop.Plugin.Misc.CycleFlow.Models.Deportation;
 using Nop.Plugin.Misc.CycleFlow.Models.Return;
 using Nop.Plugin.Misc.CycleFlow.Services;
 using Nop.Plugin.Misc.POSSystem.Services;
-using Nop.Plugin.Misc.SmsAuthentication.Services;
 using Nop.Services.Customers;
 using Nop.Services.Localization;
 using Nop.Services.Media;

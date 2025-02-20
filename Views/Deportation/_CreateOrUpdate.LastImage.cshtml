@@ -78,6 +78,8 @@
                                         return;
                                     }
                                     updateTable('#deportation-pictures-grid');
+                                    addOrderStatusPictureToForm(data.PictureId, pictureId);
+
                                 },
                                 error: function (jqXHR, textStatus, errorThrown) {
                                     $("#productPictureAddAlert").click();
@@ -87,8 +89,41 @@
                                 }
                             });
                         });
+
+                        var table = $('#deportation-pictures-grid').DataTable();
+                        table.on('initComplete', function () {
+                            var data = table.rows().data().toArray();
+                            fillOrderStatusPicturesForm(data);
+                        }); 
+                        table.on('draw', function () {
+                            var data = table.rows().data().toArray();
+                            fillOrderStatusPicturesForm(data);
+                        });
+
+                        function addOrderStatusPictureToForm(id, pictureId) {
+                            var index = $("#order-status-pictures-container").children().length;
+                            var hiddenFields = `
+                                    <div id="orderStatusPicture_${id}">
+                                        <input type="hidden" name="OrderStatusPictureModels[${index}].Id" value="${id}" />
+                                        <input type="hidden" name="OrderStatusPictureModels[${index}].PictureId" value="${pictureId}" />
+                                    </div>`;
+                            $("#order-status-pictures-container").append(hiddenFields);
+                        }
+
+                        function fillOrderStatusPicturesForm(data) {
+                            $("#order-status-pictures-container").empty();
+                            data.forEach(function (row, index) {
+                                var hiddenFields = `
+                                        <div id="orderStatusPicture_${row.id}">
+                                                <input type="hidden" name="OrderStatusPictureModels[${index}].Id" value="${row.Id}" />
+                                                <input type="hidden" name="OrderStatusPictureModels[${index}].PictureId" value="${row.PictureId}" />
+                                        </div>`;
+                                $("#order-status-pictures-container").append(hiddenFields);
+                            });
+                        }
                     });
                 </script>
+                
                 <div class="form-group row">
                     <div class="col-md-2">
                         <input asp-for="IsAddPictureRequired" type="hidden" />
@@ -105,6 +140,18 @@
                             </div>
                         </div>
                     </div>
+                    <div id="order-status-pictures-container">
+                        @for (var i = 0; i < Model.OrderStatusPictureModels?.Count; i++)
+                        {
+                            <div id="orderStatusPicture_@Model.OrderStatusPictureModels[i].Id">
+                                <input type="hidden" name="OrderStatusPictureModels[@i].Id" value="@Model.OrderStatusPictureModels[i].Id" />
+                                <input type="hidden" name="OrderStatusPictureModels[@i].PictureId" value="@Model.OrderStatusPictureModels[i].PictureId" />
+                                <input type="hidden" name="OrderStatusPictureModels[@i].PictureUrl" value="@Model.OrderStatusPictureModels[i].PictureUrl" /> <!-- ✅ تأكد من أن PictureUrl موجود -->
+                            </div>
+                        }
+                    </div>
+
+
                 </div>
                 <div class="form-group row">
                     <div class="col-md-9 offset-md-3">

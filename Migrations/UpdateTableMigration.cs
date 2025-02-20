@@ -5,12 +5,11 @@ using Nop.Data.Mapping;
 using Nop.Plugin.Misc.POSSystem.Domains;
 using Nop.Plugin.Misc.CycleFlow.Domain;
 using Nop.Data.Extensions;
-using Nop.Plugin.Misc.SmsAuthentication.Domains;
 using Nop.Plugin.Misc.CycleFlow.Mapping.Builders;
 
 namespace Nop.Plugin.Misc.CycleFlow.Migrations
 {
-    [NopMigration("2025-01-17 12:13:04", "CycleFlowPlugin Update Table", MigrationProcessType.Update)]
+    [NopMigration("2025-02-18 12:13:04", "CycleFlowPlugin Update Table", MigrationProcessType.Update)]
     public class UpdateTableMigration : Migration
     {
         public static string TableName<T>() where T : BaseEntity
@@ -39,12 +38,12 @@ namespace Nop.Plugin.Misc.CycleFlow.Migrations
             if (!Schema.Table(TableName<OrderStatusSorting>()).Column(nameof(OrderStatusSorting.ClientSmsTemplateId)).Exists())
             {
                 Alter.Table(TableName<OrderStatusSorting>())
-                    .AddColumn(nameof(OrderStatusSorting.ClientSmsTemplateId)).AsInt32().Nullable().ForeignKey<SmsTemplate>(onDelete: System.Data.Rule.None);
+                    .AddColumn(nameof(OrderStatusSorting.ClientSmsTemplateId)).AsInt32().Nullable();
             }
             if (!Schema.Table(TableName<OrderStatusSorting>()).Column(nameof(OrderStatusSorting.UserSmsTemplateId)).Exists())
             {
                 Alter.Table(TableName<OrderStatusSorting>())
-                    .AddColumn(nameof(OrderStatusSorting.UserSmsTemplateId)).AsInt32().Nullable().ForeignKey<SmsTemplate>(onDelete: System.Data.Rule.None);
+                    .AddColumn(nameof(OrderStatusSorting.UserSmsTemplateId)).AsInt32().Nullable();
             }
             
             if (!Schema.Table(TableName<OrderStatusSorting>()).Column(nameof(OrderStatusSorting.IsEnableReturn)).Exists())
@@ -96,7 +95,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Migrations
             {
                 Delete.ForeignKey("FK_CF_OrderStateOrderImageMapping_ImageTypeId_CF_ImageType_Id").OnTable(TableName<OrderStateOrderImageMapping>());
             }
-
             if (Schema.Table(TableName<OrderStateOrderImageMapping>()).Column("ImageTypeId").Exists())
             {
                 Delete.Column("ImageTypeId").FromTable(TableName<OrderStateOrderImageMapping>());
@@ -110,6 +108,15 @@ namespace Nop.Plugin.Misc.CycleFlow.Migrations
             if (Schema.Table("OrderStatusImageTypeMapping").Exists())
             {
                 Delete.Table("OrderStatusImageTypeMapping");
+            }
+
+            if (Schema.Table(TableName<OrderStatusSorting>()).Constraint("FK_CF_OrderStatusSorting_ClientSmsTemplateId_SmsAuthentication_SmsTemplate_Id").Exists())
+            {
+                Delete.ForeignKey("FK_CF_OrderStatusSorting_ClientSmsTemplateId_SmsAuthentication_SmsTemplate_Id").OnTable(TableName<OrderStatusSorting>());
+            }
+            if (Schema.Table(TableName<OrderStatusSorting>()).Constraint("FK_CF_OrderStatusSorting_UserSmsTemplateId_SmsAuthentication_SmsTemplate_Id").Exists())
+            {
+                Delete.ForeignKey("FK_CF_OrderStatusSorting_UserSmsTemplateId_SmsAuthentication_SmsTemplate_Id").OnTable(TableName<OrderStatusSorting>());
             }
 
         }

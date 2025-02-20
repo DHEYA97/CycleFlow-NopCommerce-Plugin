@@ -6,7 +6,6 @@ using Nop.Plugin.Misc.CycleFlow.Models.CycleFlowSetting;
 using Nop.Plugin.Misc.CycleFlow.Services;
 using Nop.Plugin.Misc.POSSystem.Domains;
 using Nop.Plugin.Misc.POSSystem.Services;
-using Nop.Plugin.Misc.SmsAuthentication.Services;
 using Nop.Services.Customers;
 using Nop.Services.Localization;
 using Nop.Services.Shipping;
@@ -29,7 +28,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
         private readonly IStoreContext _storeContext;
         private readonly IStoreService _storeService;
         private readonly IShippingService _shippingService;
-        private readonly ISmsTemplateService _smsTemplateService;
         private readonly IPosStoreService _posStoreService;
         private readonly IPosUserService _posUserService;
         #endregion
@@ -44,7 +42,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
             IStoreContext storeContext,
             IStoreService storeService,
             IShippingService shippingService,
-            ISmsTemplateService smsTemplateService,
             IPosStoreService posStoreService,
             IPosUserService posUserService
         )
@@ -60,7 +57,6 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
             _orderStatusService = orderStatusService;
             _posStoreService = posStoreService;
             _posUserService = posUserService;
-            _smsTemplateService = smsTemplateService;
         }
         #endregion
         #region Methods
@@ -161,11 +157,11 @@ namespace Nop.Plugin.Misc.CycleFlow.Factories
         //}
         protected async Task PrepareSmsTemplatesAsync(IList<SelectListItem> items)
         {
-            var availableSmsTemplatesType = await (await _smsTemplateService.GetAllSmsTemplatesAsync(0)).Where(os => os.Active).ToListAsync();
-            foreach (var smsTemplate in availableSmsTemplatesType)
-            {
-                items.Add(new SelectListItem { Value = smsTemplate.Id.ToString(), Text = smsTemplate.Name.ToString() });
-            }
+            //var availableSmsTemplatesType = await (await _smsTemplateService.GetAllSmsTemplatesAsync(0)).Where(os => os.Active).ToListAsync();
+            //foreach (var smsTemplate in availableSmsTemplatesType)
+            //{
+            //    items.Add(new SelectListItem { Value = smsTemplate.Id.ToString(), Text = smsTemplate.Name.ToString() });
+            //}
             items.Insert(0, new SelectListItem { Text = await _localizationService.GetResourceAsync("Admin.Plugin.Misc.CycleFlow.Common.Select"), Value = "0" });
         }
 

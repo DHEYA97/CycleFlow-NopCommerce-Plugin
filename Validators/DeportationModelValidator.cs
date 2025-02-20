@@ -47,7 +47,12 @@ namespace Nop.Plugin.Misc.CycleFlow.Validators
             .When(x => x.IsAddPictureRequired)
             .WithMessageAwait(localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.Deportation.Picture.MustNotEmpty"));
 
-           
+            RuleFor(x => x.OrderStatusPictureModels)
+            .Must(image => image.Count() > 0)
+            .When(x => x.IsAddPictureRequired)
+            .WithMessageAwait(localizationService.GetResourceAsync("Nop.Plugin.Misc.CycleFlow.Deportation.Picture.MustNotEmpty"));
+
+
 
         }
     }
